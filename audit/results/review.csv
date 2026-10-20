@@ -1,0 +1,4 @@
+﻿episode,start,end,status,reason,comment
+001,"00:00:54,820","00:01:50,600",SECOND_PASS_ERROR,asr,Unreliable ASR words (loop or missing alignment)
+001,"00:03:40,680","00:04:38,200",SECOND_PASS_ERROR,asr,Unreliable ASR words (loop or missing alignment)
+001,,,INCOMPLETE_SECOND_PASS,asr,2 chunks failed. No finalized SRT written. Successful ASR chunks are cached.
