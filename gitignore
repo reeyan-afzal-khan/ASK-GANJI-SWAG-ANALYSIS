@@ -1,0 +1,43 @@
+.claude/
+node_modules/
+release/
+extracted/
+tools/
+android/www/
+android/local.properties
+android/.gradle/
+android/build/
+android/app/build/
+android/capacitor-cordova-android-plugins/
+# macOS leaves these behind on any folder it has touched: .DS_Store holds the
+# Finder's view settings, and every ._name file is the resource fork of the
+# file beside it. Both are noise here — the ChinesePod folder alone carried
+# 2,591 of them, one per lesson, doubling the tree for nothing.
+.DS_Store
+._*
+
+# Signing material. Losing keys/*.jks means never shipping an update to
+# anyone who installed a build signed with it — back it up somewhere safe.
+android/keys/
+android/keystore.properties
+
+# The generated store. Rebuilt from data/ by `npm run db` in a couple of
+# seconds, so a 20 MB binary that changes wholesale on every build does not
+# need to be in the history. Everything it is built from is committed, and
+# everything the app loads is exported out of it into app/data/.
+data/hskker.db
+data/hskker.db-journal
+
+# The papers' .docx and PDFs, the recordings, and the font sources are never
+# in the repository: the importers are pointed at wherever they are kept
+# (see data/README.md), and what they produce is committed.
+data/**/*.pdf
+data/**/*.docx
+
+# The offline translator: about 135 MB as published (data/translation/) and
+# 180 MB as the scripts the app loads (app/data/mt/). `npm run translation`
+# fetches the first, checks it and makes the second; see
+# data/translation/README.md.
+data/translation/runtime/
+data/translation/opus-mt-zh-en/
+app/data/mt/
