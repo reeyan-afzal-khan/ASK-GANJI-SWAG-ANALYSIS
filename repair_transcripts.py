@@ -7,8 +7,9 @@ Place beside:
 
 Run: python repair_transcripts.py
 
-Uses local GPU-capable openai-whisper, urdunlp, and uroman. It never modifies
-existing MP3s, existing subtitles, old audit results, or old pilot results.
+Uses local GPU-capable openai-whisper and uroman. Optionally uses urdunlp for
+more natural Roman Urdu spelling when installed. It never modifies original
+MP3s, subtitles, old audit results, or old pilot results.
 """
 from __future__ import annotations
 
@@ -32,7 +33,9 @@ from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
-VERSION = "2.0.0"
+VERSION = "2.0.1"
+# Keep ASR cache keys compatible with previously processed version 2.0.0 chunks.
+ASR_CACHE_VERSION = "2.0.0"
 ROOT = Path(__file__).resolve().parent
 AUDIO_DIR = ROOT / "all_episodes"
 ORIGINAL_DIR = ROOT / "urdu_transcript_whisper"
@@ -129,16 +132,24 @@ def csv_dump(path: Path, rows, columns):
 
 
 class Romanizer:
-    """Meaning-oriented Urdu romanization; Hindi/other scripts through Uroman.
+    """Keep English in Latin. Convert Urdu and Devanagari to Latin.
 
-    Latin English is untouched. An episode fails rather than silently erasing
-    any characters which cannot be romanized.
+    urdunlp (optional) produces more natural Roman Urdu. When it is not
+    installed, uroman is a reliable script transliterator, but the phonetic
+    spelling may not match conversational Roman Urdu conventions.
     """
     def __init__(self):
-        from urdunlp import transliterate_to_roman
         import uroman
-        self.urdu_to_roman = transliterate_to_roman
         self.universal = uroman.Uroman()
+        self.urdu_to_roman = None
+        self.engine = "uroman_only"
+        try:
+            from urdunlp import transliterate_to_roman
+        except ImportError:
+            pass  # The GitHub-only installation is not required to run.
+        else:
+            self.urdu_to_roman = transliterate_to_roman
+            self.engine = "urdunlp_plus_uroman"
 
     @staticmethod
     def needs_romanization(text: str) -> bool:
@@ -153,13 +164,16 @@ class Romanizer:
             if not part:
                 continue
             if ARABIC_RUN.fullmatch(part):
-                out.append(self.urdu_to_roman(part))
+                if self.urdu_to_roman is not None:
+                    out.append(self.urdu_to_roman(part))
+                else:
+                    out.append(self.universal.romanize_string(part, lcode="urd"))
             elif DEVANAGARI_RUN.fullmatch(part):
                 out.append(self.universal.romanize_string(part, lcode="hin"))
             elif self.needs_romanization(part):
                 out.append(self.universal.romanize_string(part))
             else:
-                out.append(part)
+                out.append(part)  # Preserve spoken English words.
         roman = "".join(out).translate(DIGITS).translate(PUNCT)
         if self.needs_romanization(roman):
             roman = self.universal.romanize_string(roman)
@@ -291,7 +305,7 @@ def repetition_flags(cues):
 
 def config_key(args, ep, audio_fp):
     fields = {
-        "script": VERSION, "model": args.model, "mode": args.language_mode,
+        "script": ASR_CACHE_VERSION, "model": args.model, "mode": args.language_mode,
         "chunk": args.chunk_seconds, "pad": args.padding_seconds,
         "word_timestamps": not args.no_word_timestamps,
         "episode": ep, "audio": audio_fp,
@@ -385,7 +399,8 @@ def process_episode(ep, args, whisper, model, romanizer, log, out):
     if not args.force and status_path.is_file():
         old = read_json(status_path)
         if (old.get("status") == "completed" and old.get("config_key") == key
-                and roman_path.is_file() and raw_path.is_file()):
+                and roman_path.is_file() and raw_path.is_file()
+                and old.get("romanizer") == romanizer.engine):
             note("Already completed; skipping")
             return
     if args.force and chunk_dir.exists():
@@ -427,11 +442,9 @@ def process_episode(ep, args, whisper, model, romanizer, log, out):
                 )
                 original_cues = raw_cues_from_result(
                     result, pad_start, core_start, core_end, not args.no_word_timestamps)
-                cues = []
-                for cue in original_cues:
-                    roman_text = romanizer.convert(cue["text"])
-                    if roman_text:
-                        cues.append({**cue, "roman": roman_text})
+                # Cache only the raw ASR cues. Roman Urdu formatting is a
+                # separate, repeatable step and never requires re-transcription.
+                cues = original_cues
                 segment_stats = [{
                     "start": round(pad_start + float(s["start"]), 3),
                     "text": (s.get("text") or "")[:240],
@@ -450,7 +463,12 @@ def process_episode(ep, args, whisper, model, romanizer, log, out):
                 note(f"chunk {i+1}/{chunks_total} {fmt(core_start)} -> {fmt(core_end)} "
                      f"language={language} probabilities={probabilities} "
                      f"cues={len(cues)} seconds={chunk['runtime_seconds']}")
-            all_cues.extend(chunk["cues"])
+            # Romanization is a postprocessing step: regenerate from cached
+            # raw text, so changing/adding urdunlp never reruns the CUDA ASR.
+            for cue in chunk["cues"]:
+                roman_text = romanizer.convert(cue["text"])
+                if roman_text:
+                    all_cues.append({**cue, "roman": roman_text})
             language_stats[chunk["decoder_language"]] += 1
             if chunk.get("detected_probabilities", {}).get("hi", 0) > max(
                 chunk.get("detected_probabilities", {}).get("ur", 0),
@@ -468,6 +486,7 @@ def process_episode(ep, args, whisper, model, romanizer, log, out):
         info = {
             "episode": ep, "status": "completed", "created_utc": utc(),
             "config_key": key, "model": args.model, "mode": args.language_mode,
+            "romanizer": romanizer.engine,
             "audio_fingerprint": audio_fp, "duration_seconds": round(duration, 3),
             "chunks_total": chunks_total, "chunks_complete": chunks_total,
             "subtitle_cues": len(all_cues), "english_chunks": language_stats["en"],
@@ -520,17 +539,23 @@ def main():
         raise SystemExit(f"Missing audio folder: {AUDIO_DIR}")
     if not shutil.which("ffmpeg") or not shutil.which("ffprobe"):
         raise SystemExit("ffmpeg and ffprobe must be available on PATH")
-    for name in ("urdunlp", "uroman", "whisper"):
+    for name in ("uroman", "whisper"):
         try:
             __import__(name)
         except ImportError as exc:
-            raise SystemExit(f"Missing {name}: install with: python -m pip install openai-whisper urdunlp uroman") from exc
+            raise SystemExit(f"Missing {name}: install with: python -m pip install openai-whisper uroman") from exc
     import torch
     import whisper
     if not torch.cuda.is_available():
         raise SystemExit("PyTorch CUDA is not available; stopping to avoid unexpectedly slow 367-hour CPU run")
+    romanizer = Romanizer()
+    log.info("Romanizer selected: %s", romanizer.engine)
+    if romanizer.engine == "uroman_only":
+        log.warning("urdunlp is unavailable; proceeding with uroman. The SRTs will contain only Latin script, but Urdu spelling may be less natural.")
     log.info("Starting full 241-episode offline-capable transcription. Model=%s", args.model)
-    write_json(out / "Logs" / "machine_info.json", machine_info(torch, args.model, args))
+    info = machine_info(torch, args.model, args)
+    info["romanizer"] = romanizer.engine
+    write_json(out / "Logs" / "machine_info.json", info)
 
     if args.offline:
         ckpt = Path(os.path.expanduser("~/.cache/whisper")) / (args.model + ".pt")
@@ -540,7 +565,6 @@ def main():
         model = whisper.load_model(str(ckpt), device="cuda")
     else:
         model = whisper.load_model(args.model, device="cuda")
-    romanizer = Romanizer()
     failed = []
     try:
         for ep in range(1, 242):
