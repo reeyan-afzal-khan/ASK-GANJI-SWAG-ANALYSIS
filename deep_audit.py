@@ -4,6 +4,9 @@
 Inspects every second of audio using streamed FFmpeg decoding and Silero voice
 activity detection. Flags are *candidates for review*, not verified ASR errors.
 No audio is uploaded and no language model is downloaded by this script.
+
+Run `python deep_audit.py` from the repository as shown in README.md;
+input directories are discovered relative to this script, not the shell CWD.
 """
 from __future__ import annotations
 
@@ -70,7 +73,11 @@ def parse_srt(text):
         })
     return cues, invalid
 
-VERSION = '3.0.0'
+VERSION = '3.1.0'
+PROJECT_DIR = Path(__file__).resolve().parent
+DEFAULT_SRT_DIR = PROJECT_DIR / 'urdu_transcript_whisper'
+DEFAULT_AUDIO_DIR = PROJECT_DIR / 'all_episodes'
+DEFAULT_OUTPUT_DIR = PROJECT_DIR / 'all_episodes_audit'
 SR = 16000
 ISSUE_FIELDS = ['episode','start','end','subtitle_number','severity','issue','details','text']
 SUMMARY_FIELDS = [
@@ -171,31 +178,27 @@ def close_logger(log):
         log.removeHandler(h);h.flush();h.close()
 
 
-def input_source(source:Path):
-    """Load SRT contents, bounded to 241 small text files; ZIP supported."""
-    found={};duplicates=[]
-    if source.is_file() and zipfile.is_zipfile(source):
-        with zipfile.ZipFile(source) as z:
-            for member in sorted(z.infolist(),key=lambda x:x.filename):
-                match=EP_RE.fullmatch(Path(member.filename).name)
-                if not match or member.is_dir():continue
-                ep=int(match.group(1))
-                if ep in found:duplicates.append((ep,member.filename));continue
-                raw=z.read(member)
-                found[ep]={'text':raw.decode('utf-8-sig',errors='replace'),
-                           'signature':hashlib.sha256(raw).hexdigest(),
-                           'where':f'{source}!/{member.filename}'}
-    elif source.is_dir():
-        for p in sorted(source.rglob('episode_*.srt')):
-            match=EP_RE.fullmatch(p.name)
-            if not match:continue
-            ep=int(match.group(1))
-            if ep in found:duplicates.append((ep,str(p)));continue
-            raw=p.read_bytes()
-            found[ep]={'text':raw.decode('utf-8-sig',errors='replace'),
-                       'signature':hashlib.sha256(raw).hexdigest(),'where':str(p)}
-    else:raise FileNotFoundError('SRT source must be an existing .zip file or folder')
-    return found,duplicates
+def input_source(source: Path):
+    """Read the episode_###.srt files directly from a directory tree."""
+    if not source.is_dir():
+        raise NotADirectoryError(f'SRT directory not found: {source}')
+    found = {}
+    duplicates = []
+    for p in sorted(source.rglob('episode_*.srt')):
+        match = EP_RE.fullmatch(p.name)
+        if not match:
+            continue
+        ep = int(match.group(1))
+        if ep in found:
+            duplicates.append((ep, str(p)))
+            continue
+        raw = p.read_bytes()
+        found[ep] = {
+            'text': raw.decode('utf-8-sig', errors='replace'),
+            'signature': hashlib.sha256(raw).hexdigest(),
+            'where': str(p),
+        }
+    return found, duplicates
 
 
 def sound_signature(path:Path | None):
@@ -607,11 +610,11 @@ def main(argv=None):
         description='Audit ALL 241 episodes: SRT issues, MP3 signal, and speech/caption alignment.',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
-    parser.add_argument('--srt-source', required=True, type=Path,
-                        help='Original ASK-GANJI-SWAG-ANALYSIS.zip or folder containing episode_###.srt')
-    parser.add_argument('--audio-dir', required=True, type=Path,
+    parser.add_argument('--srt-dir', type=Path, default=DEFAULT_SRT_DIR,
+                        help='Folder containing episode_001.srt through episode_241.srt')
+    parser.add_argument('--audio-dir', type=Path, default=DEFAULT_AUDIO_DIR,
                         help='Folder containing episode_001.mp3 through episode_241.mp3')
-    parser.add_argument('--out', type=Path, default=Path('Audit_Results'),
+    parser.add_argument('--out', type=Path, default=DEFAULT_OUTPUT_DIR,
                         help='Directory for logs, episode JSONs, CSVs and final shareable ZIP')
     parser.add_argument('--force', action='store_true',
                         help='Reprocess all files instead of resuming unchanged completed results')
@@ -620,10 +623,13 @@ def main(argv=None):
     parser.add_argument('--vad-threshold', type=float, default=0.5,
                         help='Silero speech detector threshold (0.05..0.99)')
     args = parser.parse_args(argv)
-    if not args.srt_source.exists():
-        parser.error('SRT input not found')
+    args.srt_dir = args.srt_dir.expanduser().resolve()
+    args.audio_dir = args.audio_dir.expanduser().resolve()
+    args.out = args.out.expanduser().resolve()
+    if not args.srt_dir.is_dir():
+        parser.error(f'SRT folder not found: {args.srt_dir}\nPlace urdu_transcript_whisper next to deep_audit.py')
     if not args.audio_dir.is_dir():
-        parser.error('Audio folder not found')
+        parser.error(f'MP3 folder not found: {args.audio_dir}\nPlace all_episodes next to deep_audit.py')
     if not 15 <= args.chunk_seconds <= 900:
         parser.error('--chunk-seconds must be between 15 and 900')
     if not 0.05 <= args.vad_threshold <= 0.99:
@@ -634,9 +640,9 @@ def main(argv=None):
         import numpy  # noqa: F401
         import faster_whisper.vad  # noqa: F401
     except ImportError as exc:
-        parser.error(f'Missing Python dependency: {exc}. Run: python -m pip install -r requirements.txt')
+        parser.error(f'Missing Python dependency: {exc}. Install with: python -m pip install numpy faster-whisper psutil')
 
-    source, duplicates = input_source(args.srt_source)
+    source, duplicates = input_source(args.srt_dir)
     out = args.out.resolve()
     logs = out / 'Logs'
     episodes = out / 'Episodes'
@@ -648,7 +654,7 @@ def main(argv=None):
     configuration = {
         'version': VERSION,
         'run_started_utc': now(),
-        'srt_source': str(args.srt_source.resolve()),
+        'srt_dir': str(args.srt_dir),
         'audio_dir': str(args.audio_dir.resolve()),
         'output_dir': str(out),
         'episode_range': '001-241',
@@ -660,12 +666,15 @@ def main(argv=None):
     }
     # Resume validity depends only on settings that change episode output.
     key = {k: configuration[k] for k in (
-        'version', 'srt_source', 'audio_dir', 'episode_range', 'chunk_seconds', 'vad_threshold')}
+        'version', 'srt_dir', 'audio_dir', 'episode_range', 'chunk_seconds', 'vad_threshold')}
     config_digest = hashlib.sha256(json.dumps(key, sort_keys=True).encode()).hexdigest()
     configuration['analysis_signature'] = config_digest
     dump_json(logs / 'machine_info.json', machine_inventory(out))
     dump_json(logs / 'run_config.json', configuration)
-    log.info('FULL AUDIT START: 241 episodes; SRT files found=%d; audio_dir=%s', len(source), args.audio_dir)
+    log.info('FULL AUDIT START: 241 episodes; SRT files found=%d; srt_dir=%s; audio_dir=%s',
+             len(source), args.srt_dir, args.audio_dir)
+    if len(source) != 241:
+        log.warning('Expected 241 SRT files; found %d matching episode_###.srt', len(source))
     log.info('MACHINE INVENTORY stored at %s', logs / 'machine_info.json')
     if duplicates:
         log.warning('Duplicate SRT episode IDs (first used): %s', duplicates)
