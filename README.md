@@ -38,12 +38,14 @@ python -u repair.py audit
 # 4. Test one episode with the FULL second audio pass.
 python -u repair.py run \
   --only 1 \
+  --language auto \
   --deep-scan \
   --repair-code-switch \
   --offline
 
 # 5. Process all remaining episodes; completed episodes are skipped.
 python -u repair.py run \
+  --language auto \
   --deep-scan \
   --repair-code-switch \
   --offline
@@ -238,7 +240,7 @@ This generates a formatting-only draft without listening to the audio. It **does
 | `--no-cache` | Ignore cached ASR/VAD results and run inference again. |
 | `--allow-incomplete` | Export an explicitly partial draft when some ASR chunks fail. **Not recommended for final subtitles.** |
 | `--clean-only` | Formatting only; no audio verification. |
-| `--language ur` | Set the language requested of CrisperWhisper (default: Urdu). |
+| `--language auto` | Default. Select `en`/`ur` per chunk from the original subtitle script for Crisper; use model auto detection for faster-whisper. This heuristic is not audio-verified. |
 | `--engine whisper` | Optional alternative backend; requires its own installed package. |
 | `--limit N` | Stop after N newly written episodes. |
 
@@ -369,3 +371,93 @@ yt-dlp \
 ---
 
 **Project principle:** *Verify the audio, repair only when supported by evidence, preserve the original material, and expose uncertainty instead of concealing it.*
+
+
+## October 2026: Episode 001 evaluation and adaptive-language update
+
+**No need to upload or duplicate your 12 GB of MP3s.** Keep `all_episodes/`
+locally under the project root, beside the `urdu_transcript_srt_raw_old/`
+directory containing your 241 original subtitles. This update is a code-only
+replacement and does not need any audio files included in the ZIP.
+
+Episode 001 has **72 original SRT cues**, primarily English, despite the
+older pipeline defaulting to `--language ur`. The provided MP3 duration is
+**382.728 seconds**; its original SRT ends at **375.800 seconds**. The end
+can be music/silence and is NOT evidence of omitted speech by itself.
+
+`--language auto` is now the default. For the Crisper engine, it selects
+`en` or `ur` **per audio chunk** based on Latin/Urdu character dominance
+in the matching original SRT. This is only a *text-script heuristic*, not
+language identification from the audio, and does not reliably resolve
+code-switching within a single chunk. For more independent multilingual
+recognition, use `--engine whisper --language auto` if your local environment
+has `faster-whisper` and a suitable model installed. Either approach can
+still mishear names and produce hallucinations; manual review of important
+sections is necessary.
+
+Run on the user's machine with the real MP3 folder:
+
+```bash
+python -m unittest test_pipeline -v
+python repair.py doctor
+python -u repair.py run --only 1 --language auto --deep-scan --offline --force
+python repair.py status
+python -u repair.py run --language auto --deep-scan --offline
+```
+
+When ASR succeeds across the episode, the independent second-pass candidate
+is saved as `audit/results/asr_candidates/episode_001.srt`. This is an
+**UNVERIFIED comparison candidate**, not necessarily better than the old SRT.
+Conservative repairs are written to `urdu_transcript_srt_crisper/`.
+
+On unrecoverable chunks, `urdu_transcript_srt_crisper/episode_001.srt` can
+still be published as a **BASELINE_DRAFT** copied from the cleaned old SRT.
+This draft must NOT be counted as an improved audio-verified transcript.
+Check `audit/results/review.csv` for `BASELINE_DRAFT`, `SECOND_PASS_ERROR`,
+`SECOND_PASS_COMPLETE`, `DISAGREEMENT_REVIEW`, and `LANGUAGE_ROUTING`.
+`status` prints a breakdown. To prohibit unverified fallback outputs,
+add `--no-publish-draft`.
+
+The built-in `requirements.txt` contains only `webrtcvad-wheels`; do not
+reinstall PyTorch on Jetson with a generic wheel. Use the existing working
+CrisperWhisper and Torch installation. Omit `--offline` only if you deliberately
+want the environment to access the model repository (requires Internet).
+
+This code was unit-tested without an ASR model. **It was not benchmarked for
+word-level accuracy or verified end-to-end with Crisper GPU inference** in
+the current environment; the model and Jetson hardware are not available.
+
+## Episode 015 validation update (v3)
+
+The user-supplied Episode 015 reveals a 2-minute repetition in the original
+Whisper Large-v3 SRT (00:46.360–02:48.020) and English-looking speech represented in
+Urdu letters around 00:34–00:43. See `EPISODE_015_FINDINGS.md`.
+
+Run an initial **single-episode benchmark** before launching 241 episodes:
+
+```bash
+python -m unittest test_pipeline test_episode15 -v
+python repair.py doctor
+python -u repair.py run --only 15 --language auto --chunk-seconds 30 \
+  --language-overrides language_overrides.example.json \
+  --deep-scan --repair-code-switch --offline --force
+```
+
+Time-scoped overrides are optional. Each entry is `{start, end, language}`
+with seconds measured from the MP3 start and `language` either `en` or `ur`.
+An annotated span splits audio chunks at its boundaries so that short English
+stretches do not contaminate long Urdu chunks. `--language auto` is required
+for overrides to apply. Edit the JSON using **verified audio language**, not
+original text that is likely hallucinated.
+
+If any chunks fail, `audit/results/asr_candidates_partial/episode_015.srt`
+contains only the successful independent-ASR sections: do **not** publish
+it as a complete transcript. The main output may be marked `BASELINE_DRAFT`
+and is then just the cleaned original, not an audio-corrected product.
+
+Note: the primary source SRT folder is excluded from this patch package. The
+Episode 015 source-audit unit test will run (rather than skip) after you apply
+the patch into your original project, where that folder exists.
+
+When an existing output is reprocessed, its prior SRT is copied to
+`audit/results/output_backups/` before any replacement.

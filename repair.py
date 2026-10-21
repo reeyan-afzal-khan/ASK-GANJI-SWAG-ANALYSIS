@@ -128,6 +128,12 @@ def is_internal_loop(text: str) -> bool:
     return any(v>=4 for v in ct.values())
 
 
+# Clear phonetic English fragments that can be split across adjacent subtitles.
+# Mark for review ONLY; this is not a translation/transcription dictionary.
+ENGLISH_IN_URDU = ('ہیلو','فرسٹ','ایڈمائر','کنٹری','کنٹریبیوٹ',
+    'ڈوئنگ','اینڈ','ہوپ','بیٹرمنٹ','نیشنلسٹ','اپروچ','ویلکم',
+    'آئی ایم','آئی ہوپ','ون ڈے','وَٹ','وٹس','کیم بھیر')
+
 def detect(cues: list[Cue]) -> tuple[dict[int,set[str]], dict[int,set[str]]]:
     """Conservative high-priority repeat patterns; broad secondary warnings."""
     strong:dict[int,set[str]]={};other:dict[int,set[str]]={}
@@ -143,6 +149,21 @@ def detect(cues: list[Cue]) -> tuple[dict[int,set[str]], dict[int,set[str]]]:
             other.setdefault(i,set()).add('long_subtitle_cue')
         if d>=15 and len(tokens(c.text))/d>4.8:
             other.setdefault(i,set()).add('high_text_density')
+    # Episode 015 exposed English spoken as Urdu-script syllables in *multiple*
+    # adjacent 1–3-second cues, which a cue-by-cue detector misses.
+    # Require at least three recognizable English fragments across 12 seconds.
+    for i,c in enumerate(cues):
+        if c.end-c.start > 10:
+            continue
+        near=[(k,cc) for k,cc in enumerate(cues)
+              if cc.start < c.end+6 and cc.end > c.start-6 and cc.end-cc.start<=10]
+        hits=sum(sum(phrase in cc.text for phrase in ENGLISH_IN_URDU)
+                 for _,cc in near)
+        distinct=sum(1 for _,cc in near if any(phrase in cc.text for phrase in ENGLISH_IN_URDU))
+        if hits>=4 and distinct>=2:
+            for k,cc in near:
+                if any(phrase in cc.text for phrase in ENGLISH_IN_URDU):
+                    other.setdefault(k,set()).add('phonetic_english_review')
     i=0
     while i <len(cues):
         j=i+1
@@ -304,6 +325,70 @@ def find_mp3(folder: Path, ep: int) -> Path|None:
     return matches[0] if len(matches)==1 else None
 
 
+def load_language_overrides(path: Path|None) -> dict[int,list[tuple[float,float,str]]]:
+    """Read optional explicit per-episode, per-time language annotations.
+
+    JSON example: {"15": [{"start": 30, "end": 43, "language": "en"}]}.
+    Leave unclear spans unannotated; no automatic assumption that a whole
+    Urdu-script chunk is Urdu speech.
+    """
+    if path is None:
+        return {}
+    data=json.loads(path.read_text(encoding='utf-8'))
+    if not isinstance(data,dict):
+        raise ValueError('Language override JSON must be an episode mapping')
+    result={}
+    for episode,regions in data.items():
+        ep=int(str(episode).removeprefix('episode_'))
+        if not isinstance(regions,list): raise ValueError(f'Episode {ep}: expected a list')
+        result[ep]=[]
+        for item in regions:
+            a=float(item['start']); b=float(item['end']); lang=str(item['language'])
+            if a<0 or b<=a or lang not in ('en','ur'):
+                raise ValueError(f'Episode {ep}: invalid region {item!r}')
+            if any(max(a,aa)<min(b,bb) and lang!=ll for aa,bb,ll in result[ep]):
+                raise ValueError(f'Episode {ep}: conflicting language regions')
+            result[ep].append((a,b,lang))
+    return result
+
+
+def split_chunks_at_language_regions(chunks:list[tuple[float,float]],
+                                     overrides:list[tuple[float,float,str]],
+                                     duration:float)->list[tuple[float,float]]:
+    """Boundary-align language overrides so a short English span never forces a
+    whole ~55-second mixed-language chunk into English recognition."""
+    if not overrides:return chunks
+    cuts={0.0,float(duration)}
+    for a,b in chunks:cuts.update((a,b))
+    for a,b,_ in overrides:cuts.update((min(duration,a),min(duration,b)))
+    ordered=sorted(c for c in cuts if 0<=c<=duration)
+    return [(a,b) for a,b in zip(ordered,ordered[1:]) if b-a>=0.02]
+
+
+def choose_chunk_language(cues: list[Cue], start: float, end: float,
+                          requested: str, engine: str,
+                          overrides:list[tuple[float,float,str]]|None=None) -> str:
+    """Choose a Crisper-compatible language using the ORIGINAL script, not ASR guesses.
+
+    This is a routing heuristic, NOT audio language detection. An Urdu-English mixed
+    chunk may still be imperfect; Whisper with auto detection is a better fallback.
+    """
+    if requested != 'auto':
+        return requested
+    if overrides:
+        mid=(start+end)/2
+        for a,b,chosen in overrides:
+            if a<=mid<b:
+                return chosen
+    if engine == 'whisper':
+        return 'auto'
+    sample = ' '.join(c.text for c in cues
+                      if c.start < end and c.end > start)
+    latin = len(re.findall(r'[A-Za-z]', sample))
+    urdu = len(URDU.findall(sample))
+    return 'en' if latin > urdu * 1.4 else 'ur'
+
+
 def capture_words(segments, offset: float) -> list[Cue]:
     out=[]
     for seg in segments:
@@ -359,6 +444,29 @@ class ASR:
             with wave.open(str(wav),'rb') as wf:duration=wf.getnframes()/wf.getframerate()
             return [Cue(offset,offset+duration,str(txt).strip())]
         return []
+
+
+def transcribe_with_recovery(asr, mp3:Path, tmpdir:Path, start:float, end:float,
+                             duration:float, depth:int=0)->list[Cue]:
+    """Retry invalid alignment on smaller audio spans; never accept a detected loop."""
+    begin=max(0.0,start-1.5)
+    finish=min(duration,end+1.5)
+    wav=tmpdir/'current_chunk.wav'
+    try:
+        ffmpeg_clip(mp3,wav,begin,finish)
+        units=asr.transcribe(wav,begin) or []
+        if units and not segment_is_good(units,begin,finish):
+            raise RuntimeError('Unreliable ASR words (loop or missing alignment)')
+        return [x for x in units if start <= (x.start+x.end)/2 < end]
+    except (RuntimeError, ValueError) as exc:
+        if depth>=2 or end-start<14:
+            raise RuntimeError(f'Failed after adaptive split (depth={depth}): {exc}') from exc
+        midpoint=(start+end)/2
+        left=transcribe_with_recovery(asr,mp3,tmpdir,start,midpoint,duration,depth+1)
+        right=transcribe_with_recovery(asr,mp3,tmpdir,midpoint,end,duration,depth+1)
+        return left+right
+    finally:
+        wav.unlink(missing_ok=True)
 
 
 def cuda_available()->bool:
@@ -526,7 +634,7 @@ def append_review(path:Path,row:dict):
 # -- v9: full-episode second-pass comparison with conservative selective correction --
 import difflib
 
-CACHE_VERSION = 'full_second_pass_v9_word_timestamps'
+CACHE_VERSION = 'full_second_pass_v11_episode15'
 RESULTS = HERE/'audit'/'results'
 DEFAULT_SRT_OUT = HERE/'urdu_transcript_srt_crisper'
 
@@ -731,7 +839,9 @@ def run(files:list[Path],audio_dir:Path,output_dir:Path,engine:str='crisper',mod
         lang:str='ur',device:str='auto',force:bool=False,clean_only:bool=False,
         limit:int|None=None,max_window:float=78,repair_code_switch:bool=False,
         allow_incomplete:bool=False,no_cache:bool=False,deep_scan:bool=True,
-        cache_path:Path|None=None,chunk_seconds:float=55.0,results_dir:Path|None=None):
+        cache_path:Path|None=None,chunk_seconds:float=55.0,results_dir:Path|None=None,
+        publish_draft:bool=True,candidate_srt:bool=True,
+        language_overrides:Path|None=None):
     """Generate output for EVERY raw SRT; full audio ASR comparison by default."""
     if not files:raise RuntimeError('No raw SRT files found')
     output_dir.mkdir(parents=True,exist_ok=True)
@@ -744,6 +854,7 @@ def run(files:list[Path],audio_dir:Path,output_dir:Path,engine:str='crisper',mod
         cache_path.parent.mkdir(parents=True,exist_ok=True)
         if cache_path.resolve()!=(results/'repair_cache.sqlite3').resolve():
             raise ValueError('Cache must be stored at audit/results/repair_cache.sqlite3')
+    override_map=load_language_overrides(language_overrides)
     cache=None if clean_only else RepairCache(cache_path)
     if cache is not None:ensure_pass_tables(cache)
     asr=None;completed=skipped=errors=0
@@ -781,10 +892,25 @@ def run(files:list[Path],audio_dir:Path,output_dir:Path,engine:str='crisper',mod
                 mp3=find_mp3(audio_dir,ep)
                 if mp3 is None:raise RuntimeError('No corresponding MP3; full second pass NOT performed')
                 signature=episode_signature(src,mp3,engine,model,lang,chunk_seconds,deep_scan,repair_code_switch)
+                episode_overrides=override_map.get(ep,[])
+                if episode_overrides:
+                    signature=hashlib.sha256((signature+repr(episode_overrides)).encode()).hexdigest()
                 if dest.exists() and is_completed(cache,ep,signature) and not force and not no_cache:
                     skipped+=1
                     print(f'[{ep:03d}] verified prior full second pass; resume skip',flush=True)
                     continue
+                # Preserve earlier output before a forced/changed second pass.
+                # A new model failure must not irreversibly replace a better SRT
+                # with a baseline fallback.
+                if dest.exists():
+                    backup_dir=results/'output_backups'
+                    backup_dir.mkdir(parents=True,exist_ok=True)
+                    from datetime import datetime,timezone
+                    stamp=datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')
+                    prior=backup_dir/f'{dest.stem}_{stamp}.srt'
+                    shutil.copy2(dest,prior)
+                    reviews.append(dict(status='PREVIOUS_OUTPUT_BACKUP',reason='safety',
+                                        comment=str(prior)))
                 duration=audio_duration(mp3)
                 if max(c.end for c in old)>duration+10:
                     reviews.append(dict(status='TIMING_WARNING',reason='duration',
@@ -805,31 +931,27 @@ def run(files:list[Path],audio_dir:Path,output_dir:Path,engine:str='crisper',mod
                                             status='POSSIBLE_SILENT_TEXT',reason='vad_only',
                                             comment='Long caption but little detected speech; not deleted automatically'))
                     print(f'[{ep:03d}] VAD: {len(missing)} possible uncaptioned spans, {len(silent)} silence warnings',flush=True)
-                spans=episode_chunks(duration,old,seconds=chunk_seconds)
+                spans=split_chunks_at_language_regions(
+                    episode_chunks(duration,old,seconds=chunk_seconds),
+                    episode_overrides,duration)
                 all_words=[];failures=0;disagreements=0;chunk_summary=[]
+                langs_used=Counter()
                 with tempfile.TemporaryDirectory(prefix='ganji_pass_') as tmp:
                     tmpdir=Path(tmp)
                     for j,(a,b) in enumerate(spans,1):
-                        key=cached_second_pass_key(mp3,ep,a,b,engine,model,lang)
+                        chunk_lang=choose_chunk_language(old,a,b,lang,engine,episode_overrides)
+                        langs_used[chunk_lang]+=1
+                        key=cached_second_pass_key(mp3,ep,a,b,engine,model,chunk_lang)
                         units=None if no_cache else get_pass(cache,key)
                         if units is not None:
                             how='cached'
                         else:
                             try:
                                 if asr is None:
-                                    print('Loading CrisperWhisper 2.0 Large for full pass...',flush=True)
+                                    print(f'Loading {engine} model for full pass...',flush=True)
                                     asr=ASR(engine,model,lang,device)
-                                wav=tmpdir/'current_chunk.wav'
-                                begin=max(0,a-2.5);ending=min(duration,b+2.5)
-                                try:
-                                    ffmpeg_clip(mp3,wav,begin,ending)
-                                    units=asr.transcribe(wav,begin)
-                                finally:
-                                    wav.unlink(missing_ok=True)
-                                if units is None:units=[]
-                                if not segment_is_good(units,begin,ending) and units:
-                                    raise RuntimeError('Unreliable ASR words (loop or missing alignment)')
-                                save_pass(cache,key,units)
+                                asr.language=None if chunk_lang=='auto' else chunk_lang
+                                units=transcribe_with_recovery(asr,mp3,tmpdir,a,b,duration)
                                 how='ASR'
                             except Exception as e:
                                 failures+=1
@@ -839,6 +961,14 @@ def run(files:list[Path],audio_dir:Path,output_dir:Path,engine:str='crisper',mod
                                 continue
                         # crop padding: each spoken word belongs to exactly one core window
                         selected=[x for x in units if a<=((x.start+x.end)/2)<b]
+                        if not selected and (voice_seconds((a,b),speech)>=4 if speech else
+                                             any(x.start<b and x.end>a for x in old)):
+                            failures+=1
+                            reviews.append(dict(start=time_str(a),end=time_str(b),
+                                  status='SECOND_PASS_ERROR',reason='empty_asr',
+                                  comment=f'No ASR words where speech expected (language={chunk_lang}).'))
+                            continue
+                        if how=='ASR':save_pass(cache,key,units)
                         all_words.extend(selected)
                         if speech and not selected and voice_seconds((a,b),speech)>=4:
                             reviews.append(dict(start=time_str(a),end=time_str(b),
@@ -855,14 +985,47 @@ def run(files:list[Path],audio_dir:Path,output_dir:Path,engine:str='crisper',mod
                                                     comment=f'similarity={score:.2f}; old/new differ; not automatically overwritten'))
                         if j==1 or j==len(spans) or j%10==0:
                             print(f'[{ep:03d}] second pass {j}/{len(spans)} ({how}), {disagreements} disagreements',flush=True)
+                reviews.append(dict(status='LANGUAGE_ROUTING',reason='script_heuristic',
+                                    comment=f'ASR languages by audio chunk: {dict(langs_used)}; '
+                                            'inferred from original SRT, NOT audio-verified.'))
+                if candidate_srt and all_words:
+                    # Incomplete drafts are not disguised as full independent ASR.
+                    candidate_dir=results/('asr_candidates_partial' if failures else 'asr_candidates')
+                    write_srt_atomic(candidate_dir/f'episode_{ep:03d}.srt',
+                                     chunk_words(all_words,0,duration))
+                    if failures:
+                        reviews.append(dict(status='PARTIAL_ASR_CANDIDATE',reason='asr',
+                                            comment='Candidate SRT has missing time intervals; NOT publishable'))
+                    else:
+                        (results/'asr_candidates_partial'/f'episode_{ep:03d}.srt').unlink(missing_ok=True)
                 if failures and not allow_incomplete:
                     reviews.append(dict(status='INCOMPLETE_SECOND_PASS',reason='asr',
-                                        comment=f'{failures} chunks failed. No finalized SRT written. Successful ASR chunks are cached.'))
+                                        comment=f'{failures} chunks failed. Baseline draft only; not fully verified.'))
+                    if publish_draft:
+                        write_srt_atomic(dest,[Cue(x.start,x.end,clean_text(x.text)) for x in old])
+                        reviews.append(dict(status='BASELINE_DRAFT',reason='incomplete_audio',
+                                            comment='Saved cleaned original as a DRAFT, not a verified repair.'))
+                        print(f'[{ep:03d}] saved BASELINE DRAFT -> {dest}; {failures} failed chunks',flush=True)
                     store_review_episode(review,ep,reviews)
-                    print(f'[{ep:03d}] incomplete: {failures} failed chunks; no published SRT',flush=True)
                     errors+=1
                     continue
-                result=choose_repairs(old,all_words,speech,high,repair_code_switch,max_window,reviews)
+                # Re-run loop detection on the independent recognizer's entire
+                # timeline: per-chunk checks can miss repetition across boundaries.
+                asr_cues=chunk_words(all_words,0,duration)
+                asr_loops,_=detect(asr_cues)
+                if asr_loops:
+                    unsafe_spans=merge_spans([(asr_cues[i].start,asr_cues[i].end)
+                                               for i in asr_loops],gap=3.0)
+                    for a,b in unsafe_spans:
+                        reviews.append(dict(start=time_str(a),end=time_str(b),
+                                            status='ASR_LOOP_WARNING',reason='candidate_repetition',
+                                            comment='Repetition in independent ASR; excluded from auto-repair'))
+                    # Entire ASR cue groups that intersect suspect spans are excluded.
+                    safe_words=[w for w in all_words if not any(
+                        w.start < b and w.end > a for a,b in unsafe_spans)]
+                else:
+                    safe_words=all_words
+                result=choose_repairs(old,safe_words,speech,high,repair_code_switch,max_window,reviews)
                 leftover,_=detect(result)
                 if leftover:
                     reviews.append(dict(status='RESIDUAL_REPETITION',reason='text_heuristic',
@@ -908,16 +1071,23 @@ def main():
     rp.add_argument('--out',type=Path,default=DEFAULT_SRT_OUT)
     rp.add_argument('--engine',choices=['crisper','whisper'],default='crisper')
     rp.add_argument('--model',default='',help='Crisper model Large; alternative Whisper Large-v3')
-    rp.add_argument('--language',choices=['ur','en','auto'],default='ur')
+    rp.add_argument('--language',choices=['ur','en','auto'],default='auto',
+                    help='auto: per-chunk script routing for Crisper, model auto for Whisper')
     rp.add_argument('--device',choices=['auto','cuda','cpu'],default='auto')
     rp.add_argument('--deep-scan',action=argparse.BooleanOptionalAction,default=True,
                     help='VAD scan for missing speech, on by default')
     rp.add_argument('--repair-code-switch',action='store_true',help='Repair obvious phonetic-English regions from second ASR pass')
     rp.add_argument('--chunk-seconds',type=float,default=55.0,help='Full-episode audio chunk duration (25–75)')
+    rp.add_argument('--language-overrides',type=Path,default=None,
+                    help='Optional JSON with episode-specific time intervals and explicit ur/en; boundaries split chunks')
     rp.add_argument('--clean-only',action='store_true',help='ONLY formatting. Does not fulfill full second pass!')
     rp.add_argument('--offline',action='store_true',help='Require previously cached Hugging Face model weights')
     rp.add_argument('--force',action='store_true',help='Rebuild output even when a completed marker is present')
     rp.add_argument('--no-cache',action='store_true',help='Rerun audio ASR rather than reuse successful chunks')
+    rp.add_argument('--candidate-srt',action=argparse.BooleanOptionalAction,default=True,
+                    help='Save independent ASR draft under audit/results/asr_candidates when all chunks pass')
+    rp.add_argument('--publish-draft',action=argparse.BooleanOptionalAction,default=True,
+                    help='Save cleaned original SRT when ASR fails; marked BASELINE_DRAFT in review.csv')
     rp.add_argument('--allow-incomplete',action='store_true',help='Publish a clearly flagged partial draft after ASR failure')
     rp.add_argument('--limit',type=int,help='Stop after N newly written episodes')
     dp=sub.add_parser('doctor',help='Check dependencies, FFmpeg and CUDA')
@@ -926,14 +1096,24 @@ def main():
     if args.action=='doctor':sys.exit(doctor())
     if args.action=='status':
         path=RESULTS/'repair_cache.sqlite3'
-        if not path.exists():
-            print('No completed full passes recorded yet.');return
-        with sqlite3.connect(path) as db:
-            tables={r[0] for r in db.execute('SELECT name FROM sqlite_master WHERE type="table"')}
-            if 'completed_episodes' not in tables:print('Cache exists, but no full-pass completions yet.');return
-            count=db.execute('SELECT count(*) FROM completed_episodes').fetchone()[0]
-            print(f'{count} episode(s) recorded with a completed second pass; '
-                  f'{len(list(DEFAULT_SRT_OUT.glob("episode_*.srt")))} SRT files currently in output.')
+        completed_count=0
+        if path.exists():
+            with sqlite3.connect(path) as db:
+                tables={r[0] for r in db.execute('SELECT name FROM sqlite_master WHERE type="table"')}
+                if 'completed_episodes' in tables:
+                    completed_count=db.execute('SELECT count(*) FROM completed_episodes').fetchone()[0]
+        reports={}
+        csvpath=RESULTS/'review.csv'
+        if csvpath.exists():
+            with csvpath.open(encoding='utf-8-sig',newline='') as f:
+                for row in csv.DictReader(f):
+                    if row.get('episode') and row.get('status') in ('BASELINE_DRAFT','SECOND_PASS_PARTIAL','SECOND_PASS_COMPLETE','EPISODE_ERROR','INCOMPLETE_SECOND_PASS'):
+                        reports[row['episode']]=row['status']
+        counts=Counter(reports.values())
+        print(f'Completed second passes (cache markers): {completed_count}')
+        print(f'SRTs in {DEFAULT_SRT_OUT.name}: {len(list(DEFAULT_SRT_OUT.glob("episode_*.srt")))}')
+        print(f'Audit statuses (latest per episode): {dict(counts)}')
+        print('BASELINE_DRAFT means original cleaned SRT only; not audio-verified.')
         return
     files=select_srt_files(args.source,args.only)
     if not files:parser.error(f'No episode_###.srt files found in {args.source}')
@@ -949,6 +1129,8 @@ def main():
         parser.exit(2,'Fix missing dependencies; source files were not modified.\n')
     run(files,args.audio,args.out,args.engine,args.model,args.language,args.device,
         args.force,args.clean_only,args.limit,args.max_window,args.repair_code_switch,
-        args.allow_incomplete,args.no_cache,args.deep_scan,None,args.chunk_seconds)
+        args.allow_incomplete,args.no_cache,args.deep_scan,None,args.chunk_seconds,
+        publish_draft=args.publish_draft,candidate_srt=args.candidate_srt,
+        language_overrides=args.language_overrides)
 
 if __name__=='__main__':main()
