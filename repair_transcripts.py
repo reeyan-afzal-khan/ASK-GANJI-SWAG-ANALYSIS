@@ -1,22 +1,23 @@
 #!/usr/bin/env python3
-"""Offline-capable, resumable Urdu/English Whisper comparison pilot.
+"""Resumable, full-corpus Whisper retranscription into Roman Urdu / English SRT.
 
-Copy this file into ASK-GANJI-SWAG-ANALYSIS/ next to all_episodes/,
-urdu_transcript_whisper/, and all_episodes_audit/. Run:
-    python repair_transcripts.py
+Place beside:
+    all_episodes/episode_001.mp3 .. episode_241.mp3
+    urdu_transcript_whisper/episode_001.srt .. episode_241.srt
 
-Models are downloaded once on the first run unless --offline is specified.
-Original SRT and MP3 files are NEVER modified. This is a controlled comparison,
-not an automatic claim that Whisper's new text is correct.
+Run: python repair_transcripts.py
+
+Uses local GPU-capable openai-whisper, urdunlp, and uroman. It never modifies
+existing MP3s, existing subtitles, old audit results, or old pilot results.
 """
 from __future__ import annotations
 
 import argparse
 import csv
-import difflib
 import hashlib
 import json
 import logging
+import math
 import os
 import platform
 import re
@@ -25,676 +26,541 @@ import subprocess
 import sys
 import time
 import traceback
+import unicodedata
 import zipfile
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.parse import urlparse
 
-VERSION = "1.0"
+VERSION = "2.0.0"
 ROOT = Path(__file__).resolve().parent
-SRT_ROOT = ROOT / "urdu_transcript_whisper"
-MP3_ROOT = ROOT / "all_episodes"
-AUDIT_ROOT = ROOT / "all_episodes_audit"
-OUTPUT_ROOT = ROOT / "transcript_repair_pilot"
-DEFAULT_EPISODES = [35, 113, 125, 163, 216, 230, 241]
-CONTROL_EPISODES = [91, 115]  # Routine-rated in the supplied 241-episode audit.
-TS_RE = re.compile(r"(\d{2,}):(\d\d):(\d\d)[,.](\d{3})")
-SRT_LINE_RE = re.compile(r"(\d{2,}:\d\d:\d\d[,.]\d{3})\s*-->\s*(\d{2,}:\d\d:\d\d[,.]\d{3})")
-MUSIC_RE = re.compile(r"^\W*(?:موسیقی|music|applause|clapping)\W*$", re.I)
-ARABIC_RE = re.compile(r"[\u0600-\u06ff\u0750-\u077f]")
-LATIN_RE = re.compile(r"[A-Za-z]")
-PARAMETERS = {
-    "task": "transcribe", "condition_on_previous_text": False,
-    "temperature": (0.0, 0.2, 0.4), "beam_size": 5,
-    "compression_ratio_threshold": 2.4,
-    "logprob_threshold": -1.0, "no_speech_threshold": 0.6,
-    "word_timestamps": False,
-}
+AUDIO_DIR = ROOT / "all_episodes"
+ORIGINAL_DIR = ROOT / "urdu_transcript_whisper"
+OUTPUT_DIR = ROOT / "all_episodes_repaired"
+ARABIC_CHAR = r"[\u0600-\u08ff\ufb50-\ufdff\ufe70-\ufeff]"
+DEVANAGARI_CHAR = r"[\u0900-\u097f]"
+ARABIC_RUN = re.compile(rf"{ARABIC_CHAR}+(?:[ \t]+{ARABIC_CHAR}+)*")
+DEVANAGARI_RUN = re.compile(rf"{DEVANAGARI_CHAR}+(?:[ \t]+{DEVANAGARI_CHAR}+)*")
+SCRIPT_CHUNKS = re.compile(rf"({ARABIC_CHAR}+(?:[ \t]+{ARABIC_CHAR}+)*|{DEVANAGARI_CHAR}+(?:[ \t]+{DEVANAGARI_CHAR}+)*)")
+DIGITS = str.maketrans("۰۱۲۳۴۵۶۷۸۹٠١٢٣٤٥٦٧٨٩", "01234567890123456789")
+PUNCT = str.maketrans({"،": ",", "؛": ";", "؟": "?", "۔": ".", "ـ": ""})
 
 
-def utc_now():
+def utc():
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
 
 
-def ts(seconds, sep="."):
-    ms = round(max(0.0, float(seconds)) * 1000)
-    h, rest = divmod(ms, 3600_000)
-    m, rest = divmod(rest, 60_000)
-    s, milli = divmod(rest, 1000)
-    return f"{h:02}:{m:02}:{s:02}{sep}{milli:03}"
+def fmt(t: float) -> str:
+    ms = int(round(max(0.0, t) * 1000))
+    h, ms = divmod(ms, 3_600_000)
+    m, ms = divmod(ms, 60_000)
+    s, ms = divmod(ms, 1000)
+    return f"{h:02}:{m:02}:{s:02},{ms:03}"
 
 
-def sec(value):
-    match = TS_RE.search(str(value))
-    if not match:
-        raise ValueError(f"Unrecognized timestamp: {value!r}")
-    h, m, s, milli = map(int, match.groups())
-    return 3600 * h + 60 * m + s + milli / 1000
-
-
-def atomic_text(path, text):
-    path = Path(path)
+def write_text(path: Path, data: str):
     path.parent.mkdir(parents=True, exist_ok=True)
-    temp = path.with_name(path.name + ".tmp")
-    with temp.open("w", encoding="utf-8", newline="\n") as f:
-        f.write(text)
+    tmp = path.with_name(path.name + ".tmp")
+    with tmp.open("w", encoding="utf-8", newline="\n") as f:
+        f.write(data)
         f.flush()
         os.fsync(f.fileno())
-    os.replace(temp, path)
-
-
-def save_json(path, obj):
-    atomic_text(path, json.dumps(obj, ensure_ascii=False, indent=2, default=str) + "\n")
-
-
-def read_json(path):
-    return json.loads(path.read_text(encoding="utf-8"))
-
-
-def read_csv(path):
-    if not path.is_file():
-        return []
-    with path.open("r", encoding="utf-8-sig", newline="") as f:
-        return list(csv.DictReader(f))
-
-
-def csv_write(path, rows, fields):
-    path.parent.mkdir(parents=True, exist_ok=True)
-    tmp = path.with_suffix(path.suffix + ".tmp")
-    with tmp.open("w", encoding="utf-8-sig", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=fields, extrasaction="ignore")
-        w.writeheader()
-        w.writerows(rows)
     os.replace(tmp, path)
 
 
-def read_subtitles(path):
-    text = path.read_text(encoding="utf-8-sig", errors="replace")
-    cues = []
-    for block in re.split(r"\n\s*\n", text.replace("\r\n", "\n").replace("\r", "\n")):
-        lines = [l.strip() for l in block.splitlines() if l.strip()]
-        for idx, line in enumerate(lines[:3]):
-            match = SRT_LINE_RE.search(line)
-            if match:
-                a, b = sec(match.group(1)), sec(match.group(2))
-                if b >= a:
-                    cues.append({"start": a, "end": b, "text": " ".join(lines[idx + 1:])})
-                break
-    return cues
+def write_json(path: Path, obj):
+    write_text(path, json.dumps(obj, ensure_ascii=False, indent=2, default=str) + "\n")
 
 
-def original_excerpt(cues, start, end):
-    overlaps = [c for c in cues if c["end"] > start and c["start"] < end]
-    return {
-        "cue_count": len(overlaps),
-        "text": " ".join(c["text"] for c in overlaps).strip(),
-        "cues": [{"start": ts(c["start"]), "end": ts(c["end"]), "text": c["text"]} for c in overlaps],
-    }
+def read_json(path: Path):
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
-def audio_duration(path):
-    cmd = ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "default=nw=1:nk=1", str(path)]
-    proc = subprocess.run(cmd, capture_output=True, text=True, timeout=45)
-    if proc.returncode:
-        raise RuntimeError(f"ffprobe failed: {proc.stderr[-600:]}")
-    return float(proc.stdout.strip())
+def command_out(cmd, timeout=20):
+    try:
+        p = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
+        return (p.stdout or p.stderr).strip()[:1600]
+    except Exception as exc:
+        return str(exc)
 
 
-def sample_audio(path, start, seconds):
-    """Precisely seek one short piece of audio; never load the whole MP3."""
+def audio_duration(path: Path) -> float:
+    p = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
+                        "-of", "default=noprint_wrappers=1:nokey=1", str(path)],
+                       capture_output=True, text=True, timeout=90)
+    if p.returncode:
+        raise RuntimeError(f"ffprobe failed: {p.stderr[-900:]}")
+    duration = float(p.stdout.strip())
+    if not math.isfinite(duration) or duration <= 0:
+        raise ValueError(f"Invalid duration {duration}: {path}")
+    return duration
+
+
+def decode_slice(path: Path, start: float, seconds: float):
+    """Decode only a small bounded audio window to 16 kHz mono float32."""
     import numpy as np
-    cmd = ["ffmpeg", "-hide_banner", "-nostdin", "-loglevel", "error", "-ss", f"{start:.3f}",
-           "-i", str(path), "-t", f"{seconds:.3f}", "-vn", "-ac", "1", "-ar", "16000",
-           "-acodec", "pcm_f32le", "-f", "f32le", "pipe:1"]
-    proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=max(120, int(seconds * 5)))
-    if proc.returncode:
-        raise RuntimeError(f"ffmpeg decode failed: {proc.stderr[-600:].decode(errors='replace')}")
-    result = np.frombuffer(proc.stdout, dtype="<f4").copy()
-    if len(result) < 16000:
-        raise RuntimeError("Audio clip is unexpectedly shorter than one second")
-    return result
+    p = subprocess.run([
+        "ffmpeg", "-hide_banner", "-nostdin", "-loglevel", "error",
+        "-ss", f"{start:.3f}", "-i", str(path), "-t", f"{seconds:.3f}",
+        "-vn", "-ac", "1", "-ar", "16000", "-acodec", "pcm_f32le",
+        "-f", "f32le", "pipe:1"], capture_output=True,
+        timeout=max(180, int(seconds * 6)))
+    if p.returncode:
+        raise RuntimeError(f"FFmpeg decode failed: {p.stderr[-900:].decode(errors='replace')}")
+    arr = np.frombuffer(p.stdout, dtype="<f4").copy()
+    if not len(arr):
+        raise RuntimeError("Decoded audio is empty")
+    return arr
 
 
-def range_candidates(ep, duration, flags, clip_seconds):
-    """Prefer repeated hallucination-like spans and text corruption, avoid music."""
-    cands = []
-    for fl in flags:
-        if int(fl.get("episode") or -1) != ep:
-            continue
-        try:
-            start = sec(fl["start"])
-        except (ValueError, KeyError):
-            continue
-        issue = fl.get("issue", "")
-        if issue == "near_identical_cue_run":
-            if MUSIC_RE.match(fl.get("text", "").strip()):
-                continue
-            match = re.search(r"through\s+(\d+:\d\d:\d\d[.,]\d{3})", fl.get("details", ""))
-            try:
-                last = sec(match.group(1)) if match else sec(fl["end"])
-            except ValueError:
-                last = start + clip_seconds
-            span = last - start
-            if span >= 100:
-                cands.extend((start + span * pct, 1000 - j * 25, "long_repeated_subtitle_run")
-                             for j, pct in enumerate((0.22, 0.72)))
-            else:
-                cands.append((start + min(span / 2, 10), 520, "repeated_subtitle_run"))
-        elif issue == "encoding_replacement_character":
-            cands.append((start, 640, "corrupted_unicode"))
-        elif issue == "detected_speech_without_caption":
-            cands.append((start, 450, "speech_without_subtitle"))
-        elif issue == "caption_without_detected_voice":
-            cands.append((start, 220, "caption_without_voice"))
-        elif issue in ("implausible_character_rate", "cue_under_100ms"):
-            # Estimate the density of anomalies within each candidate 45-second window.
-            cands.append((start, 160 if issue == "implausible_character_rate" else 50, issue))
-    # Normal speech control for every selected episode; controls never include ep 001.
-    cands.extend([(duration * 0.35, 35, "general_position_check"),
-                  (duration * 0.65, 34, "general_position_check"),
-                  (duration * 0.85, 33, "general_position_check")])
-    return cands
+def fingerprint(path: Path):
+    stat = path.stat()
+    return {"name": path.name, "size": stat.st_size, "mtime_ns": stat.st_mtime_ns}
 
 
-def choose_samples(ep, duration, flags, clip_len, count, control=False):
-    usable_len = min(clip_len, duration)
-    raw = range_candidates(ep, duration, [] if control else flags, usable_len)
-    windows = []
-    for anchor, weight, label in raw:
-        start = max(0.0, min(duration - usable_len, anchor - usable_len / 2))
-        windows.append({"start": round(start, 3), "seconds": round(usable_len, 3),
-                        "reason": label, "weight": weight})
-    # A dense cluster of tiny subtitles may matter more than one random glitch.
-    for item in windows:
-        if item["reason"] in {"implausible_character_rate", "cue_under_100ms"}:
-            close = sum(1 for other in windows if other["reason"] in
-                        {"implausible_character_rate", "cue_under_100ms"} and
-                        abs(other["start"] - item["start"]) < clip_len / 2)
-            item["weight"] += min(200, close * 2)
-    windows.sort(key=lambda x: (-x["weight"], x["start"]))
-    chosen = []
-    for item in windows:
-        if all(abs(item["start"] - prev["start"]) >= usable_len * 0.85 for prev in chosen):
-            chosen.append(item)
-        if len(chosen) >= count:
-            break
-    # Some episodes have few diagnostic flags; sample a spread across the recording.
-    if len(chosen) < count:
-        for frac in (0.1, 0.4, 0.7, 0.9, 0.0):
-            start = round(max(0.0, (duration - usable_len) * frac), 3)
-            if all(abs(start - p["start"]) >= usable_len * 0.85 for p in chosen):
-                chosen.append({"start": start, "seconds": round(usable_len, 3),
-                               "reason": "distributed_control", "weight": 0})
-                if len(chosen) >= count:
-                    break
-    chosen = sorted(chosen, key=lambda x: x["start"])[:count]
-    for i, x in enumerate(chosen, 1):
-        x["clip_id"] = f"clip_{i:02}"
-        x.pop("weight", None)
-        x["episode"] = ep
-        x["start_clock"] = ts(x["start"])
-        x["end_clock"] = ts(x["start"] + x["seconds"])
-        x["control_episode"] = control
-    return chosen
+def csv_dump(path: Path, rows, columns):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_name(path.name + ".tmp")
+    with tmp.open("w", encoding="utf-8-sig", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=columns, extrasaction="ignore")
+        writer.writeheader()
+        writer.writerows(rows)
+    os.replace(tmp, path)
 
 
-def sha_file(path):
-    h = hashlib.sha256()
-    with path.open("rb") as f:
-        for chunk in iter(lambda: f.read(1024 * 1024), b""):
-            h.update(chunk)
-    return h.hexdigest()
+class Romanizer:
+    """Meaning-oriented Urdu romanization; Hindi/other scripts through Uroman.
 
-
-def checkpoint_id(model, mode, clip, mp3_path, srt_path, whisper_version):
-    st = mp3_path.stat()
-    ss = srt_path.stat()
-    data = {"version": VERSION, "model": model, "mode": mode,
-            "clip": clip, "parameters": PARAMETERS, "whisper": whisper_version,
-            "mp3_stat": [st.st_size, st.st_mtime_ns], "srt_stat": [ss.st_size, ss.st_mtime_ns]}
-    return hashlib.sha256(json.dumps(data, sort_keys=True).encode()).hexdigest()
-
-
-def text_stats(text):
-    letters = ARABIC_RE.findall(text)
-    latin = LATIN_RE.findall(text)
-    all_letters = len(letters) + len(latin)
-    words = text.split()
-    trigrams = [tuple(words[i:i + 3]) for i in range(max(0, len(words) - 2))]
-    most = Counter(trigrams).most_common(1)
-    return {
-        "word_count": len(words),
-        "latin_letters": len(latin), "urdu_letters": len(letters),
-        "latin_letter_fraction": round(len(latin) / max(1, all_letters), 3),
-        "repeated_trigram_fraction": round(most[0][1] / len(trigrams), 3) if most else 0,
-        "replacement_characters": text.count("\ufffd"),
-    }
-
-
-def model_cache_location(model, whisper, cache):
-    if model not in whisper.available_models():
-        raise ValueError(f"Unknown model {model}. Available: {whisper.available_models()}")
-    url = whisper._MODELS[model]
-    path = cache / Path(urlparse(url).path).name
-    sha = url.rstrip("/").split("/")[-2]
-    return path, sha
-
-
-def ensure_cached(model, whisper, cache, offline):
-    path, expected_sha = model_cache_location(model, whisper, cache)
-    if path.exists() and sha_file(path) == expected_sha:
-        return path
-    if offline:
-        raise RuntimeError(f"Offline mode: missing or corrupt model {model}: {path}. "
-                           "Download once using --download-only with internet access.")
-    cache.mkdir(parents=True, exist_ok=True)
-    print(f"Downloading/verifying model {model} in {cache} (requires internet only this first time)...", flush=True)
-    whisper._download(whisper._MODELS[model], str(cache), in_memory=False)
-    if not path.is_file() or sha_file(path) != expected_sha:
-        raise RuntimeError(f"Model download checksum validation failed: {model}")
-    return path
-
-
-def make_review_audio_samples(output, manifest, log):
-    """Low-bitrate excerpts for actually listening to transcription candidates.
-
-    These are NEVER full episodes. Each excerpt is taken from an input MP3;
-    existing source files are only read, never changed.
+    Latin English is untouched. An episode fails rather than silently erasing
+    any characters which cannot be romanized.
     """
-    successes = 0
-    for c in manifest:
-        mp3 = MP3_ROOT / f"episode_{c['episode']:03}.mp3"
-        dest = output / "Audio_Samples" / f"episode_{c['episode']:03}" / f"{c['clip_id']}.mp3"
-        if dest.exists() and dest.stat().st_size > 1500:
-            successes += 1
-            continue
-        dest.parent.mkdir(parents=True, exist_ok=True)
-        tmp = dest.with_suffix(".temp.mp3")
-        cmd = ["ffmpeg", "-hide_banner", "-nostdin", "-loglevel", "error", "-y",
-               "-ss", f"{c['start']:.3f}", "-i", str(mp3), "-t", f"{c['seconds']:.3f}",
-               "-vn", "-ac", "1", "-ar", "24000", "-codec:a", "libmp3lame", "-b:a", "64k", str(tmp)]
-        try:
-            result = subprocess.run(cmd, capture_output=True, timeout=160)
-            if result.returncode or not tmp.is_file() or tmp.stat().st_size < 1500:
-                raise RuntimeError(result.stderr[-500:].decode(errors="replace"))
-            os.replace(tmp, dest)
-            successes += 1
-        except Exception as exc:
-            log.warning("Could not export review clip %s / %s: %s", c['episode'], c['clip_id'], exc)
-            tmp.unlink(missing_ok=True)
-    log.info("Audio excerpts for review: %d/%d", successes, len(manifest))
+    def __init__(self):
+        from urdunlp import transliterate_to_roman
+        import uroman
+        self.urdu_to_roman = transliterate_to_roman
+        self.universal = uroman.Uroman()
+
+    @staticmethod
+    def needs_romanization(text: str) -> bool:
+        return any(unicodedata.category(c).startswith("L") and
+                   not unicodedata.name(c, "").startswith("LATIN") for c in text)
+
+    def convert(self, text: str) -> str:
+        text = unicodedata.normalize("NFKC", text).translate(DIGITS).translate(PUNCT)
+        parts = SCRIPT_CHUNKS.split(text)
+        out = []
+        for part in parts:
+            if not part:
+                continue
+            if ARABIC_RUN.fullmatch(part):
+                out.append(self.urdu_to_roman(part))
+            elif DEVANAGARI_RUN.fullmatch(part):
+                out.append(self.universal.romanize_string(part, lcode="hin"))
+            elif self.needs_romanization(part):
+                out.append(self.universal.romanize_string(part))
+            else:
+                out.append(part)
+        roman = "".join(out).translate(DIGITS).translate(PUNCT)
+        if self.needs_romanization(roman):
+            roman = self.universal.romanize_string(roman)
+        roman = " ".join(roman.split())
+        if self.needs_romanization(roman):
+            bad = sorted({c for c in roman if self.needs_romanization(c)})
+            raise RuntimeError(f"Unromanized characters remain: {bad!r}, input={text[:120]!r}")
+        return roman
 
 
-def package_results(output, include_audio=True):
-    """Copy transcripts/logs and optionally short review MP3 excerpts, never full audio."""
-    target = output / "Review_Package.zip"
-    tmp = output / "Review_Package.zip.tmp"
-    folders = [output / "Reports", output / "Clips", output / "Logs"]
-    if include_audio:
-        folders.append(output / "Audio_Samples")
-    with zipfile.ZipFile(tmp, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=6) as archive:
-        for folder in folders:
-            if folder.exists():
-                for p in sorted(folder.rglob("*")):
-                    if p.is_file() and p.suffix.lower() in ({".txt", ".log", ".json", ".csv", ".srt", ".mp3"}
-                                                           if include_audio else {".txt", ".log", ".json", ".csv", ".srt"}):
-                        archive.write(p, arcname=p.relative_to(output).as_posix())
-        archive.writestr("READ_ME_FIRST.txt", "Whisper comparison pilot; originals are untouched.\n"
-                         "Contains transcript snippets, machine information and "
-                         + ("short MP3 excerpts (not full episodes).\n" if include_audio else "no audio.\n")
-                         + "IMPORTANT: No reference transcript was collected automatically;\n"
-                         "similarity and agreement ARE NOT accuracy or WER measurements.\n"
-                         "Review log files for private path information before sharing.\n")
-    os.replace(tmp, target)
-    return target
-
-
-def display_comparison(result_dir, ep, clip, results_for_clip):
-    lines = [f"EPISODE {ep:03} / {clip['clip_id']} | {clip['start_clock']} --> {clip['end_clock']}",
-             f"Selection: {clip['reason']}", "", "=== ORIGINAL WHISPER SRT (UNVERIFIED) ===",
-             clip["original"]["text"] or "[empty]", ""]
-    for (model, mode), result in sorted(results_for_clip.items()):
-        lines += [f"=== {model} / {mode} / {result.get('status', '?')} ===",
-                  result.get("text", "") or "[empty]",
-                  f"Detected language: {result.get('detected_language', '?')}",
-                  f"Runtime: {result.get('processing_seconds', '?')} seconds", ""]
-    atomic_text(result_dir / "comparison.txt", "\n".join(lines) + "\n")
-
-
-def to_srt(segments):
-    lines = []
-    for i, s in enumerate(segments, 1):
-        if not s["text"].strip() or s["end"] <= s["start"]:
-            continue
-        lines.extend([str(i), f"{ts(s['start'], ',')} --> {ts(s['end'], ',')}", s["text"].strip(), ""])
-    return "\n".join(lines) + "\n"
-
-
-def get_logger(output):
-    log = logging.getLogger("repair_pilot")
+def setup_logger(log_path: Path):
+    log_path.parent.mkdir(parents=True, exist_ok=True)
+    log = logging.getLogger("repair_full")
     log.setLevel(logging.INFO)
     log.handlers.clear()
-    formatter = logging.Formatter("%(asctime)s | %(levelname)s | %(message)s")
-    fh = logging.FileHandler(output / "Logs" / "pilot.log", encoding="utf-8")
-    fh.setFormatter(formatter)
-    log.addHandler(fh)
-    ch = logging.StreamHandler(sys.stdout)
-    ch.setFormatter(formatter)
-    log.addHandler(ch)
+    formatter = logging.Formatter("%(asctime)s %(levelname)s %(message)s")
+    file_handler = logging.FileHandler(log_path, encoding="utf-8")
+    file_handler.setFormatter(formatter)
+    log.addHandler(file_handler)
+    stream = logging.StreamHandler(sys.stdout)
+    stream.setFormatter(formatter)
+    log.addHandler(stream)
     return log
 
 
-def snapshot_machine(torch, whisper):
+def machine_info(torch, model, args):
     info = {
-        "time_utc": utc_now(), "os": platform.platform(), "machine": platform.machine(),
-        "python": platform.python_version(), "torch": torch.__version__,
-        "whisper": getattr(whisper, "__version__", "unknown"),
-        "cuda_available": torch.cuda.is_available(),
+        "timestamp_utc": utc(), "script_version": VERSION,
+        "platform": platform.platform(), "python": sys.version,
+        "model": model, "language_mode": args.language_mode,
+        "chunk_seconds": args.chunk_seconds, "padding_seconds": args.padding_seconds,
+        "word_timestamps": not args.no_word_timestamps,
+        "torch_version": torch.__version__, "cuda_available": torch.cuda.is_available(),
         "torch_cuda_version": torch.version.cuda,
-        "gpu_name": torch.cuda.get_device_name(0) if torch.cuda.is_available() else None,
-        "total_system_ram_gb": None,
-        "free_disk_gb_at_start": round(shutil.disk_usage(ROOT).free / 1e9, 2),
-        "script_version": VERSION,
+        "ffmpeg": command_out(["ffmpeg", "-version"]).splitlines()[0],
+        "ffprobe": command_out(["ffprobe", "-version"]).splitlines()[0],
+        "free_disk_gb": round(shutil.disk_usage(ROOT).free / 1e9, 2),
     }
+    if torch.cuda.is_available():
+        info["gpu_name"] = torch.cuda.get_device_name(0)
+        info["cuda_device_total_gb"] = round(torch.cuda.get_device_properties(0).total_memory / 1e9, 2)
     try:
         import psutil
-        info["total_system_ram_gb"] = round(psutil.virtual_memory().total / 1e9, 2)
+        info["ram_gb"] = round(psutil.virtual_memory().total / 1e9, 2)
     except ImportError:
         pass
     return info
 
 
-def build_manifest(args, all_flags, selected):
-    manifest = []
-    missing = []
-    for ep in selected:
-        mp3 = MP3_ROOT / f"episode_{ep:03}.mp3"
-        srt = SRT_ROOT / f"episode_{ep:03}.srt"
-        if not mp3.is_file() or not srt.is_file():
-            missing.append({"episode": ep, "mp3_exists": mp3.is_file(), "srt_exists": srt.is_file()})
+def determine_language(whisper, model, audio, ep: int, mode: str):
+    """Whisper confuses Urdu with Hindi. Decode Hindi/Urdu candidates as Urdu.
+
+    English-majority windows are decoded with English to avoid corrupting long
+    passages of English (seen in the partial pilot for episode 125).
+    """
+    if mode == "urdu":
+        return "ur", {}
+    if mode == "english":
+        return "en", {}
+    import numpy as np
+    # Use up to 30 seconds near the centre, not exclusively an intro/silence.
+    width = min(len(audio), 30 * 16000)
+    st = max(0, (len(audio) - width) // 2)
+    sample = audio[st:st + width]
+    mel = whisper.log_mel_spectrogram(np.ascontiguousarray(sample), n_mels=model.dims.n_mels)
+    mel = whisper.pad_or_trim(mel, 3000).to(model.device)
+    _, probs = model.detect_language(mel)
+    probs = probs[0]
+    scores = {language: round(float(probs.get(language, 0.0)), 4) for language in ("en", "ur", "hi")}
+    # Episode 1 is predominantly English; the heuristic still works normally.
+    # An Urdu+Hindi majority is intentionally never decoded as Hindi.
+    eng, hindustani = scores["en"], scores["hi"] + scores["ur"]
+    chosen = "en" if eng >= 0.50 and eng > hindustani * 1.2 else "ur"
+    return chosen, scores
+
+
+def raw_cues_from_result(result, offset, core_start, core_end, use_words):
+    """Keep speech in the non-overlapping core; padding is context, not output."""
+    cues = []
+    for seg in result.get("segments", []):
+        text = (seg.get("text") or "").strip()
+        if not text:
             continue
-        duration = audio_duration(mp3)
-        clips = choose_samples(ep, duration, all_flags, args.clip_seconds,
-                               args.control_clips if ep in CONTROL_EPISODES else args.clips_per_episode,
-                               control=(ep in CONTROL_EPISODES))
-        cues = read_subtitles(srt)
-        for item in clips:
-            item["original"] = original_excerpt(cues, item["start"], item["start"] + item["seconds"])
-            manifest.append(item)
-    return manifest, missing
+        words = seg.get("words") or [] if use_words else []
+        if words:
+            current = []
+            for w in words:
+                w_start, w_end = offset + float(w["start"]), offset + float(w["end"])
+                midpoint = (w_start + w_end) / 2
+                if not core_start <= midpoint < core_end:
+                    continue
+                token = w["word"]
+                if not token.strip():
+                    continue
+                new_chars = len("".join(x[2] for x in current)) + len(token)
+                if current and (w_end - current[0][0] > 5.5 or new_chars > 94 or
+                                len(current) >= 16 or w_start - current[-1][1] > 1.2):
+                    cues.append({"start": max(core_start, current[0][0]),
+                                 "end": min(core_end, current[-1][1]),
+                                 "text": "".join(x[2] for x in current).strip()})
+                    current = []
+                current.append((w_start, w_end, token))
+            if current:
+                cues.append({"start": max(core_start, current[0][0]),
+                             "end": min(core_end, current[-1][1]),
+                             "text": "".join(x[2] for x in current).strip()})
+        else:
+            a, b = offset + float(seg["start"]), offset + float(seg["end"])
+            if b > core_start and a < core_end and core_start <= (a + b) / 2 < core_end:
+                cues.append({"start": max(core_start, a), "end": min(core_end, b),
+                             "text": text})
+    return [c for c in cues if c["end"] > c["start"] and c["text"]]
 
 
-def generate_reports(output, manifest, models, modes):
-    rows = []
-    manual = []
-    # Preserve any notes/ground-truth text a reviewer added before resuming.
-    old_reviews = {(str(r.get("episode")), str(r.get("clip"))): r
-                   for r in read_csv(output / "Reports" / "manual_review.csv")}
-    summary = Counter()
-    for c in manifest:
-        ep = c["episode"]
-        clip_dir = output / "Clips" / f"episode_{ep:03}" / c["clip_id"]
-        preds = {}
-        for model in models:
-            for mode in modes:
-                path = clip_dir / f"{model}_{mode}.json"
-                if path.exists():
-                    try:
-                        result = read_json(path)
-                    except Exception:
-                        continue
-                    status = result.get("status", "unknown")
-                    summary[status] += 1
-                    if status == "completed":
-                        preds[(model, mode)] = result
-                    stats = result.get("stats", {})
-                    rows.append({
-                        "episode": ep, "clip": c["clip_id"], "start": c["start_clock"],
-                        "end": c["end_clock"], "reason": c["reason"], "model": model,
-                        "mode": mode, "status": status, "detected_language": result.get("detected_language", ""),
-                        "seconds_to_transcribe": result.get("processing_seconds", ""),
-                        "original_words": text_stats(c["original"]["text"])["word_count"],
-                        "new_words": stats.get("word_count", ""),
-                        "new_latin_fraction": stats.get("latin_letter_fraction", ""),
-                        "repeated_trigram_fraction": stats.get("repeated_trigram_fraction", ""),
-                        "original_similarity_not_accuracy": result.get("similarity_to_original", ""),
-                        "mean_segment_logprob": result.get("mean_segment_logprob", ""),
-                        "new_text": result.get("text", ""),
-                        "original_text": c["original"]["text"],
-                        "error": result.get("error", ""),
-                    })
-                else:
-                    summary["not_run"] += 1
-        display_comparison(clip_dir, ep, c, preds)
-        manual_row = {"episode": ep, "clip": c["clip_id"], "start": c["start_clock"],
-                      "end": c["end_clock"], "reason": c["reason"],
-                      "original_text": c["original"]["text"],
-                      "manual_verified_text": "", "preferred_candidate": "", "notes": ""}
-        for model in models:
-            for mode in modes:
-                manual_row[f"{model}_{mode}"] = preds.get((model, mode), {}).get("text", "")
-        prior_review = old_reviews.get((str(ep), c["clip_id"]), {})
-        for editable in ("manual_verified_text", "preferred_candidate", "notes"):
-            manual_row[editable] = prior_review.get(editable, "")
-        manual.append(manual_row)
-    fieldnames = ["episode", "clip", "start", "end", "reason", "model", "mode", "status",
-                  "detected_language", "seconds_to_transcribe", "original_words", "new_words",
-                  "new_latin_fraction", "repeated_trigram_fraction", "original_similarity_not_accuracy",
-                  "mean_segment_logprob", "new_text", "original_text", "error"]
-    csv_write(output / "Reports" / "clip_comparisons.csv", rows, fieldnames)
-    manual_fields = ["episode", "clip", "start", "end", "reason", "original_text"] + [
-        f"{m}_{mode}" for m in models for mode in modes] + ["manual_verified_text", "preferred_candidate", "notes"]
-    csv_write(output / "Reports" / "manual_review.csv", manual, manual_fields)
-    save_json(output / "Reports" / "pilot_overview.json", {
-        "generated_utc": utc_now(), "version": VERSION,
-        "episodes": sorted(set(c["episode"] for c in manifest)),
-        "clips": len(manifest), "models": models, "language_modes": modes,
-        "expected_comparisons": len(manifest) * len(models) * len(modes),
-        "comparison_statuses": dict(summary),
-        "warning": "These are automated candidates, not verified ground truth. "
-                   "Transcription similarity and log probabilities do not measure WER or certify accuracy.",
+def repetition_flags(cues):
+    issues = []
+    last, count, start = "", 0, 0
+    for cue in list(cues) + [{"start": -1, "text": ""}]:
+        normalized = re.sub(r"\W+", "", cue["text"].casefold())
+        if normalized and len(normalized) >= 7 and normalized == last:
+            count += 1
+        else:
+            if count >= 4:
+                issues.append({"code": "repeated_adjacent_captions",
+                               "start": start, "count": count, "sample": last[:100]})
+            last, count, start = normalized, 1, cue["start"]
+    return issues
+
+
+def config_key(args, ep, audio_fp):
+    fields = {
+        "script": VERSION, "model": args.model, "mode": args.language_mode,
+        "chunk": args.chunk_seconds, "pad": args.padding_seconds,
+        "word_timestamps": not args.no_word_timestamps,
+        "episode": ep, "audio": audio_fp,
+    }
+    return hashlib.sha256(json.dumps(fields, sort_keys=True).encode()).hexdigest()
+
+
+def save_srt(path, cues, column="roman"):
+    blocks = []
+    for cue in cues:
+        text = cue.get(column, "").strip()
+        if not text or cue["end"] <= cue["start"]:
+            continue
+        blocks.append(f"{len(blocks) + 1}\n{fmt(cue['start'])} --> {fmt(cue['end'])}\n{text}\n")
+    write_text(path, "\n".join(blocks))
+
+
+def report_update(output: Path):
+    rows, flags = [], []
+    for path in sorted((output / "Episodes").glob("episode_*.json")):
+        try:
+            x = read_json(path)
+        except (ValueError, OSError):
+            continue
+        rows.append({key: x.get(key) for key in (
+            "episode", "status", "duration_seconds", "chunks_total", "chunks_complete",
+            "subtitle_cues", "english_chunks", "urdu_chunks", "hindi_detected_chunks",
+            "low_logprob_segments", "repetitive_segments", "duration_runtime_seconds",
+            "roman_srt", "message")})
+        for f in x.get("flags", []):
+            flags.append({"episode": x.get("episode"), **f})
+    csv_dump(output / "Reports" / "episodes.csv", rows,
+             ["episode", "status", "duration_seconds", "chunks_total", "chunks_complete",
+              "subtitle_cues", "english_chunks", "urdu_chunks", "hindi_detected_chunks",
+              "low_logprob_segments", "repetitive_segments", "duration_runtime_seconds",
+              "roman_srt", "message"])
+    csv_dump(output / "Reports" / "quality_flags.csv", flags,
+             ["episode", "code", "start", "count", "sample"])
+    counts = Counter(r["status"] for r in rows)
+    write_json(output / "Reports" / "overview.json", {
+        "generated_utc": utc(), "version": VERSION, "status_counts": dict(counts),
+        "episode_rows": len(rows), "quality_flags": len(flags),
+        "disclaimer": "ASR logs and repetition flags are NOT ground truth or WER.",
     })
-    return summary
 
 
-def parse_args():
-    p = argparse.ArgumentParser(description="Offline Urdu-English transcription pilot, not a full-corpus repair")
-    p.add_argument("--models", default="turbo,large-v3",
-                   help="Comma-separated official Whisper models (default turbo,large-v3). Use turbo for a smaller first run")
-    p.add_argument("--language-modes", default="auto,ur", choices=["auto", "ur", "auto,ur", "ur,auto"],
-                   help="Automatic language detection, forced Urdu, or both")
-    p.add_argument("--episodes", default="", help="Optional comma-separated episode numbers (defaults to 7 flagged + 2 controls)")
-    p.add_argument("--clips-per-episode", type=int, default=3, help="Problem-episode clips (default 3)")
-    p.add_argument("--control-clips", type=int, default=1, help="Clips per healthy control episode (default 1)")
-    p.add_argument("--clip-seconds", type=float, default=45.0, help="Duration of each test clip (default 45s)")
-    p.add_argument("--device", choices=["auto", "cuda", "cpu"], default="auto")
-    p.add_argument("--allow-cpu", action="store_true", help="Allow slow CPU transcription explicitly")
-    p.add_argument("--download-only", action="store_true", help="Download model weights without running the pilot")
-    p.add_argument("--offline", action="store_true", help="Require already cached, checksum-valid models; no download")
-    p.add_argument("--plan-only", action="store_true", help="Select clips and write manifest without loading models")
-    p.add_argument("--cache-dir", type=Path, default=Path.home() / ".cache" / "whisper",
-                   help="Checkpoint directory (default ~/.cache/whisper)")
-    p.add_argument("--no-audio-samples", action="store_true",
-                   help="Exclude short review MP3 excerpts from the shared ZIP (limits audio accuracy review)")
-    p.add_argument("--out", type=Path, default=OUTPUT_ROOT, help="Result directory")
-    p.add_argument("--retry-failed", action="store_true", help="Retry previous error results")
-    return p.parse_args()
+def archive_results(output: Path, log):
+    """No MP3s and no individual chunk cache in the shareable package."""
+    archive = output / "Review_Package.zip"
+    tmp = output / "Review_Package.zip.tmp"
+    if tmp.exists():
+        tmp.unlink()
+    include = [output / "Logs" / "machine_info.json"]
+    include += sorted((output / "Episodes").glob("episode_*.json"))
+    include += sorted((output / "Reports").glob("*"))
+    include += sorted((output / "Roman_Urdu_SRT").glob("episode_*.srt"))
+    include += sorted((output / "Raw_Model_SRT").glob("episode_*.srt"))
+    with zipfile.ZipFile(tmp, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=6) as z:
+        for path in include:
+            if path.is_file():
+                z.write(path, path.relative_to(output))
+    os.replace(tmp, archive)
+    log.info("Review package saved: %s (%.1f MB)", archive, archive.stat().st_size / 1e6)
+
+
+def process_episode(ep, args, whisper, model, romanizer, log, out):
+    audio = AUDIO_DIR / f"episode_{ep:03}.mp3"
+    previous = ORIGINAL_DIR / f"episode_{ep:03}.srt"
+    status_path = out / "Episodes" / f"episode_{ep:03}.json"
+    episode_log_path = out / "Logs" / f"episode_{ep:03}.log"
+    chunk_dir = out / "Chunks" / f"episode_{ep:03}"
+    roman_path = out / "Roman_Urdu_SRT" / f"episode_{ep:03}.srt"
+    raw_path = out / "Raw_Model_SRT" / f"episode_{ep:03}.srt"
+
+    def note(message):
+        log.info("[%03d] %s", ep, message)
+        with episode_log_path.open("a", encoding="utf-8") as f:
+            f.write(f"{utc()} {message}\n")
+
+    if not audio.is_file():
+        write_json(status_path, {"episode": ep, "status": "missing_audio", "message": str(audio)})
+        note("Missing audio: skipping")
+        return
+    if not previous.is_file():
+        note("WARNING: original subtitle missing, but new transcription can proceed")
+    started = time.monotonic()
+    duration = audio_duration(audio)
+    audio_fp = fingerprint(audio)
+    key = config_key(args, ep, audio_fp)
+    chunks_total = math.ceil(duration / args.chunk_seconds)
+    if not args.force and status_path.is_file():
+        old = read_json(status_path)
+        if (old.get("status") == "completed" and old.get("config_key") == key
+                and roman_path.is_file() and raw_path.is_file()):
+            note("Already completed; skipping")
+            return
+    if args.force and chunk_dir.exists():
+        shutil.rmtree(chunk_dir)
+    chunk_dir.mkdir(parents=True, exist_ok=True)
+    note(f"Starting audio={duration/60:.1f}m chunks={chunks_total} model={args.model}")
+    language_stats = Counter()
+    low_logprob = 0
+    repetitive_segments = 0
+    all_cues = []
+    try:
+        for i in range(chunks_total):
+            core_start = i * args.chunk_seconds
+            core_end = min(duration, (i + 1) * args.chunk_seconds)
+            pad_start = max(0, core_start - args.padding_seconds)
+            pad_end = min(duration, core_end + args.padding_seconds)
+            c_path = chunk_dir / f"chunk_{i:05}.json"
+            chunk = None
+            if not args.force and c_path.exists():
+                try:
+                    candidate = read_json(c_path)
+                    if candidate.get("config_key") == key and candidate.get("chunk_index") == i:
+                        chunk = candidate
+                except (ValueError, OSError):
+                    pass
+            if chunk is None:
+                t0 = time.monotonic()
+                audio_slice = decode_slice(audio, pad_start, pad_end - pad_start)
+                language, probabilities = determine_language(
+                    whisper, model, audio_slice, ep, args.language_mode)
+                result = model.transcribe(
+                    audio_slice, language=language, task="transcribe", verbose=False,
+                    condition_on_previous_text=False, temperature=(0, 0.2, 0.4),
+                    beam_size=5, compression_ratio_threshold=2.4,
+                    logprob_threshold=-1.0, no_speech_threshold=0.6,
+                    word_timestamps=not args.no_word_timestamps,
+                    hallucination_silence_threshold=(2.0 if not args.no_word_timestamps else None),
+                    fp16=(str(model.device).startswith("cuda")),
+                )
+                original_cues = raw_cues_from_result(
+                    result, pad_start, core_start, core_end, not args.no_word_timestamps)
+                cues = []
+                for cue in original_cues:
+                    roman_text = romanizer.convert(cue["text"])
+                    if roman_text:
+                        cues.append({**cue, "roman": roman_text})
+                segment_stats = [{
+                    "start": round(pad_start + float(s["start"]), 3),
+                    "text": (s.get("text") or "")[:240],
+                    "avg_logprob": round(float(s.get("avg_logprob", 0)), 4),
+                    "compression_ratio": round(float(s.get("compression_ratio", 0)), 3),
+                    "no_speech_prob": round(float(s.get("no_speech_prob", 0)), 4),
+                } for s in result.get("segments", [])]
+                chunk = {
+                    "config_key": key, "chunk_index": i, "core_start": core_start,
+                    "core_end": core_end, "window_start": pad_start, "window_end": pad_end,
+                    "decoder_language": language, "detected_probabilities": probabilities,
+                    "decoded_segments": segment_stats, "cues": cues,
+                    "runtime_seconds": round(time.monotonic() - t0, 2), "created_utc": utc(),
+                }
+                write_json(c_path, chunk)
+                note(f"chunk {i+1}/{chunks_total} {fmt(core_start)} -> {fmt(core_end)} "
+                     f"language={language} probabilities={probabilities} "
+                     f"cues={len(cues)} seconds={chunk['runtime_seconds']}")
+            all_cues.extend(chunk["cues"])
+            language_stats[chunk["decoder_language"]] += 1
+            if chunk.get("detected_probabilities", {}).get("hi", 0) > max(
+                chunk.get("detected_probabilities", {}).get("ur", 0),
+                chunk.get("detected_probabilities", {}).get("en", 0)):
+                language_stats["hi_detected"] += 1
+            for seg in chunk.get("decoded_segments", []):
+                if seg.get("avg_logprob", 0) < -1.0:
+                    low_logprob += 1
+                if seg.get("compression_ratio", 0) > 2.4:
+                    repetitive_segments += 1
+        all_cues.sort(key=lambda x: (x["start"], x["end"]))
+        save_srt(roman_path, all_cues, "roman")
+        save_srt(raw_path, all_cues, "text")
+        bad = repetition_flags(all_cues)
+        info = {
+            "episode": ep, "status": "completed", "created_utc": utc(),
+            "config_key": key, "model": args.model, "mode": args.language_mode,
+            "audio_fingerprint": audio_fp, "duration_seconds": round(duration, 3),
+            "chunks_total": chunks_total, "chunks_complete": chunks_total,
+            "subtitle_cues": len(all_cues), "english_chunks": language_stats["en"],
+            "urdu_chunks": language_stats["ur"],
+            "hindi_detected_chunks": language_stats["hi_detected"],
+            "low_logprob_segments": low_logprob, "repetitive_segments": repetitive_segments,
+            "flags": bad[:100], "duration_runtime_seconds": round(time.monotonic()-started, 1),
+            "roman_srt": str(roman_path.relative_to(out)),
+            "raw_model_srt": str(raw_path.relative_to(out)),
+            "original_srt_present": previous.is_file(),
+        }
+        write_json(status_path, info)
+        note(f"COMPLETED {len(all_cues)} subtitles; {len(bad)} repeated-text flags; "
+             f"elapsed {info['duration_runtime_seconds']:.0f}s")
+    except Exception as exc:
+        done = sum(1 for p in chunk_dir.glob("chunk_*.json")
+                   if p.is_file() and read_json(p).get("config_key") == key)
+        write_json(status_path, {
+            "episode": ep, "status": "interrupted_or_failed", "message": str(exc),
+            "config_key": key, "duration_seconds": duration,
+            "chunks_total": chunks_total, "chunks_complete": done,
+            "traceback": traceback.format_exc()[-5000:], "updated_utc": utc(),
+        })
+        note(f"FAILED after {done}/{chunks_total} chunks: {exc}")
+        raise
 
 
 def main():
-    args = parse_args()
-    if args.clip_seconds < 12 or args.clip_seconds > 100:
-        raise SystemExit("--clip-seconds must be between 12 and 100")
-    if not (1 <= args.clips_per_episode <= 12 and 1 <= args.control_clips <= 12):
-        raise SystemExit("Clip counts must be between 1 and 12")
-    models = [m.strip() for m in args.models.split(",") if m.strip()]
-    modes = [m.strip() for m in args.language_modes.split(",") if m.strip()]
-    if not models or len(models) != len(set(models)):
-        raise SystemExit("Choose unique models (e.g. --models turbo,large-v3)")
-    out = args.out.expanduser().resolve()
-    (out / "Logs").mkdir(parents=True, exist_ok=True)
-    (out / "Clips").mkdir(exist_ok=True)
-    (out / "Reports").mkdir(exist_ok=True)
-    log = get_logger(out)
-    log.info("Transcript pilot v%s", VERSION)
-    log.info("Models: %s / modes: %s", models, modes)
-    if args.download_only:
-        import whisper
-        for model in models:
-            ensure_cached(model, whisper, args.cache_dir, args.offline)
-            log.info("Model downloaded/verified: %s", model)
-        log.info("Download finished. Next: python repair_transcripts.py --offline")
-        return
-    if not SRT_ROOT.is_dir() or not MP3_ROOT.is_dir():
-        raise SystemExit(f"Missing expected directories. Put this script beside:\n  {SRT_ROOT}\n  {MP3_ROOT}")
-    if shutil.which("ffmpeg") is None or shutil.which("ffprobe") is None:
-        raise SystemExit("ffmpeg and ffprobe must be installed and visible on PATH")
-    if args.episodes.strip():
+    parser = argparse.ArgumentParser(description="All 241 episodes -> Roman Urdu + English SRT; local and resumable")
+    parser.add_argument("--model", default="large-v3", choices=["large-v3", "turbo"],
+                        help="Default large-v3 for full-quality ASR; turbo is faster")
+    parser.add_argument("--language-mode", choices=["adaptive", "urdu", "english"], default="adaptive",
+                        help="Adaptive = English if dominant, otherwise force Urdu (never Hindi)")
+    parser.add_argument("--chunk-seconds", type=int, default=60)
+    parser.add_argument("--padding-seconds", type=float, default=1.25)
+    parser.add_argument("--offline", action="store_true", help="Never download model weights")
+    parser.add_argument("--no-word-timestamps", action="store_true", help="Faster, coarser SRT timing")
+    parser.add_argument("--force", action="store_true", help="Recompute all chunks from scratch")
+    args = parser.parse_args()
+    if not 20 <= args.chunk_seconds <= 240:
+        parser.error("--chunk-seconds must be between 20 and 240")
+    if not 0 <= args.padding_seconds <= 5:
+        parser.error("--padding-seconds must be between 0 and 5")
+
+    out = OUTPUT_DIR
+    for name in ("Logs", "Episodes", "Roman_Urdu_SRT", "Raw_Model_SRT", "Chunks", "Reports"):
+        (out / name).mkdir(parents=True, exist_ok=True)
+    log = setup_logger(out / "Logs" / "transcription.log")
+    if not AUDIO_DIR.is_dir():
+        raise SystemExit(f"Missing audio folder: {AUDIO_DIR}")
+    if not shutil.which("ffmpeg") or not shutil.which("ffprobe"):
+        raise SystemExit("ffmpeg and ffprobe must be available on PATH")
+    for name in ("urdunlp", "uroman", "whisper"):
         try:
-            episodes = list(dict.fromkeys(int(v) for v in args.episodes.split(",")))
-        except ValueError:
-            raise SystemExit("--episodes must be comma-separated integers, e.g. 113,125,216")
-        if any(v < 1 or v > 241 for v in episodes):
-            raise SystemExit("Episode numbers must be 1..241")
-    else:
-        episodes = DEFAULT_EPISODES + CONTROL_EPISODES
-    flags = read_csv(AUDIT_ROOT / "Reports" / "review_flags.csv")
-    log.info("Loaded %s prior-audit flags from %s", len(flags), AUDIT_ROOT)
-    manifest, missing = build_manifest(args, flags, episodes)
-    if missing:
-        log.warning("Missing inputs: %s", missing)
-    save_json(out / "Reports" / "clip_manifest.json", {
-        "created_utc": utc_now(), "selected_episodes": episodes, "missing_inputs": missing,
-        "clips": manifest, "models": models, "language_modes": modes,
-        "note": "Selection uses anomalies from all_episodes_audit when available; each clip is independent.",
-    })
-    if not manifest:
-        raise SystemExit("No valid MP3/SRT pairs could be selected")
-    log.info("Selected %d clips (~%.1f audio minutes per model/mode).", len(manifest),
-             sum(c["seconds"] for c in manifest) / 60)
-    if args.plan_only:
-        log.info("Plan written: %s", out / "Reports" / "clip_manifest.json")
-        return
+            __import__(name)
+        except ImportError as exc:
+            raise SystemExit(f"Missing {name}: install with: python -m pip install openai-whisper urdunlp uroman") from exc
     import torch
     import whisper
-    machine = snapshot_machine(torch, whisper)
-    save_json(out / "Logs" / "machine_info.json", machine)
-    device = ("cuda" if torch.cuda.is_available() else "cpu") if args.device == "auto" else args.device
-    if device == "cuda" and not torch.cuda.is_available():
-        raise SystemExit("CUDA requested but torch.cuda.is_available() is False; check your Jetson PyTorch install")
-    if device == "cpu" and not args.allow_cpu:
-        raise SystemExit("Torch CUDA not found. CPU processing may take a very long time. "
-                         "Check torch.cuda.is_available() or pass --allow-cpu to proceed intentionally.")
-    log.info("PyTorch %s, device %s, GPU %s", torch.__version__, device, machine["gpu_name"])
-    for model in models:
-        ensure_cached(model, whisper, args.cache_dir, args.offline)
+    if not torch.cuda.is_available():
+        raise SystemExit("PyTorch CUDA is not available; stopping to avoid unexpectedly slow 367-hour CPU run")
+    log.info("Starting full 241-episode offline-capable transcription. Model=%s", args.model)
+    write_json(out / "Logs" / "machine_info.json", machine_info(torch, args.model, args))
 
-    # When resuming, only models with missing results are loaded.
-    def clip_result_path(c, model, mode):
-        return out / "Clips" / f"episode_{c['episode']:03}" / c["clip_id"] / f"{model}_{mode}.json"
-
+    if args.offline:
+        ckpt = Path(os.path.expanduser("~/.cache/whisper")) / (args.model + ".pt")
+        if not ckpt.is_file():
+            raise SystemExit(f"Model missing from cache: {ckpt}; run once without --offline")
+        log.info("Loading cached model checkpoint: %s", ckpt)
+        model = whisper.load_model(str(ckpt), device="cuda")
+    else:
+        model = whisper.load_model(args.model, device="cuda")
+    romanizer = Romanizer()
+    failed = []
     try:
-        for model_name in models:
-            outstanding = []
-            for c in manifest:
-                mp3 = MP3_ROOT / f"episode_{c['episode']:03}.mp3"
-                srt = SRT_ROOT / f"episode_{c['episode']:03}.srt"
-                for mode in modes:
-                    sig = checkpoint_id(model_name, mode, c, mp3, srt, getattr(whisper, "__version__", "unknown"))
-                    path = clip_result_path(c, model_name, mode)
-                    prior = read_json(path) if path.exists() else {}
-                    if prior.get("checkpoint_id") == sig and (
-                            prior.get("status") == "completed" or
-                            (prior.get("status") == "error" and not args.retry_failed)):
-                        continue
-                    outstanding.append((c, mode, sig))
-            if not outstanding:
-                log.info("%s already completed; skipping load", model_name)
-                continue
-            log.info("Loading %s on %s (%d remaining jobs)...", model_name, device, len(outstanding))
-            model_obj = whisper.load_model(model_name, device=device, download_root=str(args.cache_dir))
-            for idx, (c, mode, sig) in enumerate(outstanding, 1):
-                ep = c["episode"]
-                job_name = f"episode_{ep:03}/{c['clip_id']}/{model_name}/{mode}"
-                job_path = clip_result_path(c, model_name, mode)
-                job_path.parent.mkdir(parents=True, exist_ok=True)
-                episode_log = out / "Logs" / f"episode_{ep:03}.log"
-                beginning = time.monotonic()
-                msg = f"[{idx}/{len(outstanding)}] {job_name} {c['start_clock']} - {c['end_clock']}"
-                log.info(msg)
-                with episode_log.open("a", encoding="utf-8") as e_log:
-                    e_log.write(f"{utc_now()} BEGIN {msg}\n")
-                try:
-                    mp3 = MP3_ROOT / f"episode_{ep:03}.mp3"
-                    waveform = sample_audio(mp3, c["start"], c["seconds"])
-                    # 'ur' means Urdu language prompting; task=transcribe retains original spoken language.
-                    result = model_obj.transcribe(waveform, language=None if mode == "auto" else "ur",
-                                                  fp16=(device == "cuda"), verbose=False, **PARAMETERS)
-                    segments = []
-                    for s in result.get("segments", []):
-                        start = max(0.0, float(s.get("start", 0)))
-                        end = max(start, float(s.get("end", start)))
-                        # Clamp clip-end errors to the actual decoded duration.
-                        end = min(end, len(waveform) / 16000)
-                        if end <= start:
-                            continue
-                        segments.append({
-                            "start": round(c["start"] + start, 3),
-                            "end": round(c["start"] + end, 3),
-                            "text": str(s.get("text", "")).strip(),
-                            "avg_logprob": s.get("avg_logprob"),
-                            "no_speech_prob": s.get("no_speech_prob"),
-                            "compression_ratio": s.get("compression_ratio"),
-                        })
-                    text = " ".join(s["text"] for s in segments).strip()
-                    logps = [s["avg_logprob"] for s in segments if isinstance(s.get("avg_logprob"), (float, int))]
-                    record = {
-                        "status": "completed", "checkpoint_id": sig,
-                        "created_utc": utc_now(), "episode": ep, "clip_id": c["clip_id"],
-                        "start": c["start_clock"], "end": c["end_clock"], "reason": c["reason"],
-                        "model": model_name, "language_mode": mode, "device": device,
-                        "detected_language": result.get("language", "unknown"),
-                        "text": text, "segments": segments, "stats": text_stats(text),
-                        "original_text": c["original"]["text"],
-                        "similarity_to_original": round(difflib.SequenceMatcher(
-                            None, c["original"]["text"].lower(), text.lower()).ratio(), 3),
-                        "mean_segment_logprob": round(sum(logps)/len(logps), 4) if logps else None,
-                        "processing_seconds": round(time.monotonic() - beginning, 2),
-                    }
-                    save_json(job_path, record)
-                    atomic_text(job_path.with_suffix(".srt"), to_srt(segments))
-                    message = f"completed {job_name} ({record['processing_seconds']}s), words={len(text.split())}, detected={record['detected_language']}"
-                    log.info(message)
-                    with episode_log.open("a", encoding="utf-8") as e_log:
-                        e_log.write(f"{utc_now()} {message}\n")
-                except Exception as exc:
-                    message = f"FAILED {job_name}: {type(exc).__name__}: {exc}"
-                    log.error(message)
-                    with episode_log.open("a", encoding="utf-8") as e_log:
-                        e_log.write(f"{utc_now()} {message}\n{traceback.format_exc()}\n")
-                    save_json(job_path, {"status": "error", "checkpoint_id": sig, "episode": ep,
-                                         "clip_id": c["clip_id"], "model": model_name, "language_mode": mode,
-                                         "error": message, "processing_seconds": round(time.monotonic() - beginning, 2)})
-                    if "out of memory" in str(exc).lower() or "cuda error" in str(exc).lower():
-                        log.error("CUDA error; stopping to avoid a cascade. Try --models turbo or shorter clips.")
-                        raise
-            del model_obj
-            if device == "cuda":
-                torch.cuda.empty_cache()
+        for ep in range(1, 242):
+            try:
+                process_episode(ep, args, whisper, model, romanizer, log, out)
+            except KeyboardInterrupt:
+                raise
+            except Exception:
+                failed.append(ep)
+                log.exception("Episode %03d failed; moving to next episode", ep)
+            finally:
+                report_update(out)
+    except KeyboardInterrupt:
+        log.warning("Interrupted by user. Completed chunks are safely saved. Re-run to resume.")
     finally:
-        status = generate_reports(out, manifest, models, modes)
-        if not args.no_audio_samples:
-            make_review_audio_samples(out, manifest, log)
-        pkg = package_results(out, include_audio=(not args.no_audio_samples))
-        log.info("Current results: %s", dict(status))
-        log.info("Upload this package: %s", pkg)
-        log.info("Original MP3/SRT files were not modified")
+        report_update(out)
+        archive_results(out, log)
+        log.info("Finished current run. Failed episodes: %s", failed or "none")
+        log.info("Re-run the same command to resume. Originals have not been changed.")
 
 
 if __name__ == "__main__":
-    try:
-        main()
-    except KeyboardInterrupt:
-        print("\nInterrupted. Existing results are saved; rerun the same command to resume.", file=sys.stderr)
-        sys.exit(130)
+    main()
