@@ -1,0 +1,125 @@
+{
+  "status": "completed",
+  "checkpoint_id": "4b9f99cd3860068b8bd31aa90c8c7c4085d31efb818f0ac450c5ad5c9cc9f45b",
+  "created_utc": "2026-10-21T07:27:02+00:00",
+  "episode": 125,
+  "clip_id": "clip_03",
+  "start": "00:37:09.280",
+  "end": "00:37:54.280",
+  "reason": "repeated_subtitle_run",
+  "model": "turbo",
+  "language_mode": "auto",
+  "device": "cuda",
+  "detected_language": "en",
+  "text": "He let go of a wonderful person, judging by, you know, what I read. So that's his loss, not yours. Your society is 30 years old, so no problem. I just want to say that one should rather be single than be with the wrong person. Because when you're single, you only have yourself, right? Not to blame, but like, you only have to look after yourself. But when you get a wrong person in an equation, so he also fails and now you have to take care of two people yourself and then the other person as well so I am not upset I am upset about the fact that it ended this way but I am not upset",
+  "segments": [
+    {
+      "start": 2229.28,
+      "end": 2235.38,
+      "text": "He let go of a wonderful person, judging by, you know, what I read.",
+      "avg_logprob": -0.2840172879330747,
+      "no_speech_prob": 1.3062013970444042e-10,
+      "compression_ratio": 1.6056910569105691
+    },
+    {
+      "start": 2236.14,
+      "end": 2238.04,
+      "text": "So that's his loss, not yours.",
+      "avg_logprob": -0.2840172879330747,
+      "no_speech_prob": 1.3062013970444042e-10,
+      "compression_ratio": 1.6056910569105691
+    },
+    {
+      "start": 2239.06,
+      "end": 2241.52,
+      "text": "Your society is 30 years old, so no problem.",
+      "avg_logprob": -0.2840172879330747,
+      "no_speech_prob": 1.3062013970444042e-10,
+      "compression_ratio": 1.6056910569105691
+    },
+    {
+      "start": 2241.76,
+      "end": 2246.3,
+      "text": "I just want to say that one should rather be single than be with the wrong person.",
+      "avg_logprob": -0.2840172879330747,
+      "no_speech_prob": 1.3062013970444042e-10,
+      "compression_ratio": 1.6056910569105691
+    },
+    {
+      "start": 2246.48,
+      "end": 2250.2,
+      "text": "Because when you're single, you only have yourself, right?",
+      "avg_logprob": -0.2840172879330747,
+      "no_speech_prob": 1.3062013970444042e-10,
+      "compression_ratio": 1.6056910569105691
+    },
+    {
+      "start": 2250.26,
+      "end": 2252.96,
+      "text": "Not to blame, but like, you only have to look after yourself.",
+      "avg_logprob": -0.2840172879330747,
+      "no_speech_prob": 1.3062013970444042e-10,
+      "compression_ratio": 1.6056910569105691
+    },
+    {
+      "start": 2252.96,
+      "end": 2255.66,
+      "text": "But when you get a wrong person in an equation,",
+      "avg_logprob": -0.2840172879330747,
+      "no_speech_prob": 1.3062013970444042e-10,
+      "compression_ratio": 1.6056910569105691
+    },
+    {
+      "start": 2255.66,
+      "end": 2260.72,
+      "text": "so he also fails and now you have to take care of two people",
+      "avg_logprob": -0.3653148368552879,
+      "no_speech_prob": 1.3677661780953088e-10,
+      "compression_ratio": 1.5491803278688525
+    },
+    {
+      "start": 2260.72,
+      "end": 2263.2,
+      "text": "yourself and then the other person as well",
+      "avg_logprob": -0.3653148368552879,
+      "no_speech_prob": 1.3677661780953088e-10,
+      "compression_ratio": 1.5491803278688525
+    },
+    {
+      "start": 2263.2,
+      "end": 2269.5,
+      "text": "so I am not upset",
+      "avg_logprob": -0.3653148368552879,
+      "no_speech_prob": 1.3677661780953088e-10,
+      "compression_ratio": 1.5491803278688525
+    },
+    {
+      "start": 2269.5,
+      "end": 2273.12,
+      "text": "I am upset about the fact that it ended this way",
+      "avg_logprob": -0.3653148368552879,
+      "no_speech_prob": 1.3677661780953088e-10,
+      "compression_ratio": 1.5491803278688525
+    },
+    {
+      "start": 2273.12,
+      "end": 2274.28,
+      "text": "but I am not upset",
+      "avg_logprob": -0.3653148368552879,
+      "no_speech_prob": 1.3677661780953088e-10,
+      "compression_ratio": 1.5491803278688525
+    }
+  ],
+  "stats": {
+    "word_count": 120,
+    "latin_letters": 446,
+    "urdu_letters": 0,
+    "latin_letter_fraction": 1.0,
+    "repeated_trigram_fraction": 0.017,
+    "replacement_characters": 0
+  },
+  "original_text": "he let go of a wonderful person judging by you know what I read so that's his loss not yours یہ سوسائیٹی ایسی ہے اب آپ تھرٹی کی ہیں تو کوئی مسئلہ نہیں میں تو یہی کہتا ہوں کہ بھائی one should rather be single than be with the wrong person کیونکہ when you're single you only have yourself right not to blame but like you know you have to blame yourself for that and you have to blame yourself for that you have to blame yourself for that you have to blame yourself for that you have to blame yourself for that you have to blame yourself for that you have to blame yourself for that انسان سے آرہا ہے لیکن اوں کے لئے صحبت pool ہوجاتی ہے جن کا ایک ویڈیو مایزا ہوتا ہے اس کا فیصلہ خراب نکایا ہے اور اب اس کے خدا اس اسی طرح صرف اب بہتر ہے دوسرا فیصلہ تو سو faço توشڈنال colon اسی طرح اور اس سے بہتر ہے اپنے ہی زندہ اپنے allein میںタکیر آنا تو کیا انہوں نے ایسی طرح にشہایا تو کیا میں وہاں کا حصہ نہیں ہوں اسが امرہ کی طرح سے ارائیر نہیں ہوتا way but I'm not upset looking at the greater picture you are going to marry a",
+  "similarity_to_original": 0.197,
+  "mean_segment_logprob": -0.3179,
+  "processing_seconds": 5.99
+}

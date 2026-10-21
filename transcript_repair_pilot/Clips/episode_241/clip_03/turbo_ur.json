@@ -1,0 +1,221 @@
+{
+  "status": "completed",
+  "checkpoint_id": "7429a71c2a07fa00bf7b8e63b369aff98803cc59e4a3a69c566fc3e8f9a2a06a",
+  "created_utc": "2026-10-21T07:31:41+00:00",
+  "episode": 241,
+  "clip_id": "clip_03",
+  "start": "01:19:42.890",
+  "end": "01:20:27.890",
+  "reason": "repeated_subtitle_run",
+  "model": "turbo",
+  "language_mode": "ur",
+  "device": "cuda",
+  "detected_language": "ur",
+  "text": "how is that led to upgrade in your life looking for a partner یہ ساری upgrades پھر محنت کرنے سے ہی آئیں اس سے پھر ملا کیا آپ کو وقتی سارتیسفیکشن it's like an orgasm وقتی طور کا pleasure ہے اس کے بات کیا ہے کچھ بھی نہیں ہے right your life remains same تو میرا یہ ہی ماننا ہے کہ revenge ہمیشہ اس force کو ہمیشہ channelize کرنا چاہیے کسی بھی قسم کی resentment ہو I know it's easier said than done دل ٹوٹتا ہے تو بندے کی دس چیزیں سوچتا ہے بٹ اس کو اگر آپ چینلائز کر سکو پوزیٹیو لی بیکوز مارک زکربرگ نے بھی جب اس کو ڈچ کیا اس کی گرل نے تب ہی فیس بک بنائی نا چینلائز کریں پوزیٹیو لی",
+  "segments": [
+    {
+      "start": 4782.89,
+      "end": 4785.15,
+      "text": "how is that led to upgrade in your life",
+      "avg_logprob": -0.20844386509486607,
+      "no_speech_prob": 3.8521057454943275e-09,
+      "compression_ratio": 1.5976331360946745
+    },
+    {
+      "start": 4785.15,
+      "end": 4786.63,
+      "text": "looking for a partner",
+      "avg_logprob": -0.20844386509486607,
+      "no_speech_prob": 3.8521057454943275e-09,
+      "compression_ratio": 1.5976331360946745
+    },
+    {
+      "start": 4786.63,
+      "end": 4789.15,
+      "text": "یہ ساری upgrades پھر محنت کرنے سے ہی آئیں",
+      "avg_logprob": -0.20844386509486607,
+      "no_speech_prob": 3.8521057454943275e-09,
+      "compression_ratio": 1.5976331360946745
+    },
+    {
+      "start": 4789.15,
+      "end": 4790.49,
+      "text": "اس سے پھر ملا کیا آپ کو",
+      "avg_logprob": -0.20844386509486607,
+      "no_speech_prob": 3.8521057454943275e-09,
+      "compression_ratio": 1.5976331360946745
+    },
+    {
+      "start": 4790.49,
+      "end": 4791.93,
+      "text": "وقتی سارتیسفیکشن",
+      "avg_logprob": -0.20844386509486607,
+      "no_speech_prob": 3.8521057454943275e-09,
+      "compression_ratio": 1.5976331360946745
+    },
+    {
+      "start": 4791.93,
+      "end": 4793.43,
+      "text": "it's like an orgasm",
+      "avg_logprob": -0.20844386509486607,
+      "no_speech_prob": 3.8521057454943275e-09,
+      "compression_ratio": 1.5976331360946745
+    },
+    {
+      "start": 4793.43,
+      "end": 4796.45,
+      "text": "وقتی طور کا pleasure ہے اس کے بات کیا ہے",
+      "avg_logprob": -0.20844386509486607,
+      "no_speech_prob": 3.8521057454943275e-09,
+      "compression_ratio": 1.5976331360946745
+    },
+    {
+      "start": 4796.45,
+      "end": 4797.29,
+      "text": "کچھ بھی نہیں ہے right",
+      "avg_logprob": -0.20844386509486607,
+      "no_speech_prob": 3.8521057454943275e-09,
+      "compression_ratio": 1.5976331360946745
+    },
+    {
+      "start": 4797.29,
+      "end": 4798.93,
+      "text": "your life remains same",
+      "avg_logprob": -0.20844386509486607,
+      "no_speech_prob": 3.8521057454943275e-09,
+      "compression_ratio": 1.5976331360946745
+    },
+    {
+      "start": 4798.93,
+      "end": 4799.83,
+      "text": "تو",
+      "avg_logprob": -0.20844386509486607,
+      "no_speech_prob": 3.8521057454943275e-09,
+      "compression_ratio": 1.5976331360946745
+    },
+    {
+      "start": 4799.83,
+      "end": 4802.69,
+      "text": "میرا یہ ہی ماننا ہے",
+      "avg_logprob": -0.20844386509486607,
+      "no_speech_prob": 3.8521057454943275e-09,
+      "compression_ratio": 1.5976331360946745
+    },
+    {
+      "start": 4802.69,
+      "end": 4803.93,
+      "text": "کہ revenge ہمیشہ",
+      "avg_logprob": -0.20844386509486607,
+      "no_speech_prob": 3.8521057454943275e-09,
+      "compression_ratio": 1.5976331360946745
+    },
+    {
+      "start": 4803.93,
+      "end": 4807.27,
+      "text": "اس force کو ہمیشہ",
+      "avg_logprob": -0.20844386509486607,
+      "no_speech_prob": 3.8521057454943275e-09,
+      "compression_ratio": 1.5976331360946745
+    },
+    {
+      "start": 4807.27,
+      "end": 4808.59,
+      "text": "channelize کرنا چاہیے",
+      "avg_logprob": -0.20844386509486607,
+      "no_speech_prob": 3.8521057454943275e-09,
+      "compression_ratio": 1.5976331360946745
+    },
+    {
+      "start": 4808.59,
+      "end": 4810.71,
+      "text": "کسی بھی قسم کی resentment ہو",
+      "avg_logprob": -0.20844386509486607,
+      "no_speech_prob": 3.8521057454943275e-09,
+      "compression_ratio": 1.5976331360946745
+    },
+    {
+      "start": 4810.71,
+      "end": 4812.77,
+      "text": "I know it's easier said than done",
+      "avg_logprob": -0.20844386509486607,
+      "no_speech_prob": 3.8521057454943275e-09,
+      "compression_ratio": 1.5976331360946745
+    },
+    {
+      "start": 4812.77,
+      "end": 4814.65,
+      "text": "دل ٹوٹتا ہے تو",
+      "avg_logprob": -0.1539047387930063,
+      "no_speech_prob": 1.1007283973185622e-09,
+      "compression_ratio": 1.803370786516854
+    },
+    {
+      "start": 4814.65,
+      "end": 4816.87,
+      "text": "بندے کی دس چیزیں سوچتا ہے",
+      "avg_logprob": -0.1539047387930063,
+      "no_speech_prob": 1.1007283973185622e-09,
+      "compression_ratio": 1.803370786516854
+    },
+    {
+      "start": 4816.87,
+      "end": 4818.51,
+      "text": "بٹ اس کو اگر آپ",
+      "avg_logprob": -0.1539047387930063,
+      "no_speech_prob": 1.1007283973185622e-09,
+      "compression_ratio": 1.803370786516854
+    },
+    {
+      "start": 4818.51,
+      "end": 4820.03,
+      "text": "چینلائز کر سکو پوزیٹیو لی",
+      "avg_logprob": -0.1539047387930063,
+      "no_speech_prob": 1.1007283973185622e-09,
+      "compression_ratio": 1.803370786516854
+    },
+    {
+      "start": 4820.03,
+      "end": 4822.05,
+      "text": "بیکوز مارک زکربرگ نے بھی",
+      "avg_logprob": -0.1539047387930063,
+      "no_speech_prob": 1.1007283973185622e-09,
+      "compression_ratio": 1.803370786516854
+    },
+    {
+      "start": 4822.05,
+      "end": 4823.91,
+      "text": "جب اس کو ڈچ کیا اس کی گرل نے",
+      "avg_logprob": -0.1539047387930063,
+      "no_speech_prob": 1.1007283973185622e-09,
+      "compression_ratio": 1.803370786516854
+    },
+    {
+      "start": 4823.91,
+      "end": 4826.49,
+      "text": "تب ہی فیس بک بنائی نا",
+      "avg_logprob": -0.1539047387930063,
+      "no_speech_prob": 1.1007283973185622e-09,
+      "compression_ratio": 1.803370786516854
+    },
+    {
+      "start": 4826.49,
+      "end": 4827.89,
+      "text": "چینلائز کریں پوزیٹیو لی",
+      "avg_logprob": -0.1539047387930063,
+      "no_speech_prob": 1.1007283973185622e-09,
+      "compression_ratio": 1.803370786516854
+    }
+  ],
+  "stats": {
+    "word_count": 127,
+    "latin_letters": 162,
+    "urdu_letters": 286,
+    "latin_letter_fraction": 0.362,
+    "repeated_trigram_fraction": 0.008,
+    "replacement_characters": 0
+  },
+  "original_text": "the upgrade in your house that led to upgrade in your life looking for a partner یہ ساری upgrades پھر محنت کرنے سے ہی آئیں اس سے پھر ملا کیا آپ کو وقتی satisfaction it's like an orgasm وقتی طور کا pleasure ہے اس کے بعد کیا کچھ بھی نہیں ہے right your life remains same تو میرا یہی ماننا ہے کہ revenge ہمیشہ جو ہے اس اس اس اس this force کو ہمیشہ چینلائز کرنا چاہیے کسی بھی قسم کی resentment ہو I know it's easier said than done دل ٹوٹتا ہے تو بندے کی دس چیزیں سوچتا ہے but اس کو اگر آپ چینلائز کر سکو positively because مارک زکربرگ نے بھی جب اس کو ditch کیا اس کی گرل نے تب ہی facebook بنائی نا چینلائز کریں positively",
+  "similarity_to_original": 0.738,
+  "mean_segment_logprob": -0.1903,
+  "processing_seconds": 10.78
+}

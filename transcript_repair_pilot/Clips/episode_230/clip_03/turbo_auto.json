@@ -1,0 +1,229 @@
+{
+  "status": "completed",
+  "checkpoint_id": "46883d20cd8df1589ba375c3a5c4685a7dbbf25b5e5c9a0df22e9f3bfd28e4bf",
+  "created_utc": "2026-10-21T07:30:23+00:00",
+  "episode": 230,
+  "clip_id": "clip_03",
+  "start": "01:43:11.891",
+  "end": "01:43:56.891",
+  "reason": "long_repeated_subtitle_run",
+  "model": "turbo",
+  "language_mode": "auto",
+  "device": "cuda",
+  "detected_language": "ur",
+  "text": "اور سات مہینے کی بیٹی بھی ہے گھر میں اور یہ پانچ دوست ہیں پانچ میں سے چار نے لف میریج کی حالانکہ سب کا بیک گرانڈ ڈیفرنٹ ہے ایکنومک بیک گرانڈ سوشل بیک گرانڈ بڑھ گھوم پھر کہ سب کی زندگی اور مسئلے ایک ہی جیسے سنائی دے رہے ہیں اور دیورنگ ورک ان کو پھر کالز آتی ہیں کہ بہو اب تک سو رہی ہے وغیرہ وغیرہ this is what happens جب آپ گھر میں ایک تھانے دار چھوڑ دیتے ہیں ساس کی صورت میں and when those sadly when mostly those women don't have much to do اور اگر صرف یہ ہی ہے کہ دن بھر ماسیوں کے پیچھے بھاگنا تو پورا دن وہ اور کیا کریں تو پھر وہ یہ ہی کریں they look for some conflict and",
+  "segments": [
+    {
+      "start": 6191.891,
+      "end": 6194.451,
+      "text": "اور سات مہینے کی بیٹی بھی ہے",
+      "avg_logprob": -0.11416519165039063,
+      "no_speech_prob": 1.1870320282270086e-09,
+      "compression_ratio": 1.9512987012987013
+    },
+    {
+      "start": 6194.451,
+      "end": 6195.811,
+      "text": "گھر میں",
+      "avg_logprob": -0.11416519165039063,
+      "no_speech_prob": 1.1870320282270086e-09,
+      "compression_ratio": 1.9512987012987013
+    },
+    {
+      "start": 6195.811,
+      "end": 6197.291,
+      "text": "اور یہ پانچ دوست ہیں",
+      "avg_logprob": -0.11416519165039063,
+      "no_speech_prob": 1.1870320282270086e-09,
+      "compression_ratio": 1.9512987012987013
+    },
+    {
+      "start": 6197.291,
+      "end": 6199.451,
+      "text": "پانچ میں سے چار نے لف میریج کی",
+      "avg_logprob": -0.11416519165039063,
+      "no_speech_prob": 1.1870320282270086e-09,
+      "compression_ratio": 1.9512987012987013
+    },
+    {
+      "start": 6199.451,
+      "end": 6201.731,
+      "text": "حالانکہ سب کا بیک گرانڈ",
+      "avg_logprob": -0.11416519165039063,
+      "no_speech_prob": 1.1870320282270086e-09,
+      "compression_ratio": 1.9512987012987013
+    },
+    {
+      "start": 6201.731,
+      "end": 6203.251,
+      "text": "ڈیفرنٹ ہے ایکنومک بیک گرانڈ",
+      "avg_logprob": -0.11416519165039063,
+      "no_speech_prob": 1.1870320282270086e-09,
+      "compression_ratio": 1.9512987012987013
+    },
+    {
+      "start": 6203.251,
+      "end": 6204.151,
+      "text": "سوشل بیک گرانڈ",
+      "avg_logprob": -0.11416519165039063,
+      "no_speech_prob": 1.1870320282270086e-09,
+      "compression_ratio": 1.9512987012987013
+    },
+    {
+      "start": 6204.151,
+      "end": 6206.411,
+      "text": "بڑھ گھوم پھر کہ سب کی زندگی",
+      "avg_logprob": -0.11416519165039063,
+      "no_speech_prob": 1.1870320282270086e-09,
+      "compression_ratio": 1.9512987012987013
+    },
+    {
+      "start": 6206.411,
+      "end": 6207.991,
+      "text": "اور مسئلے ایک ہی جیسے",
+      "avg_logprob": -0.11416519165039063,
+      "no_speech_prob": 1.1870320282270086e-09,
+      "compression_ratio": 1.9512987012987013
+    },
+    {
+      "start": 6207.991,
+      "end": 6209.471,
+      "text": "سنائی دے رہے ہیں",
+      "avg_logprob": -0.11416519165039063,
+      "no_speech_prob": 1.1870320282270086e-09,
+      "compression_ratio": 1.9512987012987013
+    },
+    {
+      "start": 6209.471,
+      "end": 6212.231,
+      "text": "اور دیورنگ ورک ان کو پھر کالز آتی ہیں",
+      "avg_logprob": -0.11416519165039063,
+      "no_speech_prob": 1.1870320282270086e-09,
+      "compression_ratio": 1.9512987012987013
+    },
+    {
+      "start": 6212.231,
+      "end": 6214.271,
+      "text": "کہ بہو اب تک سو رہی ہے وغیرہ وغیرہ",
+      "avg_logprob": -0.11416519165039063,
+      "no_speech_prob": 1.1870320282270086e-09,
+      "compression_ratio": 1.9512987012987013
+    },
+    {
+      "start": 6214.271,
+      "end": 6216.091,
+      "text": "this is what happens جب آپ گھر میں",
+      "avg_logprob": -0.11416519165039063,
+      "no_speech_prob": 1.1870320282270086e-09,
+      "compression_ratio": 1.9512987012987013
+    },
+    {
+      "start": 6216.091,
+      "end": 6217.351,
+      "text": "ایک تھانے دار چھوڑ دیتے ہیں",
+      "avg_logprob": -0.16380568019679334,
+      "no_speech_prob": 4.705724143683199e-10,
+      "compression_ratio": 1.5063829787234042
+    },
+    {
+      "start": 6217.351,
+      "end": 6219.011,
+      "text": "ساس کی صورت میں",
+      "avg_logprob": -0.16380568019679334,
+      "no_speech_prob": 4.705724143683199e-10,
+      "compression_ratio": 1.5063829787234042
+    },
+    {
+      "start": 6219.011,
+      "end": 6221.471,
+      "text": "and when",
+      "avg_logprob": -0.16380568019679334,
+      "no_speech_prob": 4.705724143683199e-10,
+      "compression_ratio": 1.5063829787234042
+    },
+    {
+      "start": 6221.471,
+      "end": 6223.191,
+      "text": "those sadly",
+      "avg_logprob": -0.16380568019679334,
+      "no_speech_prob": 4.705724143683199e-10,
+      "compression_ratio": 1.5063829787234042
+    },
+    {
+      "start": 6223.191,
+      "end": 6225.251,
+      "text": "when mostly those women",
+      "avg_logprob": -0.16380568019679334,
+      "no_speech_prob": 4.705724143683199e-10,
+      "compression_ratio": 1.5063829787234042
+    },
+    {
+      "start": 6225.251,
+      "end": 6226.511,
+      "text": "don't have much to do",
+      "avg_logprob": -0.16380568019679334,
+      "no_speech_prob": 4.705724143683199e-10,
+      "compression_ratio": 1.5063829787234042
+    },
+    {
+      "start": 6226.511,
+      "end": 6228.671,
+      "text": "اور اگر صرف یہ ہی ہے کہ دن بھر",
+      "avg_logprob": -0.16380568019679334,
+      "no_speech_prob": 4.705724143683199e-10,
+      "compression_ratio": 1.5063829787234042
+    },
+    {
+      "start": 6228.671,
+      "end": 6230.131,
+      "text": "ماسیوں کے پیچھے بھاگنا",
+      "avg_logprob": -0.16380568019679334,
+      "no_speech_prob": 4.705724143683199e-10,
+      "compression_ratio": 1.5063829787234042
+    },
+    {
+      "start": 6230.131,
+      "end": 6231.951,
+      "text": "تو پورا دن وہ اور کیا کریں",
+      "avg_logprob": -0.16380568019679334,
+      "no_speech_prob": 4.705724143683199e-10,
+      "compression_ratio": 1.5063829787234042
+    },
+    {
+      "start": 6231.951,
+      "end": 6232.871,
+      "text": "تو پھر وہ یہ ہی کریں",
+      "avg_logprob": -0.16380568019679334,
+      "no_speech_prob": 4.705724143683199e-10,
+      "compression_ratio": 1.5063829787234042
+    },
+    {
+      "start": 6232.871,
+      "end": 6235.451,
+      "text": "they look for some conflict",
+      "avg_logprob": -0.16380568019679334,
+      "no_speech_prob": 4.705724143683199e-10,
+      "compression_ratio": 1.5063829787234042
+    },
+    {
+      "start": 6235.451,
+      "end": 6236.471,
+      "text": "and",
+      "avg_logprob": -0.16380568019679334,
+      "no_speech_prob": 4.705724143683199e-10,
+      "compression_ratio": 1.5063829787234042
+    }
+  ],
+  "stats": {
+    "word_count": 132,
+    "latin_letters": 96,
+    "urdu_letters": 347,
+    "latin_letter_fraction": 0.217,
+    "repeated_trigram_fraction": 0.008,
+    "replacement_characters": 0
+  },
+  "original_text": "میں نے میرے پاک کو ادوائیس کیا ہوں میں نے میرے پاک کو ادوائیس کیا ہوں میں نے میرے پاک کو ادوائیس کیا ہوں",
+  "similarity_to_original": 0.012,
+  "mean_segment_logprob": -0.138,
+  "processing_seconds": 11.73
+}

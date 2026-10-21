@@ -1,0 +1,16 @@
+EPISODE 163 / clip_02 | 00:15:10.354 --> 00:15:55.354
+Selection: long_repeated_subtitle_run
+
+=== ORIGINAL WHISPER SRT (UNVERIFIED) ===
+بہت ساری فلمیں میں نے نہیں بتائیں جہازوں میں ہی ہو کے رہ گیا ہوں بہت ساری فلمیں میں نے نہیں بتائیں جہازوں میں ہی ہو کے رہ گیا ہوں بہت ساری فلمیں میں نے نہیں بتائیں جہازوں میں ہی ہو کے رہ گیا ہوں
+
+=== turbo / auto / completed ===
+graffiti bhi kate hai so ye ye banaye jate hai because countries that work on their people they do realize ke is umar ke bachche mein ye ye chizay hoongi to us ka ye antidote hai is umar ke joh teenager hai is ke inder anger hooga frustration hooga you know to us ko is tarah channelize karna hai to sab ko unke designated chizay bana ke di wii hai aur wo us pe waha jake karate hai so jab unko eek jagah dee diya na to phir wo shard and it's strange you know you know India you can at least go to a pub you can at least go to all these other places activities and there's a lot
+Detected language: en
+Runtime: 6.87 seconds
+
+=== turbo / ur / completed ===
+گرفیٹی بھی کرتے ہیں یہ بنائے جاتے ہیں بیکرز کانٹریز دائٹ ورک آن دیر پیپل دیر ڈو ریالائز کہ اس عمر کے بچے میں یہ چیزیں ہوں گی تو اس کا یہ انٹیوٹ ہے اس عمر کے جو ٹینیجر ہے اس کے اندر انگر ہوگا فرسٹریشن ہوگا تو اس کو اس طرح چینلائز کرنا ہے تو سب کو ان کے چیزیں بنا کے دیویں ہیں اور وہ اس پر وہاں جا کے کرتے ہیں تو جب ان کو ایک جگہ دے دی ہے نا تو پھر وہ شارڈ پہ جا کے پیڑ نہیں کرے گا یا وہ ٹاور بریج پہ جا کے نہیں کرے گا گند نہیں کرے گا تو ایوینیوز دینے چاہیے لوگوں کو لیکن چونکہ ہمارے ہیں اتنے ایوینیوز نہیں ہیں and it's strange حالکہ انڈیا میں you can at least go to a pub you can at least go to all these other places activities ہیں
+Detected language: ur
+Runtime: 12.11 seconds
+

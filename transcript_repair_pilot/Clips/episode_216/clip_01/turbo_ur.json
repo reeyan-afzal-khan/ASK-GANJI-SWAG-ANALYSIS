@@ -1,0 +1,277 @@
+{
+  "status": "completed",
+  "checkpoint_id": "64c2a615a6ed06f83c3aeb54a196b5bdbf392cc00fd808adabb469599614c1f9",
+  "created_utc": "2026-10-21T07:28:38+00:00",
+  "episode": 216,
+  "clip_id": "clip_01",
+  "start": "01:58:00.200",
+  "end": "01:58:45.200",
+  "reason": "repeated_subtitle_run",
+  "model": "turbo",
+  "language_mode": "ur",
+  "device": "cuda",
+  "detected_language": "ur",
+  "text": "خیر بھائی کسی ڈاکٹر سے مشورہ کریں بہت زیادہ بہتر بتا سکتے ہم کو خیال رکھیے گا thank you آرے جی next one is about an interracial marriage navigating identity love and disappointment among our own a پاکسانی مسلم girl a hindu tamil boy and the questions that never stop dear juneet bhai i've been wanting to write to you for a while because i genuinely see you as a sort of a father figure oh i'm already a father figure now cool someone whose words bring both comfort and perspective I can already kind of imagine you saying باہر پڑھنے گئی ہو بیٹا focus on that but I still wanted to share this with you I moved to Berlin from Pakistan to pursue my master's degree since then I've been studying while also working at a research institute life here",
+  "segments": [
+    {
+      "start": 7080.2,
+      "end": 7082.58,
+      "text": "خیر بھائی کسی ڈاکٹر سے مشورہ کریں",
+      "avg_logprob": -0.19342653374922902,
+      "no_speech_prob": 8.707005116903588e-10,
+      "compression_ratio": 1.4684210526315788
+    },
+    {
+      "start": 7082.58,
+      "end": 7084.44,
+      "text": "بہت زیادہ بہتر بتا سکتے ہم کو",
+      "avg_logprob": -0.19342653374922902,
+      "no_speech_prob": 8.707005116903588e-10,
+      "compression_ratio": 1.4684210526315788
+    },
+    {
+      "start": 7084.44,
+      "end": 7085.46,
+      "text": "خیال رکھیے گا thank you",
+      "avg_logprob": -0.19342653374922902,
+      "no_speech_prob": 8.707005116903588e-10,
+      "compression_ratio": 1.4684210526315788
+    },
+    {
+      "start": 7085.46,
+      "end": 7085.92,
+      "text": "آرے جی",
+      "avg_logprob": -0.19342653374922902,
+      "no_speech_prob": 8.707005116903588e-10,
+      "compression_ratio": 1.4684210526315788
+    },
+    {
+      "start": 7085.92,
+      "end": 7087.42,
+      "text": "next one is",
+      "avg_logprob": -0.19342653374922902,
+      "no_speech_prob": 8.707005116903588e-10,
+      "compression_ratio": 1.4684210526315788
+    },
+    {
+      "start": 7087.42,
+      "end": 7088.56,
+      "text": "about",
+      "avg_logprob": -0.19342653374922902,
+      "no_speech_prob": 8.707005116903588e-10,
+      "compression_ratio": 1.4684210526315788
+    },
+    {
+      "start": 7088.56,
+      "end": 7090.28,
+      "text": "an interracial marriage",
+      "avg_logprob": -0.19342653374922902,
+      "no_speech_prob": 8.707005116903588e-10,
+      "compression_ratio": 1.4684210526315788
+    },
+    {
+      "start": 7090.28,
+      "end": 7091.44,
+      "text": "navigating identity",
+      "avg_logprob": -0.19342653374922902,
+      "no_speech_prob": 8.707005116903588e-10,
+      "compression_ratio": 1.4684210526315788
+    },
+    {
+      "start": 7091.44,
+      "end": 7092.58,
+      "text": "love and disappointment",
+      "avg_logprob": -0.19342653374922902,
+      "no_speech_prob": 8.707005116903588e-10,
+      "compression_ratio": 1.4684210526315788
+    },
+    {
+      "start": 7092.58,
+      "end": 7093.46,
+      "text": "among our",
+      "avg_logprob": -0.19342653374922902,
+      "no_speech_prob": 8.707005116903588e-10,
+      "compression_ratio": 1.4684210526315788
+    },
+    {
+      "start": 7093.46,
+      "end": 7094.56,
+      "text": "own",
+      "avg_logprob": -0.19342653374922902,
+      "no_speech_prob": 8.707005116903588e-10,
+      "compression_ratio": 1.4684210526315788
+    },
+    {
+      "start": 7094.56,
+      "end": 7095.94,
+      "text": "a پاکسانی مسلم girl",
+      "avg_logprob": -0.19342653374922902,
+      "no_speech_prob": 8.707005116903588e-10,
+      "compression_ratio": 1.4684210526315788
+    },
+    {
+      "start": 7095.94,
+      "end": 7097.32,
+      "text": "a hindu tamil boy",
+      "avg_logprob": -0.19342653374922902,
+      "no_speech_prob": 8.707005116903588e-10,
+      "compression_ratio": 1.4684210526315788
+    },
+    {
+      "start": 7097.32,
+      "end": 7099.6,
+      "text": "and the questions that never stop",
+      "avg_logprob": -0.19342653374922902,
+      "no_speech_prob": 8.707005116903588e-10,
+      "compression_ratio": 1.4684210526315788
+    },
+    {
+      "start": 7099.6,
+      "end": 7100.14,
+      "text": "dear juneet bhai",
+      "avg_logprob": -0.19342653374922902,
+      "no_speech_prob": 8.707005116903588e-10,
+      "compression_ratio": 1.4684210526315788
+    },
+    {
+      "start": 7100.14,
+      "end": 7101.76,
+      "text": "i've been wanting to write to you for a while",
+      "avg_logprob": -0.19342653374922902,
+      "no_speech_prob": 8.707005116903588e-10,
+      "compression_ratio": 1.4684210526315788
+    },
+    {
+      "start": 7101.76,
+      "end": 7102.86,
+      "text": "because i genuinely see you",
+      "avg_logprob": -0.19342653374922902,
+      "no_speech_prob": 8.707005116903588e-10,
+      "compression_ratio": 1.4684210526315788
+    },
+    {
+      "start": 7102.86,
+      "end": 7104.26,
+      "text": "as a sort of a father figure",
+      "avg_logprob": -0.19342653374922902,
+      "no_speech_prob": 8.707005116903588e-10,
+      "compression_ratio": 1.4684210526315788
+    },
+    {
+      "start": 7104.26,
+      "end": 7106.04,
+      "text": "oh i'm already a father figure now",
+      "avg_logprob": -0.19342653374922902,
+      "no_speech_prob": 8.707005116903588e-10,
+      "compression_ratio": 1.4684210526315788
+    },
+    {
+      "start": 7106.04,
+      "end": 7106.76,
+      "text": "cool",
+      "avg_logprob": -0.19342653374922902,
+      "no_speech_prob": 8.707005116903588e-10,
+      "compression_ratio": 1.4684210526315788
+    },
+    {
+      "start": 7106.76,
+      "end": 7107.76,
+      "text": "someone whose words",
+      "avg_logprob": -0.19342653374922902,
+      "no_speech_prob": 8.707005116903588e-10,
+      "compression_ratio": 1.4684210526315788
+    },
+    {
+      "start": 7107.76,
+      "end": 7109.62,
+      "text": "bring both comfort and perspective",
+      "avg_logprob": -0.19342653374922902,
+      "no_speech_prob": 8.707005116903588e-10,
+      "compression_ratio": 1.4684210526315788
+    },
+    {
+      "start": 7109.62,
+      "end": 7111.98,
+      "text": "I can already kind of imagine you saying",
+      "avg_logprob": -0.13657290594918386,
+      "no_speech_prob": 1.0177483855677849e-11,
+      "compression_ratio": 1.2714932126696832
+    },
+    {
+      "start": 7111.98,
+      "end": 7114.52,
+      "text": "باہر پڑھنے گئی ہو بیٹا",
+      "avg_logprob": -0.13657290594918386,
+      "no_speech_prob": 1.0177483855677849e-11,
+      "compression_ratio": 1.2714932126696832
+    },
+    {
+      "start": 7114.52,
+      "end": 7115.5,
+      "text": "focus on that",
+      "avg_logprob": -0.13657290594918386,
+      "no_speech_prob": 1.0177483855677849e-11,
+      "compression_ratio": 1.2714932126696832
+    },
+    {
+      "start": 7115.5,
+      "end": 7117.06,
+      "text": "but I still wanted to share this with you",
+      "avg_logprob": -0.13657290594918386,
+      "no_speech_prob": 1.0177483855677849e-11,
+      "compression_ratio": 1.2714932126696832
+    },
+    {
+      "start": 7117.06,
+      "end": 7118.88,
+      "text": "I moved to Berlin from Pakistan",
+      "avg_logprob": -0.13657290594918386,
+      "no_speech_prob": 1.0177483855677849e-11,
+      "compression_ratio": 1.2714932126696832
+    },
+    {
+      "start": 7118.88,
+      "end": 7120.18,
+      "text": "to pursue my master's degree",
+      "avg_logprob": -0.13657290594918386,
+      "no_speech_prob": 1.0177483855677849e-11,
+      "compression_ratio": 1.2714932126696832
+    },
+    {
+      "start": 7120.18,
+      "end": 7121.5,
+      "text": "since then I've been studying",
+      "avg_logprob": -0.13657290594918386,
+      "no_speech_prob": 1.0177483855677849e-11,
+      "compression_ratio": 1.2714932126696832
+    },
+    {
+      "start": 7121.5,
+      "end": 7123.98,
+      "text": "while also working at a research institute",
+      "avg_logprob": -0.13657290594918386,
+      "no_speech_prob": 1.0177483855677849e-11,
+      "compression_ratio": 1.2714932126696832
+    },
+    {
+      "start": 7123.98,
+      "end": 7125.12,
+      "text": "life here",
+      "avg_logprob": -0.13657290594918386,
+      "no_speech_prob": 1.0177483855677849e-11,
+      "compression_ratio": 1.2714932126696832
+    }
+  ],
+  "stats": {
+    "word_count": 141,
+    "latin_letters": 506,
+    "urdu_letters": 95,
+    "latin_letter_fraction": 0.842,
+    "repeated_trigram_fraction": 0.014,
+    "replacement_characters": 0
+  },
+  "original_text": "اس کی ریلے کٹیں گی اب بھائی کسی ڈاکٹر سے مشورہ کریں بہت زیادہ بہتر بتا سکتے ہیں خیال رکھیں گے نیچس ون ایڈنٹیٹی ایڈنٹیٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی",
+  "similarity_to_original": 0.164,
+  "mean_segment_logprob": -0.1769,
+  "processing_seconds": 10.18
+}

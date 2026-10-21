@@ -1,0 +1,173 @@
+{
+  "status": "completed",
+  "checkpoint_id": "edbd7254c94b937971f099598bb72f07e939cbca3f84b04f71182e5cc3bb90ac",
+  "created_utc": "2026-10-21T07:25:10+00:00",
+  "episode": 113,
+  "clip_id": "clip_01",
+  "start": "00:08:58.911",
+  "end": "00:09:43.911",
+  "reason": "long_repeated_subtitle_run",
+  "model": "turbo",
+  "language_mode": "auto",
+  "device": "cuda",
+  "detected_language": "en",
+  "text": "How should I talk to my father that he is gay? Father gay? Salam, I hope you're doing well. Thank you for making such helpful content. I love your work. Hoping to see you grow more. I'm 26 from Asateen, Punjab, Pakistan. I'll jump into my question straight up. How should I talk to my father that he is gay? He doesn't have to talk to him. Are you going to inform him? Let's see. I've been noticing for a long time that he has something personal to do on his phone. he does video calls and chats with some random people on messenger and whatsapp i have read messages on his phone about random mails and mainly the conversations were about him asking people to masturbate and some missed video calls almost six months ago he got another phone for these",
+  "segments": [
+    {
+      "start": 538.911,
+      "end": 541.351,
+      "text": "How should I talk to my father that he is gay?",
+      "avg_logprob": -0.3690982740752551,
+      "no_speech_prob": 8.827015507417713e-11,
+      "compression_ratio": 1.697080291970803
+    },
+    {
+      "start": 542.431,
+      "end": 543.071,
+      "text": "Father gay?",
+      "avg_logprob": -0.3690982740752551,
+      "no_speech_prob": 8.827015507417713e-11,
+      "compression_ratio": 1.697080291970803
+    },
+    {
+      "start": 543.351,
+      "end": 544.831,
+      "text": "Salam, I hope you're doing well.",
+      "avg_logprob": -0.3690982740752551,
+      "no_speech_prob": 8.827015507417713e-11,
+      "compression_ratio": 1.697080291970803
+    },
+    {
+      "start": 544.911,
+      "end": 546.431,
+      "text": "Thank you for making such helpful content.",
+      "avg_logprob": -0.3690982740752551,
+      "no_speech_prob": 8.827015507417713e-11,
+      "compression_ratio": 1.697080291970803
+    },
+    {
+      "start": 546.551,
+      "end": 547.191,
+      "text": "I love your work.",
+      "avg_logprob": -0.3690982740752551,
+      "no_speech_prob": 8.827015507417713e-11,
+      "compression_ratio": 1.697080291970803
+    },
+    {
+      "start": 547.271,
+      "end": 548.671,
+      "text": "Hoping to see you grow more.",
+      "avg_logprob": -0.3690982740752551,
+      "no_speech_prob": 8.827015507417713e-11,
+      "compression_ratio": 1.697080291970803
+    },
+    {
+      "start": 549.431,
+      "end": 552.471,
+      "text": "I'm 26 from Asateen, Punjab, Pakistan.",
+      "avg_logprob": -0.3690982740752551,
+      "no_speech_prob": 8.827015507417713e-11,
+      "compression_ratio": 1.697080291970803
+    },
+    {
+      "start": 553.111,
+      "end": 554.791,
+      "text": "I'll jump into my question straight up.",
+      "avg_logprob": -0.3690982740752551,
+      "no_speech_prob": 8.827015507417713e-11,
+      "compression_ratio": 1.697080291970803
+    },
+    {
+      "start": 554.931,
+      "end": 557.111,
+      "text": "How should I talk to my father that he is gay?",
+      "avg_logprob": -0.3690982740752551,
+      "no_speech_prob": 8.827015507417713e-11,
+      "compression_ratio": 1.697080291970803
+    },
+    {
+      "start": 557.271,
+      "end": 558.131,
+      "text": "He doesn't have to talk to him.",
+      "avg_logprob": -0.3690982740752551,
+      "no_speech_prob": 8.827015507417713e-11,
+      "compression_ratio": 1.697080291970803
+    },
+    {
+      "start": 559.131,
+      "end": 561.291,
+      "text": "Are you going to inform him?",
+      "avg_logprob": -0.3690982740752551,
+      "no_speech_prob": 8.827015507417713e-11,
+      "compression_ratio": 1.697080291970803
+    },
+    {
+      "start": 561.531,
+      "end": 562.211,
+      "text": "Let's see.",
+      "avg_logprob": -0.3690982740752551,
+      "no_speech_prob": 8.827015507417713e-11,
+      "compression_ratio": 1.697080291970803
+    },
+    {
+      "start": 562.711,
+      "end": 567.151,
+      "text": "I've been noticing for a long time that he has something personal to do on his phone.",
+      "avg_logprob": -0.3690982740752551,
+      "no_speech_prob": 8.827015507417713e-11,
+      "compression_ratio": 1.697080291970803
+    },
+    {
+      "start": 567.151,
+      "end": 571.591,
+      "text": "he does video calls and chats with some random people on messenger and whatsapp",
+      "avg_logprob": -0.15297015011310577,
+      "no_speech_prob": 2.0593843470806394e-12,
+      "compression_ratio": 1.6863905325443787
+    },
+    {
+      "start": 571.591,
+      "end": 574.851,
+      "text": "i have read messages on his phone about random mails and mainly the",
+      "avg_logprob": -0.15297015011310577,
+      "no_speech_prob": 2.0593843470806394e-12,
+      "compression_ratio": 1.6863905325443787
+    },
+    {
+      "start": 574.851,
+      "end": 579.371,
+      "text": "conversations were about him asking people to masturbate and some missed",
+      "avg_logprob": -0.15297015011310577,
+      "no_speech_prob": 2.0593843470806394e-12,
+      "compression_ratio": 1.6863905325443787
+    },
+    {
+      "start": 579.371,
+      "end": 580.191,
+      "text": "video calls",
+      "avg_logprob": -0.15297015011310577,
+      "no_speech_prob": 2.0593843470806394e-12,
+      "compression_ratio": 1.6863905325443787
+    },
+    {
+      "start": 580.191,
+      "end": 583.891,
+      "text": "almost six months ago he got another phone for these",
+      "avg_logprob": -0.15297015011310577,
+      "no_speech_prob": 2.0593843470806394e-12,
+      "compression_ratio": 1.6863905325443787
+    }
+  ],
+  "stats": {
+    "word_count": 142,
+    "latin_letters": 586,
+    "urdu_letters": 0,
+    "latin_letter_fraction": 1.0,
+    "repeated_trigram_fraction": 0.014,
+    "replacement_characters": 0
+  },
+  "original_text": "سو ویر گارا کیپ این آور تاکہ پھر افطار کی تیاریوں میں لگ جائیں سو ویر گارا کیپ این آور تاکہ پھر افطار کی تیاریوں میں لگ جائیں",
+  "similarity_to_original": 0.0,
+  "mean_segment_logprob": -0.3091,
+  "processing_seconds": 7.24
+}

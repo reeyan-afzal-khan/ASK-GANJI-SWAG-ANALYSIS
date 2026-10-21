@@ -1,0 +1,77 @@
+{
+  "status": "completed",
+  "checkpoint_id": "c93ac5e469f12be246426876cee35baa22f86dcea00da03ed4b714a8d7c5bfb6",
+  "created_utc": "2026-10-21T07:28:57+00:00",
+  "episode": 216,
+  "clip_id": "clip_02",
+  "start": "01:58:41.120",
+  "end": "01:59:26.120",
+  "reason": "repeated_subtitle_run",
+  "model": "turbo",
+  "language_mode": "ur",
+  "device": "cuda",
+  "detected_language": "ur",
+  "text": "studying while also working at a research institute life here unfolded in unexpected ways i met and started dating a hindu tamil guy from india we actually knew each other from before i came to germany we were in the same online group for university admissions and stuff i was the one who messaged him first to ask when the admission results would be announced and the rest is history i know this might sound like a young love story but i'm not being ملتا ہے",
+  "segments": [
+    {
+      "start": 7121.12,
+      "end": 7126.86,
+      "text": "studying while also working at a research institute life here unfolded in unexpected ways",
+      "avg_logprob": -0.05406270443814472,
+      "no_speech_prob": 1.2957361572585313e-10,
+      "compression_ratio": 1.6981132075471699
+    },
+    {
+      "start": 7126.86,
+      "end": 7132.74,
+      "text": "i met and started dating a hindu tamil guy from india we actually knew each other from before i",
+      "avg_logprob": -0.05406270443814472,
+      "no_speech_prob": 1.2957361572585313e-10,
+      "compression_ratio": 1.6981132075471699
+    },
+    {
+      "start": 7132.74,
+      "end": 7137.86,
+      "text": "came to germany we were in the same online group for university admissions and stuff i was the",
+      "avg_logprob": -0.05406270443814472,
+      "no_speech_prob": 1.2957361572585313e-10,
+      "compression_ratio": 1.6981132075471699
+    },
+    {
+      "start": 7137.86,
+      "end": 7142.26,
+      "text": "one who messaged him first to ask when the admission results would be announced and the",
+      "avg_logprob": -0.05406270443814472,
+      "no_speech_prob": 1.2957361572585313e-10,
+      "compression_ratio": 1.6981132075471699
+    },
+    {
+      "start": 7142.26,
+      "end": 7150.9,
+      "text": "rest is history i know this might sound like a young love story but i'm not being",
+      "avg_logprob": -0.05406270443814472,
+      "no_speech_prob": 1.2957361572585313e-10,
+      "compression_ratio": 1.6981132075471699
+    },
+    {
+      "start": 7150.9,
+      "end": 7166.12,
+      "text": "ملتا ہے",
+      "avg_logprob": -1.268768072128296,
+      "no_speech_prob": 4.047324107803174e-12,
+      "compression_ratio": 0.5909090909090909
+    }
+  ],
+  "stats": {
+    "word_count": 86,
+    "latin_letters": 366,
+    "urdu_letters": 6,
+    "latin_letter_fraction": 0.984,
+    "repeated_trigram_fraction": 0.012,
+    "replacement_characters": 0
+  },
+  "original_text": "ایڈنٹی جرمنی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی بیگ ویڈ ہیم فیلز لیکن بریت آف ریشیر ایٹس فرس ٹائم آف فیلڈ سین اینڈ ریسپیکٹیڈ فور ہو آئی ایم آنسلی آئی فیل لائک آئی سٹرک سٹرک گولڈ ویڈ ہے",
+  "similarity_to_original": 0.011,
+  "mean_segment_logprob": -0.2565,
+  "processing_seconds": 12.17
+}

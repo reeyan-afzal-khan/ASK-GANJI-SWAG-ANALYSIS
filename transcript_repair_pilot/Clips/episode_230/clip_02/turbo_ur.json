@@ -1,0 +1,205 @@
+{
+  "status": "completed",
+  "checkpoint_id": "c2e578e8e6535339e6e2a33cc16e72b6ae4cfc1e96858201c6c7987e8e7e2dcc",
+  "created_utc": "2026-10-21T07:30:11+00:00",
+  "episode": 230,
+  "clip_id": "clip_02",
+  "start": "01:11:15.039",
+  "end": "01:12:00.039",
+  "reason": "long_repeated_subtitle_run",
+  "model": "turbo",
+  "language_mode": "ur",
+  "device": "cuda",
+  "detected_language": "ur",
+  "text": "ایسی چیزوں کو لوگ لے کے I understand دیکھو جو چیز کسی اس سے گزرتا ہے اس کا ظاہر ہے ایک ڈیفرنٹ پرسپیکٹیو ہوتا ہے I understand and I empathize with you آپ نے کچھ حد تک کی فیلنگز یا ایموشنز انوالف کیے ہوں گے اور آپ فورسی کر رہی ہوں گی کہ ہاں چلو ٹھیک ہے بندہ لگ رہے کہ میں شاید جو ہے نا زندگی میں آگے پڑھوں It's very nice of you and refreshing کہ آپ نے کہا کہ میں کسی مرد کو یا شادی کو as a backup plan یا financial escape میں نہیں دیکھتی کہ میں خود کفیل ہوں and that's amazing تو ظاہر ہے تو hurt تو ہوتا ہے انسان کہ اس نے ایسا سوچا لیکن he's someone else's problem now",
+  "segments": [
+    {
+      "start": 4275.599,
+      "end": 4277.359,
+      "text": "ایسی چیزوں کو لوگ لے کے",
+      "avg_logprob": -0.14495100233289931,
+      "no_speech_prob": 3.019373640000822e-09,
+      "compression_ratio": 1.7306590257879657
+    },
+    {
+      "start": 4277.359,
+      "end": 4278.119,
+      "text": "I understand",
+      "avg_logprob": -0.14495100233289931,
+      "no_speech_prob": 3.019373640000822e-09,
+      "compression_ratio": 1.7306590257879657
+    },
+    {
+      "start": 4278.119,
+      "end": 4280.559,
+      "text": "دیکھو جو چیز کسی اس سے گزرتا ہے",
+      "avg_logprob": -0.14495100233289931,
+      "no_speech_prob": 3.019373640000822e-09,
+      "compression_ratio": 1.7306590257879657
+    },
+    {
+      "start": 4280.559,
+      "end": 4283.039,
+      "text": "اس کا ظاہر ہے ایک ڈیفرنٹ پرسپیکٹیو ہوتا ہے",
+      "avg_logprob": -0.14495100233289931,
+      "no_speech_prob": 3.019373640000822e-09,
+      "compression_ratio": 1.7306590257879657
+    },
+    {
+      "start": 4283.039,
+      "end": 4285.139,
+      "text": "I understand and I empathize with you",
+      "avg_logprob": -0.14495100233289931,
+      "no_speech_prob": 3.019373640000822e-09,
+      "compression_ratio": 1.7306590257879657
+    },
+    {
+      "start": 4285.139,
+      "end": 4287.279,
+      "text": "آپ نے کچھ حد تک کی فیلنگز",
+      "avg_logprob": -0.14495100233289931,
+      "no_speech_prob": 3.019373640000822e-09,
+      "compression_ratio": 1.7306590257879657
+    },
+    {
+      "start": 4287.279,
+      "end": 4288.559,
+      "text": "یا ایموشنز",
+      "avg_logprob": -0.14495100233289931,
+      "no_speech_prob": 3.019373640000822e-09,
+      "compression_ratio": 1.7306590257879657
+    },
+    {
+      "start": 4288.559,
+      "end": 4290.159,
+      "text": "انوالف کیے ہوں گے",
+      "avg_logprob": -0.14495100233289931,
+      "no_speech_prob": 3.019373640000822e-09,
+      "compression_ratio": 1.7306590257879657
+    },
+    {
+      "start": 4290.159,
+      "end": 4292.739,
+      "text": "اور آپ فورسی کر رہی ہوں گی کہ ہاں چلو ٹھیک ہے",
+      "avg_logprob": -0.14495100233289931,
+      "no_speech_prob": 3.019373640000822e-09,
+      "compression_ratio": 1.7306590257879657
+    },
+    {
+      "start": 4292.739,
+      "end": 4295.039,
+      "text": "بندہ لگ رہے کہ میں شاید",
+      "avg_logprob": -0.14495100233289931,
+      "no_speech_prob": 3.019373640000822e-09,
+      "compression_ratio": 1.7306590257879657
+    },
+    {
+      "start": 4295.879,
+      "end": 4296.499,
+      "text": "جو ہے نا",
+      "avg_logprob": -0.14495100233289931,
+      "no_speech_prob": 3.019373640000822e-09,
+      "compression_ratio": 1.7306590257879657
+    },
+    {
+      "start": 4296.499,
+      "end": 4297.919,
+      "text": "زندگی میں آگے پڑھوں",
+      "avg_logprob": -0.14495100233289931,
+      "no_speech_prob": 3.019373640000822e-09,
+      "compression_ratio": 1.7306590257879657
+    },
+    {
+      "start": 4297.919,
+      "end": 4300.959,
+      "text": "It's very nice of you",
+      "avg_logprob": -0.14495100233289931,
+      "no_speech_prob": 3.019373640000822e-09,
+      "compression_ratio": 1.7306590257879657
+    },
+    {
+      "start": 4300.959,
+      "end": 4302.899,
+      "text": "and refreshing کہ آپ نے کہا",
+      "avg_logprob": -0.14495100233289931,
+      "no_speech_prob": 3.019373640000822e-09,
+      "compression_ratio": 1.7306590257879657
+    },
+    {
+      "start": 4302.899,
+      "end": 4304.639,
+      "text": "کہ میں کسی مرد کو یا شادی کو",
+      "avg_logprob": -0.14495100233289931,
+      "no_speech_prob": 3.019373640000822e-09,
+      "compression_ratio": 1.7306590257879657
+    },
+    {
+      "start": 4305.039,
+      "end": 4308.079,
+      "text": "as a backup plan یا financial escape میں نہیں دیکھتی",
+      "avg_logprob": -0.18796554425867593,
+      "no_speech_prob": 8.168873355529627e-10,
+      "compression_ratio": 1.3368421052631578
+    },
+    {
+      "start": 4308.079,
+      "end": 4309.519,
+      "text": "کہ میں خود کفیل ہوں",
+      "avg_logprob": -0.18796554425867593,
+      "no_speech_prob": 8.168873355529627e-10,
+      "compression_ratio": 1.3368421052631578
+    },
+    {
+      "start": 4309.519,
+      "end": 4310.599,
+      "text": "and that's amazing",
+      "avg_logprob": -0.18796554425867593,
+      "no_speech_prob": 8.168873355529627e-10,
+      "compression_ratio": 1.3368421052631578
+    },
+    {
+      "start": 4310.599,
+      "end": 4311.919,
+      "text": "تو",
+      "avg_logprob": -0.18796554425867593,
+      "no_speech_prob": 8.168873355529627e-10,
+      "compression_ratio": 1.3368421052631578
+    },
+    {
+      "start": 4311.919,
+      "end": 4315.799,
+      "text": "ظاہر ہے تو hurt تو ہوتا ہے انسان",
+      "avg_logprob": -0.18796554425867593,
+      "no_speech_prob": 8.168873355529627e-10,
+      "compression_ratio": 1.3368421052631578
+    },
+    {
+      "start": 4315.799,
+      "end": 4316.959,
+      "text": "کہ اس نے ایسا سوچا",
+      "avg_logprob": -0.18796554425867593,
+      "no_speech_prob": 8.168873355529627e-10,
+      "compression_ratio": 1.3368421052631578
+    },
+    {
+      "start": 4316.959,
+      "end": 4319.799,
+      "text": "لیکن he's someone else's problem now",
+      "avg_logprob": -0.18796554425867593,
+      "no_speech_prob": 8.168873355529627e-10,
+      "compression_ratio": 1.3368421052631578
+    }
+  ],
+  "stats": {
+    "word_count": 127,
+    "latin_letters": 143,
+    "urdu_letters": 293,
+    "latin_letter_fraction": 0.328,
+    "repeated_trigram_fraction": 0.008,
+    "replacement_characters": 0
+  },
+  "original_text": "ایک فنانشل اسکیپ یا ایک باک اپ پلان میں میں ہمارے لیے ہر چیز کو دیکھتے ہیں ایک فنانشل اسکیپ یا ایک باک اپ پلان میں میں ہمارے لیے ہر چیز کو دیکھتے ہیں",
+  "similarity_to_original": 0.031,
+  "mean_segment_logprob": -0.1586,
+  "processing_seconds": 11.01
+}

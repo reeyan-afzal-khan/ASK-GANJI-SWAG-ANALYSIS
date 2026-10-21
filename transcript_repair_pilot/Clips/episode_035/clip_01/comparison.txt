@@ -1,0 +1,26 @@
+EPISODE 035 / clip_01 | 00:58:55.731 --> 00:59:40.731
+Selection: long_repeated_subtitle_run
+
+=== ORIGINAL WHISPER SRT (UNVERIFIED) ===
+ہمیں سوچنے کے لئے ہمیں سوچنے کے لئے
+
+=== large-v3 / auto / completed ===
+तो भाई थॉमर्स रून ले कोई कोई कोई कोई गैरी रून ले अच्छा बहुत इन टू इफ यू रोइंट टू अम यू नों डू समथिंग जस जस ब्लॉक इम आफ आप हैव यू फेथ यू हैव राइट फ्यूचर हेड और यह सीधा-सीधा ना घर पर के खाना मेरे से बातें करो इसके इसके कुछ हां इसको कोई दोस्त भी नहीं होंगे यह बाद यह आपको ऑनलाइन दिखी होगी और पहुंचिए कंट्रोल यह कंट्रोल फ्रीक है आब यह है ना मोस्टली पाकिस्तानी लौंडे ऐसी है पाकिस्तानी सब्सक्राइब किया हुआ थी कि उससे यह नहीं बरदाशत होगा कि मेरी भी इतनी पड़े लेकिन
+Detected language: hi
+Runtime: 70.32 seconds
+
+=== large-v3 / ur / completed ===
+او بھائی تھومس گھنڈ لے کوئی کوئی کوئی کوئی گیری گھنڈ لے یہ سیدھا سیدھا نا گھر پہ بیٹھ کے کھانا میرے سے باتیں کرو اس کے اس کے کوئی دوست بھی نہیں ہوں گے یہ آپ کو آن لائن دیکھی ہوگی اور یہ پہنچ گئی ہوگی یہ کنٹرول فریک ہے آ بھائی یہی ہے نا موسلی پاکستانی لونڈے ایسے ہی ہیں پاکستانی من ان جنرل بھائی وہ آپ سے آپ پی ایس ڈی آپ آپ پی ایس ڈی کر رہی ہیں اس نے زیادہ زیادہ ایم بی اے کیا ہوا ہوگا ٹھیک ہے اس سے یہ ہی نہیں برداشت ہوگا کہ میری بی بی اتنی پڑے لیکن
+Detected language: ur
+Runtime: 36.7 seconds
+
+=== turbo / auto / completed ===
+If you are going to do something, just block him off, have your faith, you have a bright future ahead. Just sit and sit and talk with me. He is an insecure man. He is not an insecure man. He is an insecure man. You can see it online. He is a control freak. Mostly Pakistani londes are like this. Pakistani men in general are the more freaks. This is the generalization I am giving you. You are doing a PhD and he has MBA. He will not be able to take this from me. Okay, maybe we'll be with me for a little
+Detected language: en
+Runtime: 210.89 seconds
+
+=== turbo / ur / completed ===
+بھائی، تھومس رون لے کوئی کوئی کوئی گئری رون لے یہ سیدھا سیدھا گھر پہ بیٹھ کے کھانا میر سے باتے کرو اس کو کوئی دوست بھی نہیں ہوں گے یہ آپ کو آن لائن دکھی ہو گی یہ کنٹرول فریق ہے یہی ہے نا پاکستانی لونڈے ایسے ہی ہیں پاکستانی من بھائی وہ آپ سے آپ پہ پہلے ہیں اس نے زیادہ ساتھ ایم بی کیا ہوا ہوگا اس سے یہ ہی نہیں برداشت ہوگا کہ میری بیوی اتنی پڑے لے
+Detected language: ur
+Runtime: 28.94 seconds
+

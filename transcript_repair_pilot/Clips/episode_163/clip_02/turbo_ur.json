@@ -1,0 +1,221 @@
+{
+  "status": "completed",
+  "checkpoint_id": "daebe5b7a902fa22d008f74f4f1bf6695ac5b096b26bc6854ea7b8e0ad0af61b",
+  "created_utc": "2026-10-21T07:27:50+00:00",
+  "episode": 163,
+  "clip_id": "clip_02",
+  "start": "00:15:10.354",
+  "end": "00:15:55.354",
+  "reason": "long_repeated_subtitle_run",
+  "model": "turbo",
+  "language_mode": "ur",
+  "device": "cuda",
+  "detected_language": "ur",
+  "text": "گرفیٹی بھی کرتے ہیں یہ بنائے جاتے ہیں بیکرز کانٹریز دائٹ ورک آن دیر پیپل دیر ڈو ریالائز کہ اس عمر کے بچے میں یہ چیزیں ہوں گی تو اس کا یہ انٹیوٹ ہے اس عمر کے جو ٹینیجر ہے اس کے اندر انگر ہوگا فرسٹریشن ہوگا تو اس کو اس طرح چینلائز کرنا ہے تو سب کو ان کے چیزیں بنا کے دیویں ہیں اور وہ اس پر وہاں جا کے کرتے ہیں تو جب ان کو ایک جگہ دے دی ہے نا تو پھر وہ شارڈ پہ جا کے پیڑ نہیں کرے گا یا وہ ٹاور بریج پہ جا کے نہیں کرے گا گند نہیں کرے گا تو ایوینیوز دینے چاہیے لوگوں کو لیکن چونکہ ہمارے ہیں اتنے ایوینیوز نہیں ہیں and it's strange حالکہ انڈیا میں you can at least go to a pub you can at least go to all these other places activities ہیں",
+  "segments": [
+    {
+      "start": 910.354,
+      "end": 911.354,
+      "text": "گرفیٹی بھی کرتے ہیں",
+      "avg_logprob": -0.16888163248697916,
+      "no_speech_prob": 3.5349410065776965e-09,
+      "compression_ratio": 2.203448275862069
+    },
+    {
+      "start": 911.354,
+      "end": 913.634,
+      "text": "یہ بنائے جاتے ہیں",
+      "avg_logprob": -0.16888163248697916,
+      "no_speech_prob": 3.5349410065776965e-09,
+      "compression_ratio": 2.203448275862069
+    },
+    {
+      "start": 913.634,
+      "end": 915.134,
+      "text": "بیکرز کانٹریز",
+      "avg_logprob": -0.16888163248697916,
+      "no_speech_prob": 3.5349410065776965e-09,
+      "compression_ratio": 2.203448275862069
+    },
+    {
+      "start": 915.134,
+      "end": 916.914,
+      "text": "دائٹ ورک آن دیر پیپل",
+      "avg_logprob": -0.16888163248697916,
+      "no_speech_prob": 3.5349410065776965e-09,
+      "compression_ratio": 2.203448275862069
+    },
+    {
+      "start": 916.914,
+      "end": 919.294,
+      "text": "دیر ڈو ریالائز کہ اس عمر کے بچے میں",
+      "avg_logprob": -0.16888163248697916,
+      "no_speech_prob": 3.5349410065776965e-09,
+      "compression_ratio": 2.203448275862069
+    },
+    {
+      "start": 919.294,
+      "end": 921.674,
+      "text": "یہ چیزیں ہوں گی تو اس کا یہ",
+      "avg_logprob": -0.16888163248697916,
+      "no_speech_prob": 3.5349410065776965e-09,
+      "compression_ratio": 2.203448275862069
+    },
+    {
+      "start": 921.674,
+      "end": 923.714,
+      "text": "انٹیوٹ ہے اس عمر کے جو ٹینیجر",
+      "avg_logprob": -0.16888163248697916,
+      "no_speech_prob": 3.5349410065776965e-09,
+      "compression_ratio": 2.203448275862069
+    },
+    {
+      "start": 923.714,
+      "end": 925.494,
+      "text": "ہے اس کے اندر انگر ہوگا فرسٹریشن",
+      "avg_logprob": -0.16888163248697916,
+      "no_speech_prob": 3.5349410065776965e-09,
+      "compression_ratio": 2.203448275862069
+    },
+    {
+      "start": 925.494,
+      "end": 928.094,
+      "text": "ہوگا تو اس کو",
+      "avg_logprob": -0.16888163248697916,
+      "no_speech_prob": 3.5349410065776965e-09,
+      "compression_ratio": 2.203448275862069
+    },
+    {
+      "start": 928.094,
+      "end": 929.374,
+      "text": "اس طرح چینلائز کرنا ہے",
+      "avg_logprob": -0.16888163248697916,
+      "no_speech_prob": 3.5349410065776965e-09,
+      "compression_ratio": 2.203448275862069
+    },
+    {
+      "start": 929.374,
+      "end": 931.714,
+      "text": "تو سب کو ان کے چیزیں بنا کے دیویں ہیں",
+      "avg_logprob": -0.16888163248697916,
+      "no_speech_prob": 3.5349410065776965e-09,
+      "compression_ratio": 2.203448275862069
+    },
+    {
+      "start": 931.714,
+      "end": 933.194,
+      "text": "اور وہ اس پر وہاں جا کے کرتے ہیں",
+      "avg_logprob": -0.16888163248697916,
+      "no_speech_prob": 3.5349410065776965e-09,
+      "compression_ratio": 2.203448275862069
+    },
+    {
+      "start": 933.194,
+      "end": 935.714,
+      "text": "تو جب ان کو ایک جگہ دے دی ہے نا تو پھر وہ شارڈ پہ",
+      "avg_logprob": -0.16888163248697916,
+      "no_speech_prob": 3.5349410065776965e-09,
+      "compression_ratio": 2.203448275862069
+    },
+    {
+      "start": 935.714,
+      "end": 937.274,
+      "text": "جا کے پیڑ نہیں کرے گا",
+      "avg_logprob": -0.17111586162022183,
+      "no_speech_prob": 3.557317218572109e-10,
+      "compression_ratio": 1.735042735042735
+    },
+    {
+      "start": 937.274,
+      "end": 939.534,
+      "text": "یا وہ ٹاور بریج پہ جا کے نہیں کرے گا",
+      "avg_logprob": -0.17111586162022183,
+      "no_speech_prob": 3.557317218572109e-10,
+      "compression_ratio": 1.735042735042735
+    },
+    {
+      "start": 939.534,
+      "end": 940.454,
+      "text": "گند نہیں کرے گا",
+      "avg_logprob": -0.17111586162022183,
+      "no_speech_prob": 3.557317218572109e-10,
+      "compression_ratio": 1.735042735042735
+    },
+    {
+      "start": 940.454,
+      "end": 943.494,
+      "text": "تو ایوینیوز دینے چاہیے لوگوں کو",
+      "avg_logprob": -0.17111586162022183,
+      "no_speech_prob": 3.557317218572109e-10,
+      "compression_ratio": 1.735042735042735
+    },
+    {
+      "start": 943.494,
+      "end": 945.754,
+      "text": "لیکن چونکہ ہمارے ہیں اتنے ایوینیوز نہیں ہیں",
+      "avg_logprob": -0.17111586162022183,
+      "no_speech_prob": 3.557317218572109e-10,
+      "compression_ratio": 1.735042735042735
+    },
+    {
+      "start": 945.754,
+      "end": 946.934,
+      "text": "and it's strange",
+      "avg_logprob": -0.17111586162022183,
+      "no_speech_prob": 3.557317218572109e-10,
+      "compression_ratio": 1.735042735042735
+    },
+    {
+      "start": 946.934,
+      "end": 949.154,
+      "text": "حالکہ انڈیا میں",
+      "avg_logprob": -0.17111586162022183,
+      "no_speech_prob": 3.557317218572109e-10,
+      "compression_ratio": 1.735042735042735
+    },
+    {
+      "start": 949.154,
+      "end": 950.654,
+      "text": "you can at least",
+      "avg_logprob": -0.17111586162022183,
+      "no_speech_prob": 3.557317218572109e-10,
+      "compression_ratio": 1.735042735042735
+    },
+    {
+      "start": 950.654,
+      "end": 951.974,
+      "text": "go to a pub",
+      "avg_logprob": -0.17111586162022183,
+      "no_speech_prob": 3.557317218572109e-10,
+      "compression_ratio": 1.735042735042735
+    },
+    {
+      "start": 951.974,
+      "end": 953.914,
+      "text": "you can at least go to all these other places",
+      "avg_logprob": -0.17111586162022183,
+      "no_speech_prob": 3.557317218572109e-10,
+      "compression_ratio": 1.735042735042735
+    },
+    {
+      "start": 953.914,
+      "end": 954.934,
+      "text": "activities ہیں",
+      "avg_logprob": -0.17111586162022183,
+      "no_speech_prob": 3.557317218572109e-10,
+      "compression_ratio": 1.735042735042735
+    }
+  ],
+  "stats": {
+    "word_count": 149,
+    "latin_letters": 80,
+    "urdu_letters": 402,
+    "latin_letter_fraction": 0.166,
+    "repeated_trigram_fraction": 0.02,
+    "replacement_characters": 0
+  },
+  "original_text": "بہت ساری فلمیں میں نے نہیں بتائیں جہازوں میں ہی ہو کے رہ گیا ہوں بہت ساری فلمیں میں نے نہیں بتائیں جہازوں میں ہی ہو کے رہ گیا ہوں بہت ساری فلمیں میں نے نہیں بتائیں جہازوں میں ہی ہو کے رہ گیا ہوں",
+  "similarity_to_original": 0.039,
+  "mean_segment_logprob": -0.1699,
+  "processing_seconds": 12.11
+}

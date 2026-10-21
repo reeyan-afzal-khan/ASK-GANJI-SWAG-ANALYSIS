@@ -1,0 +1,221 @@
+{
+  "status": "completed",
+  "checkpoint_id": "1ce2a8ef3e59b281e78bb107c964105cf9bb525532648516e3ce1f6a543248b7",
+  "created_utc": "2026-10-21T07:30:56+00:00",
+  "episode": 241,
+  "clip_id": "clip_01",
+  "start": "00:12:40.789",
+  "end": "00:13:25.789",
+  "reason": "long_repeated_subtitle_run",
+  "model": "turbo",
+  "language_mode": "ur",
+  "device": "cuda",
+  "detected_language": "ur",
+  "text": "at all time directly or indirectly and those two things are money and sex give these two things to everyone forever they won't need anything else in life actually while searching your channel by mistake search ask gandhi جی gandhi جی سے کیا پوچھو گے بھائی gandhi جی تو خود sex suks کر لیا کر مطلب نہیں کرتے تھے اور chastity اپنی test کرتے تھے پسٹے دنوں ایک ویڈیو میری نظروں سے گزری have you noticed میں ویڈیو بولتا اور ریل نہیں بولتا تاکہ میں وہ نہ لگوں ریل دیکھی جس میں گاندی جی وہ ایکچلی ہمو سیکشول تھے اور ان کا کوئی لور تھا ساؤت آفریکا میں جن کے خطوط تھے اور پھر لائک there are a lot of",
+  "segments": [
+    {
+      "start": 760.789,
+      "end": 762.269,
+      "text": "at all time directly or indirectly",
+      "avg_logprob": -0.1866000437597085,
+      "no_speech_prob": 5.3444835224070175e-09,
+      "compression_ratio": 1.6211180124223603
+    },
+    {
+      "start": 762.269,
+      "end": 764.269,
+      "text": "and those two things are money and sex",
+      "avg_logprob": -0.1866000437597085,
+      "no_speech_prob": 5.3444835224070175e-09,
+      "compression_ratio": 1.6211180124223603
+    },
+    {
+      "start": 764.269,
+      "end": 766.309,
+      "text": "give these two things to everyone",
+      "avg_logprob": -0.1866000437597085,
+      "no_speech_prob": 5.3444835224070175e-09,
+      "compression_ratio": 1.6211180124223603
+    },
+    {
+      "start": 766.309,
+      "end": 768.469,
+      "text": "forever they won't need anything else in life",
+      "avg_logprob": -0.1866000437597085,
+      "no_speech_prob": 5.3444835224070175e-09,
+      "compression_ratio": 1.6211180124223603
+    },
+    {
+      "start": 768.469,
+      "end": 770.209,
+      "text": "actually while searching your channel",
+      "avg_logprob": -0.1866000437597085,
+      "no_speech_prob": 5.3444835224070175e-09,
+      "compression_ratio": 1.6211180124223603
+    },
+    {
+      "start": 770.209,
+      "end": 772.009,
+      "text": "by mistake search",
+      "avg_logprob": -0.1866000437597085,
+      "no_speech_prob": 5.3444835224070175e-09,
+      "compression_ratio": 1.6211180124223603
+    },
+    {
+      "start": 772.009,
+      "end": 773.149,
+      "text": "ask gandhi جی",
+      "avg_logprob": -0.1866000437597085,
+      "no_speech_prob": 5.3444835224070175e-09,
+      "compression_ratio": 1.6211180124223603
+    },
+    {
+      "start": 773.149,
+      "end": 776.489,
+      "text": "gandhi جی سے کیا پوچھو گے",
+      "avg_logprob": -0.1866000437597085,
+      "no_speech_prob": 5.3444835224070175e-09,
+      "compression_ratio": 1.6211180124223603
+    },
+    {
+      "start": 776.489,
+      "end": 778.209,
+      "text": "بھائی gandhi جی",
+      "avg_logprob": -0.1866000437597085,
+      "no_speech_prob": 5.3444835224070175e-09,
+      "compression_ratio": 1.6211180124223603
+    },
+    {
+      "start": 778.209,
+      "end": 780.049,
+      "text": "تو خود sex suks کر لیا کر",
+      "avg_logprob": -0.1866000437597085,
+      "no_speech_prob": 5.3444835224070175e-09,
+      "compression_ratio": 1.6211180124223603
+    },
+    {
+      "start": 780.049,
+      "end": 782.129,
+      "text": "مطلب نہیں کرتے تھے اور",
+      "avg_logprob": -0.1866000437597085,
+      "no_speech_prob": 5.3444835224070175e-09,
+      "compression_ratio": 1.6211180124223603
+    },
+    {
+      "start": 782.129,
+      "end": 784.469,
+      "text": "chastity اپنی test کرتے تھے",
+      "avg_logprob": -0.1866000437597085,
+      "no_speech_prob": 5.3444835224070175e-09,
+      "compression_ratio": 1.6211180124223603
+    },
+    {
+      "start": 784.469,
+      "end": 785.569,
+      "text": "پسٹے دنوں ایک",
+      "avg_logprob": -0.1866000437597085,
+      "no_speech_prob": 5.3444835224070175e-09,
+      "compression_ratio": 1.6211180124223603
+    },
+    {
+      "start": 785.569,
+      "end": 788.609,
+      "text": "ویڈیو میری نظروں سے گزری",
+      "avg_logprob": -0.1866000437597085,
+      "no_speech_prob": 5.3444835224070175e-09,
+      "compression_ratio": 1.6211180124223603
+    },
+    {
+      "start": 788.609,
+      "end": 789.969,
+      "text": "have you noticed میں ویڈیو بولتا",
+      "avg_logprob": -0.1866000437597085,
+      "no_speech_prob": 5.3444835224070175e-09,
+      "compression_ratio": 1.6211180124223603
+    },
+    {
+      "start": 789.969,
+      "end": 792.009,
+      "text": "اور ریل نہیں بولتا تاکہ میں وہ نہ لگوں",
+      "avg_logprob": -0.22810445248501973,
+      "no_speech_prob": 1.1690846069001282e-09,
+      "compression_ratio": 1.6787878787878787
+    },
+    {
+      "start": 792.009,
+      "end": 793.629,
+      "text": "ریل دیکھی",
+      "avg_logprob": -0.22810445248501973,
+      "no_speech_prob": 1.1690846069001282e-09,
+      "compression_ratio": 1.6787878787878787
+    },
+    {
+      "start": 793.629,
+      "end": 794.969,
+      "text": "جس میں",
+      "avg_logprob": -0.22810445248501973,
+      "no_speech_prob": 1.1690846069001282e-09,
+      "compression_ratio": 1.6787878787878787
+    },
+    {
+      "start": 794.969,
+      "end": 797.409,
+      "text": "گاندی جی وہ ایکچلی",
+      "avg_logprob": -0.22810445248501973,
+      "no_speech_prob": 1.1690846069001282e-09,
+      "compression_ratio": 1.6787878787878787
+    },
+    {
+      "start": 797.409,
+      "end": 800.409,
+      "text": "ہمو سیکشول تھے اور ان کا کوئی",
+      "avg_logprob": -0.22810445248501973,
+      "no_speech_prob": 1.1690846069001282e-09,
+      "compression_ratio": 1.6787878787878787
+    },
+    {
+      "start": 800.409,
+      "end": 802.049,
+      "text": "لور تھا ساؤت آفریکا میں",
+      "avg_logprob": -0.22810445248501973,
+      "no_speech_prob": 1.1690846069001282e-09,
+      "compression_ratio": 1.6787878787878787
+    },
+    {
+      "start": 802.049,
+      "end": 803.749,
+      "text": "جن کے خطوط تھے",
+      "avg_logprob": -0.22810445248501973,
+      "no_speech_prob": 1.1690846069001282e-09,
+      "compression_ratio": 1.6787878787878787
+    },
+    {
+      "start": 803.749,
+      "end": 805.069,
+      "text": "اور پھر لائک",
+      "avg_logprob": -0.22810445248501973,
+      "no_speech_prob": 1.1690846069001282e-09,
+      "compression_ratio": 1.6787878787878787
+    },
+    {
+      "start": 805.069,
+      "end": 805.789,
+      "text": "there are a lot of",
+      "avg_logprob": -0.5953421592712402,
+      "no_speech_prob": 6.532446111817691e-11,
+      "compression_ratio": 0.782608695652174
+    }
+  ],
+  "stats": {
+    "word_count": 120,
+    "latin_letters": 241,
+    "urdu_letters": 229,
+    "latin_letter_fraction": 0.513,
+    "repeated_trigram_fraction": 0.008,
+    "replacement_characters": 0
+  },
+  "original_text": "مجھے بیگنگ کی چیزی چاہتا ہے مجھے بیگنگ کی چیزی چاہتا ہے",
+  "similarity_to_original": 0.025,
+  "mean_segment_logprob": -0.2175,
+  "processing_seconds": 10.14
+}

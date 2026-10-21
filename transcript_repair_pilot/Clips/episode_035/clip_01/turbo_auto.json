@@ -1,0 +1,133 @@
+{
+  "status": "completed",
+  "checkpoint_id": "78f666712608ad1efb5e58b482ba17b02070a0645dcefd336b3606ccb15de269",
+  "created_utc": "2026-10-21T07:23:43+00:00",
+  "episode": 35,
+  "clip_id": "clip_01",
+  "start": "00:58:55.731",
+  "end": "00:59:40.731",
+  "reason": "long_repeated_subtitle_run",
+  "model": "turbo",
+  "language_mode": "auto",
+  "device": "cuda",
+  "detected_language": "en",
+  "text": "If you are going to do something, just block him off, have your faith, you have a bright future ahead. Just sit and sit and talk with me. He is an insecure man. He is not an insecure man. He is an insecure man. You can see it online. He is a control freak. Mostly Pakistani londes are like this. Pakistani men in general are the more freaks. This is the generalization I am giving you. You are doing a PhD and he has MBA. He will not be able to take this from me. Okay, maybe we'll be with me for a little",
+  "segments": [
+    {
+      "start": 3535.731,
+      "end": 3551.731,
+      "text": "If you are going to do something, just block him off, have your faith, you have a bright future ahead.",
+      "avg_logprob": -0.5561242784772601,
+      "no_speech_prob": 6.898880910988225e-10,
+      "compression_ratio": 1.1724137931034482
+    },
+    {
+      "start": 3551.731,
+      "end": 3555.251,
+      "text": "Just sit and sit and talk with me.",
+      "avg_logprob": -0.8668860719915021,
+      "no_speech_prob": 1.471741284397865e-09,
+      "compression_ratio": 1.7475728155339805
+    },
+    {
+      "start": 3555.251,
+      "end": 3557.051,
+      "text": "He is an insecure man.",
+      "avg_logprob": -0.8668860719915021,
+      "no_speech_prob": 1.471741284397865e-09,
+      "compression_ratio": 1.7475728155339805
+    },
+    {
+      "start": 3557.051,
+      "end": 3559.011,
+      "text": "He is not an insecure man.",
+      "avg_logprob": -0.8668860719915021,
+      "no_speech_prob": 1.471741284397865e-09,
+      "compression_ratio": 1.7475728155339805
+    },
+    {
+      "start": 3559.011,
+      "end": 3560.631,
+      "text": "He is an insecure man.",
+      "avg_logprob": -0.8668860719915021,
+      "no_speech_prob": 1.471741284397865e-09,
+      "compression_ratio": 1.7475728155339805
+    },
+    {
+      "start": 3560.631,
+      "end": 3562.791,
+      "text": "You can see it online.",
+      "avg_logprob": -0.8668860719915021,
+      "no_speech_prob": 1.471741284397865e-09,
+      "compression_ratio": 1.7475728155339805
+    },
+    {
+      "start": 3562.791,
+      "end": 3565.291,
+      "text": "He is a control freak.",
+      "avg_logprob": -0.8668860719915021,
+      "no_speech_prob": 1.471741284397865e-09,
+      "compression_ratio": 1.7475728155339805
+    },
+    {
+      "start": 3565.291,
+      "end": 3568.971,
+      "text": "Mostly Pakistani londes are like this.",
+      "avg_logprob": -0.8668860719915021,
+      "no_speech_prob": 1.471741284397865e-09,
+      "compression_ratio": 1.7475728155339805
+    },
+    {
+      "start": 3568.971,
+      "end": 3572.011,
+      "text": "Pakistani men in general are the more freaks.",
+      "avg_logprob": -0.8668860719915021,
+      "no_speech_prob": 1.471741284397865e-09,
+      "compression_ratio": 1.7475728155339805
+    },
+    {
+      "start": 3572.011,
+      "end": 3574.431,
+      "text": "This is the generalization I am giving you.",
+      "avg_logprob": -0.8668860719915021,
+      "no_speech_prob": 1.471741284397865e-09,
+      "compression_ratio": 1.7475728155339805
+    },
+    {
+      "start": 3574.431,
+      "end": 3577.491,
+      "text": "You are doing a PhD and he has MBA.",
+      "avg_logprob": -0.8668860719915021,
+      "no_speech_prob": 1.471741284397865e-09,
+      "compression_ratio": 1.7475728155339805
+    },
+    {
+      "start": 3577.491,
+      "end": 3579.491,
+      "text": "He will not be able to take this from me.",
+      "avg_logprob": -0.8668860719915021,
+      "no_speech_prob": 1.471741284397865e-09,
+      "compression_ratio": 1.7475728155339805
+    },
+    {
+      "start": 3579.491,
+      "end": 3580.651,
+      "text": "Okay, maybe we'll be with me for a little",
+      "avg_logprob": -1.5496372495378767,
+      "no_speech_prob": 2.7642638400493524e-08,
+      "compression_ratio": 0.8913043478260869
+    }
+  ],
+  "stats": {
+    "word_count": 104,
+    "latin_letters": 385,
+    "urdu_letters": 0,
+    "latin_letter_fraction": 1.0,
+    "repeated_trigram_fraction": 0.029,
+    "replacement_characters": 0
+  },
+  "original_text": "ہمیں سوچنے کے لئے ہمیں سوچنے کے لئے",
+  "similarity_to_original": 0.0,
+  "mean_segment_logprob": -0.8955,
+  "processing_seconds": 210.89
+}

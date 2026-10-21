@@ -1,0 +1,16 @@
+EPISODE 163 / clip_01 | 00:06:00.094 --> 00:06:45.094
+Selection: long_repeated_subtitle_run
+
+=== ORIGINAL WHISPER SRT (UNVERIFIED) ===
+بہت ساری فلمیں میں نے نہیں بتائیں جہازوں میں ہی ہو کے رہ گیا ہوں بہت ساری فلمیں میں نے نہیں بتائیں جہازوں میں ہی ہو کے رہ گیا ہوں
+
+=== turbo / auto / completed ===
+Here we are going to play this. Before I thought that there will be a lot of CDs. CDs. We call them Pepsi. So there will be a lot of CDs. And they will take off from the wall. Let's try to play the Def Leppard. Let's try to play the world. Anyway. So yeah. When I realized that you don't have a chance, I will leave it. Sir, I was born and brought up in New Delhi, working in Hyderabad Tilangana in R&D Wing of a drone company. I'm an aerospace engineer. Nice. It's been a few months since I've moved. Okay, first of all, let me tell you in the comments of India. If you have a big drone from abroad, so what's the policy? Do you have customs or military allow? I'm not talking like military-grade drone.
+Detected language: en
+Runtime: 7.95 seconds
+
+=== turbo / ur / completed ===
+ہم یہاں یہ چلائیں گے پہلے مجھے لگتا تھا کہ ان کے بعد بہت ساری سی ڈیاں ہوں گی سی ڈیز سی ڈیاں یہ ہم ایسی بلتے ہیں پیپسیاں منگا لو سو بہت ساری سی ڈیز ہوں گی اور وہ دیوار سے نکال کے چلو آر ڈیف لیپرڈ لگا لیتے ہیں چلو آج جو ہے آلم گیر کا گانہ لگا لیتے ہیں ایسے نہیں ہوتا ایسے نہیں ہوتا ایسے نہیں ہوتا سو یا پھر جب پتا چلا کہ آپ کی مرضی نہیں ہوتی ملہ خلیلی اپنی بننا مجھے سر i was born and brought up in new delhi working in hyderabad tilangana in r&d wing of a drone company i'm an aerospace engineer nice it's been a few months since i've moved اچھا پہلے یار یہ بتائیں comments پہ انڈیا والے کہ اگر کوئی بھار ملک سے بڑا والا drone لے کر آئے so what's the policy کیا آپ کی customs جو ہے یا military allow کرتی ہے like i'm not talking like military grade والا drone
+Detected language: ur
+Runtime: 13.96 seconds
+

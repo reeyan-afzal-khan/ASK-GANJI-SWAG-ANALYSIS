@@ -1,0 +1,16 @@
+EPISODE 216 / clip_02 | 01:58:41.120 --> 01:59:26.120
+Selection: repeated_subtitle_run
+
+=== ORIGINAL WHISPER SRT (UNVERIFIED) ===
+ایڈنٹی جرمنی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی بیگ ویڈ ہیم فیلز لیکن بریت آف ریشیر ایٹس فرس ٹائم آف فیلڈ سین اینڈ ریسپیکٹیڈ فور ہو آئی ایم آنسلی آئی فیل لائک آئی سٹرک سٹرک گولڈ ویڈ ہے
+
+=== turbo / auto / completed ===
+studying while also working at a research institute life here unfolded in unexpected ways i met and started dating a hindu tamil guy from india we actually knew each other from before i came to germany we were in the same online group for university admissions and stuff i was the one who messaged him first to ask when the admission results would be announced and the rest is history i know this might sound like a young love story but i'm not being childish about it i'm genuinely serious about him compared to the pakistani men i've dated in the past most of whom in one way or the other try to control how i spoke dressed or behaved being with him feels like a breath of fresh air it's the first time i've
+Detected language: en
+Runtime: 6.31 seconds
+
+=== turbo / ur / completed ===
+studying while also working at a research institute life here unfolded in unexpected ways i met and started dating a hindu tamil guy from india we actually knew each other from before i came to germany we were in the same online group for university admissions and stuff i was the one who messaged him first to ask when the admission results would be announced and the rest is history i know this might sound like a young love story but i'm not being ملتا ہے
+Detected language: ur
+Runtime: 12.17 seconds
+

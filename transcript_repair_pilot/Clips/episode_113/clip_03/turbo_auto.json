@@ -1,0 +1,101 @@
+{
+  "status": "completed",
+  "checkpoint_id": "d01e2e6437e112d79d089247bc648fc4f75a7b2ec7bbdfd76e300da1f3c3f332",
+  "created_utc": "2026-10-21T07:25:53+00:00",
+  "episode": 113,
+  "clip_id": "clip_03",
+  "start": "00:29:28.891",
+  "end": "00:30:13.891",
+  "reason": "long_repeated_subtitle_run",
+  "model": "turbo",
+  "language_mode": "auto",
+  "device": "cuda",
+  "detected_language": "en",
+  "text": "in such circles are like whatsapp uncles who spread false information with confidence. I drink beer occasionally and hardly care about halal haram. Whenever I invited my religious friends to my place I always made sure the food was prepared according to their faith and demand but when I went to their place I didn't get the same treatment. In fact I could not openly tell them that I consume alcohol. If I tell them they would be like bye bye tata. They want others to respect their opinions and faith but they don't accept others for what they are they don't integrate with other communities they have built their own small world and they love their shackles in short it was a suffocating experience on the other hand i found atheists who previously used to be muslims or to be dry and materialistic the moment you sit with them they would start",
+  "segments": [
+    {
+      "start": 1768.891,
+      "end": 1773.711,
+      "text": "in such circles are like whatsapp uncles who spread false information with confidence.",
+      "avg_logprob": -0.08226782304269296,
+      "no_speech_prob": 3.57111258966758e-12,
+      "compression_ratio": 1.6631205673758864
+    },
+    {
+      "start": 1773.871,
+      "end": 1778.291,
+      "text": "I drink beer occasionally and hardly care about halal haram. Whenever I invited my religious",
+      "avg_logprob": -0.08226782304269296,
+      "no_speech_prob": 3.57111258966758e-12,
+      "compression_ratio": 1.6631205673758864
+    },
+    {
+      "start": 1778.291,
+      "end": 1782.751,
+      "text": "friends to my place I always made sure the food was prepared according to their faith and demand",
+      "avg_logprob": -0.08226782304269296,
+      "no_speech_prob": 3.57111258966758e-12,
+      "compression_ratio": 1.6631205673758864
+    },
+    {
+      "start": 1782.751,
+      "end": 1787.271,
+      "text": "but when I went to their place I didn't get the same treatment. In fact I could not openly tell",
+      "avg_logprob": -0.08226782304269296,
+      "no_speech_prob": 3.57111258966758e-12,
+      "compression_ratio": 1.6631205673758864
+    },
+    {
+      "start": 1787.271,
+      "end": 1793.851,
+      "text": "them that I consume alcohol. If I tell them they would be like bye bye tata. They want others to",
+      "avg_logprob": -0.08226782304269296,
+      "no_speech_prob": 3.57111258966758e-12,
+      "compression_ratio": 1.6631205673758864
+    },
+    {
+      "start": 1793.851,
+      "end": 1799.171,
+      "text": "respect their opinions and faith but they don't accept others for what they are they don't",
+      "avg_logprob": -0.04744027081657858,
+      "no_speech_prob": 3.393060788933755e-12,
+      "compression_ratio": 1.721461187214612
+    },
+    {
+      "start": 1799.171,
+      "end": 1803.751,
+      "text": "integrate with other communities they have built their own small world and they love their shackles",
+      "avg_logprob": -0.04744027081657858,
+      "no_speech_prob": 3.393060788933755e-12,
+      "compression_ratio": 1.721461187214612
+    },
+    {
+      "start": 1803.751,
+      "end": 1808.831,
+      "text": "in short it was a suffocating experience on the other hand i found atheists who previously used",
+      "avg_logprob": -0.04744027081657858,
+      "no_speech_prob": 3.393060788933755e-12,
+      "compression_ratio": 1.721461187214612
+    },
+    {
+      "start": 1808.831,
+      "end": 1813.891,
+      "text": "to be muslims or to be dry and materialistic the moment you sit with them they would start",
+      "avg_logprob": -0.04744027081657858,
+      "no_speech_prob": 3.393060788933755e-12,
+      "compression_ratio": 1.721461187214612
+    }
+  ],
+  "stats": {
+    "word_count": 153,
+    "latin_letters": 687,
+    "urdu_letters": 0,
+    "latin_letter_fraction": 1.0,
+    "repeated_trigram_fraction": 0.013,
+    "replacement_characters": 0
+  },
+  "original_text": "سو ویر گارا کیپ این آور تاکہ پھر افطار کی تیاریوں میں لگ جائیں سو ویر گارا کیپ این آور تاکہ پھر افطار کی تیاریوں میں لگ جائیں",
+  "similarity_to_original": 0.0,
+  "mean_segment_logprob": -0.0668,
+  "processing_seconds": 6.89
+}

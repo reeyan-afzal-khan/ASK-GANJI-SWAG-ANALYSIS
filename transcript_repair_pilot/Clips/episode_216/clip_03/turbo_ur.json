@@ -1,0 +1,125 @@
+{
+  "status": "completed",
+  "checkpoint_id": "0d7fc5ac978edfb225b0e5073db6e9b3acf1c1dd7246ba7927966d4533732c8c",
+  "created_utc": "2026-10-21T07:29:34+00:00",
+  "episode": 216,
+  "clip_id": "clip_03",
+  "start": "02:22:49.280",
+  "end": "02:23:34.280",
+  "reason": "corrupted_unicode",
+  "model": "turbo",
+  "language_mode": "ur",
+  "device": "cuda",
+  "detected_language": "ur",
+  "text": "مہنگا زیادہ کسیتا ہے پاکستانی اندلج اور نورمالیزن جن ملین پاکستانی اندلج اور نورمالیزن جن ملین پاکستانی اندلج اور نورمالیزن جن ملین پاکستانی اندلج اور نورمالیزن جن ملین پاکستانی اندلج اور نورمالیزن جن ملین پاکستانی اندلج اور نورمالیزن جن ملین پاکستانی اندلج اور نورمالیزن جن ملین جن ملین پاکستانی اندلج اور نورمالیزن جن ملین and ended up horny on tinder and found a fellow pakistani they hated",
+  "segments": [
+    {
+      "start": 8569.28,
+      "end": 8599.26,
+      "text": "مہنگا زیادہ کسیتا ہے",
+      "avg_logprob": -1.5913571251763239,
+      "no_speech_prob": 5.7493432757682594e-12,
+      "compression_ratio": 0.8222222222222222
+    },
+    {
+      "start": 8599.28,
+      "end": 8604.02,
+      "text": "پاکستانی اندلج اور نورمالیزن جن ملین",
+      "avg_logprob": -0.41740729437934027,
+      "no_speech_prob": 2.515334988906215e-11,
+      "compression_ratio": 7.947368421052632
+    },
+    {
+      "start": 8604.02,
+      "end": 8604.04,
+      "text": "پاکستانی اندلج اور نورمالیزن جن ملین",
+      "avg_logprob": -0.41740729437934027,
+      "no_speech_prob": 2.515334988906215e-11,
+      "compression_ratio": 7.947368421052632
+    },
+    {
+      "start": 8604.04,
+      "end": 8604.12,
+      "text": "پاکستانی اندلج اور نورمالیزن جن ملین",
+      "avg_logprob": -0.41740729437934027,
+      "no_speech_prob": 2.515334988906215e-11,
+      "compression_ratio": 7.947368421052632
+    },
+    {
+      "start": 8604.12,
+      "end": 8604.14,
+      "text": "پاکستانی اندلج اور نورمالیزن جن ملین",
+      "avg_logprob": -0.41740729437934027,
+      "no_speech_prob": 2.515334988906215e-11,
+      "compression_ratio": 7.947368421052632
+    },
+    {
+      "start": 8604.14,
+      "end": 8604.72,
+      "text": "پاکستانی اندلج اور نورمالیزن جن ملین",
+      "avg_logprob": -0.41740729437934027,
+      "no_speech_prob": 2.515334988906215e-11,
+      "compression_ratio": 7.947368421052632
+    },
+    {
+      "start": 8604.72,
+      "end": 8606.08,
+      "text": "پاکستانی اندلج اور نورمالیزن جن ملین",
+      "avg_logprob": -0.41740729437934027,
+      "no_speech_prob": 2.515334988906215e-11,
+      "compression_ratio": 7.947368421052632
+    },
+    {
+      "start": 8606.08,
+      "end": 8608.4,
+      "text": "پاکستانی اندلج اور نورمالیزن جن ملین",
+      "avg_logprob": -0.41740729437934027,
+      "no_speech_prob": 2.515334988906215e-11,
+      "compression_ratio": 7.947368421052632
+    },
+    {
+      "start": 8608.4,
+      "end": 8608.96,
+      "text": "جن ملین",
+      "avg_logprob": -0.41740729437934027,
+      "no_speech_prob": 2.515334988906215e-11,
+      "compression_ratio": 7.947368421052632
+    },
+    {
+      "start": 8608.96,
+      "end": 8610.28,
+      "text": "پاکستانی اندلج اور نورمالیزن جن ملین",
+      "avg_logprob": -0.41740729437934027,
+      "no_speech_prob": 2.515334988906215e-11,
+      "compression_ratio": 7.947368421052632
+    },
+    {
+      "start": 8610.28,
+      "end": 8613.42,
+      "text": "and ended up horny on tinder and found a fellow pakistani",
+      "avg_logprob": -0.33696735472906203,
+      "no_speech_prob": 2.3416224514960504e-10,
+      "compression_ratio": 1.0461538461538462
+    },
+    {
+      "start": 8613.42,
+      "end": 8614.24,
+      "text": "they hated",
+      "avg_logprob": -0.33696735472906203,
+      "no_speech_prob": 2.3416224514960504e-10,
+      "compression_ratio": 1.0461538461538462
+    }
+  ],
+  "stats": {
+    "word_count": 67,
+    "latin_letters": 56,
+    "urdu_letters": 271,
+    "latin_letter_fraction": 0.171,
+    "repeated_trigram_fraction": 0.123,
+    "replacement_characters": 0
+  },
+  "original_text": "he once hooked up with his younger cousin during a mehendi while their parents were in the next room مارک چیزوں سے بات کر رہا ہے کیا یہ جو tune واقعی ہے چونکہ یہ صرف وижد کیا ہے ہر کوائی جو نمبر اس کے م הכتی جا رہا ہے وہ وسیعہ میں دانس پر کرتا ہے اس جو بھی کچھ لیسی نہیں ہے لیکن یہ بہتی جنہ Honest تلاش راستہ کیا😂 اور میں بات کر کر دیتا ہے کہ میں صورت لاؤگا، ٹوٹر ل�پ کرتا ہوں لیکن اسے pod، پسندی میں بھی اس Brunoو gels finde just felt like why even the elite of Pakistani indulge and normalize and cousin mingle ں then came another childhood friend he told us how during his exchange trip to Amsterdam he got high for the first time and ended up horny on Tinder and felt fellow Pakistani they hit it off and he ended up",
+  "similarity_to_original": 0.045,
+  "mean_segment_logprob": -0.5018,
+  "processing_seconds": 30.23
+}

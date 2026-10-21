@@ -1,0 +1,205 @@
+{
+  "status": "completed",
+  "checkpoint_id": "be1c431e0f09bed5b047ab802782dab806ea43fc33bb48978d55d2613e081dab",
+  "created_utc": "2026-10-21T07:27:17+00:00",
+  "episode": 163,
+  "clip_id": "clip_01",
+  "start": "00:06:00.094",
+  "end": "00:06:45.094",
+  "reason": "long_repeated_subtitle_run",
+  "model": "turbo",
+  "language_mode": "auto",
+  "device": "cuda",
+  "detected_language": "en",
+  "text": "Here we are going to play this. Before I thought that there will be a lot of CDs. CDs. We call them Pepsi. So there will be a lot of CDs. And they will take off from the wall. Let's try to play the Def Leppard. Let's try to play the world. Anyway. So yeah. When I realized that you don't have a chance, I will leave it. Sir, I was born and brought up in New Delhi, working in Hyderabad Tilangana in R&D Wing of a drone company. I'm an aerospace engineer. Nice. It's been a few months since I've moved. Okay, first of all, let me tell you in the comments of India. If you have a big drone from abroad, so what's the policy? Do you have customs or military allow? I'm not talking like military-grade drone.",
+  "segments": [
+    {
+      "start": 360.094,
+      "end": 362.094,
+      "text": "Here we are going to play this.",
+      "avg_logprob": -0.6049419816132564,
+      "no_speech_prob": 6.254867179755763e-10,
+      "compression_ratio": 1.684981684981685
+    },
+    {
+      "start": 362.094,
+      "end": 365.094,
+      "text": "Before I thought that there will be a lot of CDs.",
+      "avg_logprob": -0.6049419816132564,
+      "no_speech_prob": 6.254867179755763e-10,
+      "compression_ratio": 1.684981684981685
+    },
+    {
+      "start": 365.094,
+      "end": 366.094,
+      "text": "CDs.",
+      "avg_logprob": -0.6049419816132564,
+      "no_speech_prob": 6.254867179755763e-10,
+      "compression_ratio": 1.684981684981685
+    },
+    {
+      "start": 366.094,
+      "end": 368.094,
+      "text": "We call them Pepsi.",
+      "avg_logprob": -0.6049419816132564,
+      "no_speech_prob": 6.254867179755763e-10,
+      "compression_ratio": 1.684981684981685
+    },
+    {
+      "start": 368.094,
+      "end": 370.094,
+      "text": "So there will be a lot of CDs.",
+      "avg_logprob": -0.6049419816132564,
+      "no_speech_prob": 6.254867179755763e-10,
+      "compression_ratio": 1.684981684981685
+    },
+    {
+      "start": 370.094,
+      "end": 372.094,
+      "text": "And they will take off from the wall.",
+      "avg_logprob": -0.6049419816132564,
+      "no_speech_prob": 6.254867179755763e-10,
+      "compression_ratio": 1.684981684981685
+    },
+    {
+      "start": 372.094,
+      "end": 374.094,
+      "text": "Let's try to play the Def Leppard.",
+      "avg_logprob": -0.6049419816132564,
+      "no_speech_prob": 6.254867179755763e-10,
+      "compression_ratio": 1.684981684981685
+    },
+    {
+      "start": 374.094,
+      "end": 376.094,
+      "text": "Let's try to play the world.",
+      "avg_logprob": -0.6049419816132564,
+      "no_speech_prob": 6.254867179755763e-10,
+      "compression_ratio": 1.684981684981685
+    },
+    {
+      "start": 376.094,
+      "end": 377.094,
+      "text": "Anyway.",
+      "avg_logprob": -0.6049419816132564,
+      "no_speech_prob": 6.254867179755763e-10,
+      "compression_ratio": 1.684981684981685
+    },
+    {
+      "start": 377.094,
+      "end": 378.094,
+      "text": "So yeah.",
+      "avg_logprob": -0.6049419816132564,
+      "no_speech_prob": 6.254867179755763e-10,
+      "compression_ratio": 1.684981684981685
+    },
+    {
+      "start": 378.094,
+      "end": 380.094,
+      "text": "When I realized that you don't have a chance,",
+      "avg_logprob": -0.6049419816132564,
+      "no_speech_prob": 6.254867179755763e-10,
+      "compression_ratio": 1.684981684981685
+    },
+    {
+      "start": 380.094,
+      "end": 381.094,
+      "text": "I will leave it.",
+      "avg_logprob": -0.6049419816132564,
+      "no_speech_prob": 6.254867179755763e-10,
+      "compression_ratio": 1.684981684981685
+    },
+    {
+      "start": 381.094,
+      "end": 383.094,
+      "text": "Sir, I was born and brought up in New Delhi,",
+      "avg_logprob": -0.6049419816132564,
+      "no_speech_prob": 6.254867179755763e-10,
+      "compression_ratio": 1.684981684981685
+    },
+    {
+      "start": 383.094,
+      "end": 387.094,
+      "text": "working in Hyderabad Tilangana in R&D Wing of a drone company.",
+      "avg_logprob": -0.6049419816132564,
+      "no_speech_prob": 6.254867179755763e-10,
+      "compression_ratio": 1.684981684981685
+    },
+    {
+      "start": 387.094,
+      "end": 389.094,
+      "text": "I'm an aerospace engineer.",
+      "avg_logprob": -0.6049419816132564,
+      "no_speech_prob": 6.254867179755763e-10,
+      "compression_ratio": 1.684981684981685
+    },
+    {
+      "start": 389.094,
+      "end": 390.094,
+      "text": "Nice.",
+      "avg_logprob": -0.6049419816132564,
+      "no_speech_prob": 6.254867179755763e-10,
+      "compression_ratio": 1.684981684981685
+    },
+    {
+      "start": 390.094,
+      "end": 391.974,
+      "text": "It's been a few months since I've moved.",
+      "avg_logprob": -0.5721043625923052,
+      "no_speech_prob": 4.854055490888243e-10,
+      "compression_ratio": 1.4210526315789473
+    },
+    {
+      "start": 392.114,
+      "end": 393.894,
+      "text": "Okay, first of all, let me tell you in the comments of India.",
+      "avg_logprob": -0.5721043625923052,
+      "no_speech_prob": 4.854055490888243e-10,
+      "compression_ratio": 1.4210526315789473
+    },
+    {
+      "start": 394.234,
+      "end": 395.934,
+      "text": "If you have a big drone from abroad,",
+      "avg_logprob": -0.5721043625923052,
+      "no_speech_prob": 4.854055490888243e-10,
+      "compression_ratio": 1.4210526315789473
+    },
+    {
+      "start": 396.594,
+      "end": 397.534,
+      "text": "so what's the policy?",
+      "avg_logprob": -0.5721043625923052,
+      "no_speech_prob": 4.854055490888243e-10,
+      "compression_ratio": 1.4210526315789473
+    },
+    {
+      "start": 397.834,
+      "end": 401.414,
+      "text": "Do you have customs or military allow?",
+      "avg_logprob": -0.5721043625923052,
+      "no_speech_prob": 4.854055490888243e-10,
+      "compression_ratio": 1.4210526315789473
+    },
+    {
+      "start": 401.894,
+      "end": 405.054,
+      "text": "I'm not talking like military-grade drone.",
+      "avg_logprob": -0.5721043625923052,
+      "no_speech_prob": 4.854055490888243e-10,
+      "compression_ratio": 1.4210526315789473
+    }
+  ],
+  "stats": {
+    "word_count": 140,
+    "latin_letters": 530,
+    "urdu_letters": 0,
+    "latin_letter_fraction": 1.0,
+    "repeated_trigram_fraction": 0.014,
+    "replacement_characters": 0
+  },
+  "original_text": "بہت ساری فلمیں میں نے نہیں بتائیں جہازوں میں ہی ہو کے رہ گیا ہوں بہت ساری فلمیں میں نے نہیں بتائیں جہازوں میں ہی ہو کے رہ گیا ہوں",
+  "similarity_to_original": 0.0,
+  "mean_segment_logprob": -0.596,
+  "processing_seconds": 7.95
+}

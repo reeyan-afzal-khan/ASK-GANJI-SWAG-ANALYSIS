@@ -1,0 +1,157 @@
+{
+  "status": "completed",
+  "checkpoint_id": "0d0a09cd62d240afd89587d31afcf155f7cc228bd54f38853a81c89d17c2cc72",
+  "created_utc": "2026-10-21T07:26:09+00:00",
+  "episode": 113,
+  "clip_id": "clip_03",
+  "start": "00:29:28.891",
+  "end": "00:30:13.891",
+  "reason": "long_repeated_subtitle_run",
+  "model": "turbo",
+  "language_mode": "ur",
+  "device": "cuda",
+  "detected_language": "ur",
+  "text": "انتظاری ملتا ہے ملتا ہے انجاں گرمتا ہے ملتا ہے ملتا ہے اور اگر لئے ملتا ہے رب میں رب میں رب میں میں میں نے فائد کی طرف ملتا ہے پر میں میں نے فائد کی طرف میں میں نے فائد کی طرف میں میں نے فائد کی طرف میں نے فائد کی طرف میں نے فائد کی طرف میں نے فائد کی طرف اور اجتب انتظاری طرف موسیقی",
+  "segments": [
+    {
+      "start": 1768.891,
+      "end": 1770.891,
+      "text": "انتظاری ملتا ہے",
+      "avg_logprob": -1.0867375356708457,
+      "no_speech_prob": 3.5571925179750385e-12,
+      "compression_ratio": 3.78125
+    },
+    {
+      "start": 1770.891,
+      "end": 1772.891,
+      "text": "ملتا ہے انجاں گرمتا ہے",
+      "avg_logprob": -1.0867375356708457,
+      "no_speech_prob": 3.5571925179750385e-12,
+      "compression_ratio": 3.78125
+    },
+    {
+      "start": 1772.891,
+      "end": 1773.891,
+      "text": "ملتا ہے",
+      "avg_logprob": -1.0867375356708457,
+      "no_speech_prob": 3.5571925179750385e-12,
+      "compression_ratio": 3.78125
+    },
+    {
+      "start": 1773.891,
+      "end": 1774.891,
+      "text": "ملتا ہے",
+      "avg_logprob": -1.0867375356708457,
+      "no_speech_prob": 3.5571925179750385e-12,
+      "compression_ratio": 3.78125
+    },
+    {
+      "start": 1774.891,
+      "end": 1776.891,
+      "text": "اور اگر لئے ملتا ہے",
+      "avg_logprob": -1.0867375356708457,
+      "no_speech_prob": 3.5571925179750385e-12,
+      "compression_ratio": 3.78125
+    },
+    {
+      "start": 1776.891,
+      "end": 1778.891,
+      "text": "رب میں رب میں رب میں",
+      "avg_logprob": -1.0867375356708457,
+      "no_speech_prob": 3.5571925179750385e-12,
+      "compression_ratio": 3.78125
+    },
+    {
+      "start": 1778.891,
+      "end": 1780.891,
+      "text": "میں میں نے فائد کی طرف",
+      "avg_logprob": -1.0867375356708457,
+      "no_speech_prob": 3.5571925179750385e-12,
+      "compression_ratio": 3.78125
+    },
+    {
+      "start": 1780.891,
+      "end": 1782.891,
+      "text": "ملتا ہے",
+      "avg_logprob": -1.0867375356708457,
+      "no_speech_prob": 3.5571925179750385e-12,
+      "compression_ratio": 3.78125
+    },
+    {
+      "start": 1782.891,
+      "end": 1784.891,
+      "text": "پر میں میں نے فائد کی طرف",
+      "avg_logprob": -1.0867375356708457,
+      "no_speech_prob": 3.5571925179750385e-12,
+      "compression_ratio": 3.78125
+    },
+    {
+      "start": 1784.891,
+      "end": 1786.891,
+      "text": "میں میں نے فائد کی طرف",
+      "avg_logprob": -1.0867375356708457,
+      "no_speech_prob": 3.5571925179750385e-12,
+      "compression_ratio": 3.78125
+    },
+    {
+      "start": 1786.891,
+      "end": 1788.891,
+      "text": "میں میں نے فائد کی طرف",
+      "avg_logprob": -1.0867375356708457,
+      "no_speech_prob": 3.5571925179750385e-12,
+      "compression_ratio": 3.78125
+    },
+    {
+      "start": 1788.891,
+      "end": 1790.891,
+      "text": "میں نے فائد کی طرف",
+      "avg_logprob": -1.0867375356708457,
+      "no_speech_prob": 3.5571925179750385e-12,
+      "compression_ratio": 3.78125
+    },
+    {
+      "start": 1790.891,
+      "end": 1792.891,
+      "text": "میں نے فائد کی طرف",
+      "avg_logprob": -1.0867375356708457,
+      "no_speech_prob": 3.5571925179750385e-12,
+      "compression_ratio": 3.78125
+    },
+    {
+      "start": 1792.891,
+      "end": 1794.891,
+      "text": "میں نے فائد کی طرف",
+      "avg_logprob": -1.0867375356708457,
+      "no_speech_prob": 3.5571925179750385e-12,
+      "compression_ratio": 3.78125
+    },
+    {
+      "start": 1794.891,
+      "end": 1796.891,
+      "text": "اور اجتب انتظاری طرف",
+      "avg_logprob": -1.0867375356708457,
+      "no_speech_prob": 3.5571925179750385e-12,
+      "compression_ratio": 3.78125
+    },
+    {
+      "start": 1796.891,
+      "end": 1798.891,
+      "text": "موسیقی",
+      "avg_logprob": -0.9419315457344055,
+      "no_speech_prob": 4.976884356022726e-12,
+      "compression_ratio": 0.5714285714285714
+    }
+  ],
+  "stats": {
+    "word_count": 70,
+    "latin_letters": 0,
+    "urdu_letters": 214,
+    "latin_letter_fraction": 0.0,
+    "repeated_trigram_fraction": 0.103,
+    "replacement_characters": 0
+  },
+  "original_text": "سو ویر گارا کیپ این آور تاکہ پھر افطار کی تیاریوں میں لگ جائیں سو ویر گارا کیپ این آور تاکہ پھر افطار کی تیاریوں میں لگ جائیں",
+  "similarity_to_original": 0.005,
+  "mean_segment_logprob": -1.0777,
+  "processing_seconds": 15.81
+}

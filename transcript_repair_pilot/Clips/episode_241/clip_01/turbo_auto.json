@@ -1,0 +1,117 @@
+{
+  "status": "completed",
+  "checkpoint_id": "2d83663bc6e364a7b1d026e28f4afe4d7558aca6d6dca12e44bd9778c25dcec7",
+  "created_utc": "2026-10-21T07:30:46+00:00",
+  "episode": 241,
+  "clip_id": "clip_01",
+  "start": "00:12:40.789",
+  "end": "00:13:25.789",
+  "reason": "long_repeated_subtitle_run",
+  "model": "turbo",
+  "language_mode": "auto",
+  "device": "cuda",
+  "detected_language": "en",
+  "text": "at all time directly or indirectly and those two things are money and sex give these two things to everyone forever they won't need anything else in life actually while searching your channel by mistake search ask gandhi ji first gandhi ji se kya pucho ke bhai gandhi ji toh khud sex suks kar liya kar matlab nahi karte te or chastity apne test karte te I've noticed that I didn't say the video so I didn't say that I didn't say the video so I didn't say the video there was a claim that Gandhi Ji was actually homosexual and he was a lover in South Africa which had been a few of them and then there were a lot of people",
+  "segments": [
+    {
+      "start": 760.789,
+      "end": 765.549,
+      "text": "at all time directly or indirectly and those two things are money and sex give these two",
+      "avg_logprob": -0.27171814198396643,
+      "no_speech_prob": 5.3444835224070175e-09,
+      "compression_ratio": 1.756218905472637
+    },
+    {
+      "start": 765.549,
+      "end": 769.729,
+      "text": "things to everyone forever they won't need anything else in life actually while searching",
+      "avg_logprob": -0.27171814198396643,
+      "no_speech_prob": 5.3444835224070175e-09,
+      "compression_ratio": 1.756218905472637
+    },
+    {
+      "start": 769.729,
+      "end": 778.049,
+      "text": "your channel by mistake search ask gandhi ji first gandhi ji se kya pucho ke bhai gandhi",
+      "avg_logprob": -0.27171814198396643,
+      "no_speech_prob": 5.3444835224070175e-09,
+      "compression_ratio": 1.756218905472637
+    },
+    {
+      "start": 778.049,
+      "end": 784.349,
+      "text": "ji toh khud sex suks kar liya kar matlab nahi karte te or chastity apne test karte te",
+      "avg_logprob": -0.27171814198396643,
+      "no_speech_prob": 5.3444835224070175e-09,
+      "compression_ratio": 1.756218905472637
+    },
+    {
+      "start": 784.349,
+      "end": 789.629,
+      "text": "I've noticed that I didn't say the video",
+      "avg_logprob": -1.1632273290064428,
+      "no_speech_prob": 1.978438302074892e-09,
+      "compression_ratio": 1.804054054054054
+    },
+    {
+      "start": 789.629,
+      "end": 792.529,
+      "text": "so I didn't say that I didn't say the video",
+      "avg_logprob": -1.1632273290064428,
+      "no_speech_prob": 1.978438302074892e-09,
+      "compression_ratio": 1.804054054054054
+    },
+    {
+      "start": 792.529,
+      "end": 794.569,
+      "text": "so I didn't say the video",
+      "avg_logprob": -1.1632273290064428,
+      "no_speech_prob": 1.978438302074892e-09,
+      "compression_ratio": 1.804054054054054
+    },
+    {
+      "start": 794.569,
+      "end": 799.089,
+      "text": "there was a claim that Gandhi Ji was actually homosexual",
+      "avg_logprob": -1.1632273290064428,
+      "no_speech_prob": 1.978438302074892e-09,
+      "compression_ratio": 1.804054054054054
+    },
+    {
+      "start": 799.089,
+      "end": 801.809,
+      "text": "and he was a lover in South Africa",
+      "avg_logprob": -1.1632273290064428,
+      "no_speech_prob": 1.978438302074892e-09,
+      "compression_ratio": 1.804054054054054
+    },
+    {
+      "start": 801.809,
+      "end": 804.169,
+      "text": "which had been a few of them",
+      "avg_logprob": -1.1632273290064428,
+      "no_speech_prob": 1.978438302074892e-09,
+      "compression_ratio": 1.804054054054054
+    },
+    {
+      "start": 804.169,
+      "end": 805.789,
+      "text": "and then there were a lot of people",
+      "avg_logprob": -1.1632273290064428,
+      "no_speech_prob": 1.978438302074892e-09,
+      "compression_ratio": 1.804054054054054
+    }
+  ],
+  "stats": {
+    "word_count": 123,
+    "latin_letters": 493,
+    "urdu_letters": 0,
+    "latin_letter_fraction": 1.0,
+    "repeated_trigram_fraction": 0.033,
+    "replacement_characters": 0
+  },
+  "original_text": "مجھے بیگنگ کی چیزی چاہتا ہے مجھے بیگنگ کی چیزی چاہتا ہے",
+  "similarity_to_original": 0.0,
+  "mean_segment_logprob": -0.839,
+  "processing_seconds": 10.84
+}

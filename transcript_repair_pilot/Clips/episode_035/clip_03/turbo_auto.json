@@ -1,0 +1,117 @@
+{
+  "status": "completed",
+  "checkpoint_id": "123040cb70633df7efb787aa76bbeb987cd5695b58cdb3900cbe08453edbfcdb",
+  "created_utc": "2026-10-21T07:24:42+00:00",
+  "episode": 35,
+  "clip_id": "clip_03",
+  "start": "01:19:42.716",
+  "end": "01:20:27.716",
+  "reason": "long_repeated_subtitle_run",
+  "model": "turbo",
+  "language_mode": "auto",
+  "device": "cuda",
+  "detected_language": "en",
+  "text": "criminal. And I have no words to say about your family. Like, they all gossip, talk to them, talk to them, and you share intimate details with them. Like, who does that? And not only family, they are telling their friends. I'm sure. They are telling their friends. And I know that at this time, what you are telling me, you know, what I can tell you is, living in London, obviously you will be in his visa status or whatever it is he can do so bad things that his family which normally families have here they say that you are not you can just get the hell out of my life and our life and don't show us your face again",
+  "segments": [
+    {
+      "start": 4782.716,
+      "end": 4790.716,
+      "text": "criminal. And I have no words to say about your family. Like, they all gossip,",
+      "avg_logprob": -0.5196903827143651,
+      "no_speech_prob": 5.145247075621917e-11,
+      "compression_ratio": 1.7666666666666666
+    },
+    {
+      "start": 4790.716,
+      "end": 4794.716,
+      "text": "talk to them, talk to them, and you share intimate details with them. Like, who does that?",
+      "avg_logprob": -0.5196903827143651,
+      "no_speech_prob": 5.145247075621917e-11,
+      "compression_ratio": 1.7666666666666666
+    },
+    {
+      "start": 4794.716,
+      "end": 4797.716,
+      "text": "And not only family, they are telling their friends. I'm sure.",
+      "avg_logprob": -0.5196903827143651,
+      "no_speech_prob": 5.145247075621917e-11,
+      "compression_ratio": 1.7666666666666666
+    },
+    {
+      "start": 4797.716,
+      "end": 4803.716,
+      "text": "They are telling their friends. And I know that at this time,",
+      "avg_logprob": -0.5196903827143651,
+      "no_speech_prob": 5.145247075621917e-11,
+      "compression_ratio": 1.7666666666666666
+    },
+    {
+      "start": 4803.716,
+      "end": 4809.716,
+      "text": "what you are telling me, you know, what I can tell you is, living in London,",
+      "avg_logprob": -0.5196903827143651,
+      "no_speech_prob": 5.145247075621917e-11,
+      "compression_ratio": 1.7666666666666666
+    },
+    {
+      "start": 4809.716,
+      "end": 4814.616,
+      "text": "obviously you will be in his visa status or whatever it is",
+      "avg_logprob": -0.48747403693921637,
+      "no_speech_prob": 7.399583723532999e-10,
+      "compression_ratio": 1.5668789808917198
+    },
+    {
+      "start": 4814.616,
+      "end": 4818.256,
+      "text": "he can do so bad things that his family",
+      "avg_logprob": -0.48747403693921637,
+      "no_speech_prob": 7.399583723532999e-10,
+      "compression_ratio": 1.5668789808917198
+    },
+    {
+      "start": 4818.256,
+      "end": 4820.216,
+      "text": "which normally families have here",
+      "avg_logprob": -0.48747403693921637,
+      "no_speech_prob": 7.399583723532999e-10,
+      "compression_ratio": 1.5668789808917198
+    },
+    {
+      "start": 4820.216,
+      "end": 4822.716,
+      "text": "they say that you are not",
+      "avg_logprob": -0.48747403693921637,
+      "no_speech_prob": 7.399583723532999e-10,
+      "compression_ratio": 1.5668789808917198
+    },
+    {
+      "start": 4822.716,
+      "end": 4825.256,
+      "text": "you can just get the hell out of my life",
+      "avg_logprob": -0.48747403693921637,
+      "no_speech_prob": 7.399583723532999e-10,
+      "compression_ratio": 1.5668789808917198
+    },
+    {
+      "start": 4825.256,
+      "end": 4827.716,
+      "text": "and our life and don't show us your face again",
+      "avg_logprob": -0.48747403693921637,
+      "no_speech_prob": 7.399583723532999e-10,
+      "compression_ratio": 1.5668789808917198
+    }
+  ],
+  "stats": {
+    "word_count": 123,
+    "latin_letters": 476,
+    "urdu_letters": 0,
+    "latin_letter_fraction": 1.0,
+    "repeated_trigram_fraction": 0.017,
+    "replacement_characters": 0
+  },
+  "original_text": "آپ کسی طریقے سے آجائیں تو میں نہیں جانتا جو کہہ سکتا ہے آپ کسی طریقے سے آجائیں تو میں نہیں جانتا جو کہہ سکتا ہے",
+  "similarity_to_original": 0.0,
+  "mean_segment_logprob": -0.5021,
+  "processing_seconds": 6.36
+}

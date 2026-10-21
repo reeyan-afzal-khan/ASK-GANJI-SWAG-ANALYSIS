@@ -1,0 +1,101 @@
+{
+  "status": "completed",
+  "checkpoint_id": "d122a6d1dbd3e275109070de3e67b2d246f1e6858ca8857a54f47cfbc5f7c2c4",
+  "created_utc": "2026-10-21T07:29:04+00:00",
+  "episode": 216,
+  "clip_id": "clip_03",
+  "start": "02:22:49.280",
+  "end": "02:23:34.280",
+  "reason": "corrupted_unicode",
+  "model": "turbo",
+  "language_mode": "auto",
+  "device": "cuda",
+  "detected_language": "en",
+  "text": "younger cousin during a mehendi while their parents were in the next room discussing their mark sheets he said it so casually as if it was just a wild thing that happened everyone turned to laughter he described how they'd sneak away during dance practice how it was nothing serious but just a dream getaway everyone joked bro that's elite level risk they may risk and laughed so hard that i laughed too just to blend in but deep down it felt wrong and even in this age of awareness just felt like why even the elite of pakistani indulge and normalize in cousin mingling then came another childhood friend he told us how during his exchange trip to amsterdam he got high for the first time and ended up horny on tinder and found a fellow pakistani the hitter",
+  "segments": [
+    {
+      "start": 8569.28,
+      "end": 8573.84,
+      "text": "younger cousin during a mehendi while their parents were in the next room discussing their",
+      "avg_logprob": -0.07851314544677734,
+      "no_speech_prob": 5.7493437094491284e-12,
+      "compression_ratio": 1.7720588235294117
+    },
+    {
+      "start": 8573.84,
+      "end": 8579.76,
+      "text": "mark sheets he said it so casually as if it was just a wild thing that happened everyone turned",
+      "avg_logprob": -0.07851314544677734,
+      "no_speech_prob": 5.7493437094491284e-12,
+      "compression_ratio": 1.7720588235294117
+    },
+    {
+      "start": 8579.76,
+      "end": 8585.14,
+      "text": "to laughter he described how they'd sneak away during dance practice how it was nothing serious",
+      "avg_logprob": -0.07851314544677734,
+      "no_speech_prob": 5.7493437094491284e-12,
+      "compression_ratio": 1.7720588235294117
+    },
+    {
+      "start": 8585.14,
+      "end": 8591.6,
+      "text": "but just a dream getaway everyone joked bro that's elite level risk they may risk and laughed so hard",
+      "avg_logprob": -0.07851314544677734,
+      "no_speech_prob": 5.7493437094491284e-12,
+      "compression_ratio": 1.7720588235294117
+    },
+    {
+      "start": 8591.6,
+      "end": 8596.5,
+      "text": "that i laughed too just to blend in but deep down it felt wrong and even in this age of awareness",
+      "avg_logprob": -0.07851314544677734,
+      "no_speech_prob": 5.7493437094491284e-12,
+      "compression_ratio": 1.7720588235294117
+    },
+    {
+      "start": 8596.5,
+      "end": 8604.02,
+      "text": "just felt like why even the elite of pakistani indulge and normalize in cousin mingling",
+      "avg_logprob": -0.08143680279071515,
+      "no_speech_prob": 8.696656242368483e-12,
+      "compression_ratio": 1.5621301775147929
+    },
+    {
+      "start": 8604.66,
+      "end": 8608.58,
+      "text": "then came another childhood friend he told us how during his exchange trip to amsterdam",
+      "avg_logprob": -0.08143680279071515,
+      "no_speech_prob": 8.696656242368483e-12,
+      "compression_ratio": 1.5621301775147929
+    },
+    {
+      "start": 8608.58,
+      "end": 8613.78,
+      "text": "he got high for the first time and ended up horny on tinder and found a fellow pakistani",
+      "avg_logprob": -0.08143680279071515,
+      "no_speech_prob": 8.696656242368483e-12,
+      "compression_ratio": 1.5621301775147929
+    },
+    {
+      "start": 8613.78,
+      "end": 8614.28,
+      "text": "the hitter",
+      "avg_logprob": -0.713227907816569,
+      "no_speech_prob": 7.925547718112824e-11,
+      "compression_ratio": 0.5555555555555556
+    }
+  ],
+  "stats": {
+    "word_count": 140,
+    "latin_letters": 617,
+    "urdu_letters": 0,
+    "latin_letter_fraction": 1.0,
+    "repeated_trigram_fraction": 0.007,
+    "replacement_characters": 0
+  },
+  "original_text": "he once hooked up with his younger cousin during a mehendi while their parents were in the next room مارک چیزوں سے بات کر رہا ہے کیا یہ جو tune واقعی ہے چونکہ یہ صرف وижد کیا ہے ہر کوائی جو نمبر اس کے م הכتی جا رہا ہے وہ وسیعہ میں دانس پر کرتا ہے اس جو بھی کچھ لیسی نہیں ہے لیکن یہ بہتی جنہ Honest تلاش راستہ کیا😂 اور میں بات کر کر دیتا ہے کہ میں صورت لاؤگا، ٹوٹر ل�پ کرتا ہوں لیکن اسے pod، پسندی میں بھی اس Brunoو gels finde just felt like why even the elite of Pakistani indulge and normalize and cousin mingle ں then came another childhood friend he told us how during his exchange trip to Amsterdam he got high for the first time and ended up horny on Tinder and felt fellow Pakistani they hit it off and he ended up",
+  "similarity_to_original": 0.005,
+  "mean_segment_logprob": -0.15,
+  "processing_seconds": 7.14
+}

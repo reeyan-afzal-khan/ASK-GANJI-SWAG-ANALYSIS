@@ -1,0 +1,16 @@
+EPISODE 113 / clip_01 | 00:08:58.911 --> 00:09:43.911
+Selection: long_repeated_subtitle_run
+
+=== ORIGINAL WHISPER SRT (UNVERIFIED) ===
+سو ویر گارا کیپ این آور تاکہ پھر افطار کی تیاریوں میں لگ جائیں سو ویر گارا کیپ این آور تاکہ پھر افطار کی تیاریوں میں لگ جائیں
+
+=== turbo / auto / completed ===
+How should I talk to my father that he is gay? Father gay? Salam, I hope you're doing well. Thank you for making such helpful content. I love your work. Hoping to see you grow more. I'm 26 from Asateen, Punjab, Pakistan. I'll jump into my question straight up. How should I talk to my father that he is gay? He doesn't have to talk to him. Are you going to inform him? Let's see. I've been noticing for a long time that he has something personal to do on his phone. he does video calls and chats with some random people on messenger and whatsapp i have read messages on his phone about random mails and mainly the conversations were about him asking people to masturbate and some missed video calls almost six months ago he got another phone for these
+Detected language: en
+Runtime: 7.24 seconds
+
+=== turbo / ur / completed ===
+How should I talk to my father that he is gay? Father gay? سلام علیکم جنید بھائی hope you're doing well thank you for making such helpful content I love your work hoping to see you grow more I'm 26 from Asateen Punjab, Pakistan I'll jump into my question straight up How should I talk to my father that he is gay? یہ تو ان کو بات نہیں کرنی شاہیے ملدل are you going to inform him? یہ کیا چلو دیکھتے I've been noticing for a long time that he has something personal to do on his phone موسیقی
+Detected language: ur
+Runtime: 6.44 seconds
+

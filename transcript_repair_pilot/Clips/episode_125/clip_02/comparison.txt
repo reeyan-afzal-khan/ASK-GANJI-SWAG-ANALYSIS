@@ -1,0 +1,16 @@
+EPISODE 125 / clip_02 | 00:03:06.100 --> 00:03:51.100
+Selection: implausible_character_rate
+
+=== ORIGINAL WHISPER SRT (UNVERIFIED) ===
+families جہاں پہ عام دورہ زیادہ ہے اس طرح کا environment ہے جو کر toxic نہ ہو تو there are people to look after but I'm not sure about your family کی situation but یہ concern بالکل آتا ہے اور بہت سے ایسی families ہوتی ہیں جو تھوڑی isolated ہوتی ہے یا پھر ان کے اتنے رشتہ دار ہوتے نہیں ہیں آپ کا concern غلط نہیں ہے but see here is the thing the reason is that the reason why you don't have why your your your mother I don't know how to put this یہ ایک تھوڑا سا technical issue ہوتا ہے مگر parents parents کا کام ہوتا ہے بچوں کو nurture کرنا اور ان کو سنبھال کے رکھنا اور ان کو ایک اچھا healthy environment دینا اچھی تعلیم دینا and then let them be جیسا کہ پرندے اپنے بچوں کو وڑانا سکاتے ہیں and then پھر وہ اپنا دانا خود چکتے ہیں
+
+=== turbo / auto / completed ===
+If it is toxic, there are people to look after, but I'm not sure about your family's situation, but this is a concern, and there are a lot of families that are isolated or are not so much of them. Your concern is not wrong, but here is the thing. The reason why your mother, I don't know how to put this, this is a technical issue, but parents' work is to nurture their children and keep them a good healthy environment and then let them be. Just like the birds are teaching their children, then they'll be able to do their own own.
+Detected language: en
+Runtime: 6.45 seconds
+
+=== turbo / ur / completed ===
+اس طرح کا انوائرمنٹ ہے جو کہ ٹاکسک نہ ہو تو دیرار پیپل تو لوک آفٹر بہت اگر ام ناٹ شور پاریو فیمیلی کی سیچویشن بہت یہ کنسرن بالکل آتا ہے بہت سے ایسی فیمیلی ہوتی ہیں جو تھوڑی آئیسولیٹڈ ہوتی ہے یا پھر ان کے اتنے رشتدار ہوتے نہیں ہیں آپ کا کنسرن غلط نہیں ہے بہت سی here's the thing the reason why your mother I don't know how to put this یہ ایک تھوڑا سا ٹیکنیکل ایشو ہوتا ہے مگر پیرنٹس پیرنٹس کا کام ہوتا ہے بچوں کو نرچر کرنا اور ان کو سنبھال کے رکھنا اور ان کو ایک اچھا ہیلی انوائرمنٹ دینا اچھی تعلیم دینا and then let them be جیسا کہ پرندے اپنے بچوں کو وڑانا سکھاتے ہیں and then پھر وہ اپنا دانا خود چھو
+Detected language: ur
+Runtime: 12.76 seconds
+

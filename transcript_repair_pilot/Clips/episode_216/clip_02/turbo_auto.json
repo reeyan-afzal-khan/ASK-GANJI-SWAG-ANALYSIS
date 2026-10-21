@@ -1,0 +1,93 @@
+{
+  "status": "completed",
+  "checkpoint_id": "8346118d3014371ae4e939e9a8649741fe7c2236239ae72b1e3f055cc9091cfb",
+  "created_utc": "2026-10-21T07:28:45+00:00",
+  "episode": 216,
+  "clip_id": "clip_02",
+  "start": "01:58:41.120",
+  "end": "01:59:26.120",
+  "reason": "repeated_subtitle_run",
+  "model": "turbo",
+  "language_mode": "auto",
+  "device": "cuda",
+  "detected_language": "en",
+  "text": "studying while also working at a research institute life here unfolded in unexpected ways i met and started dating a hindu tamil guy from india we actually knew each other from before i came to germany we were in the same online group for university admissions and stuff i was the one who messaged him first to ask when the admission results would be announced and the rest is history i know this might sound like a young love story but i'm not being childish about it i'm genuinely serious about him compared to the pakistani men i've dated in the past most of whom in one way or the other try to control how i spoke dressed or behaved being with him feels like a breath of fresh air it's the first time i've",
+  "segments": [
+    {
+      "start": 7121.12,
+      "end": 7126.86,
+      "text": "studying while also working at a research institute life here unfolded in unexpected ways",
+      "avg_logprob": -0.05707642175618884,
+      "no_speech_prob": 1.2957361572585313e-10,
+      "compression_ratio": 1.6981132075471699
+    },
+    {
+      "start": 7126.86,
+      "end": 7132.72,
+      "text": "i met and started dating a hindu tamil guy from india we actually knew each other from before i",
+      "avg_logprob": -0.05707642175618884,
+      "no_speech_prob": 1.2957361572585313e-10,
+      "compression_ratio": 1.6981132075471699
+    },
+    {
+      "start": 7132.72,
+      "end": 7137.98,
+      "text": "came to germany we were in the same online group for university admissions and stuff i was the one",
+      "avg_logprob": -0.05707642175618884,
+      "no_speech_prob": 1.2957361572585313e-10,
+      "compression_ratio": 1.6981132075471699
+    },
+    {
+      "start": 7137.98,
+      "end": 7143.08,
+      "text": "who messaged him first to ask when the admission results would be announced and the rest is history",
+      "avg_logprob": -0.05707642175618884,
+      "no_speech_prob": 1.2957361572585313e-10,
+      "compression_ratio": 1.6981132075471699
+    },
+    {
+      "start": 7143.08,
+      "end": 7150.9,
+      "text": "i know this might sound like a young love story but i'm not being",
+      "avg_logprob": -0.05707642175618884,
+      "no_speech_prob": 1.2957361572585313e-10,
+      "compression_ratio": 1.6981132075471699
+    },
+    {
+      "start": 7150.9,
+      "end": 7155.66,
+      "text": "childish about it i'm genuinely serious about him compared to the pakistani men i've dated in the",
+      "avg_logprob": -0.05503423630245148,
+      "no_speech_prob": 4.047322373079698e-12,
+      "compression_ratio": 1.5731707317073171
+    },
+    {
+      "start": 7155.66,
+      "end": 7163.26,
+      "text": "past most of whom in one way or the other try to control how i spoke dressed or behaved being",
+      "avg_logprob": -0.05503423630245148,
+      "no_speech_prob": 4.047322373079698e-12,
+      "compression_ratio": 1.5731707317073171
+    },
+    {
+      "start": 7163.26,
+      "end": 7166.12,
+      "text": "with him feels like a breath of fresh air it's the first time i've",
+      "avg_logprob": -0.05503423630245148,
+      "no_speech_prob": 4.047322373079698e-12,
+      "compression_ratio": 1.5731707317073171
+    }
+  ],
+  "stats": {
+    "word_count": 135,
+    "latin_letters": 570,
+    "urdu_letters": 0,
+    "latin_letter_fraction": 1.0,
+    "repeated_trigram_fraction": 0.008,
+    "replacement_characters": 0
+  },
+  "original_text": "ایڈنٹی جرمنی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی ایڈنٹی بیگ ویڈ ہیم فیلز لیکن بریت آف ریشیر ایٹس فرس ٹائم آف فیلڈ سین اینڈ ریسپیکٹیڈ فور ہو آئی ایم آنسلی آئی فیل لائک آئی سٹرک سٹرک گولڈ ویڈ ہے",
+  "similarity_to_original": 0.0,
+  "mean_segment_logprob": -0.0563,
+  "processing_seconds": 6.31
+}
