@@ -1,67 +1,22 @@
-.claude/
-CrisperWhisper2_Large/
-node_modules/
-release/
-extracted/
-tools/
-android/www/
-android/local.properties
-android/.gradle/
-android/build/
-android/app/build/
-android/capacitor-cordova-android-plugins/
-
-# =========================
-# macOS
-# =========================
-.DS_Store
-.AppleDouble
-.LSOverride
-Icon
-._*
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-.com.apple.timemachine.donotpresent
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-
-# =========================
-# Python
-# =========================
-__pycache__/
-*.py[cod]
-*.pyo
-*.pyd
-*.so
-
-# Virtual environments
+# Local environments, models and audio
 .venv/
 venv/
 env/
-
-# =========================
-# Jupyter
-# =========================
-.ipynb_checkpoints/
-
-# =========================
-# IDEs
-# =========================
-.idea/
-.vscode/
-
-# =========================
-# Dataset
-# =========================
+CrisperWhisper2_Large/
 all_episodes/
 
-# Temporary files
+# Runtime files
+.ct2-batch.lock
+logs/
+backups/
+__pycache__/
+*.py[cod]
 *.tmp
 *.temp
+
+# Editor and OS files
+.vscode/
+.idea/
+.claude/
+.DS_Store
+Thumbs.db

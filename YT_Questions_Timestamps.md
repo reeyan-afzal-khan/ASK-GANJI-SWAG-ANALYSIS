@@ -2859,6 +2859,22 @@
 
 </details>
 
+<details open>
+<summary><strong>Episode 242</strong></summary>
+
+1. [Youtube Comments](https://youtu.be/vDpX9YXXnB8?list=PLinUrn8TVRE-hm3-CsyoQaySKYbxLtG6B&t=562)
+2. [Stopping My Visits to Brothels & Massage Parlours](https://youtu.be/vDpX9YXXnB8?list=PLinUrn8TVRE-hm3-CsyoQaySKYbxLtG6B&t=1784)
+3. [Nihari Vs Pakistan](https://youtu.be/vDpX9YXXnB8?list=PLinUrn8TVRE-hm3-CsyoQaySKYbxLtG6B&t=2684)
+4. [Father-in-Law Nai jeena Haram kar Rkha hai](https://youtu.be/vDpX9YXXnB8?list=PLinUrn8TVRE-hm3-CsyoQaySKYbxLtG6B&t=4038)
+5. [Sab ney Faida Uthaya](https://youtu.be/vDpX9YXXnB8?list=PLinUrn8TVRE-hm3-CsyoQaySKYbxLtG6B&t=4601)
+6. [Moved abroad for a bright future](https://youtu.be/vDpX9YXXnB8?list=PLinUrn8TVRE-hm3-CsyoQaySKYbxLtG6B&t=5598)
+7. [Attending a white Western Wedding](https://youtu.be/vDpX9YXXnB8?list=PLinUrn8TVRE-hm3-CsyoQaySKYbxLtG6B&t=6575)
+8. [I might leave my Degree for $5000](https://youtu.be/vDpX9YXXnB8?list=PLinUrn8TVRE-hm3-CsyoQaySKYbxLtG6B&t=7959)
+9. [About my Neighbours](https://youtu.be/vDpX9YXXnB8?list=PLinUrn8TVRE-hm3-CsyoQaySKYbxLtG6B&t=9714)
+10. [25, Lost my Job in Australia ](https://youtu.be/vDpX9YXXnB8?list=PLinUrn8TVRE-hm3-CsyoQaySKYbxLtG6B&t=10755)
+
+</details>
+
 
 
 

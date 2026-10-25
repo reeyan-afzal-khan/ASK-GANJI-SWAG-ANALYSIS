@@ -4,21 +4,44 @@ set -euo pipefail
 # Keep model, input audio and output paths relative to this script.
 cd -- "$(dirname -- "${BASH_SOURCE[0]}")"
 
-python3 - <<'PY'
+# Hold this lock for the lifetime of the batch to prevent competing writers.
+exec 9>".ct2-batch.lock"
+if ! flock -n 9; then
+    echo "A CT2 batch is already running for this folder. Use its existing terminal." >&2
+    exit 1
+fi
+
+# Windows .venv binaries cannot run under WSL. Use a separate Linux venv.
+PYTHON="${CRISPER_PYTHON:-$HOME/.venvs/ask-ganji-ct2/bin/python}"
+if [[ ! -x "$PYTHON" ]]; then
+    echo "CT2 environment missing. Run: bash setup_crisper_ct2.sh" >&2
+    exit 1
+fi
+"$PYTHON" -u - <<'PY'
 import gc
+import logging
+import shutil
 import os
 import tempfile
 import time
+import traceback
 from pathlib import Path
 
-import torch
+import ctranslate2
 from crisperwhisper import CrisperWhisperModel
+from ct2_decoder_guard import install_decoder_guard
 
-MODEL_PATH = Path("CrisperWhisper2_Large")
+logging.basicConfig(level=logging.WARNING, format="%(asctime)s %(message)s", datefmt="%H:%M:%S")
+logging.getLogger("crisperwhisper.longform").setLevel(logging.INFO)
+
+MODEL_PATH = os.environ.get("CRISPER_MODEL", "CrisperWhisper2_Large" if Path("CrisperWhisper2_Large").is_dir() else "large")
 AUDIO_DIR = Path("all_episodes")
 OUTPUT_DIR = Path("urdu_transcript_crisper")
-FIRST_EPISODE = 3
-LAST_EPISODE = 241
+FIRST_EPISODE = int(os.environ.get("FIRST_EPISODE", "3"))
+LAST_EPISODE = int(os.environ.get("LAST_EPISODE", str(max(
+    (int(p.stem.split("_")[-1]) for p in AUDIO_DIR.glob("episode_*.mp3")
+     if p.stem.split("_")[-1].isdigit()), default=FIRST_EPISODE))))
+EPISODES = sorted(set(int(n.strip()) for n in os.environ["EPISODES"].split(","))) if os.environ.get("EPISODES") else list(range(FIRST_EPISODE, LAST_EPISODE + 1))
 
 # Subtitle formatting settings
 MAX_DURATION = 5.0
@@ -29,7 +52,7 @@ PAUSE_THRESHOLD = 0.65
 # Avoid overflowing Whisper's 448-token decoder limit on long Urdu episodes.
 # First pass retains the original 256-token generation budget but uses less
 # previous-text context (4 words instead of CrisperWhisper's default 12).
-# If Transformers still reports a decoder-length error, retry that episode
+# If the backend reports a decoder-length error, retry that episode
 # with a smaller prompt and generation budget. Completed SRTs are never rerun.
 DECODER_PROFILES = [
     (4, 256),   # normal: maximum original decoding budget, shorter context
@@ -123,28 +146,44 @@ def save_atomically(destination, contents):
 
 
 def main():
-    if not MODEL_PATH.is_dir():
-        raise SystemExit(f"Model directory not found: {MODEL_PATH.resolve()}")
     if not AUDIO_DIR.is_dir():
         raise SystemExit(f"Audio directory not found: {AUDIO_DIR.resolve()}")
-    if not torch.cuda.is_available():
-        raise SystemExit("CUDA not found. Check your Jetson GPU/PyTorch setup.")
+    if ctranslate2.get_cuda_device_count() < 1:
+        raise SystemExit("CT2 cannot find a CUDA GPU. Check WSL2 NVIDIA GPU access.")
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    torch.backends.cuda.matmul.allow_tf32 = True
-    print("Loading model once onto:", torch.cuda.get_device_name(0), flush=True)
+    print("Loading CT2 model once onto CUDA GPU 0:", MODEL_PATH, flush=True)
     model = CrisperWhisperModel(
-        str(MODEL_PATH.resolve()),
-        backend="transformers",
+        MODEL_PATH,
+        backend="ct2",
         device="cuda",
         compute_type="float16",
     )
+    install_decoder_guard(model)
+
+    # Exercise the real CT2 path without changing existing subtitle files.
+    if os.environ.get("CT2_SMOKE_TEST") == "1":
+        import soundfile as sf
+        audio_path = AUDIO_DIR / f"episode_{FIRST_EPISODE:03d}.mp3"
+        with sf.SoundFile(audio_path) as audio_file:
+            sr = audio_file.samplerate
+            clip = audio_file.read(frames=sr * 20, dtype="float32")
+        if clip.ndim == 2:
+            clip = clip.mean(axis=1)
+        result = model.transcribe(clip, sr=sr, language="ur", word_timestamps=True)
+        words = [w for w in (result.words or []) if w.word and w.word.strip()]
+        if not words:
+            raise RuntimeError("CT2 smoke test returned no word timestamps")
+        print(f"[CT2 TEST OK] {len(words)} words; backend={model.backend}", flush=True)
+        print(make_subtitles(words), flush=True)
+        return
 
     completed = 0
     skipped = 0
     missing = 0
+    failed = []
 
-    for episode in range(FIRST_EPISODE, LAST_EPISODE + 1):
+    for episode in EPISODES:
         label = f"episode_{episode:03d}"
         audio_path = AUDIO_DIR / f"{label}.mp3"
         srt_path = OUTPUT_DIR / f"{label}.srt"
@@ -162,7 +201,12 @@ def main():
 
         print(f"[START] {audio_path}", flush=True)
         started = time.perf_counter()
+        audio_temp = tempfile.TemporaryDirectory(prefix="crisper-audio-")
         try:
+            local_audio = Path(audio_temp.name) / audio_path.name
+            print(f"[AUDIO] Copying {label} to Linux temporary storage", flush=True)
+            shutil.copyfile(audio_path, local_audio)
+            print(f"[AUDIO] {label} ready; starting transcription", flush=True)
             # Only token-limit errors are retried with safer decoding settings.
             # Each retry starts this ONE episode over; already saved SRTs stay intact.
             result = None
@@ -173,22 +217,22 @@ def main():
                         f"max_new_tokens={max_new_tokens}",
                         flush=True,
                     )
-                    with torch.inference_mode():
-                        result = model.transcribe(
-                            str(audio_path),
-                            language="ur",
-                            mode="verbatim",
-                            word_timestamps=True,
-                            longform_strategy="continuation",
-                            context_words=context_words,
-                            max_new_tokens=max_new_tokens,
-                        )
+                    result = model.transcribe(
+                        str(local_audio),
+                        language="ur",
+                        mode="verbatim",
+                        word_timestamps=True,
+                        longform_strategy="continuation",
+                        context_words=context_words,
+                        max_new_tokens=max_new_tokens,
+                    )
                     break
-                except ValueError as exc:
+                except (ValueError, RuntimeError) as exc:
                     # Don't retry other errors: they need investigation.
                     message = str(exc)
                     is_decoder_limit = (
                         "max_target_positions" in message
+                        or "No position encodings are defined for positions >= 448" in message
                         or (
                             "decoder_input_ids" in message
                             and "max_new_tokens" in message
@@ -204,7 +248,6 @@ def main():
                         flush=True,
                     )
                     gc.collect()
-                    torch.cuda.empty_cache()
             words = [w for w in (result.words or []) if w.word and w.word.strip()]
             if not words:
                 raise RuntimeError("No word timestamps returned; SRT not created")
@@ -221,11 +264,17 @@ def main():
             raise SystemExit(130)
         except Exception as exc:
             print(f"[ERROR] {label}: {exc}", flush=True)
-            print("Stopping; rerun this script to retry the unfinished episode.", flush=True)
-            raise SystemExit(1)
+            traceback.print_exc()
+            failed.append(episode)
+            print("Continuing to the next episode; no SRT saved for this failure.", flush=True)
+        finally:
+            audio_temp.cleanup()
 
     print(f"\nFinished. New SRTs: {completed}, skipped: {skipped}, missing MP3s: {missing}")
     print(f"Output folder: {OUTPUT_DIR.resolve()}")
+    if failed or missing:
+        print(f"Failed episodes: {failed}; missing MP3s: {missing}", flush=True)
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":
