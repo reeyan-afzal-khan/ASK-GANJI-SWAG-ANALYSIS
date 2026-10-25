@@ -1,20 +1,62 @@
-# Local environments, models and audio
+# All large local runtime artifacts: models, caches, reports, backups and logs
+/.cache/
+/all_episodes/
+
+# Legacy runtime locations (keep ignored if recreated)
+/models/
+/reports/
+/backups/
+/logs/
+/CrisperWhisper2_Large/
+
+# Model weights and binary training artifacts, wherever downloaded
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.gguf
+*.ggml
+*.bin
+*.h5
+*.hdf5
+*.npz
+*.npy
+
+# Source media (transcript .srt files remain versioned)
+*.mp3
+*.wav
+*.flac
+*.m4a
+*.aac
+*.ogg
+*.mp4
+*.mkv
+*.webm
+*.mov
+
+# Compressed backups and downloads
+*.zip
+*.7z
+*.tar
+*.tar.gz
+*.tgz
+*.tar.xz
+*.gz
+
+# Environments and temporary files
 .venv/
 venv/
 env/
-CrisperWhisper2_Large/
-all_episodes/
-
-# Runtime files
-.ct2-batch.lock
-logs/
-backups/
 __pycache__/
 *.py[cod]
 *.tmp
 *.temp
+*.part
+*.log
+.ct2-batch.lock
 
-# Editor and OS files
+# Editors and operating systems
 .vscode/
 .idea/
 .claude/

@@ -1,0 +1,12 @@
+{
+  "model": {
+    "repo": "Mavkif/m2m100_rup_ur_to_rur",
+    "revision": "125c01925ce681db33d3657ba56b8b2bbdbc2c4c",
+    "files": ["config.json", "generation_config.json", "model.safetensors"]
+  },
+  "tokenizer": {
+    "repo": "Mavkif/m2m100_rup_tokenizer_both",
+    "revision": "60692f83ff18639a2e8973940d93ba35a488c8ee",
+    "files": ["added_tokens.json", "sentencepiece.bpe.model", "special_tokens_map.json", "tokenizer_config.json", "vocab.json"]
+  }
+}
