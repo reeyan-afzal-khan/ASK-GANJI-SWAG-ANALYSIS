@@ -1,0 +1,213 @@
+{
+  "categories": [
+    {
+      "id": "love",
+      "name": "Love & marriage",
+      "description": "Finding a partner, marriages in trouble, divorce, dating, breakups, cheating and intimacy.",
+      "subcategories": [
+        {"id": "love.rishta", "name": "Rishtas & proposals", "description": "Finding a match the family way: proposals, engagements, cousin and watta-satta marriages, and pressure to marry."},
+        {"id": "love.choosing", "name": "Choosing the right partner", "description": "Weighing up one person: age gaps, red flags, their past, habits, health or income, and deciding between proposals."},
+        {"id": "love.across", "name": "Across caste, faith & borders", "description": "Love or marriage across caste, class, sect, religion, race or nationality, including India–Pakistan couples."},
+        {"id": "love.marriage", "name": "Marriage problems", "description": "A marriage in trouble: arguments, trust, incompatibility, money, children and second marriages."},
+        {"id": "love.spouse", "name": "Difficult spouses", "description": "A husband's or wife's habits, attitude, control or violence."},
+        {"id": "love.divorce", "name": "Divorce & separation", "description": "Deciding to leave, divorce, separation and starting again."},
+        {"id": "love.dating", "name": "Crushes & dating", "description": "Crushes, dating, situationships and long-distance or online relationships."},
+        {"id": "love.breakup", "name": "Breakups & toxic relationships", "description": "Heartbreak, exes and closure, red flags, catfishing and relationships gone wrong."},
+        {"id": "love.cheating", "name": "Cheating & affairs", "description": "Infidelity by a partner or parent, affairs and their aftermath."},
+        {"id": "love.intimacy", "name": "Sex & intimacy", "description": "Intimacy in marriage, sexual health and sexuality questions."}
+      ],
+      "keywords": ["marri*", "marry", "marrying", "wedding*", "wife", "wives", "husband*", "spouse*", "fianc*", "engage*", "proposal*", "propose*", "rishta*", "rishte*", "rishtey", "divorce*", "girlfriend*", "boyfriend*", "relationship*", "love", "loved", "lover*", "in love", "dating", "crush*", "breakup*", "break up", "cheat*", "affair*", "partner*", "romance", "romantic", "suhaag*", "nikah", "sex", "sexual*", "intima*", "virgin*", "first night", "bride*", "groom", "dowry", "jahez*", "haq mehr", "polygamy", "honeymoon", "shaadi*", "shadi*", "biwi*", "shohar*", "mohabbat", "pyar", "pyaar", "ishq", "mangni", "mangetar", "talaq", "dulhan", "dulha", "muzz", "catfish", "cat fish", "gf", "bf", "dates", "onlyfans", "flirt*", "pregnan*", "bedroom", "unnatural"],
+      "weak": ["girl", "girls", "larki", "larka"]
+    },
+    {
+      "id": "family",
+      "name": "Family & friends",
+      "description": "Parents, in-laws, siblings and relatives, raising children, supporting family, and friendships.",
+      "subcategories": [
+        {"id": "family.parents", "name": "Parents & their expectations", "description": "Strict or controlling parents, pressure over study, career or marriage, and living up to their expectations."},
+        {"id": "family.toxic", "name": "Difficult & abusive parents", "description": "Toxic, abusive, absent or embarrassing parents, broken homes and parents who fight."},
+        {"id": "family.secrets", "name": "A parent's affair or secret", "description": "A parent's affair, remarriage, sex life or hidden life."},
+        {"id": "family.inlaws", "name": "In-laws", "description": "Mothers-in-law, joint families and the spouse's relatives."},
+        {"id": "family.siblings", "name": "Siblings & relatives", "description": "Brothers, sisters, cousins, aunts, uncles and inheritance fights."},
+        {"id": "family.parenting", "name": "Raising children", "description": "Parents asking how to bring up their children."},
+        {"id": "family.duty", "name": "Caring for family", "description": "Supporting ageing parents, family finances and responsibility."},
+        {"id": "family.friends", "name": "Friendships", "description": "Friends, betrayal and social circles."}
+      ],
+      "keywords": ["father*", "mother*", "parent*", "dad", "dads", "daddy", "mom", "moms", "mum", "mummy", "papa", "abbu", "ammi", "walid*", "sister*", "brother*", "sibling*", "son", "sons", "daughter*", "kids", "kid", "child", "children", "childhood", "baby", "babies", "grandfather*", "grandmother*", "grandparent*", "grandma", "grandpa", "nani", "dadi", "uncle*", "aunt*", "cousin*", "family", "families", "khandan*", "in law", "in laws", "bhabhi*", "bhaabi", "saas", "susral", "devar", "beta", "beti", "bachche*", "bachay", "bache", "bachon", "behen*", "joint family", "gharwale", "ghar wale", "friend*", "friendship*", "dost", "dosti", "bff"],
+      "weak": []
+    },
+    {
+      "id": "edu",
+      "name": "Education",
+      "description": "What to study, studying abroad, student life and the education system.",
+      "subcategories": [
+        {"id": "edu.choice", "name": "What to study", "description": "Choosing a subject, degree or field."},
+        {"id": "edu.abroad", "name": "Studying abroad", "description": "Universities, scholarships and student life in another country."},
+        {"id": "edu.student", "name": "Student life & exams", "description": "Grades, exams, pressure and university life."},
+        {"id": "edu.system", "name": "Degrees, skills & the system", "description": "Whether degrees matter and how education works in Pakistan and India."}
+      ],
+      "keywords": ["study", "studies", "studying", "student*", "universit*", "college*", "school*", "degree*", "bachelor*", "masters", "master's", "mba", "bba", "phd", "fsc", "matric", "o level*", "a level*", "exam*", "scholarship*", "fulbright", "admission*", "graduat*", "thesis", "research*", "teacher*", "teaching", "education*", "academic*", "mdcat", "ecat", "ielts", "toefl", "semester*", "campus", "parhai", "padhai", "plagiarism"],
+      "weak": []
+    },
+    {
+      "id": "career",
+      "name": "Career & work",
+      "description": "Finding work, the workplace, choosing or changing careers, government jobs and creative careers.",
+      "subcategories": [
+        {"id": "career.jobs", "name": "Job hunting & layoffs", "description": "Finding a job, rejections, unemployment and layoffs."},
+        {"id": "career.workplace", "name": "Workplace, bosses & pay", "description": "Office politics, bosses, pay, ethics and work culture."},
+        {"id": "career.path", "name": "Choosing or changing career", "description": "Picking a path, switching fields and mid-career crises."},
+        {"id": "career.govt", "name": "CSS & government jobs", "description": "Civil services, government jobs and the armed forces."},
+        {"id": "career.creative", "name": "Creative & online careers", "description": "YouTube, design, film, music, photography and other creative work."}
+      ],
+      "keywords": ["job", "jobs", "career*", "salary", "salaries", "boss*", "office", "offices", "workplace*", "corporate", "company", "companies", "employ*", "unemploy*", "interview*", "promotion*", "resign*", "hiring", "hire", "hired", "internship*", "profession*", "engineer*", "css", "ccs", "upsc", "naukri*", "skill*", "cv", "resume", "linkedin", "chatgpt", "programming", "software", "coding", "developer*", "it field", "layoff*", "laid off", "youtuber*", "filmmak*", "photograph*", "artist*", "designer*", "nursing", "lawyer*"],
+      "weak": ["work", "working", "kaam"]
+    },
+    {
+      "id": "money",
+      "name": "Money & business",
+      "description": "Starting a business, freelancing, debt, saving and investing, and scams.",
+      "subcategories": [
+        {"id": "money.business", "name": "Starting a business", "description": "Business ideas, partners and running a company."},
+        {"id": "money.freelance", "name": "Freelancing & online income", "description": "Freelancing, remote work and earning online."},
+        {"id": "money.struggle", "name": "Debt & money trouble", "description": "Debt, loans, poverty and family money problems."},
+        {"id": "money.invest", "name": "Saving & investing", "description": "Property, savings, crypto and financial planning."},
+        {"id": "money.scam", "name": "Scams & fraud", "description": "Being scammed, frauds and how to avoid them."}
+      ],
+      "keywords": ["money", "business*", "startup*", "start up", "invest*", "debt*", "loan*", "financ*", "earn", "earning*", "earns", "income*", "freelanc*", "crypto*", "bitcoin", "stock*", "property", "properties", "real estate", "saving*", "rich", "poor", "poverty", "ghareeb", "gharib", "paisa", "paise", "paison", "rupee*", "rupay", "dollar*", "pkr", "lakh*", "laakh", "crore*", "rent", "rental", "cost of living", "inflation", "economy", "economic*", "scam*", "fraud*", "client*", "payment*", "shop", "shops", "restaurant*", "brand*", "marketing", "sales", "customer*", "profit*", "tax", "taxes", "ecommerce", "e commerce", "amazon", "dropshipping", "online income", "side hustle"],
+      "weak": []
+    },
+    {
+      "id": "abroad",
+      "name": "Migration & abroad",
+      "description": "Whether to move abroad, visas and passports, life overseas and moving back.",
+      "subcategories": [
+        {"id": "abroad.move", "name": "Should I move abroad?", "description": "Whether and where to migrate."},
+        {"id": "abroad.visa", "name": "Visas & passports", "description": "Visas, citizenship, PR, embassies and travelling on a Pakistani passport."},
+        {"id": "abroad.life", "name": "Life as an overseas desi", "description": "Everyday life abroad country by country, work and costs, and how desi communities behave."},
+        {"id": "abroad.identity", "name": "Belonging, identity & racism", "description": "Homesickness, clashing values, raising children abroad, racism and fitting in."},
+        {"id": "abroad.return", "name": "Moving back to Pakistan", "description": "Returning home after living abroad."}
+      ],
+      "keywords": ["abroad", "overseas", "migrat*", "immigra*", "emigra*", "visa*", "passport*", "citizenship*", "permanent resident", "permanent residency", "pr", "asylum", "refugee*", "embass*", "canada", "canadian*", "dubai", "uae", "emirates", "abu dhabi", "saudi*", "ksa", "gulf", "qatar", "doha", "oman", "bahrain", "kuwait", "uk", "britain", "british", "england", "london", "birmingham", "manchester", "scotland", "usa", "america", "american*", "germany", "german*", "australia*", "new zealand", "europe*", "ireland", "italy", "spain", "france", "netherlands", "holland", "norway", "norwegian*", "sweden", "denmark", "finland", "malaysia*", "singapore", "japan*", "korea*", "turkey", "middle east", "move abroad", "moving abroad", "bahar ke mulk"],
+      "weak": ["move", "moving", "settle", "settled"]
+    },
+    {
+      "id": "mind",
+      "name": "Mental health & self",
+      "description": "Depression and anxiety, addictions, confidence, trauma and feeling lost.",
+      "subcategories": [
+        {"id": "mind.depression", "name": "Depression & anxiety", "description": "Depression, anxiety, stress and suicidal thoughts."},
+        {"id": "mind.addiction", "name": "Addictions & habits", "description": "Porn, drugs, smoking, gaming, phones and other compulsions."},
+        {"id": "mind.growth", "name": "Confidence & self-improvement", "description": "Confidence, communication, discipline and personal growth."},
+        {"id": "mind.trauma", "name": "Trauma & abuse", "description": "Abuse, bullying and the trauma they leave."},
+        {"id": "mind.purpose", "name": "Feeling lost, regret & purpose", "description": "Direction in life, regret, guilt, grief and loneliness."}
+      ],
+      "keywords": ["depress*", "anxiety", "anxious", "stress*", "mental*", "trauma*", "traumat*", "suicid*", "kill myself", "end my life", "want to die", "lonely", "loneliness", "lonel*", "confiden*", "insecur*", "motivat*", "guilt*", "overthink*", "over thinking", "adhd", "ocd", "bipolar", "panic", "therap*", "psychiatr*", "psycholog*", "counsel*", "addict*", "smok*", "drug*", "alcohol*", "drinking", "porn*", "masturbat*", "abuse*", "abusive", "harass*", "bully*", "bullied", "self esteem", "self worth", "self sabotag*", "disab*", "exhausted", "burnout", "burn out", "pareshan*", "tension", "dimagh*", "popcorn brain", "gadget*", "screen time", "unhappy", "ungrateful", "mindset", "complex", "complexed", "jealous*", "envy", "ego", "anger", "angry", "grief", "death", "die", "dying", "self", "growth"],
+      "weak": ["peace", "happy", "happiness", "lost", "confused"]
+    },
+    {
+      "id": "health",
+      "name": "Health & daily life",
+      "description": "Illness, looks and fitness, and everyday practical problems.",
+      "subcategories": [
+        {"id": "health.medical", "name": "Illness & medical", "description": "Illness, disability, fertility and medical decisions."},
+        {"id": "health.body", "name": "Looks, weight & fitness", "description": "Appearance, weight, hair loss and fitness."},
+        {"id": "health.daily", "name": "Everyday life & neighbours", "description": "Housing, roommates, neighbours and daily hassles."}
+      ],
+      "keywords": ["health*", "sick*", "illness", "disease*", "cancer", "diabetes", "weight", "obes*", "gym", "fitness", "diet*", "bald*", "hygiene", "sleep*", "insomnia", "autism", "hair", "pregnan*", "hospital*", "surgery", "medic*", "neighbo*", "roommate*", "landlord", "eyesight", "infertil*"],
+      "weak": []
+    },
+    {
+      "id": "society",
+      "name": "Society & culture",
+      "description": "How Pakistanis live and behave, class and customs, religion, gender, politics, India, sport, media and the wider world.",
+      "subcategories": [
+        {"id": "society.pakistan", "name": "Pakistani mindset & habits", "description": "How Pakistanis think and behave: work and leisure, food, hobbies, unity and national character."},
+        {"id": "society.manners", "name": "Civic sense & public life", "description": "Etiquette, cleanliness, queues, roads, pollution and behaviour in public places."},
+        {"id": "society.class", "name": "Class, status & prejudice", "description": "Classism, racism and colourism, caste pride, wealth and who gets respect."},
+        {"id": "society.customs", "name": "Weddings & customs", "description": "Wedding culture, guests, dowry and other traditions."},
+        {"id": "society.religion", "name": "Religion & faith", "description": "Faith, doubt, minorities and religious practice."},
+        {"id": "society.gender", "name": "Gender & sexuality", "description": "Women's freedom and safety, harassment, and LGBT questions."},
+        {"id": "society.indopak", "name": "India & Pakistan", "description": "Relations, rivalry and culture across the border."},
+        {"id": "society.politics", "name": "Politics, law & economy", "description": "Government, police, crime, the economy and the state."},
+        {"id": "society.sport", "name": "Cricket & sport", "description": "Pakistan cricket, the PSL, players and other sports."},
+        {"id": "society.media", "name": "Films, dramas & music", "description": "Cinema, TV dramas, music, celebrities and recommendations."},
+        {"id": "society.online", "name": "Social media & news", "description": "Influencers, reels, memes, YouTubers and news channels."},
+        {"id": "society.world", "name": "World affairs & other cultures", "description": "Other countries, international politics and cultures."}
+      ],
+      "keywords": ["india", "indian*", "societ*", "culture*", "cultural", "desi*", "religio*", "islam*", "muslim*", "quran*", "namaz", "prayer*", "hijab", "burqa", "deen", "mazhab*", "sunni", "shia", "ahmadi*", "hindu*", "christian*", "atheis*", "politic*", "government*", "election*", "vote", "voting", "democra*", "army", "military", "establishment", "war", "wars", "conflict*", "terror*", "police", "law", "laws", "legal", "court*", "judge*", "corrupt*", "bribe*", "crime*", "criminal*", "snatch*", "robbery", "nadra", "karachi", "lahore", "islamabad", "punjab*", "sindh*", "balochistan", "kashmir*", "afghan*", "cricket*", "sport*", "pcb", "bcci", "racis*", "discriminat*", "ethic*", "etiquette*", "manners", "traffic", "tourism", "media", "journalis*", "influencer*", "tiktok*", "chapri", "feminis*", "patriarch*", "gender", "lgbt*", "gay", "lesbian", "transgender", "black magic", "superstition*", "jinn*", "taweez", "nuclear", "china", "chinese", "israel*", "palestin*", "gaza", "iran*", "history", "historical", "kohinoor", "grooming gangs", "sex education", "documentary", "harassment", "women", "elite", "middle class"],
+      "weak": ["pakistan*", "country", "mulk"]
+    },
+    {
+      "id": "show",
+      "name": "The show & Junaid",
+      "description": "YouTube comment segments, thanks and feedback, and questions about Junaid and the channel.",
+      "title_only": true,
+      "subcategories": [
+        {"id": "show.comments", "name": "YouTube comments", "description": "Segments where Junaid reads viewers' comments."},
+        {"id": "show.feedback", "name": "Thanks, feedback & updates", "description": "Appreciation, suggestions and follow-ups from earlier askers."},
+        {"id": "show.junaid", "name": "About Junaid & the channel", "description": "Junaid's life, opinions, the channel and its projects."}
+      ],
+      "keywords": ["comment*", "feedback", "appreciat*", "thank you", "thanks", "thankful", "grateful", "gratitude", "patreon", "patron*", "subscriber*", "podcast*", "junaid", "ganji*", "ganjiswag", "akram", "letter", "inspired by", "your work", "your videos", "these videos", "caller", "conclusion", "ask ganjiswag", "ask ganji swag", "fan", "fans", "not a question", "update", "suggestion*", "constructive", "swag family", "youtube comments", "merchandise", "merch", "your channel", "your show", "this show", "mentor"],
+      "weak": []
+    },
+    {
+      "id": "other",
+      "name": "Other",
+      "description": "Questions too unclear or one-off to place.",
+      "subcategories": [
+        {"id": "other.misc", "name": "Unclear or one-off", "description": "The title and opening do not say enough to place it."}
+      ],
+      "keywords": [],
+      "weak": []
+    }
+  ],
+  "places": [
+    {"name": "Karachi", "region": "Pakistan", "aliases": ["karachi"]},
+    {"name": "Lahore", "region": "Pakistan", "aliases": ["lahore"]},
+    {"name": "Islamabad", "region": "Pakistan", "aliases": ["islamabad"]},
+    {"name": "Rawalpindi", "region": "Pakistan", "aliases": ["rawalpindi", "pindi"]},
+    {"name": "Peshawar", "region": "Pakistan", "aliases": ["peshawar"]},
+    {"name": "Multan", "region": "Pakistan", "aliases": ["multan"]},
+    {"name": "Faisalabad", "region": "Pakistan", "aliases": ["faisalabad"]},
+    {"name": "Sialkot", "region": "Pakistan", "aliases": ["sialkot"]},
+    {"name": "Gujranwala", "region": "Pakistan", "aliases": ["gujranwala"]},
+    {"name": "Balochistan", "region": "Pakistan", "aliases": ["balochistan", "baluchistan", "quetta"]},
+    {"name": "KPK", "region": "Pakistan", "aliases": ["kpk", "khyber pakhtunkhwa"]},
+    {"name": "Dubai & UAE", "region": "Gulf & Middle East", "aliases": ["dubai", "abu dhabi", "sharjah", "uae", "emirates", "ajman"]},
+    {"name": "Saudi Arabia", "region": "Gulf & Middle East", "aliases": ["saudi", "saudia", "ksa", "riyadh", "jeddah"]},
+    {"name": "Qatar", "region": "Gulf & Middle East", "aliases": ["qatar", "doha"]},
+    {"name": "Oman", "region": "Gulf & Middle East", "aliases": ["oman", "muscat"]},
+    {"name": "Kuwait", "region": "Gulf & Middle East", "aliases": ["kuwait"]},
+    {"name": "Bahrain", "region": "Gulf & Middle East", "aliases": ["bahrain"]},
+    {"name": "Turkey", "region": "Gulf & Middle East", "aliases": ["turkey", "istanbul", "turks"]},
+    {"name": "Iran", "region": "Gulf & Middle East", "aliases": ["iran"]},
+    {"name": "UK", "region": "Europe & UK", "aliases": ["UK", "england", "britain", "british", "london", "birmingham", "manchester", "scotland"]},
+    {"name": "Germany", "region": "Europe & UK", "aliases": ["germany", "berlin", "munich", "frankfurt"]},
+    {"name": "France", "region": "Europe & UK", "aliases": ["france", "paris"]},
+    {"name": "Italy", "region": "Europe & UK", "aliases": ["italy", "milan", "rome"]},
+    {"name": "Spain", "region": "Europe & UK", "aliases": ["spain", "barcelona", "madrid"]},
+    {"name": "Netherlands", "region": "Europe & UK", "aliases": ["netherlands", "holland", "amsterdam"]},
+    {"name": "Norway", "region": "Europe & UK", "aliases": ["norway", "norwegian", "oslo"]},
+    {"name": "Sweden", "region": "Europe & UK", "aliases": ["sweden", "stockholm"]},
+    {"name": "Denmark", "region": "Europe & UK", "aliases": ["denmark", "copenhagen"]},
+    {"name": "Ireland", "region": "Europe & UK", "aliases": ["ireland", "dublin"]},
+    {"name": "Russia", "region": "Europe & UK", "aliases": ["russia", "moscow"]},
+    {"name": "Canada", "region": "North America", "aliases": ["canada", "canadian", "toronto", "vancouver", "montreal", "calgary", "mississauga", "ontario"]},
+    {"name": "USA", "region": "North America", "aliases": ["USA", "US", "america", "american", "united states", "new york", "texas", "chicago", "california", "houston"]},
+    {"name": "Australia", "region": "Australia & NZ", "aliases": ["australia", "australian", "sydney", "melbourne", "perth", "brisbane", "canberra"]},
+    {"name": "New Zealand", "region": "Australia & NZ", "aliases": ["new zealand", "auckland"]},
+    {"name": "India", "region": "South Asia", "aliases": ["india", "indian", "delhi", "mumbai", "bombay", "kolkata", "bangalore", "bengaluru", "chennai", "haryana", "kerala", "varanasi"]},
+    {"name": "Bangladesh", "region": "South Asia", "aliases": ["bangladesh", "bangladeshi", "dhaka"]},
+    {"name": "Afghanistan", "region": "South Asia", "aliases": ["afghanistan", "afghan", "kabul"]},
+    {"name": "China", "region": "East & Southeast Asia", "aliases": ["china", "chinese", "beijing", "shanghai"]},
+    {"name": "Japan", "region": "East & Southeast Asia", "aliases": ["japan", "tokyo"]},
+    {"name": "South Korea", "region": "East & Southeast Asia", "aliases": ["korea", "korean", "seoul"]},
+    {"name": "Malaysia", "region": "East & Southeast Asia", "aliases": ["malaysia", "kuala lumpur"]},
+    {"name": "Singapore", "region": "East & Southeast Asia", "aliases": ["singapore"]},
+    {"name": "Thailand", "region": "East & Southeast Asia", "aliases": ["thailand", "bangkok"]},
+    {"name": "Philippines", "region": "East & Southeast Asia", "aliases": ["philippines", "filipino"]},
+    {"name": "Taiwan", "region": "East & Southeast Asia", "aliases": ["taiwan"]}
+  ],
+  "stopwords": ["a", "about", "above", "after", "again", "against", "all", "also", "am", "an", "and", "any", "are", "aren't", "as", "at", "be", "because", "been", "before", "being", "below", "between", "both", "but", "by", "can", "can't", "cannot", "could", "couldn't", "did", "didn't", "do", "does", "doesn't", "doing", "don't", "down", "during", "each", "few", "for", "from", "further", "had", "hadn't", "has", "hasn't", "have", "haven't", "having", "he", "he'd", "he'll", "he's", "her", "here", "here's", "hers", "herself", "him", "himself", "his", "how", "how's", "i", "i'd", "i'll", "i'm", "i've", "if", "in", "into", "is", "isn't", "it", "it's", "its", "itself", "let's", "me", "more", "most", "my", "myself", "no", "nor", "not", "of", "off", "on", "once", "only", "or", "other", "ought", "our", "ours", "ourselves", "out", "over", "own", "same", "she", "she'd", "she'll", "she's", "should", "shouldn't", "so", "some", "such", "than", "that", "that's", "the", "their", "theirs", "them", "themselves", "then", "there", "there's", "these", "they", "they'd", "they'll", "they're", "they've", "this", "those", "through", "to", "too", "under", "until", "up", "very", "was", "wasn't", "we", "we'd", "we'll", "we're", "we've", "were", "weren't", "what", "what's", "when", "where", "which", "while", "who", "who's", "whom", "why", "with", "won't", "would", "wouldn't", "you", "you'd", "you'll", "you're", "you've", "your", "yours", "yourself", "yourselves", "yeah", "yes", "okay", "ok", "oh", "like", "just", "really", "actually", "basically", "literally", "know", "think", "mean", "right", "well", "gonna", "wanna", "gotta", "get", "gets", "got", "go", "going", "goes", "went", "gone", "come", "comes", "came", "coming", "say", "says", "said", "saying", "tell", "told", "want", "wants", "wanted", "need", "needs", "thing", "things", "something", "anything", "everything", "nothing", "someone", "somebody", "anyone", "everyone", "people", "person", "guy", "guys", "lot", "lots", "much", "many", "even", "still", "maybe", "sure", "kind", "sort", "way", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "fifteen", "twenty", "thirty", "forty", "fifty", "sixty", "hundred", "thousand", "million", "first", "second", "next", "last", "new", "old", "good", "bad", "great", "little", "big", "make", "makes", "made", "making", "take", "takes", "took", "give", "gives", "gave", "see", "seen", "look", "looking", "let", "put", "keep", "try", "use", "used", "will", "shall", "may", "might", "must", "ain't", "y'all", "please", "sorry", "thank", "thanks", "hope", "time", "times", "day", "days", "year", "years", "back", "around", "always", "never", "already", "since", "every", "another", "anyway", "obviously", "course", "whatever", "point", "part", "feel", "felt", "talk", "talking", "understand", "case", "fact", "example", "different", "enough", "least", "able", "done", "start", "started", "end", "show", "number", "line", "place", "side", "level", "set", "away", "best", "better", "far", "long", "real", "true", "whole", "else", "ever", "though", "although", "however", "yet", "now", "today", "upon", "via", "per", "etc", "com", "www", "http", "https", "dot", "gmail", "alright", "hmm", "huh", "uh", "um", "hai", "hain", "ho", "hoon", "hun", "hu", "tha", "thi", "thay", "thein", "toh", "ke", "ki", "ka", "ko", "se", "ne", "mein", "main", "mai", "me", "pe", "par", "aur", "ya", "bhi", "hi", "na", "nahi", "nahin", "nai", "mat", "jo", "jis", "jin", "jise", "jinhon", "kya", "kyun", "kyon", "kyunke", "kyunki", "kaise", "kab", "kahan", "kaun", "kitna", "kitni", "kitne", "kis", "kise", "kisi", "koi", "kuch", "sab", "saare", "saari", "sara", "sari", "saara", "har", "yeh", "ye", "yahi", "yehi", "woh", "wo", "wohi", "wahi", "us", "use", "uska", "uski", "uske", "unka", "unki", "unke", "unhon", "unhein", "inka", "inki", "inke", "inhon", "inhein", "iska", "iski", "iske", "isi", "isme", "usme", "uss", "iss", "aap", "aapka", "aapki", "aapke", "aapko", "aapne", "apna", "apni", "apne", "hum", "hamara", "hamari", "hamare", "hamein", "humne", "mera", "meri", "mere", "mujhe", "mujh", "tum", "tumhara", "tumhari", "tumhare", "tujhe", "tera", "teri", "tere", "khud", "ek", "aik", "teen", "chaar", "paanch", "chhe", "saat", "aath", "nau", "das", "bees", "tees", "sau", "hazaar", "hazar", "ab", "abhi", "kabhi", "phir", "pehle", "baad", "tab", "jab", "agar", "magar", "lekin", "bas", "sirf", "bohat", "bahut", "zyada", "kam", "thora", "thori", "thore", "itna", "itni", "itne", "utna", "jitna", "jitni", "jitne", "aisa", "aisi", "aise", "waisa", "waise", "waisay", "yahan", "wahan", "idhar", "udhar", "upar", "neeche", "andar", "saath", "paas", "taraf", "liye", "wala", "wali", "wale", "walay", "hota", "hoti", "hote", "hua", "hui", "hue", "huay", "hoga", "hogi", "honge", "hona", "hone", "gaya", "gayi", "gaye", "gya", "kar", "kare", "karein", "karo", "karna", "karne", "karni", "karte", "karti", "karta", "kiya", "kiye", "kijiye", "kije", "karoon", "raha", "rahi", "rahe", "rahein", "rahoon", "reh", "rehta", "rehte", "rehti", "rehna", "sakta", "sakti", "sakte", "sakein", "chahiye", "chahte", "chahta", "chahti", "jana", "jane", "jata", "jati", "jate", "ja", "jaye", "jayein", "jaoon", "jao", "le", "lo", "lein", "liya", "lete", "leta", "leti", "lena", "loon", "de", "dein", "diya", "diye", "dete", "deta", "deti", "dena", "doon", "dekh", "dekho", "dekhein", "dekha", "dekhi", "dekhe", "dekhte", "keh", "kehte", "kaha", "kehta", "kehna", "kahe", "bol", "bola", "bole", "bolte", "bata", "bataya", "batein", "aa", "aaye", "aayi", "aaya", "aate", "aata", "aati", "aana", "aayein", "mil", "mila", "mili", "mile", "milta", "milte", "lag", "laga", "lagi", "lage", "lagta", "lagti", "chal", "chala", "chali", "chale", "chalo", "chalta", "theek", "achha", "achhi", "achhe", "acha", "sahi", "bilkul", "haan", "ji", "jee", "yaar", "bhai", "matlab", "yani", "waghaira", "wagaira", "khair", "zara", "shayad", "zaroor", "cheez", "cheezein", "cheezon", "cheeze", "baat", "baatein", "log", "logon", "banda", "bande", "tarah", "wajah", "samajh", "pata", "soch", "baith", "baithe", "ban", "bana", "bani", "bane", "maan", "naam", "jagah", "baar", "dafa", "din", "saal", "waqt", "aaj", "kal", "hamesha", "kaafi", "jaise", "jahan", "yun", "chahe", "donon", "dono", "baqi", "poora", "poori", "pura", "puri", "alag", "tak", "beech", "aage", "peechhe", "saamne", "zahir", "sahab", "huwa", "rahay", "rakh", "rakhein", "rakha", "chhor", "nikal", "daal", "maar", "sun", "isliye", "islie", "chunke", "balke", "warna", "taake", "jaisa", "jaisi", "kaisa", "kaisi", "aisay", "kahin", "wapas", "thoda", "thodi", "accha", "achi", "bari", "bara", "bare", "bada", "badi", "chhota", "chhoti", "hojata", "hojati", "bhar", "bhaar", "tee", "ae", "ta", "si", "li", "pi", "bi", "sa", "o", "b", "s", "w"]
+}

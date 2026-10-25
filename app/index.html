@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ask Ganji Swag Analytics</title>
+<meta name="description" content="Explore the 1,400+ viewer questions answered on Ask Ganji Swag: what people ask about, in which categories, how it changed over time, with every episode playable alongside its transcript. Unofficial.">
+<meta property="og:title" content="Ask Ganji Swag Analytics">
+<meta property="og:description" content="Explore the 1,400+ viewer questions answered on Ask Ganji Swag: what people ask about, in which categories, how it changed over time, with every episode playable alongside its transcript. Unofficial.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/logo.png">
+<meta name="theme-color" content="#FB4D3A">
+<link rel="icon" href="assets/logo.png">
+<link rel="stylesheet" href="assets/theme.css">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="rail" id="rail" aria-label="Sidebar">
+    <div class="brand">
+      <img class="brand-logo" src="assets/logo.png" alt="" width="40" height="40">
+      <div class="brand-text">
+        <div class="brand-name">Ask Ganji Swag</div>
+        <div class="brand-sub">Question analytics</div>
+      </div>
+      <button class="icon-button rail-close" id="rail-close" type="button" aria-label="Close menu">×</button>
+    </div>
+    <nav class="nav" id="nav" aria-label="Sections"></nav>
+    <section class="tree" aria-labelledby="tree-toggle">
+      <button class="tree-head" id="tree-toggle" type="button" aria-expanded="true" aria-controls="tree">
+        <span>Categories</span><span class="chevron" aria-hidden="true"></span>
+      </button>
+      <div class="tree-body" id="tree"></div>
+    </section>
+    <div class="rail-foot">
+      <div class="segmented theme-switch" id="theme-switch" role="group" aria-label="Colour theme"></div>
+      <a id="playlist-link" class="rail-link" href="#" target="_blank" rel="noopener">YouTube playlist ↗</a>
+      <p class="rail-note">An unofficial, fan-made analysis. All episode content belongs to its creators.</p>
+    </div>
+  </aside>
+  <div class="scrim" id="scrim" hidden></div>
+
+  <div class="main-col">
+    <header class="topbar">
+      <button class="icon-button menu-button" id="menu-button" type="button" aria-label="Open menu" aria-controls="rail" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div class="page-title">
+        <h1 id="page-title">Overview</h1>
+        <p id="page-sub"></p>
+      </div>
+      <div class="topbar-actions">
+        <div id="filter-chip"></div>
+        <form class="quick-search" id="quick-search" role="search">
+          <label class="visually-hidden" for="quick-search-input">Search questions</label>
+          <input id="quick-search-input" type="search" placeholder="Search questions…" autocomplete="off">
+        </form>
+      </div>
+    </header>
+
+    <main id="main">
+      <noscript><p class="notice">This app needs JavaScript.</p></noscript>
+      <section class="panel" data-panel="overview" hidden></section>
+      <section class="panel" data-panel="categories" hidden></section>
+      <section class="panel" data-panel="questions" hidden></section>
+      <section class="panel" data-panel="insights" hidden></section>
+      <section class="panel" data-panel="episodes" hidden></section>
+      <section class="panel" data-panel="episode" hidden></section>
+      <section class="panel" data-panel="about" hidden></section>
+    </main>
+
+    <footer class="footer">
+      An unofficial, fan-made analysis of the Ask Ganji Swag episodes. Transcripts are machine-generated and romanised,
+      so expect recognition and spelling errors. All episode content belongs to its creators.
+    </footer>
+  </div>
+</div>
+
+<div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+<script src="data/summary.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
