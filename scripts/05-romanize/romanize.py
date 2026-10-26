@@ -180,6 +180,41 @@ def convert(output, overwrite=False):
     print(f'Report: {run_dir}')
 
 
+def romanize_alignment(cached_only=False):
+    """Romanise what step 06's audio check heard in uncovered stretches, by the subtitles' own rules.
+
+    The heard passages go through the unchanged SRT conversion as cues of a temporary file, so new
+    words get model candidates (GPU) or the reviewed glossary exactly like subtitle words, and the
+    Roman text is stored next to them in .cache/alignment/ for the audio-check report.
+    """
+    import tempfile
+    caches=[(p,json.loads(p.read_text(encoding='utf-8'))) for p in sorted((CACHE_DIR/'alignment').glob('episode_*.json'))]
+    heard=[(g[2],lambda roman,g=g:g.__setitem__(slice(3,None),[roman])) for _,data in caches for g in data.get('gaps',[]) if g[2].strip()]
+    # Passages transcribed by align.py --fill that are not romanised yet (applied ones stay as they are).
+    added=[(s['source'],lambda roman,s=s:s.__setitem__('roman',roman)) for _,data in caches for s in data.get('supplements',[]) if s.get('roman') is None]
+    # Fresh transcriptions of decoding loops (align.py --loops), for pacing and the report.
+    added+=[(p['source'],lambda roman,p=p:p.__setitem__('roman',roman)) for _,data in caches for p in data.get('loops',[]) if p.get('source') and p.get('roman') is None]
+    jobs=heard+added
+    print(f'{len(heard)} heard passages and {len(added)} new transcribed passages in {len(caches)} alignment caches',flush=True)
+    if not jobs:return
+    with tempfile.TemporaryDirectory(dir=CACHE_DIR) as tmp:
+        source=Path(tmp)/'source';output=Path(tmp)/'roman'
+        source.mkdir();output.mkdir()
+        stamp=lambda n:f'{n//3600:02}:{n%3600//60:02}:{n%60:02},000'
+        atomic_write(source/'episode_001.srt',render([Cue(str(n),f'{stamp(n)} --> {stamp(n)}',(text,)) for n,(text,_) in enumerate(jobs,1)]))
+        FILES[:]=[source/'episode_001.srt']
+        if not cached_only:
+            generate()
+            generate(retry=True)
+        convert(output)
+        romans=[c.text for c in parse((output/'episode_001.srt').read_text(encoding='utf-8'))]
+    for (_,store),roman in zip(jobs,romans):
+        store(roman)
+    for path,data in caches:
+        atomic_write(path,json.dumps(data,ensure_ascii=False,separators=(',',':')))
+    print(f'Stored Roman Urdu for {len(heard)} heard and {len(added)} new passages.',flush=True)
+
+
 def main():
     global FILES
     parser=argparse.ArgumentParser(description='Convert live Crisper subtitles to single-line Roman Urdu; preserve English and timing.')
@@ -188,8 +223,15 @@ def main():
     parser.add_argument('--episodes',help='Comma-separated episode numbers')
     parser.add_argument('--overwrite',action='store_true',help='Back up and replace existing outputs')
     parser.add_argument('--cached-only',action='store_true',help='Use existing glossary and candidates without GPU generation')
+    parser.add_argument('--alignment',action='store_true',help="Romanise what step 06's audio check heard (stored in .cache/alignment/) instead of SRT files")
     args=parser.parse_args()
     if args.source.resolve()==args.output.resolve():parser.error('Source and output must be different folders')
+    if args.alignment:
+        try:
+            CACHE_DIR.mkdir(exist_ok=True);REPORTS.mkdir(parents=True,exist_ok=True)
+            romanize_alignment(args.cached_only)
+        except (ValueError,OSError,ImportError) as exc:parser.exit(1,f'Error: {exc}\n')
+        return
     try:
         files=select_files(args.source,args.episodes)
         FILES=[p for p in files if args.overwrite or not (args.output/p.name).is_file() or not (args.output/p.name).stat().st_size]

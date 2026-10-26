@@ -1,3012 +1,4460 @@
 1
-00:00:04,720 --> 00:00:05,360
-haan bhi kya le bhiya?
+00:00:04,720 --> 00:00:05,750
+haan bhi kya le bhiya? Welcome to another
 
 2
-00:00:05,360 --> 00:00:07,720
-Welcome to another episode of Ask Arjeet Swag and I hope you guys are
+00:00:05,830 --> 00:00:07,200
+episode of Ask Arjeet Swag and I hope
 
 3
-00:00:07,720 --> 00:00:10,670
-doing well or by the time [lipsmack] yeh video aa rahi ho gi to
+00:00:07,280 --> 00:00:09,310
+you guys are doing well or by the time
 
 4
-00:00:10,670 --> 00:00:13,520
-Ramzan start ho chuka ho ga to aap sab ko Ramzan mubarak.
+00:00:09,650 --> 00:00:10,510
+[lipsmack] yeh video aa rahi ho gi
 
 5
-00:00:13,960 --> 00:00:16,600
-I hope [lipsmack] aap ki rozay achhe ja rahe ho ge aur Ramzan mein
+00:00:10,590 --> 00:00:11,950
+to Ramzan start ho chuka ho ga
 
 6
-00:00:16,600 --> 00:00:19,740
-bhi hum continuity rakhein ge video ki insha Allah but obviously after iftar because
+00:00:12,030 --> 00:00:13,880
+to aap sab ko Ramzan mubarak.
 
 7
-00:00:19,740 --> 00:00:22,380
-there's a lot to speak in each episode
+00:00:13,960 --> 00:00:14,770
+I hope [lipsmack] aap ki rozay achhe
 
 8
-00:00:23,360 --> 00:00:26,280
-[UH] so chaltay hain aaj ki episode ki taraf.
+00:00:14,850 --> 00:00:17,010
+ja rahe ho ge aur Ramzan mein bhi hum
 
 9
-00:00:26,720 --> 00:00:29,340
-Please subscribe the channel if you're watching this on my YouTube
+00:00:17,090 --> 00:00:18,510
+continuity rakhein ge video ki insha Allah
 
 10
-00:00:30,240 --> 00:00:34,360
-[UH] we work really hard, we need more numbers, and also if you wanna
+00:00:18,590 --> 00:00:20,030
+but obviously after iftar because there's
 
 11
-00:00:34,360 --> 00:00:37,440
-support this channel, you can do that on Patreon dot com slash Ganji Swag.
+00:00:20,110 --> 00:00:24,130
+a lot to speak in each episode [UH]
 
 12
-00:00:37,440 --> 00:00:38,220
-By the way, every
+00:00:24,450 --> 00:00:26,640
+so chaltay hain aaj ki episode ki taraf.
 
 13
-00:00:40,640 --> 00:00:44,260
-year I send Eid cards to my patrons, especially, so
+00:00:26,720 --> 00:00:27,670
+Please subscribe the channel
 
 14
-00:00:44,980 --> 00:00:47,560
-we've already printed them and I'll in
+00:00:27,750 --> 00:00:29,640
+if you're watching this on my YouTube
 
 15
-00:00:49,940 --> 00:00:52,080
-a couple of days I'll start shipping them out.
+00:00:30,250 --> 00:00:31,690
+[UH] we work really hard,
 
 16
-00:00:52,620 --> 00:00:52,880
-ke ke
+00:00:31,770 --> 00:00:34,030
+we need more numbers, and also
 
 17
-00:00:53,540 --> 00:00:56,810
-pandrah bezan bhi lag jate hain kabhi kabhi so I wanna make sure people
+00:00:34,110 --> 00:00:35,150
+if you wanna support this channel,
 
 18
-00:00:56,810 --> 00:00:57,880
-get it before Eid.
+00:00:35,230 --> 00:00:36,280
+you can do that on Patreon dot com
 
 19
-00:00:58,060 --> 00:01:00,360
-So inshallah. Chalte haaj ki emails ki taraf pehla hai.
+00:00:36,360 --> 00:00:38,520
+slash Ganji Swag. By the way, every
 
 20
-00:01:00,900 --> 00:01:03,300
-Effects of childhood relationships in married life.
+00:00:40,670 --> 00:00:41,740
+year I send Eid cards
 
 21
-00:01:04,860 --> 00:01:07,720
-Hello, I discovered your channel during the pandemic and I've been enjoying your
+00:00:41,820 --> 00:00:44,560
+to my patrons, especially, so
 
 22
-00:01:07,720 --> 00:01:08,560
-content ever since.
+00:00:44,990 --> 00:00:47,710
+we've already printed them and I'll in
 
 23
-00:01:08,560 --> 00:01:11,340
-I was born in Romania, but my parents are from Pakistan.
+00:00:49,940 --> 00:00:51,510
+a couple of days I'll start shipping
 
 24
-00:01:11,440 --> 00:01:13,220
-I'm twenty five when I got married a year ago.
+00:00:51,590 --> 00:00:54,310
+them out. ke ke pandrah bezan bhi lag
 
 25
-00:01:13,400 --> 00:01:16,160
-It was an arranged marriage set by my parents, but I knew my husband
+00:00:54,390 --> 00:00:56,650
+jate hain kabhi kabhi so I wanna make sure
 
 26
-00:01:16,160 --> 00:01:19,390
-from a long time because our parents are very close friends and have a
+00:00:56,730 --> 00:00:58,780
+people get it before Eid. So inshallah.
 
 27
-00:01:19,390 --> 00:01:19,820
-great bond.
+00:00:58,860 --> 00:00:59,650
+Chalte haaj ki emails ki taraf
 
 28
-00:01:20,780 --> 00:01:23,520
-But I never had a bond with him, and we just met twice
+00:00:59,730 --> 00:01:01,460
+pehla hai. Effects of childhood
 
 29
-00:01:24,360 --> 00:01:25,600
-when our family visited Pakistan.
+00:01:01,540 --> 00:01:03,600
+relationships in married life.
 
 30
-00:01:25,600 --> 00:01:29,020
-Although we stayed connected through social media, he's a well-mannered and well-educated
+00:01:04,860 --> 00:01:05,980
+Hello, I discovered your channel
 
 31
-00:01:29,240 --> 00:01:31,860
-guy, but still I never imagined I will marry him.
+00:01:06,060 --> 00:01:07,060
+during the pandemic and I've
 
 32
-00:01:32,040 --> 00:01:35,200
-My past has been hunt hunting me since my marriage.
+00:01:07,140 --> 00:01:08,480
+been enjoying your content ever since.
 
 33
-00:01:35,700 --> 00:01:39,040
-I was just notified by my parents some months ago that I was getting
+00:01:08,560 --> 00:01:10,580
+I was born in Romania, but my parents
 
 34
-00:01:39,140 --> 00:01:42,260
-married, and I had no choice since I had not told my parents about
+00:01:10,660 --> 00:01:11,920
+are from Pakistan. I'm twenty five
 
 35
-00:01:42,580 --> 00:01:44,220
-any of my relationships or interests.
+00:01:12,000 --> 00:01:13,320
+when I got married a year ago.
 
 36
-00:01:44,340 --> 00:01:46,900
-But I've been in a relationship which started in high school when I was
+00:01:13,400 --> 00:01:14,520
+It was an arranged marriage set
 
 37
-00:01:46,900 --> 00:01:50,500
-sixteen with a Christian guy and our relationship lasted around four years until
+00:01:14,600 --> 00:01:16,080
+by my parents, but I knew my husband
 
 38
-00:01:50,600 --> 00:01:51,060
-we broke up.
+00:01:16,160 --> 00:01:17,740
+from a long time because our parents are
 
 39
-00:01:51,460 --> 00:01:55,520
-Our relationship got pretty deep and turned in a into an intimate one and
+00:01:17,820 --> 00:01:20,120
+very close friends and have a great bond.
 
 40
-00:01:55,700 --> 00:01:58,380
-[UH] terrifyingly at a terrifyingly early age.
+00:01:20,780 --> 00:01:22,020
+But I never had a bond with him,
 
 41
-00:01:58,520 --> 00:02:01,820
-I already knew that my parents will never allow me to marry someone with
+00:01:22,100 --> 00:01:24,740
+and we just met twice when our family
 
 42
-00:02:01,820 --> 00:02:05,830
-a different faith and he also didn't want it to convert into Muslim into
+00:01:24,820 --> 00:01:26,180
+visited Pakistan. Although we stayed
 
 43
-00:02:05,830 --> 00:02:09,880
-a Muslim and instead asked me to become a Christian and to leave my
+00:01:26,260 --> 00:01:27,800
+connected through social media, he's
 
 44
-00:02:09,880 --> 00:02:13,500
-family in order to marry him, but I didn't agree and we both decided
+00:01:27,880 --> 00:01:29,920
+a well-mannered and well-educated guy,
 
 45
-00:02:13,600 --> 00:02:16,770
-to move forward in our life and end it all [UH] and all sort
+00:01:30,000 --> 00:01:31,320
+but still I never imagined I will
 
 46
-00:02:16,770 --> 00:02:19,940
-of contact. I moved forward in my life and I we didn't talk for
+00:01:31,400 --> 00:01:33,860
+marry him. My past has been hunt
 
 47
-00:02:19,940 --> 00:02:22,880
-years, but some months ago before I knew I was getting married we both
+00:01:33,940 --> 00:01:35,620
+hunting me since my marriage.
 
 48
-00:02:23,040 --> 00:02:27,880
-met in our high school reunion and we end up getting intimate again and
+00:01:35,700 --> 00:01:37,680
+I was just notified by my parents some
 
 49
-00:02:27,880 --> 00:02:32,080
-started getting emotionally connected, but all of [UH] all of it got silence when
+00:01:37,760 --> 00:01:39,380
+months ago that I was getting married,
 
 50
-00:02:32,080 --> 00:02:34,700
-I got married and we've never been in contact after my marriage.
+00:01:39,460 --> 00:01:40,680
+and I had no choice since
 
 51
-00:02:34,880 --> 00:02:39,120
-But some days ago someone anonymously told my husband about our past relationship
+00:01:40,760 --> 00:01:42,500
+I had not told my parents about
 
 52
-00:02:39,120 --> 00:02:42,090
-and my husband got very angry about the fact that I was not a
+00:01:42,580 --> 00:01:44,260
+any of my relationships or interests.
 
 53
-00:02:42,090 --> 00:02:42,220
-virgin
+00:01:44,340 --> 00:01:45,320
+But I've been in a relationship
 
 54
-00:02:42,900 --> 00:02:44,430
-and things are getting very ugly.
+00:01:45,400 --> 00:01:46,460
+which started in high school
 
 55
-00:02:44,430 --> 00:02:47,600
-I feel like we might end up getting divorced because he doesn't even talk
+00:01:46,540 --> 00:01:47,860
+when I was sixteen with a Christian
 
 56
-00:02:47,740 --> 00:02:52,330
-to me or sleep with me from [UH] days and our relationship is declining
+00:01:47,940 --> 00:01:49,390
+guy and our relationship lasted
 
 57
-00:02:52,330 --> 00:02:55,740
-very fast. I tried to tell him that I it was before the marriage
+00:01:49,470 --> 00:01:51,380
+around four years until we broke up.
 
 58
-00:02:55,740 --> 00:02:59,200
-and I didn't [UH] know at that time what I was doing, but I
+00:01:51,460 --> 00:01:53,250
+Our relationship got pretty deep
 
 59
-00:02:59,380 --> 00:03:01,040
-feel like every time I try to talk
+00:01:53,330 --> 00:01:55,210
+and turned in a into an intimate one
 
 60
-00:03:01,820 --> 00:03:03,380
-things get even worse.
+00:01:55,290 --> 00:01:57,650
+and [UH] terrifyingly at a terrifyingly
 
 61
-00:03:03,980 --> 00:03:05,540
-What should I do to save our marriage?
+00:01:57,730 --> 00:02:00,330
+early age. I already knew that my parents
 
 62
-00:03:05,540 --> 00:03:09,220
-That's very sad to hear [UH] so ek khatun hai Rumania me reti hai,
+00:02:00,410 --> 00:02:01,630
+will never allow me to marry someone
 
 63
-00:03:09,840 --> 00:03:13,470
-wahan bhali barhi hain bhar Pakistani pirint se in ki shaadi hui Pakistan mein
+00:02:01,710 --> 00:02:03,010
+with a different faith and he also
 
 64
-00:03:13,470 --> 00:03:13,640
-and
+00:02:03,090 --> 00:02:05,330
+didn't want it to convert into Muslim
 
 65
-00:03:14,320 --> 00:03:18,440
-then but before [UH] g- getting married she was in high school aur ek
+00:02:05,710 --> 00:02:07,630
+into a Muslim and instead asked me
 
 66
-00:03:18,440 --> 00:03:22,660
-krsyan larke se in ki relishnp thi which was obviously [UM] in physical domain
+00:02:07,710 --> 00:02:09,540
+to become a Christian and to leave
 
 67
-00:03:22,660 --> 00:03:26,300
-as well aur [UH] phir ryonin mein dobara dsparktt aur
+00:02:09,620 --> 00:02:11,530
+my family in order to marry him,
 
 68
-00:03:27,060 --> 00:03:28,470
-[UH] baqi aap ne sunaein.
+00:02:11,610 --> 00:02:13,520
+but I didn't agree and we both decided
 
 69
-00:03:28,470 --> 00:03:32,460
-It's very unfortunate [UH] I I don't know who told your husband [UH] do
+00:02:13,600 --> 00:02:15,040
+to move forward in our life and end
 
 70
-00:03:32,460 --> 00:03:35,320
-you have any jealous friends [UH] because istanaki cheezein
+00:02:15,120 --> 00:02:17,370
+it all [UH] and all sort of contact.
 
 71
-00:03:35,980 --> 00:03:37,100
-internally hi hoti hai.
+00:02:17,450 --> 00:02:19,550
+I moved forward in my life and I we didn't
 
 72
-00:03:37,100 --> 00:03:40,180
-Do you have any cousin who doesn't like you who knew about this relationship
+00:02:19,630 --> 00:02:20,990
+talk for years, but some months ago
 
 73
-00:03:40,320 --> 00:03:41,460
-or do you have any classmates?
+00:02:21,070 --> 00:02:22,400
+before I knew I was getting married
 
 74
-00:03:41,900 --> 00:03:46,140
-Khair, finding that out is not so important at the minute because that is
+00:02:22,480 --> 00:02:25,140
+we both met in our high school reunion
 
 75
-00:03:46,140 --> 00:03:49,160
-not your concern, your concern is your marriage [UH] ispe ab kya hi kar
+00:02:25,220 --> 00:02:27,640
+and we end up getting intimate again
 
 76
-00:03:49,160 --> 00:03:52,690
-sekte hai you you have come out clean I mean you haven't come out
+00:02:27,720 --> 00:02:29,400
+and started getting emotionally connected,
 
 77
-00:03:52,690 --> 00:03:55,760
-clean, obviously he found out so that there's a difference.
+00:02:29,480 --> 00:02:31,800
+but all of [UH] all of it got silence
 
 78
-00:03:56,140 --> 00:03:56,820
-[breath] Khe agar Insaan
+00:02:31,880 --> 00:02:33,240
+when I got married and we've never
 
 79
-00:03:57,620 --> 00:04:02,260
-pehle hi bata de [UH] again, it's also a very slippery slope [UH] mere
+00:02:33,320 --> 00:02:34,800
+been in contact after my marriage.
 
 80
-00:04:02,260 --> 00:04:03,640
-khayal mein [UM] nahi batana chahiye.
+00:02:34,880 --> 00:02:36,680
+But some days ago someone anonymously
 
 81
-00:04:03,640 --> 00:04:04,980
-For example, if you're getting into a relationship
+00:02:36,760 --> 00:02:38,600
+told my husband about our past
 
 82
-00:04:05,960 --> 00:04:09,540
-or or like like in a marriage, you you should not discuss your past
+00:02:38,680 --> 00:02:40,500
+relationship and my husband got very angry
 
 83
-00:04:09,900 --> 00:04:14,100
-unless you know for sure ke the paths will cross or like kahi na
+00:02:40,580 --> 00:02:42,520
+about the fact that I was not a virgin
 
 84
-00:04:14,100 --> 00:04:16,740
-kahi se baat pata chali ki baat chhupaay ki nahi hai, like you probably
+00:02:42,900 --> 00:02:44,350
+and things are getting very ugly.
 
 85
-00:04:16,880 --> 00:04:18,480
-have common friends or anything.
+00:02:44,430 --> 00:02:45,760
+I feel like we might end up getting
 
 86
-00:04:18,620 --> 00:04:22,240
-But jahaan baat aise ho ke different cultures involved wo, I'm not saying
+00:02:45,840 --> 00:02:47,660
+divorced because he doesn't even talk
 
 87
-00:04:23,140 --> 00:04:24,500
-[breath] different cultures involve [UM] I'm not saying [breath] dekhein jhoot bolna
+00:02:47,740 --> 00:02:50,080
+to me or sleep with me from [UH]
 
 88
-00:04:24,500 --> 00:04:28,180
-Allah cheez hai chhupana ek ek cheez Allah cheez hai conflict avoidance is [UH]
+00:02:50,160 --> 00:02:52,250
+days and our relationship is declining
 
 89
-00:04:28,180 --> 00:04:31,380
-should also be there because [breath] see jo hamara culture hai is mein aap
+00:02:52,330 --> 00:02:54,780
+very fast. I tried to tell him that I it
 
 90
-00:04:31,600 --> 00:04:35,500
-jitne bhi [UM] moderate ho jaye jitne bhi aap liberal ho jaye at the
+00:02:54,860 --> 00:02:56,340
+was before the marriage and I didn't
 
 91
-00:04:35,500 --> 00:04:39,400
-end of the day [UH] some people don't don't like that [UH] in ko
+00:02:56,420 --> 00:02:58,620
+[UH] know at that time what I was doing,
 
 92
-00:04:39,400 --> 00:04:39,920
-yeh out
+00:02:58,960 --> 00:03:01,340
+but I feel like every time I try to talk
 
 93
-00:04:40,580 --> 00:04:42,360
-of sight out of mind wali baat hona chahiye
+00:03:01,820 --> 00:03:03,900
+things get even worse.
 
 94
-00:04:43,120 --> 00:04:44,940
-[UH] kyun ke phir hota hi hai ke
+00:03:03,980 --> 00:03:05,480
+What should I do to save our marriage?
 
 95
-00:04:45,660 --> 00:04:47,580
-[UH] as m- as m- as
+00:03:05,560 --> 00:03:07,300
+That's very sad to hear [UH] so
 
 96
-00:04:48,340 --> 00:04:50,160
-understanding as your spouse could be
+00:03:07,380 --> 00:03:09,520
+ek khatun hai Rumania me reti hai,
 
 97
-00:04:50,840 --> 00:04:53,620
-[breath] laraiyon mein phir yeh baat nikalti hai phir character pe jab when when
+00:03:09,840 --> 00:03:10,740
+wahan bhali barhi hain bhar
 
 98
-00:04:53,820 --> 00:04:54,940
-when you run out of [UH]
+00:03:10,820 --> 00:03:12,540
+Pakistani pirint se in ki shaadi hui
 
 99
-00:04:55,980 --> 00:04:58,500
-calling names then you start [UH] picking upon the character
+00:03:12,620 --> 00:03:15,890
+Pakistan mein and then but before
 
 100
-00:04:59,340 --> 00:05:02,200
-of your spouse [lipsmack] to phir yeh cheezein is tarah hum bhaar aatin aur
+00:03:15,970 --> 00:03:17,770
+[UH] g- getting married she was in high
 
 101
-00:05:02,200 --> 00:05:05,340
-phir things get ugly so it's it's it's in your best interest not to
+00:03:17,850 --> 00:03:18,950
+school aur ek krsyan larke se
 
 102
-00:05:05,340 --> 00:05:08,190
-share [UM] mein in ke liye keh rahoon jinhon ne abhi tak share nahi
+00:03:19,030 --> 00:03:21,230
+in ki relishnp thi which was obviously
 
 103
-00:05:08,190 --> 00:05:08,300
-ki
+00:03:21,310 --> 00:03:23,350
+[UM] in physical domain as well
 
 104
-00:05:09,240 --> 00:05:12,820
-[UH] rahi baat aap ki situation mein ab obviously you've imported your husband from
+00:03:23,430 --> 00:03:25,610
+aur [UH] phir ryonin mein dobara
 
 105
-00:05:12,820 --> 00:05:13,400
-Pakistan.
+00:03:25,690 --> 00:03:28,450
+dsparktt aur [UH] baqi aap ne sunaein.
 
 106
-00:05:14,500 --> 00:05:15,220
-Pakistani men have
+00:03:28,530 --> 00:03:30,530
+It's very unfortunate [UH] I I don't know
 
 107
-00:05:16,060 --> 00:05:19,330
-completely different mindset about these things, and obviously they're quite territorial
+00:03:30,610 --> 00:03:32,900
+who told your husband [UH] do you have any
 
 108
-00:05:19,330 --> 00:05:23,620
-or [UH] [sniff] [breath] in ko nahi bardasht hoti yeh cheez because [UH] ab
+00:03:32,980 --> 00:03:34,790
+jealous friends [UH] because istanaki
 
 109
-00:05:23,620 --> 00:05:26,840
-kya hi kar sakte hain ab dekhein ab insaan ek phase se guzra hai, zahir
+00:03:34,870 --> 00:03:37,020
+cheezein internally hi hoti hai.
 
 110
-00:05:26,840 --> 00:05:29,700
-is ne zindagi guzari hai to is zindagi mein log bhi aaye hoon ge
+00:03:37,100 --> 00:03:38,510
+Do you have any cousin who doesn't like
 
 111
-00:05:29,920 --> 00:05:34,360
-itna thora bohat [UH] lyoe hona chahiye for the fact ke [UH] for example,
+00:03:38,590 --> 00:03:40,240
+you who knew about this relationship
 
 112
-00:05:35,140 --> 00:05:35,320
-agar
+00:03:40,320 --> 00:03:42,530
+or do you have any classmates? Khair,
 
 113
-00:05:35,980 --> 00:05:37,960
-if two people are getting married in their thirties,
+00:03:42,610 --> 00:03:44,870
+finding that out is not so important
 
 114
-00:05:38,800 --> 00:05:41,800
-so it's pretty obvious [UH] ke [UH]
+00:03:44,950 --> 00:03:46,370
+at the minute because that is not your
 
 115
-00:05:42,580 --> 00:05:45,420
-donon insaan jo hain is aykwishn mein in ke koi na koi kisi qasam
+00:03:46,450 --> 00:03:48,110
+concern, your concern is your marriage
 
 116
-00:05:45,420 --> 00:05:46,400
-ki hastri rahi ho gi.
+00:03:48,190 --> 00:03:49,470
+[UH] ispe ab kya hi kar sekte hai
 
 117
-00:05:46,580 --> 00:05:49,730
-Now, history pe yeh cheez hoti hai ke aap kisi ke paas mein ja
+00:03:49,550 --> 00:03:51,670
+you you have come out clean I mean
 
 118
-00:05:49,730 --> 00:05:50,760
-ke kuch kar nahi sakte
+00:03:51,750 --> 00:03:53,230
+you haven't come out clean, obviously
 
 119
-00:05:51,420 --> 00:05:55,820
-[UH] bas yeh ensure kar sakte ke if the person has learned their lesson
+00:03:53,310 --> 00:03:56,070
+he found out so that there's a difference.
 
 120
-00:05:56,020 --> 00:05:56,860
-or in a way that
+00:03:56,150 --> 00:03:58,970
+[breath] Khe agar Insaan pehle hi bata de
 
 121
-00:05:57,580 --> 00:06:00,010
-if that person's going to be loyal to me [UM] kyun ke peechhe jo
+00:03:59,050 --> 00:04:01,110
+[UH] again, it's also a very slippery
 
 122
-00:06:00,010 --> 00:06:02,290
-tha is mein na mein in ki zindagi mein tha na mera koi in
+00:04:01,190 --> 00:04:02,700
+slope [UH] mere khayal mein [UM]
 
 123
-00:06:02,290 --> 00:06:05,340
-ke upar control tha haan aap ki agar mojoodi mein agar if if someone
+00:04:02,780 --> 00:04:04,070
+nahi batana chahiye. For example,
 
 124
-00:06:05,340 --> 00:06:09,890
-cheats behind your back then it's different then it's [UH] disloyalty and then
+00:04:04,150 --> 00:04:05,280
+if you're getting into a relationship
 
 125
-00:06:09,890 --> 00:06:11,220
-it disloyalty word hota hai then
+00:04:05,960 --> 00:04:08,070
+or or like like in a marriage,
 
 126
-00:06:11,940 --> 00:06:14,500
-they they they being disloyal and obviously [UH] w- w- that
+00:04:08,150 --> 00:04:09,820
+you you should not discuss your past
 
 127
-00:06:15,460 --> 00:06:16,380
-is crossing the line.
+00:04:09,900 --> 00:04:12,070
+unless you know for sure ke the paths
 
 128
-00:06:17,300 --> 00:06:19,640
-[breath] magar agar ek cheez paas mein rahi hai [lipsmack] theek hai ghussa hota
+00:04:12,150 --> 00:04:14,020
+will cross or like kahi na
 
 129
-00:06:20,080 --> 00:06:23,660
-hai [UH] if you find out especially through someone else that means the whole
+00:04:14,100 --> 00:04:15,140
+kahi se baat pata chali ki baat
 
 130
-00:06:23,660 --> 00:06:25,840
-world knows about it [breath] phir aap ke zan mein khayalat aatin ge aur
+00:04:15,220 --> 00:04:16,800
+chhupaay ki nahi hai, like you probably
 
 131
-00:06:25,840 --> 00:06:28,090
-pata nahi kis kis ko pata hai [breath] aur phir aap ke izzat ke
+00:04:16,880 --> 00:04:18,550
+have common friends or anything.
 
 132
-00:06:28,090 --> 00:06:28,720
-par baat aati hai
+00:04:18,630 --> 00:04:20,110
+But jahaan baat aise ho ke different
 
 133
-00:06:29,580 --> 00:06:32,740
-[breath] But deep down once you once your anger settles down you should also
+00:04:20,570 --> 00:04:22,540
+cultures involved wo, I'm not saying
 
 134
-00:06:32,740 --> 00:06:33,880
-consider the fact
+00:04:23,140 --> 00:04:23,840
+[breath] different cultures involve
 
 135
-00:06:34,660 --> 00:06:34,880
-[UH]
+00:04:23,920 --> 00:04:24,620
+[UM] I'm not saying [breath] dekhein
 
 136
-00:06:36,100 --> 00:06:37,980
-[UH] like like [UH] [UH] like like [UH] like
+00:04:24,700 --> 00:04:25,400
+jhoot bolna Allah cheez hai chhupana
 
 137
-00:06:56,160 --> 00:06:58,770
-ke shaadi se kuch arsay pehle ho raha hai because that is also like
+00:04:25,480 --> 00:04:26,570
+ek ek cheez Allah cheez hai conflict
 
 138
-00:06:58,770 --> 00:07:02,560
-a big red flag in his eyes and rightfully so, okay, I mean when
+00:04:26,650 --> 00:04:28,750
+avoidance is [UH] should also be there
 
 139
-00:07:02,560 --> 00:07:05,560
-you already know you're getting married and so why was this happening?
+00:04:28,830 --> 00:04:30,310
+because [breath] see jo hamara
 
 140
-00:07:05,900 --> 00:07:10,680
-Toh phir [UM] again [UM] it's up to the person if if they can
+00:04:30,390 --> 00:04:32,200
+culture hai is mein aap jitne bhi
 
 141
-00:07:10,940 --> 00:07:11,480
-[UH] forgive,
+00:04:32,280 --> 00:04:33,830
+[UM] moderate ho jaye jitne bhi aap
 
 142
-00:07:12,140 --> 00:07:13,380
-but that's a serious offence.
+00:04:33,910 --> 00:04:36,120
+liberal ho jaye at the end of the day
 
 143
-00:07:14,380 --> 00:07:14,600
-Khair,
+00:04:36,200 --> 00:04:37,940
+[UH] some people don't don't like
 
 144
-00:07:15,340 --> 00:07:18,800
-moving on, ab ye that's in the past, it has already happened, so like
+00:04:38,020 --> 00:04:41,020
+that [UH] in ko yeh out of sight out
 
 145
-00:07:18,800 --> 00:07:19,940
-you need to talk him [UH] talk
+00:04:41,100 --> 00:04:43,780
+of mind wali baat hona chahiye [UH]
 
 146
-00:07:21,580 --> 00:07:21,980
-to him
+00:04:43,860 --> 00:04:46,790
+kyun ke phir hota hi hai ke [UH] as m-
 
 147
-00:07:22,900 --> 00:07:26,500
-or baatcheet karne se hi maamla solve ho ga, ladhai karne se ya naraz
+00:04:46,870 --> 00:04:49,720
+as m- as understanding as your spouse
 
 148
-00:07:26,500 --> 00:07:29,690
-ho ne se ya doosri kamre me so ne se [UH] yeh sirf [UH]
+00:04:49,800 --> 00:04:51,400
+could be [breath] laraiyon mein phir
 
 149
-00:07:29,690 --> 00:07:33,560
-barhta jaye ga and then the distance will keep [UH] [UH] keep
+00:04:51,480 --> 00:04:52,840
+yeh baat nikalti hai phir character pe
 
 150
-00:07:34,980 --> 00:07:35,260
-growing
+00:04:52,920 --> 00:04:55,240
+jab when when when you run out of [UH]
 
 151
-00:07:35,940 --> 00:07:36,940
-and that's not what you want.
+00:04:55,980 --> 00:04:57,340
+calling names then you start
 
 152
-00:07:37,800 --> 00:07:40,280
-Come to terms with it, nip it in the bud, on ke se baat
+00:04:57,420 --> 00:04:58,800
+[UH] picking upon the character
 
 153
-00:07:40,720 --> 00:07:45,590
-karein, apologise and like tell him how you feel about it and [UM] then
+00:04:59,340 --> 00:05:00,780
+of your spouse [lipsmack] to phir
 
 154
-00:07:45,590 --> 00:07:49,720
-tell him ke this was the situation before way before you existed in my
+00:05:00,860 --> 00:05:01,890
+yeh cheezein is tarah hum bhaar aatin
 
 155
-00:07:49,720 --> 00:07:49,980
-life
+00:05:01,970 --> 00:05:03,880
+aur phir things get ugly so it's it's
 
 156
-00:07:50,700 --> 00:07:51,640
-[UH] I'm sure
+00:05:03,960 --> 00:05:06,080
+it's in your best interest not to share
 
 157
-00:07:52,600 --> 00:07:55,300
-you might have some in in your closet as well.
+00:05:06,160 --> 00:05:07,220
+[UM] mein in ke liye keh rahoon jinhon ne
 
 158
-00:07:55,300 --> 00:07:56,380
-I'm not gonna ask you.
+00:05:07,300 --> 00:05:09,700
+abhi tak share nahi ki [UH] rahi baat
 
 159
-00:07:56,960 --> 00:07:59,680
-That's your privacy, that's your past that I'm not interested in.
+00:05:09,780 --> 00:05:11,700
+aap ki situation mein ab obviously you've
 
 160
-00:07:59,680 --> 00:08:01,340
-What I'm really interested in is to build
+00:05:11,780 --> 00:05:13,700
+imported your husband from Pakistan.
 
 161
-00:08:02,100 --> 00:08:05,880
-is to have a peaceful present and build a healthy future with both of
+00:05:14,520 --> 00:05:16,540
+Pakistani men have completely different
 
 162
-00:08:05,880 --> 00:08:08,840
-us. So if you think we can do this [UH]
+00:05:16,620 --> 00:05:18,160
+mindset about these things, and obviously
 
 163
-00:08:09,560 --> 00:08:10,820
-[UM] respectfully
+00:05:18,240 --> 00:05:20,180
+they're quite territorial or [UH]
 
 164
-00:08:11,580 --> 00:08:12,260
-for each other.
+00:05:20,840 --> 00:05:21,620
+[sniff] [breath] in ko nahi bardasht
 
 165
-00:08:14,020 --> 00:08:14,120
-Nah
+00:05:21,700 --> 00:05:23,540
+hoti yeh cheez because [UH] ab
 
 166
-00:08:14,920 --> 00:08:17,500
-samjhen aur dil dil mein yeh nah bolay ki yeh aise aise hai.
+00:05:23,620 --> 00:05:24,946
+kya hi kar sakte hain ab dekhein
 
 167
-00:08:17,600 --> 00:08:20,260
-If you can do it without it, then let's please move forward.
+00:05:25,026 --> 00:05:26,454
+ab insaan ek phase se guzra hai,
 
 168
-00:08:20,760 --> 00:08:24,660
-I I humbly request you or [UH] we have a whole life ahead of
+00:05:26,534 --> 00:05:27,650
+zahir is ne zindagi guzari hai
 
 169
-00:08:24,660 --> 00:08:28,260
-us. We cannot live like this with grudges in our hearts.
+00:05:27,730 --> 00:05:29,880
+to is zindagi mein log bhi aaye hoon ge
 
 170
-00:08:28,560 --> 00:08:29,640
-Phir wo baat chal di payi.
+00:05:29,960 --> 00:05:32,720
+itna thora bohat [UH] lyoe hona chahiye
 
 171
-00:08:30,000 --> 00:08:34,220
-So is baat ko yeh dhafan hona chahiye taakay hum zindagi main move on
+00:05:32,800 --> 00:05:34,660
+for the fact ke [UH] for example,
 
 172
-00:08:34,220 --> 00:08:37,600
-kar zake. Lekin agar aap chaah rahein ke yeh sala saal kheche khche to
+00:05:35,140 --> 00:05:36,970
+agar if two people are getting
 
 173
-00:08:38,040 --> 00:08:40,400
-this is something I'm not signing up for.
+00:05:37,050 --> 00:05:38,260
+married in their thirties,
 
 174
-00:08:40,840 --> 00:08:41,860
-I did a mistake.
+00:05:38,800 --> 00:05:42,100
+so it's pretty obvious [UH] ke [UH]
 
 175
-00:08:41,860 --> 00:08:43,480
-I am forever [UH]
+00:05:42,580 --> 00:05:43,950
+donon insaan jo hain is aykwishn
 
 176
-00:08:44,140 --> 00:08:44,480
-repentful
+00:05:44,030 --> 00:05:45,160
+mein in ke koi na koi kisi
 
 177
-00:08:45,140 --> 00:08:48,620
-for that. [UM] abhi kya karna hai to if he if
+00:05:45,240 --> 00:05:47,020
+qasam ki hastri rahi ho gi. Now,
 
 178
-00:08:49,400 --> 00:08:50,660
-he wants to move forward
+00:05:47,100 --> 00:05:49,000
+history pe yeh cheez hoti hai ke aap kisi
 
 179
-00:08:51,380 --> 00:08:54,600
-to then phir is ko bolein like att ko bolein ke phas is baat
+00:05:49,080 --> 00:05:50,860
+ke paas mein ja ke kuch kar nahi sakte
 
 180
-00:08:54,600 --> 00:08:56,840
-ko yahin dafan karte hain and then we just move forward.
+00:05:51,420 --> 00:05:53,800
+[UH] bas yeh ensure kar sakte ke
 
 181
-00:08:57,700 --> 00:09:00,110
-If he's like [UH] nahi nahi yeh hai woh hai woh hai then you
+00:05:53,880 --> 00:05:55,940
+if the person has learned their lesson
 
 182
-00:09:00,110 --> 00:09:03,640
-need to like sit him down and say okay I cannot spend the rest
+00:05:56,020 --> 00:05:58,090
+or in a way that if that person's going
 
 183
-00:09:03,640 --> 00:09:07,400
-of my life [UH] in tanoon mein aur in [UH] kosnay pe mein mein
+00:05:58,170 --> 00:05:59,710
+to be loyal to me [UM] kyun ke peechhe
 
 184
-00:09:07,520 --> 00:09:10,480
-poori zindagi nahi guzaar sakti so I have I need to live a healthy
+00:05:59,790 --> 00:06:01,270
+jo tha is mein na mein in ki zindagi
 
 185
-00:09:10,640 --> 00:09:13,320
-life and I deserve it and so do you.
+00:06:01,350 --> 00:06:02,490
+mein tha na mera koi in ke upar
 
 186
-00:09:13,800 --> 00:09:15,340
-Toh phir ab aap batay karna kya hai.
+00:06:02,570 --> 00:06:04,250
+control tha haan aap ki agar mojoodi
 
 187
-00:09:15,460 --> 00:09:18,500
-Try things us nahaj pe na jayen where you have to make a choice,
+00:06:04,330 --> 00:06:05,910
+mein agar if if someone cheats behind
 
 188
-00:09:19,240 --> 00:09:21,980
-but like talk him out of it [breath] ke ab ye ho gaya hai,
+00:06:05,990 --> 00:06:07,690
+your back then it's different then it's
 
 189
-00:09:22,240 --> 00:09:25,640
-aage kya karna hai [UM] humne future aage guzarna hai, toh isliye it's very
+00:06:07,770 --> 00:06:10,690
+[UH] disloyalty and then it disloyalty
 
 190
-00:09:25,640 --> 00:09:29,100
-healthy [breath] ke hum problem ko aaj hi address karein, isko solve karein.
+00:06:10,770 --> 00:06:12,750
+word hota hai then they they they being
 
 191
-00:09:29,280 --> 00:09:30,300
-A problem delayed is problem
+00:06:12,830 --> 00:06:14,290
+disloyal and obviously [UH] w-
 
 192
-00:09:31,040 --> 00:09:31,480
-maximized.
+00:06:14,370 --> 00:06:16,680
+w- that is crossing the line.
 
 193
-00:09:32,240 --> 00:09:34,720
-Jeetna aap conflict avoid karege, wo utna padta jayega jitna aap conflict avoid
+00:06:17,300 --> 00:06:18,070
+[breath] magar agar ek cheez paas
 
 194
-00:09:34,720 --> 00:09:35,860
-karein ge woh utna padta jayega [lipsmack] to
+00:06:18,150 --> 00:06:19,370
+mein rahi hai [lipsmack] theek hai ghussa
 
 195
-00:09:36,620 --> 00:09:38,380
-that is the only way to do it if he
+00:06:19,450 --> 00:06:21,510
+hota hai [UH] if you find out especially
 
 196
-00:09:39,260 --> 00:09:42,040
-[UH] agar unka usra thanda hota hai and then he comes to term with
+00:06:21,590 --> 00:06:23,580
+through someone else that means the whole
 
 197
-00:09:42,040 --> 00:09:42,200
-it
+00:06:23,660 --> 00:06:24,490
+world knows about it [breath] phir
 
 198
-00:09:42,980 --> 00:09:47,390
-[UH] then move forward if he's like adamant ke nahi yeh mujhe bardash nahi
+00:06:24,570 --> 00:06:25,900
+aap ke zan mein khayalat aatin ge aur pata
 
 199
-00:09:47,390 --> 00:09:48,260
-hai to then you're like
+00:06:25,980 --> 00:06:27,340
+nahi kis kis ko pata hai [breath]
 
 200
-00:09:49,040 --> 00:09:51,520
-you can go back to Pakistan, I can live my life in Romania
+00:06:27,420 --> 00:06:29,020
+aur phir aap ke izzat ke par baat aati hai
 
 201
-00:09:52,420 --> 00:09:52,960
-and [UH]
+00:06:29,580 --> 00:06:31,260
+[breath] But deep down once you once
 
 202
-00:09:53,900 --> 00:09:54,380
-no hard feelings.
+00:06:31,340 --> 00:06:32,580
+your anger settles down you should
 
 203
-00:09:54,760 --> 00:09:57,420
-aur kya hi kar sakte hain kyun ke aap kisi ko zabadasti khech nahi sakte
+00:06:32,660 --> 00:06:35,180
+also consider the fact [UH]
 
 204
-00:09:57,540 --> 00:10:01,680
-yeh relishnshp mein [lipsmack] [lipsmack] [lipsmack] nahi kar sakte and it's very emotionally
+00:06:36,100 --> 00:06:37,200
+[UH] like like [UH] [UH] like like
 
 205
-00:10:02,000 --> 00:10:04,770
-draining or then aap zindagi baar guilt mein bhi nahi reh sakte.
+00:06:37,280 --> 00:06:38,840
+[UH] like guzarta hai is mein
 
 206
-00:10:04,770 --> 00:10:08,660
-Obviously you were in a relationship [UH] [UH] [UH] aap zindagi jis age mein
+00:06:38,920 --> 00:06:40,270
+tinij bhi aati hai you're like
 
 207
-00:10:08,660 --> 00:10:11,840
-bhi thi [UM] insaan zindagi mein ghalatiyan karta hai, saare zindagi karta rehta
+00:06:40,350 --> 00:06:42,890
+you know rush of emotions and hormones
 
 208
-00:10:12,820 --> 00:10:16,040
-[UH] and koi bhi chahte hue ghalatiyan nahi karta, zahir hai is waqt aap
+00:06:43,550 --> 00:06:46,450
+and all all that jazz so there the chances
 
 209
-00:10:16,180 --> 00:10:19,280
-ke zehan mein kuch aur tha and then you were like, okay maybe I
+00:06:46,530 --> 00:06:47,890
+are very likely for you to get
 
 210
-00:10:19,280 --> 00:10:20,420
-have a future with this person.
+00:06:47,970 --> 00:06:49,750
+involved with someone question
 
 211
-00:10:21,240 --> 00:10:24,090
-aur sab ke saath yeh hota hai [UM] woh and all and all be
+00:06:49,830 --> 00:06:51,910
+yeh important hai ke abhi hai ke nahi [UH]
 
 212
-00:10:24,090 --> 00:10:27,460
-all hi hota hai, zyada you know khuwaateen isi tarah sochte hain
+00:06:52,690 --> 00:06:53,910
+ab aap ne yeh nahi bata hai ke in ko
 
 213
-00:10:28,160 --> 00:10:31,840
-[UH] they they they see things forward with a pers with a guy guys
+00:06:53,990 --> 00:06:55,630
+school life wala pata hai ki hai
 
 214
-00:10:31,840 --> 00:10:35,280
-m- m- might not be on that same page all the time
+00:06:55,710 --> 00:06:56,970
+yeh bata hai. ke shaadi se kuch arsay
 
 215
-00:10:36,020 --> 00:10:39,600
-[UM] but yeah [UH] woh ho gaya ho gaya to please talk him out
+00:06:57,050 --> 00:06:58,450
+pehle ho raha hai because that is also
 
 216
-00:10:39,600 --> 00:10:42,900
-of it and then see [UH] aage cheezein barhti hain agar nahi barhti to
+00:06:58,530 --> 00:07:00,690
+like a big red flag in his eyes
 
 217
-00:10:42,900 --> 00:10:43,000
-then
+00:07:00,990 --> 00:07:02,270
+and rightfully so, okay, I mean
 
 218
-00:10:44,000 --> 00:10:46,940
-[UH] just move on man you have your whole life ahead of you you're
+00:07:02,350 --> 00:07:03,480
+when you already know you're getting
 
 219
-00:10:47,160 --> 00:10:50,140
-only twenty five have so much to look forward to
+00:07:03,560 --> 00:07:05,820
+married and so why was this happening?
 
 220
-00:10:50,880 --> 00:10:51,560
-so yeah thank you.
+00:07:05,900 --> 00:07:08,750
+Toh phir [UM] again [UM] it's up
 
 221
-00:10:51,700 --> 00:10:56,140
-Alright next question my wife hates intimacy i hope you and your family are
+00:07:08,830 --> 00:07:11,780
+to the person if if they can [UH] forgive,
 
 222
-00:10:56,140 --> 00:11:00,130
-doing well i'm twenty one living in slum about working in a well known
+00:07:12,140 --> 00:07:13,680
+but that's a serious offence.
 
 223
-00:11:00,130 --> 00:11:03,580
-it firm so me and the lover of my life who's also twenty one
+00:07:14,380 --> 00:07:16,710
+Khair, moving on, ab ye that's
 
 224
-00:11:04,180 --> 00:11:07,340
-have been happily married for the past six months and everything else is good
+00:07:16,790 --> 00:07:18,450
+in the past, it has already happened,
 
 225
-00:11:08,220 --> 00:11:11,980
-[UH] except for one thing she hates intimacy i mean hugs and kisses are
+00:07:18,530 --> 00:07:20,240
+so like you need to talk him [UH] talk
 
 226
-00:11:11,980 --> 00:11:14,910
-fine but everything other than that is a straight no for her i talk
+00:07:21,700 --> 00:07:24,590
+to him or baatcheet karne se hi maamla
 
 227
-00:11:14,910 --> 00:11:18,310
-to her many times about this matter and every time she gets emotional and
+00:07:24,670 --> 00:07:26,430
+solve ho ga, ladhai karne se ya naraz
 
 228
-00:11:18,310 --> 00:11:22,280
-starts crying and says she doesn't like even the concept of sex and she's
+00:07:26,510 --> 00:07:28,550
+ho ne se ya doosri kamre me so ne se
 
 229
-00:11:22,280 --> 00:11:25,940
-afraid of doing it because according to her it's too painful and she will
+00:07:28,630 --> 00:07:31,070
+[UH] yeh sirf [UH] barhta jaye ga and then
 
 230
-00:11:25,940 --> 00:11:28,700
-die. I love her so much and she means the world to me.
+00:07:31,150 --> 00:07:33,860
+the distance will keep [UH] [UH] keep
 
 231
-00:11:28,700 --> 00:11:32,000
-I tried to s- I tried so many times to make her understand it's
+00:07:34,980 --> 00:07:37,240
+growing and that's not what you want.
 
 232
-00:11:32,000 --> 00:11:32,540
-not how
+00:07:37,810 --> 00:07:39,810
+Come to terms with it, nip it in the bud,
 
 233
-00:11:33,220 --> 00:11:36,980
-she thinks it is, but she doesn't understand as it is a very sensitive
+00:07:39,890 --> 00:07:42,930
+on ke se baat karein, apologise and like
 
 234
-00:11:37,100 --> 00:11:38,940
-topic that I can't talk about to anyone.
+00:07:43,010 --> 00:07:45,310
+tell him how you feel about it and [UM]
 
 235
-00:11:38,940 --> 00:11:41,800
-I'll just stop mentioning this topic to her because I don't want to lose
+00:07:45,390 --> 00:07:47,850
+then tell him ke this was the situation
 
 236
-00:11:41,800 --> 00:11:45,670
-her. There have been times she even got angry at me and didn't talk
+00:07:47,930 --> 00:07:50,280
+before way before you existed in my life
 
 237
-00:11:45,700 --> 00:11:48,460
-for days. As a man, you know, sex is a great part of our
+00:07:50,710 --> 00:07:53,690
+[UH] I'm sure you might have some
 
 238
-00:11:48,460 --> 00:11:52,100
-life, and a man has his needs and that needs to be fulfilled, but
+00:07:54,010 --> 00:07:55,690
+in in your closet as well. I'm not gonna
 
 239
-00:11:52,200 --> 00:11:56,460
-because of the iss this issue, my mental health is affected because I can't
+00:07:55,770 --> 00:07:57,970
+ask you. That's your privacy, that's
 
 240
-00:11:56,460 --> 00:11:57,930
-even talk to anyone about this issue.
+00:07:58,050 --> 00:07:59,600
+your past that I'm not interested in.
 
 241
-00:11:57,930 --> 00:12:00,960
-So [UH] ek sahab [UH] he's only twenty one, in ki begum bhi twenty
+00:07:59,680 --> 00:08:01,640
+What I'm really interested in is to build
 
 242
-00:12:01,080 --> 00:12:04,360
-one ki aur chhe mahine hue shaadi ko and wife jo hai, she hates
+00:08:02,100 --> 00:08:04,060
+is to have a peaceful present and build
 
 243
-00:12:04,360 --> 00:12:04,500
-intimacy
+00:08:04,140 --> 00:08:06,510
+a healthy future with both of us.
 
 244
-00:12:05,760 --> 00:12:05,980
-[UM]
+00:08:06,590 --> 00:08:09,130
+So if you think we can do this [UH]
 
 245
-00:12:06,700 --> 00:12:09,380
-[lipsmack] dekhein is mein ek to main cheez [UH] yeh hai.
+00:08:09,560 --> 00:08:12,550
+[UM] respectfully for each other.
 
 246
-00:12:09,380 --> 00:12:11,940
-Obviously aap ne jo s neeche ek baat likhi ke it's a it's a
+00:08:14,020 --> 00:08:15,960
+Nah samjhen aur dil dil mein
 
 247
-00:12:11,940 --> 00:12:14,420
-very important part of life and it's a very important part of a union
+00:08:16,040 --> 00:08:17,520
+yeh nah bolay ki yeh aise aise hai.
 
 248
-00:12:15,120 --> 00:12:15,520
-[UH]
+00:08:17,600 --> 00:08:18,700
+If you can do it without it,
 
 249
-00:12:16,280 --> 00:12:19,380
-it's it is a need or it needs to be fulfilled [UM] just like
+00:08:18,780 --> 00:08:20,680
+then let's please move forward.
 
 250
-00:12:19,520 --> 00:12:21,540
-any other need that comes with marriage.
+00:08:20,760 --> 00:08:23,380
+I I humbly request you or [UH]
 
 251
-00:12:21,700 --> 00:12:24,660
-ab rahi baat yeh ke in ko pasand nahi hai to aap
+00:08:23,460 --> 00:08:25,140
+we have a whole life ahead of us.
 
 252
-00:12:25,480 --> 00:12:28,540
-ne yeh likha nahi ke aap ki love marriage hai ya arranged marriage hai
+00:08:25,220 --> 00:08:27,500
+We cannot live like this with grudges
 
 253
-00:12:28,780 --> 00:12:29,180
-[UH] did you
+00:08:27,580 --> 00:08:29,920
+in our hearts. Phir wo baat chal di payi.
 
 254
-00:12:29,920 --> 00:12:32,500
-talk about these things before ya aap ko yeh cheezein pata theen ab
+00:08:30,000 --> 00:08:32,740
+So is baat ko yeh dhafan hona chahiye
 
 255
-00:12:33,160 --> 00:12:34,620
-is mein dekhein kuch cheezein hoti hain.
+00:08:32,820 --> 00:08:34,560
+taakay hum zindagi main move on kar zake.
 
 256
-00:12:34,620 --> 00:12:38,980
-First of all, we we we [UH] hamare hai sex edakishn kisi bhi qasam
+00:08:34,640 --> 00:08:35,890
+Lekin agar aap chaah rahein ke yeh sala
 
 257
-00:12:38,980 --> 00:12:39,980
-ki nahi di jati
+00:08:35,970 --> 00:08:38,640
+saal kheche khche to this is something
 
 258
-00:12:40,840 --> 00:12:43,200
-aur bohat spond filmun se log sikhte
+00:08:38,720 --> 00:08:41,780
+I'm not signing up for. I did a mistake.
 
 259
-00:12:44,020 --> 00:12:46,680
-aur [UH] agar mein mein aap ki case bhi nahi keh rahe mein jnrli
+00:08:41,860 --> 00:08:44,780
+I am forever [UH] repentful
 
 260
-00:12:46,680 --> 00:12:47,360
-cbat kar rahoon to
+00:08:45,150 --> 00:08:46,910
+for that. [UM] abhi kya karna hai
 
 261
-00:12:48,020 --> 00:12:49,060
-woh [UM]
+00:08:46,990 --> 00:08:50,960
+to if he if he wants to move forward
 
 262
-00:12:49,740 --> 00:12:53,120
-logon mein understanding nahi hoti yeh kaise hoti hai I recently had [UH] [UH]
+00:08:51,390 --> 00:08:53,290
+to then phir is ko bolein like att ko
 
 263
-00:12:53,240 --> 00:12:57,200
-[UH] [UH] [UH] Karachi sayikitrik hasptl ke ek [UM] aymdi the aur hum ne
+00:08:53,370 --> 00:08:55,090
+bolein ke phas is baat ko yahin dafan
 
 264
-00:12:57,200 --> 00:13:00,160
-is pe is baat pe kaafi deteel mein dskishn bhi ki thi ke [UH]
+00:08:55,170 --> 00:08:57,140
+karte hain and then we just move forward.
 
 265
-00:13:00,500 --> 00:13:03,900
-wohi wali baat ke sex edakishn nahi hoti you hum [UM] [UH]
+00:08:57,710 --> 00:08:58,990
+If he's like [UH] nahi nahi yeh hai
 
 266
-00:13:04,680 --> 00:13:08,520
-how important foreplay is, lubrication is very important because obviously when
+00:08:59,070 --> 00:09:00,890
+woh hai woh hai then you need to like
 
 267
-00:13:08,520 --> 00:13:12,260
-you're starting new obviously it's it's quite painful for the lady [UM] ab magar
+00:09:00,970 --> 00:09:02,790
+sit him down and say okay I cannot
 
 268
-00:13:12,260 --> 00:13:15,060
-yeh to yeh to ek physical aspect ho gi na is ka ek mental
+00:09:02,870 --> 00:09:05,190
+spend the rest of my life [UH] in tanoon
 
 269
-00:13:15,060 --> 00:13:17,560
-aspect bhi hota hai ab woh yeh hota hai ke a lot of women
+00:09:05,270 --> 00:09:07,450
+mein aur in [UH] kosnay pe mein mein
 
 270
-00:13:17,960 --> 00:13:18,520
-khaas taur pe and
+00:09:07,530 --> 00:09:08,670
+poori zindagi nahi guzaar sakti so
 
 271
-00:13:19,360 --> 00:13:21,800
-Allah na kare in your case but generally mein baat kar rahoon
+00:09:08,750 --> 00:09:11,350
+I have I need to live a healthy life
 
 272
-00:13:22,500 --> 00:13:22,980
-[UM]
+00:09:11,430 --> 00:09:13,770
+and I deserve it and so do you.
 
 273
-00:13:23,700 --> 00:13:27,300
-in ke saath kisi na kisi qasam ka is tarah ka trauma attach hota
+00:09:13,850 --> 00:09:15,380
+Toh phir ab aap batay karna kya hai.
 
 274
-00:13:27,300 --> 00:13:27,580
-hai jis
+00:09:15,460 --> 00:09:17,290
+Try things us nahaj pe na jayen
 
 275
-00:13:28,360 --> 00:13:31,220
-ki wajah se in ko ya to is cheez se nafrat ho jati hai
+00:09:17,370 --> 00:09:18,790
+where you have to make a choice,
 
 276
-00:13:31,220 --> 00:13:34,170
-ya is se dar bohat lagta hai kyun ke bohat saare bachche hamare mulk mein
+00:09:19,250 --> 00:09:20,850
+but like talk him out of it [breath] ke ab
 
 277
-00:13:34,170 --> 00:13:36,940
-aap ko pata hain, abuse hote hain, abuse ka shikaar hote hain, chahe woh
+00:09:20,930 --> 00:09:22,930
+ye ho gaya hai, aage kya karna hai
 
 278
-00:13:37,040 --> 00:13:39,160
-family members ke haath ho ya bahar kisi ke
+00:09:23,010 --> 00:09:24,190
+[UM] humne future aage guzarna hai,
 
 279
-00:13:39,840 --> 00:13:42,680
-ya teacher ke haath ho aur is tarah ke bohat se waqeat hote hain
+00:09:24,270 --> 00:09:26,590
+toh isliye it's very healthy
 
 280
-00:13:42,900 --> 00:13:47,600
-[breath] So kuch cases jo hote hain woh itne [UH] depth tak nahi jate,
+00:09:26,670 --> 00:09:27,690
+[breath] ke hum problem ko aaj hi
 
 281
-00:13:47,600 --> 00:13:52,210
-matlab [UH] the the the abuse [UH] is very superficial but kuch abuse hota
+00:09:27,770 --> 00:09:29,200
+address karein, isko solve karein.
 
 282
-00:13:52,210 --> 00:13:54,380
-hai that goes all the way depending on the situation.
+00:09:29,280 --> 00:09:31,770
+A problem delayed is problem maximized.
 
 283
-00:13:55,000 --> 00:13:58,960
-So for a lot of girls and [UH] this is this is not the
+00:09:32,240 --> 00:09:33,830
+Jeetna aap conflict avoid karege, wo utna
 
 284
-00:13:58,960 --> 00:14:00,600
-first time I've had a similar email.
+00:09:33,910 --> 00:09:34,640
+padta jayega jitna aap conflict avoid
 
 285
-00:14:01,300 --> 00:14:04,280
-Istana ki aur bhi aayi hain toh usmein jo buniyadi wajah hai and also
+00:09:34,720 --> 00:09:35,590
+karein ge woh utna padta jayega [lipsmack]
 
 286
-00:14:04,280 --> 00:14:08,420
-there has been a person that I know unke saath bhi [UH] yeh hi
+00:09:35,670 --> 00:09:38,670
+to that is the only way to do it if he
 
 287
-00:14:08,420 --> 00:14:12,760
-tha because there was a trauma attached to it or wo ek bahut shadeed
+00:09:39,260 --> 00:09:40,570
+[UH] agar unka usra thanda hota hai
 
 288
-00:14:12,760 --> 00:14:15,980
-qasam ka [UM] painful experience uske saath attach tha.
+00:09:40,650 --> 00:09:42,490
+and then he comes to term with it
 
 289
-00:14:16,400 --> 00:14:19,080
-Unko unki shaadi mein bhi kaafi saal lage just
+00:09:42,990 --> 00:09:45,170
+[UH] then move forward if he's
 
 290
-00:14:19,780 --> 00:14:23,680
-to open up to her own husband, obviously she has a great husband and
+00:09:45,250 --> 00:09:46,750
+like adamant ke nahi yeh mujhe
 
 291
-00:14:24,120 --> 00:14:27,900
-who understood and everything but [UH] [UM] zayir hai har kisi ke [UM]
+00:09:46,830 --> 00:09:48,550
+bardash nahi hai to then you're like
 
 292
-00:14:28,700 --> 00:14:32,060
-[UM] apni apni capacity di hai is cheez ko understand karna so what you
+00:09:49,040 --> 00:09:50,080
+you can go back to Pakistan,
 
 293
-00:14:32,060 --> 00:14:35,270
-need to do is ab aap ko [UM] zayir hai yeh bhi hota ho
+00:09:50,160 --> 00:09:53,260
+I can live my life in Romania and [UH]
 
 294
-00:14:35,270 --> 00:14:38,380
-ga ke mein baar baar topic bring up karoon to phir woh judge karein
+00:09:53,900 --> 00:09:55,445
+no hard feelings. aur kya hi kar sakte
 
 295
-00:14:38,380 --> 00:14:40,870
-ge ke aap jay sar f kaisi nahi le kar aaye aur koi kaam
+00:09:55,525 --> 00:09:56,721
+hain kyun ke aap kisi ko zabadasti
 
 296
-00:14:40,870 --> 00:14:43,360
-nahi hai waghaira waghaira phir laraiyan bhi aap ne bola ke woh hoti hain
+00:09:56,801 --> 00:09:58,830
+khech nahi sakte yeh relishnshp mein
 
 297
-00:14:43,360 --> 00:14:47,760
-what you need to do is [UM] take her to a psychiatrist [UH] or
+00:09:58,910 --> 00:09:59,610
+[lipsmack] [lipsmack] [lipsmack] nahi
 
 298
-00:14:47,940 --> 00:14:51,280
-maybe a psychologist and try to as- ascertain that.
+00:09:59,690 --> 00:10:01,970
+kar sakte and it's very emotionally
 
 299
-00:14:52,240 --> 00:14:52,340
-Maybe
+00:10:02,050 --> 00:10:03,450
+draining or then aap zindagi baar
 
 300
-00:14:56,860 --> 00:14:59,140
-she's too shy to discuss it with you, and obviously
+00:10:03,530 --> 00:10:04,700
+guilt mein bhi nahi reh sakte.
 
 301
-00:15:00,360 --> 00:15:00,940
-at this stage.
+00:10:04,780 --> 00:10:07,050
+Obviously you were in a relationship [UH]
 
 302
-00:15:10,020 --> 00:15:13,940
-[UH] [UH] woh [UH] aur baseet prablm bane gi aap ki wef ke liye.
+00:10:07,130 --> 00:10:08,940
+[UH] [UH] aap zindagi jis age mein bhi thi
 
 303
-00:15:13,940 --> 00:15:15,330
-I understand you love her very much.
+00:10:09,020 --> 00:10:10,390
+[UM] insaan zindagi mein ghalatiyan
 
 304
-00:15:15,330 --> 00:15:16,760
-to aap ne yeh kaam karna hai ke in ko
+00:10:10,470 --> 00:10:12,140
+karta hai, saare zindagi karta rehta
 
 305
-00:15:17,540 --> 00:15:20,080
-thiripy ke le ke jane hai ta ke woh ek masla hal ho sake
+00:10:12,820 --> 00:10:14,720
+[UH] and koi bhi chahte hue ghalatiyan
 
 306
-00:15:20,700 --> 00:15:22,120
-and also take her to a sexologist
+00:10:14,800 --> 00:10:15,870
+nahi karta, zahir hai is waqt
 
 307
-00:15:22,960 --> 00:15:27,060
-[UH] sexologist jo hai woh zahir hai in se phir poucheen ge ke masla
+00:10:15,950 --> 00:10:17,540
+aap ke zehan mein kuch aur tha
 
 308
-00:15:27,060 --> 00:15:31,500
-kahan hai [sneeze] agar koi physical [UH] issue hai to woh sexologist [UH] treat
+00:10:17,620 --> 00:10:19,080
+and then you were like, okay maybe
 
 309
-00:15:31,500 --> 00:15:34,480
-kar sakta hai agar koi mental issue hai to woh psychologist ya psychiatrist
+00:10:19,160 --> 00:10:20,720
+I have a future with this person.
 
 310
-00:15:35,260 --> 00:15:36,700
-depending on your situation [UM] magar
+00:10:21,240 --> 00:10:22,810
+aur sab ke saath yeh hota hai [UM]
 
 311
-00:15:37,380 --> 00:15:39,840
-[UH] clearly [UH] masla [UH]
+00:10:22,890 --> 00:10:24,680
+woh and all and all be all hi hota hai,
 
 312
-00:15:40,880 --> 00:15:41,280
-jo hai woh
+00:10:24,760 --> 00:10:26,860
+zyada you know khuwaateen isi tarah
 
 313
-00:15:42,800 --> 00:15:46,600
-quite possibly [UH] kisi trauma se related hai jo ke shayad woh aap ko
+00:10:26,940 --> 00:10:29,380
+sochte hain [UH] they they they see things
 
 314
-00:15:46,600 --> 00:15:49,120
-nahi bata rahi ya nahi bata pani aur mein chahoon ga bhi nahi ke
+00:10:29,460 --> 00:10:31,200
+forward with a pers with a guy guys
 
 315
-00:15:49,120 --> 00:15:49,800
-aap zara is pe
+00:10:31,840 --> 00:10:34,300
+m- m- might not be on that same
 
 316
-00:15:50,820 --> 00:15:50,920
-[UH]
+00:10:34,380 --> 00:10:37,350
+page all the time [UM] but yeah [UH]
 
 317
-00:15:51,820 --> 00:15:55,000
-kore dein bohat zyada kyun ke aah zahir hai painful experience hota hai har
+00:10:37,430 --> 00:10:39,390
+woh ho gaya ho gaya to please talk him
 
 318
-00:15:55,000 --> 00:15:57,660
-banda nahi share kar paata aur khaas taur pe apne spouse se phir in
+00:10:39,470 --> 00:10:41,230
+out of it and then see [UH] aage cheezein
 
 319
-00:15:57,660 --> 00:16:00,670
-ko yeh yeh bhi fair hota ke jo judge na kya jaye waghaira abhi
+00:10:41,310 --> 00:10:43,290
+barhti hain agar nahi barhti to then
 
 320
-00:16:00,670 --> 00:16:01,720
-aap lo donon bohat chhote ho
+00:10:44,010 --> 00:10:45,630
+[UH] just move on man you have your whole
 
 321
-00:16:02,580 --> 00:16:02,920
-[UM]
+00:10:45,710 --> 00:10:48,130
+life ahead of you you're only twenty five
 
 322
-00:16:03,780 --> 00:16:05,620
-theek hai kar li aap ne shaadi kar li koi masla hum [UM] theek
+00:10:48,470 --> 00:10:51,230
+have so much to look forward to so yeah
 
 323
-00:16:05,620 --> 00:16:05,820
-hai kar li aap ne shaadi kar li koi masla nahi hai
+00:10:51,310 --> 00:10:53,050
+thank you. Alright next question my wife
 
 324
-00:16:06,480 --> 00:16:09,180
-[UM] to ee yeh do kaam kare aap in ko
+00:10:53,130 --> 00:10:55,890
+hates intimacy i hope you and your family
 
 325
-00:16:09,960 --> 00:16:12,220
-aap ne likha aap achhi aayiti firm mein kaam karte to ma sha Allah
+00:10:55,970 --> 00:10:57,670
+are doing well i'm twenty one living
 
 326
-00:16:12,220 --> 00:16:14,600
-aap achha kamate bhi hoon ge zahira shaadi ki aap ne to take
+00:10:57,990 --> 00:10:59,790
+in slum about working in a well
 
 327
-00:16:15,540 --> 00:16:19,420
-her to these places aur in ko apni begum ko bhi pyaar se samjhane
+00:10:59,870 --> 00:11:01,730
+known it firm so me and the lover
 
 328
-00:16:19,420 --> 00:16:22,480
-koshish karein ke bhai mein janna chahaton ke mujhe [UH]
+00:11:01,810 --> 00:11:04,100
+of my life who's also twenty one
 
 329
-00:16:23,160 --> 00:16:27,180
-more than that I need it I ne I want you to be fixed
+00:11:04,180 --> 00:11:05,730
+have been happily married for the past
 
 330
-00:16:27,460 --> 00:16:29,460
-in every way possible and I want you to feel better.
+00:11:05,810 --> 00:11:07,640
+six months and everything else is good
 
 331
-00:16:29,560 --> 00:16:32,900
-to jo bhi hai yahan se address ho jaye ga to is tarah ki
+00:11:08,220 --> 00:11:09,930
+[UH] except for one thing she hates
 
 332
-00:16:32,900 --> 00:16:33,600
-koshish kare
+00:11:10,010 --> 00:11:11,790
+intimacy i mean hugs and kisses
 
 333
-00:16:34,260 --> 00:16:38,520
-[UH] agar ho jati hai if she [UH] is comfortable and you know if
+00:11:11,870 --> 00:11:12,830
+are fine but everything other
 
 334
-00:16:38,520 --> 00:16:41,560
-things work out, so that's very good if it doesn't
+00:11:12,910 --> 00:11:14,850
+than that is a straight no for her i talk
 
 335
-00:16:42,320 --> 00:16:42,640
-or [UM]
+00:11:14,930 --> 00:11:16,790
+to her many times about this matter
 
 336
-00:16:43,560 --> 00:16:47,560
-bilkul har tarah se koshish kar lein yeh bhi na manay agar [UH] doktrz
+00:11:16,870 --> 00:11:18,130
+and every time she gets emotional
 
 337
-00:16:47,560 --> 00:16:51,490
-ke saath bhi na ho sake klabrishn na ho klabrishn matlab copration phir yeh
+00:11:18,210 --> 00:11:19,720
+and starts crying and says she doesn't
 
 338
-00:16:51,490 --> 00:16:54,580
-ke shayad [UH] at some point aap ko family ko batana ho ga phir
+00:11:19,800 --> 00:11:22,200
+like even the concept of sex and she's
 
 339
-00:16:54,700 --> 00:16:57,700
-phir wahan se bhi baat nahi bani to then things can get very difficult.
+00:11:22,280 --> 00:11:23,840
+afraid of doing it because according
 
 340
-00:16:57,700 --> 00:17:00,200
-I hope baat wahan tak na puhanche aur [UH] is se pehli hil ho
+00:11:23,920 --> 00:11:26,270
+to her it's too painful and she will die.
 
 341
-00:17:00,200 --> 00:17:03,600
-jaye lekin yeh ke like I said is ke baghair aap poori zindagi nahi
+00:11:26,350 --> 00:11:28,340
+I love her so much and she means the world
 
 342
-00:17:03,600 --> 00:17:06,570
-guzaar sakte aur yeh aap donon ke saath zaati ho gi is ko address
+00:11:28,420 --> 00:11:30,530
+to me. I tried to s- I tried so many
 
 343
-00:17:06,570 --> 00:17:10,480
-karein aur dekhein masla kahan se aa rahe insha Allah [UM] yeh cheezein hoti hain
+00:11:30,610 --> 00:11:32,830
+times to make her understand it's not how
 
 344
-00:17:10,660 --> 00:17:12,420
-aur yeh ee- ee- bah yeh kaafi common bhi hai
+00:11:33,220 --> 00:11:35,220
+she thinks it is, but she doesn't
 
 345
-00:17:13,140 --> 00:17:15,960
-aisa na soche ke aap budqismat hain ke aap ke saath yeh sah ho rahe
+00:11:35,300 --> 00:11:37,020
+understand as it is a very sensitive
 
 346
-00:17:16,600 --> 00:17:21,160
-hazaron likhon log ke saath yeh silsila hota hai kyun ke hamare abuse bohat aam
+00:11:37,100 --> 00:11:38,910
+topic that I can't talk about to anyone.
 
 347
-00:17:21,160 --> 00:17:21,380
-hain
+00:11:38,990 --> 00:11:40,090
+I'll just stop mentioning this topic
 
 348
-00:17:22,320 --> 00:17:23,360
-aur doosri zohray education
+00:11:40,170 --> 00:11:42,230
+to her because I don't want to lose her.
 
 349
-00:17:24,060 --> 00:17:24,620
-bhi nahi hai
+00:11:42,310 --> 00:11:44,250
+There have been times she even got
 
 350
-00:17:25,280 --> 00:17:25,480
-[UH]
+00:11:44,330 --> 00:11:46,490
+angry at me and didn't talk for days.
 
 351
-00:17:26,140 --> 00:17:28,740
-to shayad is mein koi kami bhi shuru nahi hai to yeh siksolojz aap
+00:11:46,570 --> 00:11:48,130
+As a man, you know, sex is a great part
 
 352
-00:17:28,740 --> 00:17:31,600
-se achhi tarah pooch le ga saari cheezein ke like how do you get
+00:11:48,210 --> 00:11:50,630
+of our life, and a man has his needs
 
 353
-00:17:31,600 --> 00:17:32,200
-by and everything.
+00:11:50,710 --> 00:11:51,870
+and that needs to be fulfilled,
 
 354
-00:17:33,100 --> 00:17:36,650
-to shayad wahan pe koi issue aa raha ho I'm sure [UH] they'll find
+00:11:51,950 --> 00:11:53,950
+but because of the iss this issue,
 
 355
-00:17:36,650 --> 00:17:38,680
-a cure or [UH] [UH] khayal rakhein tikay.
+00:11:54,030 --> 00:11:55,350
+my mental health is affected
 
 356
-00:17:39,360 --> 00:17:42,600
-Alright, next one says ideal husband in toxic in laws.
+00:11:55,710 --> 00:11:57,350
+because I can't even talk to anyone about
 
 357
-00:17:42,720 --> 00:17:44,180
-Dear Junid bhai, hope you're doing well.
+00:11:57,430 --> 00:11:59,210
+this issue. So [UH] ek sahab [UH] he's
 
 358
-00:17:44,180 --> 00:17:45,580
-First of all, thank you for the work you're doing.
+00:11:59,290 --> 00:12:01,000
+only twenty one, in ki begum bhi twenty
 
 359
-00:17:45,580 --> 00:17:46,180
-You're a gem.
+00:12:01,080 --> 00:12:02,680
+one ki aur chhe mahine hue shaadi ko
 
 360
-00:17:46,180 --> 00:17:48,970
-You don't know how much important you are in my life, so coming towards
+00:12:02,760 --> 00:12:04,800
+and wife jo hai, she hates intimacy
 
 361
-00:17:49,000 --> 00:17:49,420
-my question.
+00:12:05,760 --> 00:12:07,960
+[UM] [lipsmack] dekhein is mein ek to main
 
 362
-00:17:50,260 --> 00:17:51,440
-I'm in an arranged marriage.
+00:12:08,040 --> 00:12:10,400
+cheez [UH] yeh hai. Obviously aap ne jo s
 
 363
-00:17:51,440 --> 00:17:53,320
-I married a guy who's living in the UK.
+00:12:10,480 --> 00:12:11,800
+neeche ek baat likhi ke it's a it's
 
 364
-00:17:53,320 --> 00:17:54,560
-He was too good, mashallah.
+00:12:11,880 --> 00:12:13,220
+a very important part of life and it's
 
 365
-00:17:54,560 --> 00:17:58,260
-I didn't know him and his family before marriage, well, like every other marriage
+00:12:13,300 --> 00:12:14,720
+a very important part of a union
 
 366
-00:17:58,440 --> 00:18:01,720
-in Pakistan, but I'm lucky enough to have him as my partner, but the
+00:12:15,120 --> 00:12:17,820
+[UH] it's it is a need or it needs
 
 367
-00:18:01,720 --> 00:18:03,920
-only problem is that his family is too toxic,
+00:12:17,900 --> 00:12:19,650
+to be fulfilled [UM] just like any
 
 368
-00:18:04,580 --> 00:18:05,300
-especially his mother.
+00:12:19,730 --> 00:12:21,620
+other need that comes with marriage.
 
 369
-00:18:05,460 --> 00:18:10,260
-At first they tried to control me as she's the automa- authoritative woman [UH]
+00:12:21,700 --> 00:12:23,740
+ab rahi baat yeh ke in ko pasand nahi hai
 
 370
-00:18:10,480 --> 00:18:11,420
-automative, keh raha tha mein.
+00:12:23,820 --> 00:12:26,500
+to aap ne yeh likha nahi ke aap ki love
 
 371
-00:18:11,600 --> 00:18:12,660
-And that's the reason they get they
+00:12:26,580 --> 00:12:28,760
+marriage hai ya arranged marriage hai [UH]
 
 372
-00:18:13,520 --> 00:18:17,160
-get married their son from Pakistan so the girl might be submissive.
+00:12:28,840 --> 00:12:30,920
+did you talk about these things before
 
 373
-00:18:18,200 --> 00:18:19,990
-But I was totally different from my expectations.
+00:12:31,000 --> 00:12:32,800
+ya aap ko yeh cheezein pata theen ab
 
 374
-00:18:19,990 --> 00:18:24,280
-I'm educated. I have done Masters in business administration married to [UH] [UH]
+00:12:33,170 --> 00:12:34,540
+is mein dekhein kuch cheezein hoti hain.
 
 375
-00:18:25,340 --> 00:18:27,780
-[UH] married to UK to get more opportunities.
+00:12:34,620 --> 00:12:37,660
+First of all, we we we [UH] hamare hai sex
 
 376
-00:18:27,780 --> 00:18:28,840
-Me and my husband are likely
+00:12:37,740 --> 00:12:40,280
+edakishn kisi bhi qasam ki nahi di jati
 
 377
-00:18:29,600 --> 00:18:31,700
-like minded. He wants me to progress.
+00:12:40,840 --> 00:12:43,490
+aur bohat spond filmun se log sikhte
 
 378
-00:18:32,540 --> 00:18:33,940
-We both have good understanding.
+00:12:44,020 --> 00:12:45,790
+aur [UH] agar mein mein aap ki case bhi
 
 379
-00:18:34,640 --> 00:18:38,310
-My husband is the only son of the family, but his family they [UH]
+00:12:45,870 --> 00:12:47,230
+nahi keh rahe mein jnrli cbat kar rahoon
 
 380
-00:18:38,310 --> 00:18:42,640
-are illiterate [UH] they are against women education and have double standards
+00:12:47,310 --> 00:12:50,390
+to woh [UM] logon mein understanding
 
 381
-00:18:42,740 --> 00:18:43,580
-for Bahu and Beti.
+00:12:50,470 --> 00:12:51,410
+nahi hoti yeh kaise hoti hai
 
 382
-00:18:43,760 --> 00:18:47,040
-Their daughters haven't done education [UH] in in anything in life.
+00:12:51,490 --> 00:12:53,930
+I recently had [UH] [UH] [UH] [UH]
 
 383
-00:18:47,180 --> 00:18:50,200
-That's why they don't acknowledge my education as well.
+00:12:54,010 --> 00:12:56,090
+[UH] Karachi sayikitrik hasptl ke ek [UM]
 
 384
-00:18:50,380 --> 00:18:52,460
-I came to the UK in the start of twenty twenty one.
+00:12:56,170 --> 00:12:58,040
+aymdi the aur hum ne is pe is baat pe
 
 385
-00:18:52,460 --> 00:18:55,440
-From day one in UK, my mother in law is really rude to me
+00:12:58,120 --> 00:12:59,500
+kaafi deteel mein dskishn bhi ki thi
 
 386
-00:18:55,640 --> 00:18:58,640
-and she knows how my personality is [UH] and there's
+00:12:59,580 --> 00:13:01,340
+ke [UH] wohi wali baat ke sex
 
 387
-00:18:59,440 --> 00:19:03,140
-[UH] [UH] as their son told them when I was waiting for the visa,
+00:13:01,420 --> 00:13:04,200
+edakishn nahi hoti you hum [UM] [UH]
 
 388
-00:19:03,140 --> 00:19:06,180
-it took seven months for my visa to get an answer because of Covid,
+00:13:04,680 --> 00:13:06,770
+how important foreplay is, lubrication
 
 389
-00:19:07,140 --> 00:19:10,880
-but she knows very well [UH] She wants me to be a Bahu in
+00:13:06,850 --> 00:13:08,220
+is very important because obviously
 
 390
-00:19:10,880 --> 00:19:15,390
-Indian dramas who have no confidence to speak a word at home and work
+00:13:08,300 --> 00:13:09,950
+when you're starting new obviously
 
 391
-00:19:15,390 --> 00:19:16,110
-like a Maasi.
+00:13:10,030 --> 00:13:11,880
+it's it's quite painful for the lady
 
 392
-00:19:16,110 --> 00:19:17,960
-Her behaviour is so bad I'm not the one
+00:13:11,960 --> 00:13:13,320
+[UM] ab magar yeh to yeh to ek physical
 
 393
-00:19:18,620 --> 00:19:19,020
-[UH]
+00:13:13,400 --> 00:13:15,520
+aspect ho gi na is ka ek mental aspect bhi
 
 394
-00:19:19,760 --> 00:19:24,080
-She want she tried to forcefully mould me by op [UH] with her oppressive
+00:13:15,600 --> 00:13:16,820
+hota hai ab woh yeh hota hai ke a lot
 
 395
-00:19:24,220 --> 00:19:27,460
-tone and tried to bully me and discriminate me and her children.
+00:13:16,900 --> 00:13:19,620
+of women khaas taur pe and Allah na
 
 396
-00:19:27,460 --> 00:19:31,140
-My father in law and one sister in law is [UH] in home is
+00:13:19,700 --> 00:13:21,140
+kare in your case but generally mein
 
 397
-00:19:31,140 --> 00:19:34,400
-working like teammates environment for home was so toxic.
+00:13:21,220 --> 00:13:24,860
+baat kar rahoon [UM] in ke saath
 
 398
-00:19:34,400 --> 00:19:38,100
-I told everything to my husband, but rooms are too attached, so my sister-in-law
+00:13:24,940 --> 00:13:26,610
+kisi na kisi qasam ka is tarah ka trauma
 
 399
-00:19:38,720 --> 00:19:42,320
-leaked our conversation to her parents, and then they are ru- more rude to
+00:13:26,690 --> 00:13:29,550
+attach hota hai jis ki wajah se in ko
 
 400
-00:19:42,320 --> 00:19:45,740
-me [UH] that I complain about their behaviour to their son.
+00:13:29,630 --> 00:13:31,140
+ya to is cheez se nafrat ho jati hai
 
 401
-00:19:46,220 --> 00:19:49,260
-Chau, sun liya hunne, UK mein ghar chote hota, aur lakdi ke darwaze hota
+00:13:31,220 --> 00:13:32,296
+ya is se dar bohat lagta hai
 
 402
-00:19:49,260 --> 00:19:49,360
-hai,
+00:13:32,376 --> 00:13:33,691
+kyun ke bohat saare bachche hamare
 
 403
-00:19:50,020 --> 00:19:52,200
-aawaaze bahar aati ho, aur darwaze mein kundi bhi nahi hoti by the way.
+00:13:33,771 --> 00:13:35,010
+mulk mein aap ko pata hain, abuse
 
 404
-00:19:52,480 --> 00:19:55,070
-If I tell you in short, I was moving back and forth trying to
+00:13:35,090 --> 00:13:36,590
+hote hain, abuse ka shikaar hote hain,
 
 405
-00:19:55,070 --> 00:19:58,060
-change myself, I tried my best to get out of the toxicity by giving
+00:13:36,670 --> 00:13:38,020
+chahe woh family members ke haath ho
 
 406
-00:19:58,060 --> 00:20:03,440
-submission, and I act exactly like they want, but o then I found that
+00:13:38,100 --> 00:13:41,310
+ya bahar kisi ke ya teacher ke haath ho
 
 407
-00:20:03,580 --> 00:20:04,180
-they are ungrateful.
+00:13:41,390 --> 00:13:42,980
+aur is tarah ke bohat se waqeat hote hain
 
 408
-00:20:04,420 --> 00:20:06,000
-Whatever I'll do, it won't change.
+00:13:43,370 --> 00:13:44,990
+[breath] So kuch cases jo hote hain
 
 409
-00:20:06,500 --> 00:20:08,360
-I did the did this just for my husband.
+00:13:45,070 --> 00:13:47,540
+woh itne [UH] depth tak nahi jate,
 
 410
-00:20:08,360 --> 00:20:11,460
-We both are trying to play positively [UH] to remove toxicity.
+00:13:47,620 --> 00:13:49,960
+matlab [UH] the the the abuse [UH]
 
 411
-00:20:12,300 --> 00:20:15,000
-My husband and I lived there [UH] for almost one and a half year,
+00:13:50,040 --> 00:13:51,920
+is very superficial but kuch abuse
 
 412
-00:20:15,180 --> 00:20:18,680
-but then my husband and I found out that we have to get out
+00:13:52,000 --> 00:13:53,890
+hota hai that goes all the way depending
 
 413
-00:20:18,680 --> 00:20:19,240
-of this house
+00:13:53,970 --> 00:13:56,560
+on the situation. So for a lot of girls
 
 414
-00:20:19,920 --> 00:20:22,500
-[UH] this is the only solution, and I'm grateful that he's financially independent
+00:13:56,640 --> 00:13:59,120
+and [UH] this is this is not the first
 
 415
-00:20:22,960 --> 00:20:25,780
-[UH] It took almost six months for us to get out of the to
+00:13:59,200 --> 00:14:00,900
+time I've had a similar email.
 
 416
-00:20:26,280 --> 00:20:28,260
-get our own house, but now we succeeded.
+00:14:01,300 --> 00:14:02,320
+Istana ki aur bhi aayi hain toh
 
 417
-00:20:28,400 --> 00:20:29,840
-His family is no more interacting.
+00:14:02,400 --> 00:14:04,200
+usmein jo buniyadi wajah hai and also
 
 418
-00:20:30,220 --> 00:20:31,940
-We are living the life we wanted.
+00:14:04,280 --> 00:14:06,360
+there has been a person that I know
 
 419
-00:20:32,440 --> 00:20:36,360
-In their ego they are not talking to their son as well [UH] that's
+00:14:06,440 --> 00:14:08,380
+unke saath bhi [UH] yeh hi tha
 
 420
-00:20:36,360 --> 00:20:39,380
-why he prefers his [UH] his wife over them.
+00:14:08,460 --> 00:14:11,200
+because there was a trauma attached to it
 
 421
-00:20:39,580 --> 00:20:41,160
-They called him Jahannumi Dozaki
+00:14:11,280 --> 00:14:14,120
+or wo ek bahut shadeed qasam ka [UM]
 
 422
-00:20:41,920 --> 00:20:43,400
-and so many other bad things.
+00:14:14,200 --> 00:14:16,320
+painful experience uske saath attach tha.
 
 423
-00:20:43,400 --> 00:20:44,720
-They are not accepting us.
+00:14:16,400 --> 00:14:18,630
+Unko unki shaadi mein bhi kaafi saal
 
 424
-00:20:44,720 --> 00:20:46,080
-My husband is not bothered.
+00:14:18,710 --> 00:14:21,510
+lage just to open up to her own husband,
 
 425
-00:20:46,600 --> 00:20:50,710
-He's also disconnected to his family [UH] He said this is the only way
+00:14:21,590 --> 00:14:24,090
+obviously she has a great husband and who
 
 426
-00:20:50,710 --> 00:20:52,720
-to live peacefully if they really will [UM]
+00:14:24,170 --> 00:14:26,360
+understood and everything but [UH]
 
 427
-00:20:53,420 --> 00:20:55,260
-if they will to if they are totally disconnected.
+00:14:26,440 --> 00:14:28,200
+[UM] zayir hai har kisi ke [UM]
 
 428
-00:20:55,540 --> 00:20:58,500
-I try to make my husband understand that after all these they are his
+00:14:28,700 --> 00:14:30,090
+[UM] apni apni capacity di hai
 
 429
-00:20:58,500 --> 00:21:01,120
-parents. I don't want my husband to get punished by Allah [UH] for not
+00:14:30,170 --> 00:14:31,610
+is cheez ko understand karna so
 
 430
-00:21:01,120 --> 00:21:04,920
-interacting with parents, but he's not convinced he's going it with the flow.
+00:14:31,690 --> 00:14:34,270
+what you need to do is ab aap ko [UM]
 
 431
-00:21:05,080 --> 00:21:07,520
-Now you tell me what can I do to get the situation better?
+00:14:34,350 --> 00:14:35,470
+zayir hai yeh bhi hota ho ga ke mein
 
 432
-00:21:08,300 --> 00:21:11,210
-Bhai, pehle aapko bahar nikalna tha, ab nikal aayi, ab ab ab ka hri
+00:14:35,550 --> 00:14:37,670
+baar baar topic bring up karoon to phir
 
 433
-00:21:11,210 --> 00:21:13,940
-ke bhi roon se raapta bhi rakhein, jab aapko pata hai, wahaan se istana
+00:14:37,750 --> 00:14:39,650
+woh judge karein ge ke aap jay sar f kaisi
 
 434
-00:21:13,940 --> 00:21:14,280
-ke [lipsmack]
+00:14:39,730 --> 00:14:41,040
+nahi le kar aaye aur koi kaam nahi hai
 
 435
-00:21:14,980 --> 00:21:18,720
-itni toxicity hai aur [UH] apni oulaat ko jhnomyon do zikhi kahin to aisi
+00:14:41,120 --> 00:14:42,490
+waghaira waghaira phir laraiyan bhi aap ne
 
 436
-00:21:18,960 --> 00:21:22,340
-dekhein, parents jab aisa nahi hai ke matlab parents kisi bhi qasam ka zulm
+00:14:42,570 --> 00:14:44,060
+bola ke woh hoti hain what you need
 
 437
-00:21:22,480 --> 00:21:25,320
-kare aur zayityan kare aur aap in ke bas qadmon mein pare rahe aur
+00:14:44,140 --> 00:14:47,140
+to do is [UM] take her to a psychiatrist
 
 438
-00:21:25,320 --> 00:21:26,760
-bhai jannat yahin se milni hai
+00:14:47,220 --> 00:14:48,880
+[UH] or maybe a psychologist
 
 439
-00:21:27,420 --> 00:21:30,900
-Allah taala bhi dekh raha hai woh bhi lojiki lagayein ge koi na koi
+00:14:48,960 --> 00:14:52,580
+and try to as- ascertain that. Maybe
 
 440
-00:21:31,120 --> 00:21:32,380
-matlab yahan pe ek taraf se
+00:14:56,860 --> 00:14:58,170
+she's too shy to discuss it
 
 441
-00:21:33,060 --> 00:21:35,680
-sirf bdwayin aa rahi hain aur aage se aap giray pare rahe hain insaan
+00:14:58,250 --> 00:15:01,390
+with you, and obviously at this stage.
 
 442
-00:21:35,680 --> 00:21:37,100
-ki silfastim bhi koi cheez hoti hai.
+00:15:01,470 --> 00:15:02,590
+aagre aap ne family ke saath share
 
 443
-00:21:37,100 --> 00:21:40,970
-aagin, don't feel bad woh in ke betay ka aur in ke walidain ka
+00:15:02,670 --> 00:15:03,950
+kya to phir woh bhi zahir hai
 
 444
-00:21:40,970 --> 00:21:42,830
-mamla hai [UH] aapas ka in ke walidain ka mamla hai [UH] aapas ka
+00:15:04,530 --> 00:15:05,990
+[lipsmack] das ke sm ke jamnts hoon gi,
 
 445
-00:21:42,830 --> 00:21:44,860
-aur [UH] chunke aap [UH]
+00:15:06,070 --> 00:15:08,130
+like I said, understanding to hai nahi,
 
 446
-00:21:46,120 --> 00:21:49,480
-ne in koh klir piccher dikhe aur in fact chunke aap ko itna mehnat
+00:15:08,210 --> 00:15:10,530
+sex education bhi nahi hai to. [UH] [UH]
 
 447
-00:21:49,480 --> 00:21:52,700
-nahi karni pari ghaar alag karne mein kyun ke aap ke hazban khud samajhte
+00:15:11,030 --> 00:15:12,830
+woh [UH] aur baseet prablm
 
 448
-00:21:52,700 --> 00:21:55,340
-the yeh cheez ji jaise why unhon ne yeh step liya aur jab in
+00:15:12,910 --> 00:15:13,860
+bane gi aap ki wef ke liye.
 
 449
-00:21:55,340 --> 00:21:57,680
-ko agar laga dekhein mard kawi at di and aath aa de na dekhein
+00:15:13,940 --> 00:15:15,270
+I understand you love her very much.
 
 450
-00:21:57,680 --> 00:22:01,200
-mard koyh sab ko pees chahiye hota hai ab pees jo hai kareeb reh
+00:15:15,350 --> 00:15:17,060
+to aap ne yeh kaam karna hai ke in ko
 
 451
-00:22:01,200 --> 00:22:03,100
-ke mile door reh ke mile pees is important
+00:15:17,570 --> 00:15:18,490
+thiripy ke le ke jane hai
 
 452
-00:22:03,800 --> 00:22:07,900
-warna is ke aap jitni bari jawanat family mein reh le gar wahan kal
+00:15:18,570 --> 00:15:20,380
+ta ke woh ek masla hal ho sake
 
 453
-00:22:07,900 --> 00:22:12,280
-kal aur chak chuki hai har waqt aur [UM] tane baazi hai aur taksiti
+00:15:20,700 --> 00:15:22,330
+and also take her to a sexologist
 
 454
-00:22:12,280 --> 00:22:14,720
-hai aur gandi vibe hai, nangiti hai hua mein to
+00:15:22,960 --> 00:15:24,970
+[UH] sexologist jo hai woh zahir hai
 
 455
-00:22:15,400 --> 00:22:18,500
-bhai is tarah na banda hartik se mar jate hain pantalis mein and it's
+00:15:25,050 --> 00:15:27,490
+in se phir poucheen ge ke masla kahan hai
 
 456
-00:22:18,500 --> 00:22:19,080
-very very common.
+00:15:27,570 --> 00:15:29,150
+[sneeze] agar koi physical [UH]
 
 457
-00:22:19,540 --> 00:22:22,500
-dekh lein Pakistan mein startl utha ke card ka chakkar lagayein zara
+00:15:29,230 --> 00:15:31,420
+issue hai to woh sexologist [UH] treat
 
 458
-00:22:23,200 --> 00:22:26,360
-jitne log sun rahe ja ke zara age dekhein logon ki kya hai yeh
+00:15:31,500 --> 00:15:33,070
+kar sakta hai agar koi mental issue hai
 
 459
-00:22:26,360 --> 00:22:30,820
-taksiti to hai, work place taksiti ghar mein avrlk tension hai, sarak pehalak tension
+00:15:33,150 --> 00:15:34,470
+to woh psychologist ya psychiatrist
 
 460
-00:22:30,820 --> 00:22:31,480
-hai, mar rahe log to
+00:15:35,260 --> 00:15:37,000
+depending on your situation [UM] magar
 
 461
-00:22:32,420 --> 00:22:33,900
-bhai agar aap ka shohar sukoon mein hai
+00:15:37,390 --> 00:15:41,580
+[UH] clearly [UH] masla [UH] jo hai woh
 
 462
-00:22:34,600 --> 00:22:35,220
-to sukoon se rehne de to bhai agar aap ka shohar sukoon mein hai
+00:15:42,800 --> 00:15:44,650
+quite possibly [UH] kisi trauma se
 
 463
-00:22:35,220 --> 00:22:37,020
-to sukoon se rehne dein bas in ko yeh bolta de ke bhai meri
+00:15:44,730 --> 00:15:46,710
+related hai jo ke shayad woh aap ko nahi
 
 464
-00:22:37,020 --> 00:22:39,810
-yeh khwahish hai baqi aap dekh lein jo aap behtar samajhte hain to woh
+00:15:46,790 --> 00:15:48,430
+bata rahi ya nahi bata pani aur mein
 
 465
-00:22:39,810 --> 00:22:43,000
-behtar samajhte hain bachcha to nahi hai woh England mein rehta kaam karta hai
+00:15:48,510 --> 00:15:50,100
+chahoon ga bhi nahi ke aap zara is pe
 
 466
-00:22:43,000 --> 00:22:43,800
-parha likha aadmi hai
+00:15:50,820 --> 00:15:53,090
+[UH] kore dein bohat zyada kyun ke aah
 
 467
-00:22:44,540 --> 00:22:47,520
-to woh khud hi dekh le ga ayd tawar pe bhej dein ge aap
+00:15:53,170 --> 00:15:54,750
+zahir hai painful experience hota hai
 
 468
-00:22:47,880 --> 00:22:47,980
-[UH] woh
+00:15:54,830 --> 00:15:56,390
+har banda nahi share kar paata aur khaas
 
 469
-00:22:48,680 --> 00:22:50,980
-kya rusamalai aur woh sher khurram bas theek hai
+00:15:56,470 --> 00:15:57,770
+taur pe apne spouse se phir in ko yeh
 
 470
-00:22:51,720 --> 00:22:54,940
-again mein is cheez ke agins nahi hoon parents ke agins kabhi bhi nahi
+00:15:57,850 --> 00:15:59,910
+yeh bhi fair hota ke jo judge na kya jaye
 
 471
-00:22:54,940 --> 00:22:58,500
-hoon lekin jahan pe parents is tarah ka rwayh rakhe aap ka aap ko
+00:15:59,990 --> 00:16:02,010
+waghaira abhi aap lo donon bohat chhote ho
 
 472
-00:22:58,660 --> 00:22:59,540
-zehni mareez banaye aap
+00:16:02,590 --> 00:16:04,720
+[UM] theek hai kar li aap ne shaadi
 
 473
-00:23:00,300 --> 00:23:04,030
-ke hazban ko zehni mareez banaye to aise environment [UM] mein rehne se behtar
+00:16:04,800 --> 00:16:05,920
+kar li koi masla hum [UM] theek
 
 474
-00:23:04,030 --> 00:23:07,480
-hai banda you know fozi ho jaye aur plyus aap ne family raise karni
+00:16:06,480 --> 00:16:09,470
+[UM] to ee yeh do kaam kare aap in ko
 
 475
-00:23:07,480 --> 00:23:09,720
-hai to family kal ko aap ke bachche bhi honay to
+00:16:09,960 --> 00:16:10,950
+aap ne likha aap achhi aayiti
 
 476
-00:23:10,440 --> 00:23:15,440
-[UM] agar you plan to that's your own choice to aap ne zahir
+00:16:11,030 --> 00:16:12,030
+firm mein kaam karte to ma sha
 
 477
-00:23:15,440 --> 00:23:18,900
-hai ek healthy environment mein [UH] family raise karni hai na ke is tarah
+00:16:12,110 --> 00:16:13,150
+Allah aap achha kamate bhi hoon ge
 
 478
-00:23:18,900 --> 00:23:19,320
-jahan pe
+00:16:13,230 --> 00:16:14,900
+zahira shaadi ki aap ne to take
 
 479
-00:23:19,980 --> 00:23:23,240
-mara maari ho aur galm golcho aur [UH] is tarah ke tane baazi ho
+00:16:15,550 --> 00:16:18,310
+her to these places aur in ko apni begum
 
 480
-00:23:24,000 --> 00:23:26,720
-matlab aap ki jo aap ne none wali baat ki yeh kaan laga ke
+00:16:18,390 --> 00:16:19,890
+ko bhi pyaar se samjhane koshish karein
 
 481
-00:23:26,720 --> 00:23:29,300
-sunne darwazay kamray se kya kya baatein ho rahi hain to obviously
+00:16:19,970 --> 00:16:22,330
+ke bhai mein janna chahaton ke mujhe
 
 482
-00:23:30,020 --> 00:23:35,340
-that's like star plus or or honestly speaking England England has like the like
+00:16:22,410 --> 00:16:25,470
+[UH] more than that I need it I ne
 
 483
-00:23:35,580 --> 00:23:36,220
-the worst [UM]
+00:16:25,550 --> 00:16:27,830
+I want you to be fixed in every way
 
 484
-00:23:37,300 --> 00:23:39,200
-desi that I've come across so far
+00:16:27,910 --> 00:16:29,480
+possible and I want you to feel better.
 
 485
-00:23:39,980 --> 00:23:43,700
-[UH] bohat jaahil aur [UH] pata nahi kaunsi sadi mein rehte hain konse door
+00:16:29,560 --> 00:16:31,700
+to jo bhi hai yahan se address ho jaye ga
 
 486
-00:23:44,040 --> 00:23:47,960
-mein rahe hain woh and it's like rampant bohat zyada [UM] Kudos to your
+00:16:31,780 --> 00:16:35,090
+to is tarah ki koshish kare [UH] agar ho
 
 487
-00:23:47,960 --> 00:23:51,640
-husband. shukar mein nafil parhna aap ka husband achh hai warna woh to rakhta
+00:16:35,170 --> 00:16:37,590
+jati hai if she [UH] is comfortable
 
 488
-00:23:51,740 --> 00:23:53,660
-aap ko haan bhai darri raho mere maan bapon kya kar karein aap ko
+00:16:37,670 --> 00:16:39,850
+and you know if things work out, so
 
 489
-00:23:53,660 --> 00:23:53,760
-kuch
+00:16:39,930 --> 00:16:42,940
+that's very good if it doesn't or [UM]
 
 490
-00:23:54,360 --> 00:23:57,820
-nahi kartin aap zindagi barh sartaan aap ki umar kam ho jati aap waqt
+00:16:43,590 --> 00:16:45,310
+bilkul har tarah se koshish kar
 
 491
-00:23:58,120 --> 00:23:58,520
-se pehle
+00:16:45,390 --> 00:16:47,170
+lein yeh bhi na manay agar [UH]
 
 492
-00:23:59,320 --> 00:24:01,480
-barhi ho jati zahir hai jab insaan khush nahi rahe ab
+00:16:47,250 --> 00:16:48,640
+doktrz ke saath bhi na ho sake
 
 493
-00:24:02,320 --> 00:24:04,840
-jaise yeh dekhein na kikts bhi sok hi gaya is ko pani lalna bholi
+00:16:48,720 --> 00:16:51,210
+klabrishn na ho klabrishn matlab copration
 
 494
-00:24:04,840 --> 00:24:08,140
-gaya osama bhai chaar mahine yeh meri gaya na baichara hai at the end
+00:16:51,290 --> 00:16:52,950
+phir yeh ke shayad [UH] at some point
 
 495
-00:24:08,140 --> 00:24:09,000
-of the day to bhai
+00:16:53,030 --> 00:16:54,630
+aap ko family ko batana ho ga phir
 
 496
-00:24:10,160 --> 00:24:12,300
-khoshion ka pani bohat zaroori hai zindagi mein warna
+00:16:54,710 --> 00:16:56,490
+phir wahan se bhi baat nahi bani to then
 
 497
-00:24:13,180 --> 00:24:16,040
-insaan matti kab ho ja pata nahi chalta to shukar munh hai and like
+00:16:56,570 --> 00:16:57,630
+things can get very difficult.
 
 498
-00:24:16,040 --> 00:24:18,280
-leave it to your husband woh in ke aur in ke parents ka mamla
+00:16:57,710 --> 00:16:59,150
+I hope baat wahan tak na puhanche
 
 499
-00:24:18,280 --> 00:24:18,760
-hai aap enjoy
+00:16:59,230 --> 00:17:00,480
+aur [UH] is se pehli hil ho jaye
 
 500
-00:24:19,600 --> 00:24:20,160
-karein life. theek hai?
+00:17:00,560 --> 00:17:02,700
+lekin yeh ke like I said is ke baghair
 
 501
-00:24:20,320 --> 00:24:24,460
-Thank you. Alright, next one says a tale of hardship and dedication, reconsidering
+00:17:02,780 --> 00:17:04,140
+aap poori zindagi nahi guzaar sakte
 
 502
-00:24:24,460 --> 00:24:26,060
-the hiring policies of the biggest companies.
+00:17:04,220 --> 00:17:05,940
+aur yeh aap donon ke saath zaati ho gi
 
 503
-00:24:26,640 --> 00:24:29,180
-Hello, Junid bhai, I hope this message finds you in good health and high
+00:17:06,020 --> 00:17:07,415
+is ko address karein aur dekhein
 
 504
-00:24:29,180 --> 00:24:32,140
-spirits. I'm writing to you today because I want to share y with you
+00:17:07,495 --> 00:17:09,340
+masla kahan se aa rahe insha Allah
 
 505
-00:24:32,140 --> 00:24:34,440
-a story that's been he- weighing heavily on my mind.
+00:17:09,420 --> 00:17:10,840
+[UM] yeh cheezein hoti hain aur yeh ee-
 
 506
-00:24:35,240 --> 00:24:38,860
-I recently had the privilege of being interviewed by Pakistan's biggest IT software
+00:17:10,920 --> 00:17:12,720
+ee- bah yeh kaafi common bhi hai
 
 507
-00:24:38,860 --> 00:24:42,540
-company's design team for the position of UI UX Designer.
+00:17:13,140 --> 00:17:14,553
+aisa na soche ke aap budqismat hain
 
 508
-00:24:43,040 --> 00:24:47,620
-After two grueling technical interviews, I was overjoyed to learn that I had been
+00:17:14,633 --> 00:17:16,970
+ke aap ke saath yeh sah ho rahe hazaron
 
 509
-00:24:47,620 --> 00:24:51,040
-selected for the position, and I humbly accepted the offer from the HR department.
+00:17:17,050 --> 00:17:19,276
+likhon log ke saath yeh silsila hota hai
 
 510
-00:24:52,060 --> 00:24:52,680
-After some negotiation
+00:17:19,356 --> 00:17:21,680
+kyun ke hamare abuse bohat aam hain
 
 511
-00:24:53,900 --> 00:24:56,080
-and careful consideration, I accepted the offer.
+00:17:22,320 --> 00:17:24,920
+aur doosri zohray education bhi nahi hai
 
 512
-00:24:56,080 --> 00:24:57,660
-However, my joy was short lived.
+00:17:25,280 --> 00:17:27,770
+[UH] to shayad is mein koi kami bhi shuru
 
 513
-00:24:57,960 --> 00:24:59,780
-During a subsequent phone call with HR,
+00:17:27,850 --> 00:17:28,990
+nahi hai to yeh siksolojz aap se achhi
 
 514
-00:25:00,620 --> 00:25:03,180
-I inquired about the necessary documents required for the role.
+00:17:29,070 --> 00:17:30,690
+tarah pooch le ga saari cheezein ke like
 
 515
-00:25:03,640 --> 00:25:06,650
-While discussing educational qualifications, I mentioned that I had completed
+00:17:30,770 --> 00:17:32,500
+how do you get by and everything.
 
 516
-00:25:06,650 --> 00:25:10,380
-a bachelor's degree in commerce, comprising fourteen years of education.
+00:17:33,100 --> 00:17:35,210
+to shayad wahan pe koi issue aa raha ho
 
 517
-00:25:10,380 --> 00:25:14,100
-However, I was informed that your company policy prohibits hiring candidates with
+00:17:35,290 --> 00:17:37,170
+I'm sure [UH] they'll find a cure
 
 518
-00:25:14,100 --> 00:25:15,730
-less than sixteen years of education.
+00:17:37,250 --> 00:17:38,970
+or [UH] [UH] khayal rakhein tikay.
 
 519
-00:25:15,730 --> 00:25:18,540
-Consequently, I was advised to continue with my current employment.
+00:17:39,360 --> 00:17:41,100
+Alright, next one says ideal husband
 
 520
-00:25:19,120 --> 00:25:22,740
-I respectfully attempted to persuade HR that my degree was not relevant to the
+00:17:41,180 --> 00:17:43,250
+in toxic in laws. Dear Junid bhai,
 
 521
-00:25:22,740 --> 00:25:27,660
-role and that my work experience and expertise had already been assessed and deemed
+00:17:43,330 --> 00:17:44,430
+hope you're doing well. First of all,
 
 522
-00:25:27,660 --> 00:25:29,120
-suitable by your design team.
+00:17:44,510 --> 00:17:45,510
+thank you for the work you're doing.
 
 523
-00:25:29,240 --> 00:25:32,800
-Unfortunately, this was no to no avail as I was informed that the company
+00:17:45,590 --> 00:17:46,670
+You're a gem. You don't know how
 
 524
-00:25:33,020 --> 00:25:36,340
-would be held accountable if its hiring practices were audited.
+00:17:46,750 --> 00:17:48,210
+much important you are in my life,
 
 525
-00:25:36,440 --> 00:25:39,760
-I'm writing to express my belief that my educational qualification should not
+00:17:48,290 --> 00:17:49,720
+so coming towards my question.
 
 526
-00:25:39,860 --> 00:25:43,200
-be the sole determining factor in any candidacy for the role.
+00:17:50,260 --> 00:17:51,360
+I'm in an arranged marriage.
 
 527
-00:25:43,720 --> 00:25:47,340
-As we are undoubtedly aware, there are numerous examples of highly successful
+00:17:51,440 --> 00:17:53,250
+I married a guy who's living in the UK.
 
 528
-00:25:47,340 --> 00:25:50,200
-individuals who are who have dropped out of determining factor
+00:17:53,330 --> 00:17:54,500
+He was too good, mashallah.
 
 529
-00:25:50,940 --> 00:25:55,150
-in the ca- sorry, dropped out of college and gone toward a- a- achieve
+00:17:54,580 --> 00:17:55,820
+I didn't know him and his family
 
 530
-00:25:55,150 --> 00:25:59,260
-success such as Mark Zuckerberg of Facebook, Larry Elson of Oracle, da-da-da-da-da-da.
+00:17:55,900 --> 00:17:57,900
+before marriage, well, like every other
 
 531
-00:25:59,400 --> 00:26:01,620
-I'm proud to state that I was not a dropout, except academically
+00:17:57,980 --> 00:17:59,520
+marriage in Pakistan, but I'm lucky
 
 532
-00:26:02,420 --> 00:26:03,400
-[UH] from an early age.
+00:17:59,600 --> 00:18:01,460
+enough to have him as my partner,
 
 533
-00:26:03,400 --> 00:26:07,040
-I cons- consistently achieved the highest grades in my class and was a top
+00:18:01,540 --> 00:18:03,060
+but the only problem is that his family
 
 534
-00:26:07,040 --> 00:26:11,100
-performing student. However, due to untimely passing of my father when I was just
+00:18:03,140 --> 00:18:05,380
+is too toxic, especially his mother.
 
 535
-00:26:11,100 --> 00:26:14,480
-eleven years old, my mother and I were forced to relocate to my maternal
+00:18:05,460 --> 00:18:07,440
+At first they tried to control me
 
 536
-00:26:14,480 --> 00:26:14,680
-home
+00:18:07,520 --> 00:18:09,880
+as she's the automa- authoritative woman
 
 537
-00:26:15,420 --> 00:26:16,980
-where we faced financial difficulties.
+00:18:09,960 --> 00:18:11,520
+[UH] automative, keh raha tha mein.
 
 538
-00:26:17,340 --> 00:26:20,700
-I had to seek employment to support my [UM] family and completing my fourteen
+00:18:11,600 --> 00:18:12,960
+And that's the reason they get they
 
 539
-00:26:20,800 --> 00:26:25,660
-years of education was a challenging journey that I pers- persevered through with
+00:18:13,520 --> 00:18:15,560
+get married their son from Pakistan
 
 540
-00:26:25,660 --> 00:26:26,740
-hard work and dedication.
+00:18:15,640 --> 00:18:17,460
+so the girl might be submissive.
 
 541
-00:26:26,900 --> 00:26:30,700
-Today I'm a valued and reliable member of my current company and have risen
+00:18:18,200 --> 00:18:19,040
+But I was totally different
 
 542
-00:26:30,840 --> 00:26:34,820
-from humble beginnings in Shahfaisal small colony to more prosperous life at DHA.
+00:18:19,120 --> 00:18:20,630
+from my expectations. I'm educated.
 
 543
-00:26:34,980 --> 00:26:37,840
-My goal has always been to provide for my mother and make her happy
+00:18:20,710 --> 00:18:22,490
+I have done Masters in business
 
 544
-00:26:37,980 --> 00:26:39,940
-despite the many obstacles we have faced.
+00:18:22,570 --> 00:18:25,470
+administration married to [UH] [UH] [UH]
 
 545
-00:26:40,480 --> 00:26:44,020
-Junaid Bhai, we live in Pakistan where there are h- thousands of talented individuals
+00:18:25,550 --> 00:18:27,700
+married to UK to get more opportunities.
 
 546
-00:26:44,020 --> 00:26:48,140
-who lack a degree but possess the skill and dedication [UH] to succeed if
+00:18:27,780 --> 00:18:29,140
+Me and my husband are likely
 
 547
-00:26:48,140 --> 00:26:48,740
-given the opportunity.
+00:18:29,610 --> 00:18:31,990
+like minded. He wants me to progress.
 
 548
-00:26:49,500 --> 00:26:52,100
-I would like you to shed some light on this matter through your video
+00:18:32,540 --> 00:18:34,230
+We both have good understanding.
 
 549
-00:26:52,100 --> 00:26:55,340
-so that people in Pakistan can start thinking about their brothers and sisters
+00:18:34,640 --> 00:18:36,540
+My husband is the only son of the family,
 
 550
-00:26:55,340 --> 00:26:56,500
-who face similar problems.
+00:18:36,620 --> 00:18:39,250
+but his family they [UH] are illiterate
 
 551
-00:26:56,500 --> 00:27:00,080
-This is just on my frustration from being rejected, but a realization of why
+00:18:39,330 --> 00:18:41,570
+[UH] they are against women education
 
 552
-00:27:00,080 --> 00:27:04,100
-people are willing to snatch others' belongings and become increasingly extreme.
+00:18:41,650 --> 00:18:43,040
+and have double standards for Bahu
 
 553
-00:27:04,280 --> 00:27:06,900
-It's because they know their fellow Pakistanis won't help them.
+00:18:43,120 --> 00:18:44,470
+and Beti. Their daughters haven't done
 
 554
-00:27:07,100 --> 00:27:08,820
-Let me know your thoughts on the video records.
+00:18:44,550 --> 00:18:47,100
+education [UH] in in anything in life.
 
 555
-00:27:08,980 --> 00:27:11,700
-Alright so ek sahab hain ki badi humble beginnings rahi hain aur [UH] badi
+00:18:47,180 --> 00:18:49,120
+That's why they don't acknowledge
 
 556
-00:27:11,700 --> 00:27:15,040
-mainaz se yeh upar tak aaye, ek job ke interview pe gaye, sab kuch
+00:18:49,200 --> 00:18:51,180
+my education as well. I came to the UK
 
 557
-00:27:15,040 --> 00:27:16,680
-ho gaya, job bhi final ho gayi, sab ho gaya.
+00:18:51,260 --> 00:18:52,420
+in the start of twenty twenty one.
 
 558
-00:27:17,620 --> 00:27:20,660
-End mein ae chaar ne bola hamein ji solah saal ki [UH] education jaye,
+00:18:52,500 --> 00:18:54,200
+From day one in UK, my mother in law
 
 559
-00:27:20,660 --> 00:27:21,260
-in ki chodah thi.
+00:18:54,280 --> 00:18:56,080
+is really rude to me and she knows
 
 560
-00:27:21,700 --> 00:27:23,600
-First of all, mein aap ko seyah seyah bata doon ke HR
+00:18:56,160 --> 00:18:58,940
+how my personality is [UH] and there's
 
 561
-00:27:24,580 --> 00:27:27,480
-[UH] ne jo hai kisi aur ko haier karna tha aur woh aap ko
+00:18:59,440 --> 00:19:01,480
+[UH] [UH] as their son told them
 
 562
-00:27:27,600 --> 00:27:31,300
-fuzool ki goli di aap ki jo [UH] degree hai woh irrelevant thi karmns
+00:19:01,560 --> 00:19:03,060
+when I was waiting for the visa,
 
 563
-00:27:31,300 --> 00:27:34,290
-wale ka kya kaam you ae you ex mein aur tik aur ayti ki
+00:19:03,140 --> 00:19:04,520
+it took seven months for my visa
 
 564
-00:27:34,290 --> 00:27:38,060
-field mein [UH] sirf experience dekha jata hai, degrees bilkul nahi dekhi jati aur
+00:19:04,600 --> 00:19:06,480
+to get an answer because of Covid,
 
 565
-00:27:38,060 --> 00:27:40,460
-yeh baat sab ko pata hai aur yeh baat Pakistan mein bhi laghu hai.
+00:19:07,140 --> 00:19:09,880
+but she knows very well [UH] She wants
 
 566
-00:27:41,340 --> 00:27:44,380
-Clearly hua yeh ho ga ke aap ki selection [UH] department ne ki ho
+00:19:09,960 --> 00:19:11,640
+me to be a Bahu in Indian dramas who
 
 567
-00:27:44,380 --> 00:27:48,710
-gi lekin phir HR kyun yeh HR ki taraf se ya in ko koi
+00:19:11,720 --> 00:19:13,580
+have no confidence to speak a word
 
 568
-00:27:48,710 --> 00:27:51,300
-directiv ho ga ke bhai yahan pe hamara banda lagana hai to
+00:19:13,660 --> 00:19:16,090
+at home and work like a Maasi.
 
 569
-00:27:52,200 --> 00:27:55,600
-koi na koi bahana dhondnaa tha aur woh policy mein koi na koi is
+00:19:16,170 --> 00:19:18,260
+Her behaviour is so bad I'm not the one
 
 570
-00:27:55,600 --> 00:27:56,960
-tarah ki cheez nikaal ke aap ko hai.
+00:19:18,620 --> 00:19:21,690
+[UH] She want she tried to forcefully
 
 571
-00:27:56,960 --> 00:27:58,000
-This is my understanding.
+00:19:21,770 --> 00:19:24,140
+mould me by op [UH] with her oppressive
 
 572
-00:27:58,160 --> 00:28:01,440
-Otherwise I don't see any reason if you fit if you were fit for
+00:19:24,220 --> 00:19:25,830
+tone and tried to bully me
 
 573
-00:28:01,440 --> 00:28:03,140
-the job. kya k- solah saal ki degree.
+00:19:25,910 --> 00:19:27,390
+and discriminate me and her children.
 
 574
-00:28:03,140 --> 00:28:05,300
-achha aap ke paas ek paper ho to is mein likha tha ji dozaar
+00:19:27,470 --> 00:19:29,310
+My father in law and one sister in law
 
 575
-00:28:05,300 --> 00:28:09,240
-chodah ke jagah dozaar solah mein ek grijoyit hue se kya hi farq para
+00:19:29,390 --> 00:19:32,130
+is [UH] in home is working like teammates
 
 576
-00:28:09,240 --> 00:28:12,480
-jata koi farq nahi parta aap ki jo expertise hain wohi kaam hai nahi
+00:19:32,210 --> 00:19:34,320
+environment for home was so toxic.
 
 577
-00:28:12,480 --> 00:28:12,760
-koi farq nahi parta aap ki jo expertise hain wohi kaam hai nahi [lipsmack]
+00:19:34,400 --> 00:19:36,270
+I told everything to my husband, but rooms
 
 578
-00:28:13,520 --> 00:28:17,160
-[UH] so this is bullshit in my o- o- opinion.
+00:19:36,350 --> 00:19:38,400
+are too attached, so my sister-in-law
 
 579
-00:28:17,300 --> 00:28:20,320
-However, you you you've written your email very very nicely.
+00:19:38,720 --> 00:19:40,430
+leaked our conversation to her parents,
 
 580
-00:28:20,320 --> 00:28:22,140
-I'm really proud of [UM] that.
+00:19:40,510 --> 00:19:42,170
+and then they are ru- more rude
 
 581
-00:28:22,900 --> 00:28:23,420
-So good job.
+00:19:42,250 --> 00:19:44,640
+to me [UH] that I complain about
 
 582
-00:28:24,100 --> 00:28:24,460
-So
+00:19:44,720 --> 00:19:46,300
+their behaviour to their son. Chau,
 
 583
-00:28:25,140 --> 00:28:29,540
-so clearly [UH] yeh yeh this was the case of nepotism, most likely aap
+00:19:46,380 --> 00:19:48,260
+sun liya hunne, UK mein ghar chote hota,
 
 584
-00:28:29,640 --> 00:28:31,620
-ko side line kar ke kisi aur ko rule diya gaya hai aur
+00:19:48,340 --> 00:19:49,660
+aur lakdi ke darwaze hota hai,
 
 585
-00:28:32,280 --> 00:28:35,980
-yeh bilkul isi tarah ka m- m- masla hai aur yeh bara prevailing hai
+00:19:50,020 --> 00:19:51,080
+aawaaze bahar aati ho, aur darwaze
 
 586
-00:28:35,980 --> 00:28:36,700
-ke Pakistan mein jobs
+00:19:51,160 --> 00:19:52,400
+mein kundi bhi nahi hoti by the way.
 
 587
-00:28:37,560 --> 00:28:38,920
-sahi candidates ko nahi millti.
+00:19:52,480 --> 00:19:53,880
+If I tell you in short, I was moving
 
 588
-00:28:39,160 --> 00:28:44,440
-isi liye mein barah kehton bhai apna network barhaaye [UM] again [UM] I'm
+00:19:53,960 --> 00:19:55,580
+back and forth trying to change myself,
 
 589
-00:28:44,440 --> 00:28:46,020
-not endorsing nepotism lekin
+00:19:55,660 --> 00:19:56,780
+I tried my best to get out
 
 590
-00:28:47,160 --> 00:28:49,860
-more than likely hota yeh hai ke aap ko koi aap ke janney wala
+00:19:56,860 --> 00:19:59,020
+of the toxicity by giving submission,
 
 591
-00:28:49,860 --> 00:28:51,100
-hi rifr kar raha hota hai
+00:19:59,100 --> 00:20:01,640
+and I act exactly like they want, but o
 
 592
-00:28:52,160 --> 00:28:56,060
-because most of the companies they avoid going through the hassle of going through
+00:20:01,720 --> 00:20:04,380
+then I found that they are ungrateful.
 
 593
-00:28:56,060 --> 00:28:58,660
-a hundred CVs or five hundred CVs [sniff] aur phir is mein se candidate
+00:20:04,460 --> 00:20:06,420
+Whatever I'll do, it won't change.
 
 594
-00:28:58,960 --> 00:29:01,020
-bulaa ke waghaira waghaira for example
+00:20:06,500 --> 00:20:08,300
+I did the did this just for my husband.
 
 595
-00:29:02,080 --> 00:29:04,730
-[breath] rahi baar degrees ki jaise ke mein hamesha bataya hai half of my
+00:20:08,380 --> 00:20:10,200
+We both are trying to play positively
 
 596
-00:29:04,730 --> 00:29:06,200
-team is under twenty, but
+00:20:10,280 --> 00:20:11,760
+[UH] to remove toxicity.
 
 597
-00:29:08,540 --> 00:29:10,160
-because they can work, they're working
+00:20:12,300 --> 00:20:13,660
+My husband and I lived there [UH]
 
 598
-00:29:10,820 --> 00:29:11,980
-and they're doing a fantastic job,
+00:20:13,740 --> 00:20:15,100
+for almost one and a half year,
 
 599
-00:29:12,680 --> 00:29:15,380
-proud of them [UH] again, at the end of the day, mujhe kaam chahiye,
+00:20:15,180 --> 00:20:17,280
+but then my husband and I found out
 
 600
-00:29:15,380 --> 00:29:17,720
-mujhe unke degree ka kya karna hai, mujhe yeh bhi pata, mere [UH]
+00:20:17,620 --> 00:20:19,520
+that we have to get out of this house
 
 601
-00:29:18,420 --> 00:29:21,220
-office mein kitne log masters hain, kitne graduates hain, main ne kabhi kissi ke
+00:20:19,920 --> 00:20:20,800
+[UH] this is the only solution,
 
 602
-00:29:21,220 --> 00:29:24,360
-degree dekhi bhi, main ne kabhi kissi ka CV bhi poora prprli nahi dekha,
+00:20:20,880 --> 00:20:22,240
+and I'm grateful that he's financially
 
 603
-00:29:24,360 --> 00:29:27,000
-main na sir sir system pak raya, yeh video hai is ka yeh kar
+00:20:22,320 --> 00:20:24,140
+independent [UH] It took almost six
 
 604
-00:29:27,000 --> 00:29:30,440
-ke do, y- y- yeh koi graphic designer grhyr kya to bhai yeh mujhe
+00:20:24,220 --> 00:20:26,300
+months for us to get out of the to get
 
 605
-00:29:30,440 --> 00:29:31,340
-ek poster bana ke doon.
+00:20:26,380 --> 00:20:28,320
+our own house, but now we succeeded.
 
 606
-00:29:31,840 --> 00:29:32,140
-That's it.
+00:20:28,400 --> 00:20:30,140
+His family is no more interacting.
 
 607
-00:29:33,080 --> 00:29:34,560
-[breath] bohat se log to mein ne aise haier kiye ke
+00:20:30,220 --> 00:20:32,360
+We are living the life we wanted.
 
 608
-00:29:35,620 --> 00:29:36,780
-I didn't even
+00:20:32,440 --> 00:20:34,060
+In their ego they are not talking
 
 609
-00:29:37,460 --> 00:29:38,400
-know that I needed them.
+00:20:34,140 --> 00:20:36,360
+to their son as well [UH] that's why
 
 610
-00:29:38,940 --> 00:29:41,380
-[breath] aur unhon ne kuch bana ke mujhe tig kar di hai anstrgam pe
+00:20:36,440 --> 00:20:39,500
+he prefers his [UH] his wife over them.
 
 611
-00:29:41,380 --> 00:29:43,940
-and then I found it and I was like okay that's a nice poster
+00:20:39,580 --> 00:20:41,440
+They called him Jahannumi Dozaki
 
 612
-00:29:43,940 --> 00:29:48,100
-or that's a nice [UH] video animation and [UH] I hired them I hired
+00:20:41,920 --> 00:20:43,340
+and so many other bad things.
 
 613
-00:29:48,100 --> 00:29:48,200
-them
+00:20:43,420 --> 00:20:44,700
+They are not accepting us.
 
 614
-00:29:48,840 --> 00:29:52,240
-and also phir is mein se jo sikndri haiering hui hai woh is tarah
+00:20:44,780 --> 00:20:46,820
+My husband is not bothered. He's also
 
 615
-00:29:52,240 --> 00:29:56,740
-hui hai ke mostly ab jaise graphic designer I can see he's overworked to
+00:20:46,900 --> 00:20:49,660
+disconnected to his family [UH] He said
 
 616
-00:29:56,740 --> 00:29:58,530
-mein is ko kahoon mein is ko kahoon mein is ko kaha ke apna
+00:20:49,740 --> 00:20:51,430
+this is the only way to live peacefully
 
 617
-00:29:58,530 --> 00:30:00,240
-assistant dhoond apne jaise koi dhoond lo ek to
+00:20:51,510 --> 00:20:53,700
+if they really will [UM] if they will
 
 618
-00:30:01,020 --> 00:30:04,420
-is ne apne doston ki group pe misij mara koi na koi aajay ga
+00:20:53,780 --> 00:20:55,460
+to if they are totally disconnected.
 
 619
-00:30:04,420 --> 00:30:09,920
-kal similary [UM] jo hamara three D animator hai he was [UM] [UM]
+00:20:55,540 --> 00:20:57,040
+I try to make my husband understand
 
 620
-00:30:10,160 --> 00:30:13,500
-I didn't want him to overwork aur mein is jis jis project pe woh
+00:20:57,120 --> 00:20:58,780
+that after all these they are his parents.
 
 621
-00:30:13,500 --> 00:30:16,000
-kaam kare mein thora sa is pe two X speed chaah raha tha to
+00:20:58,860 --> 00:21:00,200
+I don't want my husband to get punished
 
 622
-00:30:16,000 --> 00:30:19,300
-mein liya apne jaise ek aur le ao woh ise bola theek hai kyun ke
+00:21:00,280 --> 00:21:01,440
+by Allah [UH] for not interacting
 
 623
-00:30:19,680 --> 00:30:22,640
-ab mein woh poora poster bunun aur phir woh mein anstrgram pe daloon aur
+00:21:01,520 --> 00:21:04,060
+with parents, but he's not convinced he's
 
 624
-00:30:22,640 --> 00:30:23,700
-LinkedIn pe daloon aur phir woh mein poora poster bunun aur phir woh mein
+00:21:04,140 --> 00:21:05,520
+going it with the flow. Now you tell me
 
 625
-00:30:23,700 --> 00:30:24,840
-anstrgram pe daloon aur LinkedIn pe daloon aur phir panson emails aayein
+00:21:05,600 --> 00:21:07,820
+what can I do to get the situation better?
 
 626
-00:30:25,520 --> 00:30:27,860
-phir mein in ko baith ke kyorit karoon aur phir is mein se [UH]
+00:21:08,300 --> 00:21:09,760
+Bhai, pehle aapko bahar nikalna tha,
 
 627
-00:30:27,860 --> 00:30:30,580
-kyorit keh rahoon sorry go through karoon and then phir is ke baad mein
+00:21:09,840 --> 00:21:11,500
+ab nikal aayi, ab ab ab ka hri ke bhi
 
 628
-00:30:30,700 --> 00:30:34,860
-log bulaun phir pechare log bare door door se aate hain ab obviously people
+00:21:11,580 --> 00:21:12,980
+roon se raapta bhi rakhein, jab aapko
 
 629
-00:30:35,320 --> 00:30:40,060
-overestimate as well [UH] mujhe bara bura lagte ke mein mein kisi ko bulaun
+00:21:13,060 --> 00:21:14,580
+pata hai, wahaan se istana ke [lipsmack]
 
 630
-00:30:40,060 --> 00:30:42,670
-aur phir mujhe lage ke yaar is mein woh vip nahi hai phir mein
+00:21:14,980 --> 00:21:16,970
+itni toxicity hai aur [UH] apni oulaat ko
 
 631
-00:30:42,670 --> 00:30:45,980
-yehi sochta rhton pechara teen petrol laga kya ho ga ya bayi kya hai
+00:21:17,050 --> 00:21:19,100
+jhnomyon do zikhi kahin to aisi dekhein,
 
 632
-00:30:45,980 --> 00:30:48,330
-kareem pe aa ga but again ab job ke taur paray ganan pare ganan
+00:21:19,180 --> 00:21:20,860
+parents jab aisa nahi hai ke matlab
 
 633
-00:30:48,330 --> 00:30:50,460
-[UM] yeh mein mein to nahi uth ke aa sakta har kisi ke ghar
+00:21:20,940 --> 00:21:22,600
+parents kisi bhi qasam ka zulm kare
 
 634
-00:30:50,460 --> 00:30:53,680
-to yeh feel hota hai kuch log nahi samajh paate ke chahiye kya hai
+00:21:22,680 --> 00:21:24,080
+aur zayityan kare aur aap in ke bas
 
 635
-00:30:53,680 --> 00:30:55,780
-despite the fact aap jitna likhe de doon ke
+00:21:24,160 --> 00:21:25,880
+qadmon mein pare rahe aur bhai jannat
 
 636
-00:30:56,720 --> 00:31:00,270
-bhai yeh yeh exactly pchichizin chahaiyn phir kuch log hote hain aa jate hain
+00:21:25,960 --> 00:21:28,210
+yahin se milni hai Allah taala bhi
 
 637
-00:31:00,270 --> 00:31:02,610
-magar phir woh kehte ke hum po- pol time nahi aa sakte haala ke
+00:21:28,290 --> 00:21:30,330
+dekh raha hai woh bhi lojiki lagayein ge
 
 638
-00:31:02,610 --> 00:31:03,640
-likha hua tha potim mein
+00:21:30,410 --> 00:21:32,670
+koi na koi matlab yahan pe ek taraf se
 
 639
-00:31:04,300 --> 00:31:06,840
-stodnt hoon mein parh rahoon mera site business bhi chal raha hai aur mein
+00:21:33,060 --> 00:21:34,370
+sirf bdwayin aa rahi hain aur aage se
 
 640
-00:31:06,840 --> 00:31:10,260
-I'm like ke [UM] mujhe thori si zyada effort chahiye to [UH] obviously you
+00:21:34,450 --> 00:21:35,670
+aap giray pare rahe hain insaan
 
 641
-00:31:10,260 --> 00:31:13,360
-won't be able to manage [UH] we we just had a great content writer
+00:21:35,750 --> 00:21:37,090
+ki silfastim bhi koi cheez hoti hai.
 
 642
-00:31:13,360 --> 00:31:16,580
-but unfortunately had to leave for the same reason because his chart ja- ja-
+00:21:37,170 --> 00:21:39,340
+aagin, don't feel bad woh in ke betay
 
 643
-00:31:16,800 --> 00:31:17,760
-tongay pahli fasih wini.
+00:21:39,420 --> 00:21:41,930
+ka aur in ke walidain ka mamla hai
 
 644
-00:31:17,920 --> 00:31:20,920
-Toh woh clarity nahi dete pehle aa ke phir baad mein kehte hain sambhal
+00:21:42,010 --> 00:21:42,750
+[UH] aapas ka in ke walidain ka mamla hai
 
 645
-00:31:20,920 --> 00:31:22,240
-nahi raha aur yeh ho raha aur yeh ho raha hai
+00:21:42,830 --> 00:21:45,160
+[UH] aapas ka aur [UH] chunke aap [UH]
 
 646
-00:31:23,220 --> 00:31:26,650
-to is mein phir yeh wale risk hote aap hire karte ho sab cheezein
+00:21:46,120 --> 00:21:47,790
+ne in koh klir piccher dikhe aur in fact
 
 647
-00:31:26,650 --> 00:31:28,700
-karte ho phir woh chale jate for whatever reason
+00:21:47,870 --> 00:21:49,720
+chunke aap ko itna mehnat nahi karni
 
 648
-00:31:29,640 --> 00:31:32,820
-[UM] to behtar yeh hota hai ke aap reference ke tarwah yaar tera koi
+00:21:49,800 --> 00:21:51,530
+pari ghaar alag karne mein kyun ke aap
 
 649
-00:31:32,820 --> 00:31:36,100
-janney wala hai, reliable hai, achha kaam karte hain blale ka doosre yeh zyada
+00:21:51,610 --> 00:21:52,930
+ke hazban khud samajhte the yeh cheez
 
 650
-00:31:36,100 --> 00:31:36,540
-sahi rehta hai ab
+00:21:53,010 --> 00:21:54,630
+ji jaise why unhon ne yeh step liya
 
 651
-00:31:37,240 --> 00:31:40,420
-yeh kab hota hai jab aap ka network achha ho for example ab ab
+00:21:54,710 --> 00:21:56,340
+aur jab in ko agar laga dekhein mard
 
 652
-00:31:40,420 --> 00:31:41,860
-you yoh you ex designer hona aap
+00:21:56,420 --> 00:21:57,600
+kawi at di and aath aa de na dekhein
 
 653
-00:31:42,740 --> 00:31:45,820
-logon ka koi na koi forum hona chahiye koi red community hona chahiye koi
+00:21:57,680 --> 00:21:59,310
+mard koyh sab ko pees chahiye hota hai
 
 654
-00:31:45,820 --> 00:31:48,190
-fees boke group hona chahiye koi wats app group hona chahiye jahan pe aap
+00:21:59,390 --> 00:22:01,540
+ab pees jo hai kareeb reh ke mile
 
 655
-00:31:48,190 --> 00:31:50,950
-ek doosri ke saath idayz bhi share karo ek doosri ke saath jo aap
+00:22:01,620 --> 00:22:03,400
+door reh ke mile pees is important
 
 656
-00:31:50,950 --> 00:31:54,040
-archinitiz share karo ab jaise hussam bhai peechhe baithe yeh saari zindagi unhon ne
+00:22:03,800 --> 00:22:06,160
+warna is ke aap jitni bari jawanat
 
 657
-00:31:54,860 --> 00:31:58,040
-kimrimn ka kaam kya tee wayz mein waghaira waghaira ab mujhe shot pe koi
+00:22:06,240 --> 00:22:08,060
+family mein reh le gar wahan kal kal
 
 658
-00:31:58,140 --> 00:32:00,720
-aykstrh kimrimn chahiye hoti hai koi make aap aarts chahiye hay
+00:22:08,140 --> 00:22:10,860
+aur chak chuki hai har waqt aur [UM]
 
 659
-00:32:04,020 --> 00:32:06,600
-yeh chaar paanch groups mein hai yeh is pe likh dein hain koi hai
+00:22:10,940 --> 00:22:12,780
+tane baazi hai aur taksiti hai aur gandi
 
 660
-00:32:06,600 --> 00:32:09,940
-aayi vilyool mil jata hai abhi hum ataaq pe show ataaq pe hum ne
+00:22:12,860 --> 00:22:15,560
+vibe hai, nangiti hai hua mein to bhai
 
 661
-00:32:09,940 --> 00:32:11,500
-ek shot kar di thi dakomintri ke liye
+00:22:15,640 --> 00:22:17,340
+is tarah na banda hartik se mar jate hain
 
 662
-00:32:12,240 --> 00:32:14,880
-to hamein ek banda islam se chahiye tha unhon ne group mein mara larka
+00:22:17,420 --> 00:22:19,460
+pantalis mein and it's very very common.
 
 663
-00:32:14,880 --> 00:32:17,340
-mil gaya osama bhai le ke chale ga is ko ataaq shot ho gaya
+00:22:19,540 --> 00:22:20,580
+dekh lein Pakistan mein startl
 
 664
-00:32:17,340 --> 00:32:21,260
-to woh net work mein tha banda is ko kaam mil gaya isi tarah
+00:22:20,660 --> 00:22:22,800
+utha ke card ka chakkar lagayein zara
 
 665
-00:32:21,880 --> 00:32:25,100
-[UM] yeh yehi wajah hai ke your network is your net worth to
+00:22:23,200 --> 00:22:25,150
+jitne log sun rahe ja ke zara age dekhein
 
 666
-00:32:25,980 --> 00:32:28,440
-jitna logon ko jaanun ke pechanon ke uthon ke bthon ke
+00:22:25,230 --> 00:22:27,510
+logon ki kya hai yeh taksiti to hai, work
 
 667
-00:32:29,120 --> 00:32:31,780
-kaam ke logon mein fuzool logon mein nahi girwat mnstrid wali logon mein aur
+00:22:27,590 --> 00:22:29,930
+place taksiti ghar mein avrlk tension hai,
 
 668
-00:32:31,920 --> 00:32:35,860
-achhi panni assishnz achhi jagah rakho kaam ke logon mein utha pithu [UM] [UM]
+00:22:30,010 --> 00:22:31,730
+sarak pehalak tension hai, mar rahe log to
 
 669
-00:32:36,080 --> 00:32:36,420
-people who
+00:22:32,430 --> 00:22:34,150
+bhai agar aap ka shohar sukoon mein hai
 
 670
-00:32:37,100 --> 00:32:38,340
-who want to progress in life
+00:22:34,600 --> 00:22:35,300
+to sukoon se rehne de to bhai
 
 671
-00:32:39,020 --> 00:32:42,460
-[breath] yeh baith ke bachchon ki baatein karna aur phone ki baatein karna chaye
+00:22:35,380 --> 00:22:36,080
+agar aap ka shohar sukoon mein hai
 
 672
-00:32:42,460 --> 00:32:45,200
-ke hotl pe amran Khan nawaz shareef aimran Khan nawaz shareef aash kar rahe
+00:22:36,160 --> 00:22:36,860
+to sukoon se rehne dein bas in ko
 
 673
-00:32:45,200 --> 00:32:46,960
-yaar they have the best life in the world.
+00:22:36,940 --> 00:22:37,640
+yeh bolta de ke bhai meri yeh khwahish hai
 
 674
-00:32:47,360 --> 00:32:49,960
-[breath] miyan sahab ka ghar dekha hai uppe bhai jo london mein baithe hain
+00:22:37,720 --> 00:22:38,830
+baqi aap dekh lein jo aap behtar
 
 675
-00:32:49,960 --> 00:32:53,300
-zara neeche comment karein [breath] in ko batayein park lain kya V.I.P.
+00:22:38,910 --> 00:22:40,670
+samajhte hain to woh behtar samajhte hain
 
 676
-00:32:53,300 --> 00:32:54,880
-ilaqa hai kitna V.I.P.
+00:22:40,750 --> 00:22:42,010
+bachcha to nahi hai woh England mein
 
 677
-00:32:54,880 --> 00:32:56,220
-ilaqa hai [lipsmack] sahi hai na [lipsmack]
+00:22:42,090 --> 00:22:44,100
+rehta kaam karta hai parha likha aadmi hai
 
 678
-00:32:57,020 --> 00:32:57,480
-to woh [UH]
+00:22:44,540 --> 00:22:46,690
+to woh khud hi dekh le ga ayd tawar pe
 
 679
-00:32:58,500 --> 00:33:02,340
-hayit park ke bilkul peechhe kya location hai yehhrh export sarit hai saath mein
+00:22:46,770 --> 00:22:49,370
+bhej dein ge aap [UH] woh kya rusamalai
 
 680
-00:33:02,340 --> 00:33:04,320
-rajint sarit hai chal kar rahe hain aarah woh tum
+00:22:49,450 --> 00:22:51,280
+aur woh sher khurram bas theek hai
 
 681
-00:33:05,300 --> 00:33:06,080
-lar le in ke peechhe
+00:22:51,720 --> 00:22:53,740
+again mein is cheez ke agins nahi hoon
 
 682
-00:33:06,940 --> 00:33:07,300
-samajh rahe
+00:22:53,820 --> 00:22:55,250
+parents ke agins kabhi bhi nahi hoon
 
 683
-00:33:08,180 --> 00:33:10,880
-in cheezon se bahar aaye apne upar kaam karein kyun ke aap ke upar koi
+00:22:55,330 --> 00:22:57,170
+lekin jahan pe parents is tarah ka rwayh
 
 684
-00:33:10,880 --> 00:33:14,460
-tavajja nahi de ga aap ko agar lagta hai ke upar se furshin aayein
+00:22:57,250 --> 00:22:59,430
+rakhe aap ka aap ko zehni mareez banaye
 
 685
-00:33:14,460 --> 00:33:17,460
-ge aap ke liye ahtmam karein ge kuch nahi hoga aap aap on your
+00:22:59,510 --> 00:23:02,050
+aap ke hazban ko zehni mareez banaye
 
 686
-00:33:17,460 --> 00:33:21,020
-own and especially in Pakistan you're on your own at least in the west
+00:23:02,130 --> 00:23:03,750
+to aise environment [UM] mein rehne se
 
 687
-00:33:21,300 --> 00:33:22,360
-in [UM] in a
+00:23:03,830 --> 00:23:05,850
+behtar hai banda you know fozi ho jaye
 
 688
-00:33:23,260 --> 00:33:26,800
-more so socialist country aap ka chalo hai hil ke lkt after hota hai
+00:23:05,930 --> 00:23:07,550
+aur plyus aap ne family raise karni hai
 
 689
-00:33:26,800 --> 00:33:29,280
-aap ka aydikshn lkt after hota hai aap ki bohat saare cheezein hoti hain
+00:23:07,630 --> 00:23:09,330
+to family kal ko aap ke bachche bhi
 
 690
-00:33:29,280 --> 00:33:31,840
-aap ki you know child services hoti hain aap ke rights hote hain
+00:23:09,410 --> 00:23:12,710
+honay to [UM] agar you plan to that's
 
 691
-00:33:32,600 --> 00:33:34,000
-yahan to aap on your own
+00:23:12,790 --> 00:23:15,710
+your own choice to aap ne zahir hai
 
 692
-00:33:34,760 --> 00:33:37,100
-aap police bhi khud ho loyir bhi khud ho doctor bhi khud ho sab
+00:23:15,790 --> 00:23:17,690
+ek healthy environment mein [UH] family
 
 693
-00:33:37,100 --> 00:33:39,980
-khud karna hai to build karo apne aap ko aur apna time waste na
+00:23:17,770 --> 00:23:19,620
+raise karni hai na ke is tarah jahan pe
 
 694
-00:33:39,980 --> 00:33:44,220
-karo aur achhe logon mein utho pithu nitork bunun aur nitork se hi kaam
+00:23:19,980 --> 00:23:21,620
+mara maari ho aur galm golcho
 
 695
-00:33:44,220 --> 00:33:47,480
-chalta hai ninti pasnt avda hearing jo hai woh references se hoti hai woh
+00:23:21,700 --> 00:23:23,530
+aur [UH] is tarah ke tane baazi ho
 
 696
-00:33:47,660 --> 00:33:50,620
-is tarah nahi hoti hai ad zaroor daal dein ge bikhz companies ki policy
+00:23:24,000 --> 00:23:25,590
+matlab aap ki jo aap ne none wali
 
 697
-00:33:50,620 --> 00:33:53,940
-hoti hai bari bari ayminsiz ki policy hoti in ko [cough] in ka audit
+00:23:25,670 --> 00:23:27,810
+baat ki yeh kaan laga ke sunne darwazay
 
 698
-00:33:53,940 --> 00:33:55,870
-avta in ko dikhnana hota hai ke dekhein ke ji hum ne LinkedIn pe
+00:23:27,890 --> 00:23:29,050
+kamray se kya kya baatein ho rahi hain
 
 699
-00:33:55,870 --> 00:33:58,510
-itne aytd dalay the, itni spending ki thi, hum ne akhbar mein aytd diya
+00:23:29,130 --> 00:23:31,210
+to obviously that's like star plus
 
 700
-00:33:58,510 --> 00:34:00,160
-tha, hum ne noon mein diya tha, faghaira faghaira aur
+00:23:31,710 --> 00:23:33,830
+or or honestly speaking England England
 
 701
-00:34:01,180 --> 00:34:03,060
-haier woh andar se hi kar lete, samajh rahe?
+00:23:33,910 --> 00:23:36,520
+has like the like the worst [UM]
 
 702
-00:34:03,680 --> 00:34:06,310
-Game hi hai, sab ko apna time bachana hai aur sab ko apna apna
+00:23:37,310 --> 00:23:39,450
+desi that I've come across so far
 
 703
-00:34:06,310 --> 00:34:11,470
-smot [UH] streamline karna hai cheezein to nitor achha banaye ab yeh aap
+00:23:39,980 --> 00:23:41,440
+[UH] bohat jaahil aur [UH] pata nahi
 
 704
-00:34:11,470 --> 00:34:14,720
-ke jo case tha beta yeh to sa seedha seedha namportzm ka case tha
+00:23:41,520 --> 00:23:43,960
+kaunsi sadi mein rehte hain konse door
 
 705
-00:34:14,720 --> 00:34:17,320
-aur yeh kisi aur ko fix kya gaya aap ki jagah bhai is kai
+00:23:44,040 --> 00:23:46,440
+mein rahe hain woh and it's like rampant
 
 706
-00:34:17,320 --> 00:34:20,100
-is [UH] [UH] is kai is nahi even the limit to reach for the
+00:23:46,520 --> 00:23:48,860
+bohat zyada [UM] Kudos to your husband.
 
 707
-00:34:20,100 --> 00:34:23,240
-stars and [UH] keep trying and [UH] koi na koi behtari ho gi hum
+00:23:48,940 --> 00:23:50,320
+shukar mein nafil parhna aap ka husband
 
 708
-00:34:23,240 --> 00:34:25,200
-to phir yeh wala angle bhi liya tha na koi na koi behtari ho
+00:23:50,400 --> 00:23:52,240
+achh hai warna woh to rakhta aap ko haan
 
 709
-00:34:25,200 --> 00:34:25,860
-gi to sahi hai
+00:23:52,320 --> 00:23:53,410
+bhai darri raho mere maan bapon kya
 
 710
-00:34:26,560 --> 00:34:30,030
-kuch aur try karein duniya bohat bari hai and just why why why only
+00:23:53,490 --> 00:23:55,360
+kar karein aap ko kuch nahi kartin aap
 
 711
-00:34:30,030 --> 00:34:33,460
-in Pakistan you know look elsewhere as well LinkedIn is [UH] on your domain
+00:23:55,440 --> 00:23:57,200
+zindagi barh sartaan aap ki umar kam ho
 
 712
-00:34:33,460 --> 00:34:36,540
-LinkedIn ka premium ek aant le bhai aap lo mein koi beech nahi raha
+00:23:57,280 --> 00:23:59,790
+jati aap waqt se pehle barhi ho jati
 
 713
-00:34:37,020 --> 00:34:39,280
-magar kaam ki cheez hai bhai tool hai duniya ka sab se bara is
+00:23:59,870 --> 00:24:01,780
+zahir hai jab insaan khush nahi rahe ab
 
 714
-00:34:39,560 --> 00:34:43,340
-mein apna apna aap ko polsh karein apna profayl achha banayein dhara dhara hum
+00:24:02,320 --> 00:24:03,720
+jaise yeh dekhein na kikts bhi sok hi gaya
 
 715
-00:34:43,340 --> 00:34:46,560
-bhi wohi se [UM] cheezein daal rahe hote hain [lipsmack] aaj mein ne teen
+00:24:03,800 --> 00:24:05,220
+is ko pani lalna bholi gaya osama
 
 716
-00:34:46,560 --> 00:34:49,160
-job postks daal li hai is mein again why because mein reference
+00:24:05,300 --> 00:24:07,140
+bhai chaar mahine yeh meri gaya na
 
 717
-00:34:50,580 --> 00:34:54,380
-reference referential hiring nahi karna chaah raha tha is baar kyun woh serious roles
+00:24:07,220 --> 00:24:09,260
+baichara hai at the end of the day to bhai
 
 718
-00:34:54,380 --> 00:34:56,060
-hain thore se mein chaah raha tha ke mein khud
+00:24:10,160 --> 00:24:11,360
+khoshion ka pani bohat zaroori hai
 
 719
-00:34:56,860 --> 00:34:58,240
-in ko baith ke daikhon to woh
+00:24:11,440 --> 00:24:14,020
+zindagi mein warna insaan matti kab ho
 
 720
-00:34:58,900 --> 00:35:01,380
-abhi bhi mein ne daal li hai to anstrgram pe mein woh share bhi
+00:24:14,100 --> 00:24:15,580
+ja pata nahi chalta to shukar munh hai
 
 721
-00:35:01,380 --> 00:35:03,880
-karte rehte thon LinkedIn ka woh mera company profile hai to
+00:24:15,660 --> 00:24:16,680
+and like leave it to your husband
 
 722
-00:35:04,780 --> 00:35:04,960
-so
+00:24:16,760 --> 00:24:18,300
+woh in ke aur in ke parents ka mamla hai
 
 723
-00:35:05,880 --> 00:35:09,480
-yeah kahin kahin aap time jahan bichaa sakte wahan log bichatay lekin kahin kahin
+00:24:18,380 --> 00:24:20,240
+aap enjoy karein life. theek hai?
 
 724
-00:35:09,480 --> 00:35:09,780
-aap time jahan bacha sakte wahan log bachatey lekin kahin kahin aap ko bohat
+00:24:20,320 --> 00:24:21,600
+Thank you. Alright, next one says
 
 725
-00:35:10,000 --> 00:35:13,150
-zaroorat hoti hai thora keer fooli dekhne ki to wahan aap ko yeh bhi
+00:24:21,680 --> 00:24:23,700
+a tale of hardship and dedication,
 
 726
-00:35:13,150 --> 00:35:16,170
-karna parta hai to hamein girnay doon death agle do ti din chanti mein
+00:24:23,780 --> 00:24:25,300
+reconsidering the hiring policies
 
 727
-00:35:16,170 --> 00:35:19,520
-nikal jayein ge to haan to yeh hai baqi I wish you all the
+00:24:25,380 --> 00:24:26,760
+of the biggest companies. Hello,
 
 728
-00:35:19,520 --> 00:35:22,500
-best aur apna khayal rakh ko aur [UH] in cheezon se azafti hona hota
+00:24:26,840 --> 00:24:28,100
+Junid bhai, I hope this message finds
 
 729
-00:35:22,500 --> 00:35:25,670
-hai yeh zindagi ka hissa hain aur yeh nakamian jo hain yeh yeh aap
+00:24:28,180 --> 00:24:29,480
+you in good health and high spirits.
 
 730
-00:35:25,670 --> 00:35:27,840
-ka feul banti hain aap ko aage psh karne mein
+00:24:29,560 --> 00:24:31,140
+I'm writing to you today because I want
 
 731
-00:35:28,580 --> 00:35:32,140
-to hamein nakamiyoo mein ka netro chahiye hota hai kabhi kabhi kabhi full speed par
+00:24:31,220 --> 00:24:32,680
+to share y with you a story that's
 
 732
-00:35:32,140 --> 00:35:35,400
-bhangane ka aur yeh you you zindagi ka jab aap ko zor se neeche
+00:24:32,760 --> 00:24:34,740
+been he- weighing heavily on my mind.
 
 733
-00:35:35,400 --> 00:35:37,260
-karta aap ko itni spit sau par aana hota hai.
+00:24:35,240 --> 00:24:36,500
+I recently had the privilege of being
 
 734
-00:35:37,260 --> 00:35:41,260
-So we need these rejections, girlfriend ki rejections [UM] yeh saari rejections
+00:24:36,580 --> 00:24:38,200
+interviewed by Pakistan's biggest
 
 735
-00:35:41,260 --> 00:35:44,640
-bohat zaroori hoti hain zindagi mein yeh bara bost deti hai [breath] So [UH]
+00:24:38,280 --> 00:24:40,580
+IT software company's design team
 
 736
-00:35:44,640 --> 00:35:46,060
-look at the brighter side [UH]
+00:24:40,660 --> 00:24:42,960
+for the position of UI UX Designer.
 
 737
-00:35:47,140 --> 00:35:49,720
-[UM] ma sha Allah you've [UH] you know [UM] ne likha aap shah faisal
+00:24:43,040 --> 00:24:45,250
+After two grueling technical interviews,
 
 738
-00:35:49,720 --> 00:35:50,900
-se nikal ke DHA aa gaye
+00:24:45,570 --> 00:24:47,570
+I was overjoyed to learn that I had been
 
 739
-00:35:51,580 --> 00:35:54,020
-[UH] DHA mein shah faisal mein pani nahi, DHA ke pani nahi to
+00:24:47,650 --> 00:24:49,300
+selected for the position, and I humbly
 
 740
-00:35:54,680 --> 00:35:56,960
-zyada zyada kochakinj nahi ho hai [breath] But it's okay.
+00:24:49,380 --> 00:24:51,340
+accepted the offer from the HR department.
 
 741
-00:35:57,380 --> 00:35:58,600
-It's something. It's better.
+00:24:52,060 --> 00:24:54,340
+After some negotiation and careful
 
 742
-00:35:59,100 --> 00:36:02,520
-Okay. khayal rukin aur insha Allah [UH] I wish you all the best.
+00:24:54,420 --> 00:24:56,000
+consideration, I accepted the offer.
 
 743
-00:36:02,840 --> 00:36:03,760
-Take care. Alright, jeez, so yeezi.
+00:24:56,080 --> 00:24:57,880
+However, my joy was short lived.
 
 744
-00:36:03,760 --> 00:36:04,360
-Aaj ki episode.
+00:24:57,960 --> 00:25:00,080
+During a subsequent phone call with HR,
 
 745
-00:36:04,360 --> 00:36:05,880
-I hope you guys enjoyed the answers.
+00:25:00,630 --> 00:25:01,730
+I inquired about the necessary
 
 746
-00:36:05,880 --> 00:36:08,120
-Agar aap ko koi feedback ho, comment section mein zaroor deejay ga.
+00:25:01,810 --> 00:25:03,750
+documents required for the role. While
 
 747
-00:36:08,120 --> 00:36:11,020
-Subscribe karna nahi boliye ga and you can support this channel on Patreon dot
+00:25:03,830 --> 00:25:05,210
+discussing educational qualifications,
 
 748
-00:36:11,020 --> 00:36:11,900
-com, Saaj Ganji swag.
+00:25:05,290 --> 00:25:06,570
+I mentioned that I had completed
 
 749
-00:36:12,260 --> 00:36:14,060
-Also this easy Pesa jazz cash number.
+00:25:06,650 --> 00:25:08,510
+a bachelor's degree in commerce,
 
 750
-00:36:14,060 --> 00:36:16,000
-Isse [UM] kaafi cheezein facilitated ho jati hai.
+00:25:08,590 --> 00:25:10,320
+comprising fourteen years of education.
 
 751
-00:36:16,380 --> 00:36:16,940
-[lipsmack] [UH] khayal rakhein.
+00:25:10,400 --> 00:25:12,040
+However, I was informed that your company
 
 752
-00:36:16,940 --> 00:36:18,380
-aap se milein ge dobara agli episode mein.
+00:25:12,120 --> 00:25:13,840
+policy prohibits hiring candidates
 
 753
-00:36:19,100 --> 00:36:19,600
-Aufis.
+00:25:13,920 --> 00:25:15,680
+with less than sixteen years of education.
+
+754
+00:25:15,760 --> 00:25:17,450
+Consequently, I was advised to continue
+
+755
+00:25:17,530 --> 00:25:19,040
+with my current employment.
+
+756
+00:25:19,120 --> 00:25:20,640
+I respectfully attempted to persuade
+
+757
+00:25:20,720 --> 00:25:22,460
+HR that my degree was not relevant
+
+758
+00:25:22,540 --> 00:25:24,750
+to the role and that my work experience
+
+759
+00:25:24,830 --> 00:25:27,100
+and expertise had already been assessed
+
+760
+00:25:27,180 --> 00:25:29,160
+and deemed suitable by your design team.
+
+761
+00:25:29,240 --> 00:25:30,900
+Unfortunately, this was no to no avail
+
+762
+00:25:30,980 --> 00:25:32,940
+as I was informed that the company
+
+763
+00:25:33,020 --> 00:25:34,270
+would be held accountable
+
+764
+00:25:34,350 --> 00:25:36,360
+if its hiring practices were audited.
+
+765
+00:25:36,440 --> 00:25:37,800
+I'm writing to express my belief
+
+766
+00:25:37,880 --> 00:25:39,140
+that my educational qualification
+
+767
+00:25:39,220 --> 00:25:40,860
+should not be the sole determining
+
+768
+00:25:40,940 --> 00:25:43,640
+factor in any candidacy for the role.
+
+769
+00:25:43,720 --> 00:25:45,500
+As we are undoubtedly aware,
+
+770
+00:25:45,580 --> 00:25:46,840
+there are numerous examples of highly
+
+771
+00:25:46,920 --> 00:25:48,220
+successful individuals who are who
+
+772
+00:25:48,300 --> 00:25:50,500
+have dropped out of determining factor
+
+773
+00:25:50,940 --> 00:25:53,500
+in the ca- sorry, dropped out of college
+
+774
+00:25:53,580 --> 00:25:55,410
+and gone toward a- a- achieve success
+
+775
+00:25:55,490 --> 00:25:57,400
+such as Mark Zuckerberg of Facebook,
+
+776
+00:25:57,480 --> 00:25:59,320
+Larry Elson of Oracle, da-da-da-da-da-da.
+
+777
+00:25:59,400 --> 00:26:00,700
+I'm proud to state that I was not
+
+778
+00:26:00,780 --> 00:26:02,540
+a dropout, except academically [UH]
+
+779
+00:26:02,620 --> 00:26:04,120
+from an early age. I cons- consistently
+
+780
+00:26:04,200 --> 00:26:06,420
+achieved the highest grades in my class
+
+781
+00:26:06,500 --> 00:26:07,730
+and was a top performing student.
+
+782
+00:26:07,810 --> 00:26:09,840
+However, due to untimely passing
+
+783
+00:26:09,920 --> 00:26:11,360
+of my father when I was just eleven
+
+784
+00:26:11,440 --> 00:26:13,110
+years old, my mother and I were forced
+
+785
+00:26:13,190 --> 00:26:14,980
+to relocate to my maternal home
+
+786
+00:26:15,420 --> 00:26:17,260
+where we faced financial difficulties.
+
+787
+00:26:17,340 --> 00:26:18,640
+I had to seek employment to support
+
+788
+00:26:18,720 --> 00:26:20,720
+my [UM] family and completing my fourteen
+
+789
+00:26:20,800 --> 00:26:22,370
+years of education was a challenging
+
+790
+00:26:22,450 --> 00:26:24,840
+journey that I pers- persevered
+
+791
+00:26:24,920 --> 00:26:26,820
+through with hard work and dedication.
+
+792
+00:26:26,900 --> 00:26:29,080
+Today I'm a valued and reliable member
+
+793
+00:26:29,160 --> 00:26:30,760
+of my current company and have risen
+
+794
+00:26:30,840 --> 00:26:32,660
+from humble beginnings in Shahfaisal small
+
+795
+00:26:32,740 --> 00:26:34,900
+colony to more prosperous life at DHA.
+
+796
+00:26:34,980 --> 00:26:36,280
+My goal has always been to provide
+
+797
+00:26:36,360 --> 00:26:37,900
+for my mother and make her happy
+
+798
+00:26:37,980 --> 00:26:40,400
+despite the many obstacles we have faced.
+
+799
+00:26:40,480 --> 00:26:41,920
+Junaid Bhai, we live in Pakistan where
+
+800
+00:26:42,000 --> 00:26:43,400
+there are h- thousands of talented
+
+801
+00:26:43,480 --> 00:26:44,830
+individuals who lack a degree
+
+802
+00:26:44,910 --> 00:26:47,100
+but possess the skill and dedication
+
+803
+00:26:47,180 --> 00:26:49,040
+[UH] to succeed if given the opportunity.
+
+804
+00:26:49,500 --> 00:26:50,860
+I would like you to shed some light
+
+805
+00:26:50,940 --> 00:26:52,140
+on this matter through your video so
+
+806
+00:26:52,220 --> 00:26:53,760
+that people in Pakistan can start thinking
+
+807
+00:26:53,840 --> 00:26:55,400
+about their brothers and sisters who
+
+808
+00:26:55,480 --> 00:26:56,840
+face similar problems. This is just
+
+809
+00:26:56,920 --> 00:26:59,000
+on my frustration from being rejected,
+
+810
+00:26:59,080 --> 00:27:00,260
+but a realization of why people
+
+811
+00:27:00,340 --> 00:27:02,340
+are willing to snatch others' belongings
+
+812
+00:27:02,420 --> 00:27:04,200
+and become increasingly extreme.
+
+813
+00:27:04,280 --> 00:27:05,460
+It's because they know their fellow
+
+814
+00:27:05,540 --> 00:27:07,380
+Pakistanis won't help them. Let me know
+
+815
+00:27:07,460 --> 00:27:08,900
+your thoughts on the video records.
+
+816
+00:27:08,980 --> 00:27:10,150
+Alright so ek sahab hain ki badi humble
+
+817
+00:27:10,230 --> 00:27:11,620
+beginnings rahi hain aur [UH] badi
+
+818
+00:27:11,700 --> 00:27:13,410
+mainaz se yeh upar tak aaye, ek job
+
+819
+00:27:13,490 --> 00:27:15,360
+ke interview pe gaye, sab kuch ho gaya,
+
+820
+00:27:15,440 --> 00:27:16,980
+job bhi final ho gayi, sab ho gaya.
+
+821
+00:27:17,620 --> 00:27:18,620
+End mein ae chaar ne bola hamein ji
+
+822
+00:27:18,700 --> 00:27:20,600
+solah saal ki [UH] education jaye,
+
+823
+00:27:20,680 --> 00:27:22,060
+in ki chodah thi. First of all,
+
+824
+00:27:22,140 --> 00:27:23,900
+mein aap ko seyah seyah bata doon ke HR
+
+825
+00:27:24,580 --> 00:27:26,670
+[UH] ne jo hai kisi aur ko haier karna tha
+
+826
+00:27:26,750 --> 00:27:28,810
+aur woh aap ko fuzool ki goli di aap
+
+827
+00:27:28,890 --> 00:27:30,910
+ki jo [UH] degree hai woh irrelevant thi
+
+828
+00:27:30,990 --> 00:27:32,690
+karmns wale ka kya kaam you ae you ex
+
+829
+00:27:32,770 --> 00:27:35,010
+mein aur tik aur ayti ki field mein
+
+830
+00:27:35,090 --> 00:27:36,730
+[UH] sirf experience dekha jata hai,
+
+831
+00:27:36,810 --> 00:27:37,860
+degrees bilkul nahi dekhi jati
+
+832
+00:27:37,940 --> 00:27:39,110
+aur yeh baat sab ko pata hai aur yeh baat
+
+833
+00:27:39,190 --> 00:27:40,760
+Pakistan mein bhi laghu hai.
+
+834
+00:27:41,340 --> 00:27:43,190
+Clearly hua yeh ho ga ke aap ki selection
+
+835
+00:27:43,270 --> 00:27:44,870
+[UH] department ne ki ho gi lekin phir
+
+836
+00:27:44,950 --> 00:27:48,490
+HR kyun yeh HR ki taraf se ya in ko
+
+837
+00:27:48,570 --> 00:27:50,190
+koi directiv ho ga ke bhai yahan pe
+
+838
+00:27:50,270 --> 00:27:52,970
+hamara banda lagana hai to koi na
+
+839
+00:27:53,050 --> 00:27:54,790
+koi bahana dhondnaa tha aur woh policy
+
+840
+00:27:54,870 --> 00:27:56,180
+mein koi na koi is tarah ki cheez nikaal
+
+841
+00:27:56,260 --> 00:27:58,080
+ke aap ko hai. This is my understanding.
+
+842
+00:27:58,160 --> 00:27:59,710
+Otherwise I don't see any reason
+
+843
+00:27:59,790 --> 00:28:01,930
+if you fit if you were fit for the job.
+
+844
+00:28:02,010 --> 00:28:03,060
+kya k- solah saal ki degree.
+
+845
+00:28:03,140 --> 00:28:04,250
+achha aap ke paas ek paper ho to is mein
+
+846
+00:28:04,330 --> 00:28:06,210
+likha tha ji dozaar chodah ke jagah dozaar
+
+847
+00:28:06,290 --> 00:28:08,760
+solah mein ek grijoyit hue se kya hi
+
+848
+00:28:08,840 --> 00:28:10,660
+farq para jata koi farq nahi parta aap
+
+849
+00:28:10,740 --> 00:28:12,770
+ki jo expertise hain wohi kaam hai nahi
+
+850
+00:28:13,520 --> 00:28:16,210
+[UH] so this is bullshit in my o-
+
+851
+00:28:16,290 --> 00:28:18,430
+o- opinion. However, you you you've
+
+852
+00:28:18,510 --> 00:28:20,260
+written your email very very nicely.
+
+853
+00:28:20,340 --> 00:28:22,440
+I'm really proud of [UM] that.
+
+854
+00:28:22,900 --> 00:28:26,080
+So good job. So so clearly [UH]
+
+855
+00:28:26,160 --> 00:28:28,640
+yeh yeh this was the case of nepotism,
+
+856
+00:28:28,720 --> 00:28:30,560
+most likely aap ko side line kar ke kisi
+
+857
+00:28:30,640 --> 00:28:32,680
+aur ko rule diya gaya hai aur yeh bilkul
+
+858
+00:28:32,760 --> 00:28:35,330
+isi tarah ka m- m- masla hai aur yeh bara
+
+859
+00:28:35,410 --> 00:28:37,000
+prevailing hai ke Pakistan mein jobs
+
+860
+00:28:37,560 --> 00:28:39,080
+sahi candidates ko nahi millti.
+
+861
+00:28:39,160 --> 00:28:40,400
+isi liye mein barah kehton bhai
+
+862
+00:28:40,480 --> 00:28:44,240
+apna network barhaaye [UM] again [UM]
+
+863
+00:28:44,320 --> 00:28:47,150
+I'm not endorsing nepotism lekin more
+
+864
+00:28:47,230 --> 00:28:49,150
+than likely hota yeh hai ke aap ko koi aap
+
+865
+00:28:49,230 --> 00:28:51,350
+ke janney wala hi rifr kar raha hota hai
+
+866
+00:28:52,160 --> 00:28:54,420
+because most of the companies they avoid
+
+867
+00:28:54,500 --> 00:28:55,980
+going through the hassle of going through
+
+868
+00:28:56,060 --> 00:28:57,870
+a hundred CVs or five hundred CVs
+
+869
+00:28:57,950 --> 00:28:58,880
+[sniff] aur phir is mein se candidate
+
+870
+00:28:58,960 --> 00:29:01,320
+bulaa ke waghaira waghaira for example
+
+871
+00:29:02,080 --> 00:29:03,250
+[breath] rahi baar degrees ki jaise
+
+872
+00:29:03,330 --> 00:29:04,460
+ke mein hamesha bataya hai half
+
+873
+00:29:04,540 --> 00:29:06,490
+of my team is under twenty, but
+
+874
+00:29:08,540 --> 00:29:10,460
+because they can work, they're working
+
+875
+00:29:10,820 --> 00:29:12,280
+and they're doing a fantastic job,
+
+876
+00:29:12,710 --> 00:29:14,330
+proud of them [UH] again, at the end
+
+877
+00:29:14,410 --> 00:29:15,320
+of the day, mujhe kaam chahiye,
+
+878
+00:29:15,400 --> 00:29:16,400
+mujhe unke degree ka kya karna hai,
+
+879
+00:29:16,480 --> 00:29:18,020
+mujhe yeh bhi pata, mere [UH]
+
+880
+00:29:18,420 --> 00:29:19,760
+office mein kitne log masters hain,
+
+881
+00:29:19,840 --> 00:29:20,920
+kitne graduates hain, main ne kabhi
+
+882
+00:29:21,000 --> 00:29:22,260
+kissi ke degree dekhi bhi, main ne kabhi
+
+883
+00:29:22,340 --> 00:29:24,280
+kissi ka CV bhi poora prprli nahi dekha,
+
+884
+00:29:24,360 --> 00:29:25,860
+main na sir sir system pak raya,
+
+885
+00:29:25,940 --> 00:29:27,500
+yeh video hai is ka yeh kar ke do, y-
+
+886
+00:29:27,580 --> 00:29:29,440
+y- yeh koi graphic designer grhyr kya
+
+887
+00:29:29,520 --> 00:29:31,760
+to bhai yeh mujhe ek poster bana ke doon.
+
+888
+00:29:31,840 --> 00:29:33,420
+That's it. [breath] bohat se log
+
+889
+00:29:33,500 --> 00:29:34,860
+to mein ne aise haier kiye ke
+
+890
+00:29:35,620 --> 00:29:38,700
+I didn't even know that I needed them.
+
+891
+00:29:39,060 --> 00:29:40,100
+[breath] aur unhon ne kuch bana ke mujhe
+
+892
+00:29:40,180 --> 00:29:41,960
+tig kar di hai anstrgam pe and then
+
+893
+00:29:42,040 --> 00:29:43,080
+I found it and I was like okay that's
+
+894
+00:29:43,160 --> 00:29:45,240
+a nice poster or that's a nice [UH]
+
+895
+00:29:45,320 --> 00:29:47,360
+video animation and [UH] I hired them
+
+896
+00:29:47,440 --> 00:29:50,160
+I hired them and also phir is mein se
+
+897
+00:29:50,240 --> 00:29:52,220
+jo sikndri haiering hui hai woh is tarah
+
+898
+00:29:52,300 --> 00:29:53,870
+hui hai ke mostly ab jaise graphic
+
+899
+00:29:53,950 --> 00:29:56,590
+designer I can see he's overworked
+
+900
+00:29:56,670 --> 00:29:57,940
+to mein is ko kahoon mein is ko kahoon
+
+901
+00:29:58,020 --> 00:29:58,860
+mein is ko kaha ke apna assistant
+
+902
+00:29:58,940 --> 00:30:00,540
+dhoond apne jaise koi dhoond lo ek to
+
+903
+00:30:01,020 --> 00:30:03,340
+is ne apne doston ki group pe misij mara
+
+904
+00:30:03,660 --> 00:30:06,420
+koi na koi aajay ga kal similary [UM]
+
+905
+00:30:06,500 --> 00:30:09,600
+jo hamara three D animator hai he was [UM]
+
+906
+00:30:09,680 --> 00:30:11,370
+[UM] I didn't want him to overwork
+
+907
+00:30:11,450 --> 00:30:13,660
+aur mein is jis jis project pe woh kaam
+
+908
+00:30:13,740 --> 00:30:15,340
+kare mein thora sa is pe two X speed
+
+909
+00:30:15,420 --> 00:30:16,986
+chaah raha tha to mein liya apne jaise
+
+910
+00:30:17,066 --> 00:30:18,814
+ek aur le ao woh ise bola theek hai
+
+911
+00:30:18,894 --> 00:30:20,960
+kyun ke ab mein woh poora poster bunun
+
+912
+00:30:21,040 --> 00:30:22,520
+aur phir woh mein anstrgram pe daloon
+
+913
+00:30:22,600 --> 00:30:23,480
+aur LinkedIn pe daloon aur phir woh mein
+
+914
+00:30:23,560 --> 00:30:24,260
+poora poster bunun aur phir woh mein
+
+915
+00:30:24,340 --> 00:30:25,040
+anstrgram pe daloon aur LinkedIn pe
+
+916
+00:30:25,120 --> 00:30:25,820
+daloon aur phir panson emails aayein
+
+917
+00:30:25,900 --> 00:30:26,870
+phir mein in ko baith ke kyorit karoon
+
+918
+00:30:26,950 --> 00:30:28,420
+aur phir is mein se [UH] kyorit keh
+
+919
+00:30:28,500 --> 00:30:29,680
+rahoon sorry go through karoon and then
+
+920
+00:30:29,760 --> 00:30:31,900
+phir is ke baad mein log bulaun phir
+
+921
+00:30:31,980 --> 00:30:33,580
+pechare log bare door door se aate hain
+
+922
+00:30:33,660 --> 00:30:36,400
+ab obviously people overestimate as
+
+923
+00:30:37,160 --> 00:30:39,260
+well [UH] mujhe bara bura lagte ke mein
+
+924
+00:30:39,340 --> 00:30:40,880
+mein kisi ko bulaun aur phir
+
+925
+00:30:40,960 --> 00:30:42,060
+mujhe lage ke yaar is mein woh vip
+
+926
+00:30:42,140 --> 00:30:43,320
+nahi hai phir mein yehi sochta rhton
+
+927
+00:30:43,400 --> 00:30:45,300
+pechara teen petrol laga kya ho ga
+
+928
+00:30:45,380 --> 00:30:46,780
+ya bayi kya hai kareem pe aa ga but again
+
+929
+00:30:46,860 --> 00:30:48,250
+ab job ke taur paray ganan pare ganan
+
+930
+00:30:48,330 --> 00:30:49,780
+[UM] yeh mein mein to nahi uth ke aa sakta
+
+931
+00:30:49,860 --> 00:30:51,580
+har kisi ke ghar to yeh feel hota hai
+
+932
+00:30:51,660 --> 00:30:53,180
+kuch log nahi samajh paate ke chahiye
+
+933
+00:30:53,260 --> 00:30:54,960
+kya hai despite the fact aap jitna
+
+934
+00:30:55,040 --> 00:30:57,280
+likhe de doon ke bhai yeh yeh exactly
+
+935
+00:30:57,360 --> 00:30:59,130
+pchichizin chahaiyn phir kuch log
+
+936
+00:30:59,210 --> 00:31:00,590
+hote hain aa jate hain magar phir
+
+937
+00:31:00,670 --> 00:31:01,900
+woh kehte ke hum po- pol time nahi
+
+938
+00:31:01,980 --> 00:31:03,940
+aa sakte haala ke likha hua tha potim mein
+
+939
+00:31:04,300 --> 00:31:05,190
+stodnt hoon mein parh rahoon
+
+940
+00:31:05,270 --> 00:31:06,530
+mera site business bhi chal raha hai
+
+941
+00:31:06,610 --> 00:31:08,070
+aur mein I'm like ke [UM] mujhe thori
+
+942
+00:31:08,150 --> 00:31:09,750
+si zyada effort chahiye to [UH]
+
+943
+00:31:09,830 --> 00:31:11,150
+obviously you won't be able to manage
+
+944
+00:31:11,230 --> 00:31:12,920
+[UH] we we just had a great content
+
+945
+00:31:13,000 --> 00:31:14,710
+writer but unfortunately had to leave
+
+946
+00:31:14,790 --> 00:31:15,970
+for the same reason because his chart
+
+947
+00:31:16,050 --> 00:31:17,850
+ja- ja- tongay pahli fasih wini.
+
+948
+00:31:17,930 --> 00:31:19,710
+Toh woh clarity nahi dete pehle aa ke phir
+
+949
+00:31:20,030 --> 00:31:21,190
+baad mein kehte hain sambhal nahi raha
+
+950
+00:31:21,270 --> 00:31:22,540
+aur yeh ho raha aur yeh ho raha hai
+
+951
+00:31:23,230 --> 00:31:25,270
+to is mein phir yeh wale risk hote aap
+
+952
+00:31:25,350 --> 00:31:26,950
+hire karte ho sab cheezein karte ho
+
+953
+00:31:27,030 --> 00:31:28,950
+phir woh chale jate for whatever reason
+
+954
+00:31:29,640 --> 00:31:31,370
+[UM] to behtar yeh hota hai ke aap
+
+955
+00:31:31,450 --> 00:31:32,950
+reference ke tarwah yaar tera koi janney
+
+956
+00:31:33,030 --> 00:31:34,230
+wala hai, reliable hai, achha kaam
+
+957
+00:31:34,310 --> 00:31:36,020
+karte hain blale ka doosre yeh zyada
+
+958
+00:31:36,100 --> 00:31:37,790
+sahi rehta hai ab yeh kab hota hai
+
+959
+00:31:37,870 --> 00:31:40,130
+jab aap ka network achha ho for example
+
+960
+00:31:40,210 --> 00:31:42,150
+ab ab you yoh you ex designer hona aap
+
+961
+00:31:42,740 --> 00:31:44,110
+logon ka koi na koi forum hona chahiye
+
+962
+00:31:44,190 --> 00:31:45,930
+koi red community hona chahiye koi fees
+
+963
+00:31:46,010 --> 00:31:46,950
+boke group hona chahiye koi wats
+
+964
+00:31:47,030 --> 00:31:48,120
+app group hona chahiye jahan pe aap
+
+965
+00:31:48,200 --> 00:31:49,870
+ek doosri ke saath idayz bhi share karo
+
+966
+00:31:49,950 --> 00:31:51,250
+ek doosri ke saath jo aap archinitiz
+
+967
+00:31:51,330 --> 00:31:52,650
+share karo ab jaise hussam bhai peechhe
+
+968
+00:31:52,730 --> 00:31:54,330
+baithe yeh saari zindagi unhon ne
+
+969
+00:31:54,870 --> 00:31:56,120
+kimrimn ka kaam kya tee wayz mein
+
+970
+00:31:56,200 --> 00:31:57,810
+waghaira waghaira ab mujhe shot pe
+
+971
+00:31:57,890 --> 00:31:59,330
+koi aykstrh kimrimn chahiye hoti hai
+
+972
+00:31:59,410 --> 00:32:00,750
+koi make aap aarts chahiye hay
+
+973
+00:32:04,020 --> 00:32:05,070
+yeh chaar paanch groups mein hai
+
+974
+00:32:05,150 --> 00:32:06,530
+yeh is pe likh dein hain koi hai
+
+975
+00:32:06,610 --> 00:32:07,910
+aayi vilyool mil jata hai abhi
+
+976
+00:32:07,990 --> 00:32:09,860
+hum ataaq pe show ataaq pe hum ne
+
+977
+00:32:09,940 --> 00:32:11,650
+ek shot kar di thi dakomintri ke liye
+
+978
+00:32:12,240 --> 00:32:13,730
+to hamein ek banda islam se chahiye tha
+
+979
+00:32:13,810 --> 00:32:15,110
+unhon ne group mein mara larka mil gaya
+
+980
+00:32:15,190 --> 00:32:16,890
+osama bhai le ke chale ga is ko ataaq
+
+981
+00:32:16,970 --> 00:32:18,700
+shot ho gaya to woh net work mein tha
+
+982
+00:32:18,780 --> 00:32:21,560
+banda is ko kaam mil gaya isi tarah
+
+983
+00:32:21,880 --> 00:32:24,200
+[UM] yeh yehi wajah hai ke your network
+
+984
+00:32:24,280 --> 00:32:26,650
+is your net worth to jitna logon ko
+
+985
+00:32:26,730 --> 00:32:28,740
+jaanun ke pechanon ke uthon ke bthon ke
+
+986
+00:32:29,120 --> 00:32:30,280
+kaam ke logon mein fuzool logon mein
+
+987
+00:32:30,360 --> 00:32:31,620
+nahi girwat mnstrid wali logon mein
+
+988
+00:32:31,700 --> 00:32:33,720
+aur achhi panni assishnz achhi jagah rakho
+
+989
+00:32:33,800 --> 00:32:36,000
+kaam ke logon mein utha pithu [UM] [UM]
+
+990
+00:32:36,080 --> 00:32:38,600
+people who who want to progress in life
+
+991
+00:32:39,020 --> 00:32:40,330
+[breath] yeh baith ke bachchon ki baatein
+
+992
+00:32:40,410 --> 00:32:41,910
+karna aur phone ki baatein karna
+
+993
+00:32:41,990 --> 00:32:43,780
+chaye ke hotl pe amran Khan nawaz shareef
+
+994
+00:32:43,860 --> 00:32:45,140
+aimran Khan nawaz shareef aash kar rahe
+
+995
+00:32:45,220 --> 00:32:47,280
+yaar they have the best life in the world.
+
+996
+00:32:47,360 --> 00:32:48,320
+[breath] miyan sahab ka ghar dekha hai
+
+997
+00:32:48,400 --> 00:32:49,880
+uppe bhai jo london mein baithe hain
+
+998
+00:32:49,960 --> 00:32:51,220
+zara neeche comment karein [breath]
+
+999
+00:32:51,300 --> 00:32:53,220
+in ko batayein park lain kya V.I.P.
+
+1000
+00:32:53,300 --> 00:32:55,520
+ilaqa hai kitna V.I.P. ilaqa hai
+
+1001
+00:32:55,860 --> 00:32:56,860
+[lipsmack] sahi hai na [lipsmack]
+
+1002
+00:32:57,020 --> 00:33:00,180
+to woh [UH] hayit park ke bilkul peechhe
+
+1003
+00:33:00,260 --> 00:33:01,580
+kya location hai yehhrh export
+
+1004
+00:33:01,660 --> 00:33:03,300
+sarit hai saath mein rajint sarit hai
+
+1005
+00:33:03,380 --> 00:33:04,620
+chal kar rahe hain aarah woh tum
+
+1006
+00:33:05,300 --> 00:33:07,600
+lar le in ke peechhe samajh rahe
+
+1007
+00:33:08,180 --> 00:33:09,621
+in cheezon se bahar aaye apne upar kaam
+
+1008
+00:33:09,701 --> 00:33:11,080
+karein kyun ke aap ke upar koi tavajja
+
+1009
+00:33:11,160 --> 00:33:13,560
+nahi de ga aap ko agar lagta hai ke upar
+
+1010
+00:33:13,640 --> 00:33:15,810
+se furshin aayein ge aap ke liye ahtmam
+
+1011
+00:33:15,890 --> 00:33:16,980
+karein ge kuch nahi hoga aap aap
+
+1012
+00:33:17,060 --> 00:33:19,300
+on your own and especially in Pakistan
+
+1013
+00:33:19,380 --> 00:33:21,220
+you're on your own at least in the west
+
+1014
+00:33:21,300 --> 00:33:25,060
+in [UM] in a more so socialist country
+
+1015
+00:33:25,140 --> 00:33:26,390
+aap ka chalo hai hil ke lkt after
+
+1016
+00:33:26,470 --> 00:33:27,740
+hota hai aap ka aydikshn lkt after
+
+1017
+00:33:27,820 --> 00:33:28,940
+hota hai aap ki bohat saare cheezein
+
+1018
+00:33:29,020 --> 00:33:30,600
+hoti hain aap ki you know child services
+
+1019
+00:33:30,680 --> 00:33:32,140
+hoti hain aap ke rights hote hain
+
+1020
+00:33:32,600 --> 00:33:34,300
+yahan to aap on your own
+
+1021
+00:33:34,760 --> 00:33:36,200
+aap police bhi khud ho loyir bhi khud ho
+
+1022
+00:33:36,280 --> 00:33:37,560
+doctor bhi khud ho sab khud karna hai
+
+1023
+00:33:37,640 --> 00:33:39,120
+to build karo apne aap ko aur apna time
+
+1024
+00:33:39,200 --> 00:33:41,150
+waste na karo aur achhe logon mein utho
+
+1025
+00:33:41,230 --> 00:33:44,020
+pithu nitork bunun aur nitork se hi
+
+1026
+00:33:44,100 --> 00:33:46,100
+kaam chalta hai ninti pasnt avda hearing
+
+1027
+00:33:46,180 --> 00:33:47,400
+jo hai woh references se hoti hai
+
+1028
+00:33:47,480 --> 00:33:48,900
+woh is tarah nahi hoti hai ad zaroor
+
+1029
+00:33:48,980 --> 00:33:50,540
+daal dein ge bikhz companies ki policy
+
+1030
+00:33:50,620 --> 00:33:52,300
+hoti hai bari bari ayminsiz ki policy
+
+1031
+00:33:52,380 --> 00:33:53,970
+hoti in ko [cough] in ka audit avta
+
+1032
+00:33:54,050 --> 00:33:55,260
+in ko dikhnana hota hai ke dekhein ke ji
+
+1033
+00:33:55,340 --> 00:33:56,250
+hum ne LinkedIn pe itne aytd
+
+1034
+00:33:56,330 --> 00:33:57,440
+dalay the, itni spending ki thi,
+
+1035
+00:33:57,520 --> 00:33:58,760
+hum ne akhbar mein aytd diya tha, hum ne
+
+1036
+00:33:58,840 --> 00:34:00,460
+noon mein diya tha, faghaira faghaira aur
+
+1037
+00:34:01,180 --> 00:34:02,580
+haier woh andar se hi kar lete,
+
+1038
+00:34:02,660 --> 00:34:04,460
+samajh rahe? Game hi hai, sab ko
+
+1039
+00:34:04,540 --> 00:34:05,540
+apna time bachana hai aur sab ko
+
+1040
+00:34:05,620 --> 00:34:08,000
+apna apna smot [UH] streamline karna hai
+
+1041
+00:34:08,080 --> 00:34:10,770
+cheezein to nitor achha banaye ab
+
+1042
+00:34:10,850 --> 00:34:13,010
+yeh aap ke jo case tha beta yeh to sa
+
+1043
+00:34:13,090 --> 00:34:14,670
+seedha seedha namportzm ka case tha
+
+1044
+00:34:14,750 --> 00:34:15,790
+aur yeh kisi aur ko fix kya gaya
+
+1045
+00:34:15,870 --> 00:34:18,390
+aap ki jagah bhai is kai is [UH] [UH]
+
+1046
+00:34:18,470 --> 00:34:19,810
+is kai is nahi even the limit to reach
+
+1047
+00:34:19,890 --> 00:34:21,200
+for the stars and [UH] keep trying
+
+1048
+00:34:21,280 --> 00:34:23,160
+and [UH] koi na koi behtari ho gi hum
+
+1049
+00:34:23,240 --> 00:34:24,490
+to phir yeh wala angle bhi liya tha na
+
+1050
+00:34:24,570 --> 00:34:26,150
+koi na koi behtari ho gi to sahi hai
+
+1051
+00:34:26,590 --> 00:34:28,000
+kuch aur try karein duniya bohat bari hai
+
+1052
+00:34:28,080 --> 00:34:30,450
+and just why why why only in Pakistan
+
+1053
+00:34:30,530 --> 00:34:32,190
+you know look elsewhere as well LinkedIn
+
+1054
+00:34:32,270 --> 00:34:34,370
+is [UH] on your domain LinkedIn ka premium
+
+1055
+00:34:34,450 --> 00:34:36,090
+ek aant le bhai aap lo mein koi beech
+
+1056
+00:34:36,170 --> 00:34:37,820
+nahi raha magar kaam ki cheez hai
+
+1057
+00:34:37,900 --> 00:34:39,110
+bhai tool hai duniya ka sab se bara
+
+1058
+00:34:39,190 --> 00:34:41,210
+is mein apna apna aap ko polsh karein
+
+1059
+00:34:41,290 --> 00:34:43,150
+apna profayl achha banayein dhara dhara
+
+1060
+00:34:43,230 --> 00:34:45,250
+hum bhi wohi se [UM] cheezein daal rahe
+
+1061
+00:34:45,330 --> 00:34:46,410
+hote hain [lipsmack] aaj mein ne
+
+1062
+00:34:46,490 --> 00:34:48,070
+teen job postks daal li hai is mein
+
+1063
+00:34:48,150 --> 00:34:49,460
+again why because mein reference
+
+1064
+00:34:50,580 --> 00:34:52,330
+reference referential hiring nahi
+
+1065
+00:34:52,410 --> 00:34:53,260
+karna chaah raha tha is baar
+
+1066
+00:34:53,340 --> 00:34:54,950
+kyun woh serious roles hain thore se
+
+1067
+00:34:55,030 --> 00:34:56,330
+mein chaah raha tha ke mein khud
+
+1068
+00:34:56,860 --> 00:34:59,150
+in ko baith ke daikhon to woh abhi bhi
+
+1069
+00:34:59,230 --> 00:35:00,770
+mein ne daal li hai to anstrgram pe mein
+
+1070
+00:35:00,850 --> 00:35:02,030
+woh share bhi karte rehte thon LinkedIn
+
+1071
+00:35:02,110 --> 00:35:05,260
+ka woh mera company profile hai to so
+
+1072
+00:35:05,880 --> 00:35:07,730
+yeah kahin kahin aap time jahan bichaa
+
+1073
+00:35:07,810 --> 00:35:08,810
+sakte wahan log bichatay lekin kahin kahin
+
+1074
+00:35:09,480 --> 00:35:10,180
+aap time jahan bacha sakte wahan log
+
+1075
+00:35:10,260 --> 00:35:10,960
+bachatey lekin kahin kahin aap ko
+
+1076
+00:35:11,040 --> 00:35:11,830
+bohat zaroorat hoti hai thora keer fooli
+
+1077
+00:35:11,910 --> 00:35:13,190
+dekhne ki to wahan aap ko yeh bhi karna
+
+1078
+00:35:13,270 --> 00:35:14,870
+parta hai to hamein girnay doon death
+
+1079
+00:35:14,950 --> 00:35:16,290
+agle do ti din chanti mein nikal
+
+1080
+00:35:16,370 --> 00:35:19,070
+jayein ge to haan to yeh hai baqi I wish
+
+1081
+00:35:19,150 --> 00:35:20,530
+you all the best aur apna khayal rakh ko
+
+1082
+00:35:20,610 --> 00:35:22,270
+aur [UH] in cheezon se azafti hona
+
+1083
+00:35:22,350 --> 00:35:23,510
+hota hai yeh zindagi ka hissa hain aur
+
+1084
+00:35:23,590 --> 00:35:26,030
+yeh nakamian jo hain yeh yeh aap ka feul
+
+1085
+00:35:26,110 --> 00:35:28,080
+banti hain aap ko aage psh karne mein
+
+1086
+00:35:28,580 --> 00:35:30,280
+to hamein nakamiyoo mein ka netro chahiye
+
+1087
+00:35:30,360 --> 00:35:32,170
+hota hai kabhi kabhi kabhi full speed par
+
+1088
+00:35:32,250 --> 00:35:33,850
+bhangane ka aur yeh you you zindagi
+
+1089
+00:35:33,930 --> 00:35:35,600
+ka jab aap ko zor se neeche karta
+
+1090
+00:35:35,680 --> 00:35:37,190
+aap ko itni spit sau par aana hota hai.
+
+1091
+00:35:37,270 --> 00:35:38,570
+So we need these rejections,
+
+1092
+00:35:38,650 --> 00:35:40,610
+girlfriend ki rejections [UM] yeh saari
+
+1093
+00:35:40,690 --> 00:35:42,090
+rejections bohat zaroori hoti hain zindagi
+
+1094
+00:35:42,170 --> 00:35:44,350
+mein yeh bara bost deti hai [breath] So
+
+1095
+00:35:44,430 --> 00:35:46,350
+[UH] look at the brighter side [UH]
+
+1096
+00:35:47,140 --> 00:35:48,150
+[UM] ma sha Allah you've [UH]
+
+1097
+00:35:48,230 --> 00:35:49,430
+you know [UM] ne likha aap shah
+
+1098
+00:35:49,510 --> 00:35:51,200
+faisal se nikal ke DHA aa gaye
+
+1099
+00:35:51,580 --> 00:35:53,250
+[UH] DHA mein shah faisal mein pani nahi,
+
+1100
+00:35:53,330 --> 00:35:55,470
+DHA ke pani nahi to zyada zyada kochakinj
+
+1101
+00:35:55,550 --> 00:35:57,310
+nahi ho hai [breath] But it's okay.
+
+1102
+00:35:57,390 --> 00:35:59,810
+It's something. It's better. Okay.
+
+1103
+00:35:59,890 --> 00:36:01,530
+khayal rukin aur insha Allah
+
+1104
+00:36:01,610 --> 00:36:03,020
+[UH] I wish you all the best. Take care.
+
+1105
+00:36:03,100 --> 00:36:04,290
+Alright, jeez, so yeezi. Aaj ki episode.
+
+1106
+00:36:04,370 --> 00:36:05,810
+I hope you guys enjoyed the answers.
+
+1107
+00:36:05,890 --> 00:36:06,820
+Agar aap ko koi feedback ho,
+
+1108
+00:36:06,900 --> 00:36:08,040
+comment section mein zaroor deejay ga.
+
+1109
+00:36:08,120 --> 00:36:09,490
+Subscribe karna nahi boliye ga and you can
+
+1110
+00:36:09,570 --> 00:36:11,270
+support this channel on Patreon dot com,
+
+1111
+00:36:11,350 --> 00:36:12,670
+Saaj Ganji swag. Also this easy
+
+1112
+00:36:12,750 --> 00:36:14,650
+Pesa jazz cash number. Isse [UM]
+
+1113
+00:36:14,730 --> 00:36:16,300
+kaafi cheezein facilitated ho jati hai.
+
+1114
+00:36:16,380 --> 00:36:17,080
+[lipsmack] [UH] khayal rakhein. aap se
+
+1115
+00:36:17,160 --> 00:36:19,900
+milein ge dobara agli episode mein. Aufis.
 

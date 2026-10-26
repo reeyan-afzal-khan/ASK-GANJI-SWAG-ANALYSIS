@@ -14,11 +14,13 @@ from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 # Allow this entry point to run directly as well as through app/run.sh.
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'scripts' / '.shared'))
-from paths import ROMAN, SOURCE, INDEX, APP
+from paths import ROMAN, SOURCE, INDEX, APP, CACHE
 from subtitles import parse, atomic_write, select_files
+from pacing import covers
 
 CONFIG = Path(__file__).with_name('config.json')
 LABELS = Path(__file__).with_name('question_labels.json')
+ALIGNMENT = CACHE / 'alignment'
 SKINS, THEME = APP / 'skins', APP / 'assets' / 'theme.css'
 THEME_TOKENS = ('void rail surface surface-2 surface-3 line line-hot ink ink-soft muted acc acc-hi acc-dim acc-wash on-acc '
                 'h1 h2 h3 h4 h5 h6 h7 h8 tail-1 tail-2 tail-3 seq-0 seq-1 seq-2 seq-3 seq-4 seq-5 seq-6 seq-7 '
@@ -164,16 +166,29 @@ def title_words(title, stopwords):
             seen.append(word)
     return seen
 
+def added_latin(alignment, number):
+    """Latin words of passages that step 06 added for speech the original run skipped or looped over.
+
+    They are not in the original SRT, so without this their English words would count as Urdu.
+    The record lives in the local .cache/alignment/; without it nothing is added. A passage whose
+    stretch a replaced loop covers is no longer in the subtitles, so it is left out.
+    """
+    cache = Path(alignment) / f'episode_{number:03d}.json' if alignment else None
+    if not cache or not cache.is_file():
+        return collections.Counter()
+    data = json.loads(cache.read_text(encoding='utf-8'))
+    replaced = [p for p in data.get('loops', []) if p.get('applied') and p.get('phantom')]
+    kept = [s for s in data.get('supplements', []) if s.get('applied') and not any(covers(p, s) for p in replaced)]
+    return collections.Counter(w for s in kept + replaced for w in words(s['source']))
+
 def read_episode(path, source):
-    """Cues with their spans, plus the matching original cues when the source agrees cue for cue."""
+    """Cues with their spans, plus the original Crisper cues when present (they may be paced differently)."""
     cues = parse(path.read_text(encoding='utf-8-sig'))
     original = Path(source) / path.name if source else None
-    pairs = parse(original.read_text(encoding='utf-8-sig')) if original and original.is_file() else None
-    if pairs and [c.timing for c in pairs] != [c.timing for c in cues]:
-        pairs = None
-    return cues, [span(c) for c in cues], pairs
+    originals = parse(original.read_text(encoding='utf-8-sig')) if original and original.is_file() else None
+    return cues, [span(c) for c in cues], originals
 
-def build(roman=ROMAN, source=SOURCE, index_path=INDEX, output=APP / 'data', labels_path=LABELS):
+def build(roman=ROMAN, source=SOURCE, index_path=INDEX, output=APP / 'data', labels_path=LABELS, alignment=ALIGNMENT):
     config = json.loads(CONFIG.read_text(encoding='utf-8'))
     stopwords, rules, places = set(config['stopwords']), category_rules(config), place_rules(config)
     labels = read_labels(labels_path, {s['id'] for c in config['categories'] for s in c['subcategories']})
@@ -186,21 +201,24 @@ def build(roman=ROMAN, source=SOURCE, index_path=INDEX, output=APP / 'data', lab
     unaligned, unlabelled = [], []
     for path in files:
         number = int(re.search(r'\d+', path.stem).group())
-        cues, spans, pairs = read_episode(path, source)
+        cues, spans, originals = read_episode(path, source)
         duration = spans[-1][1]
         minutes = [0] * (int(duration // 60) + 1)
         events, counts, latin = collections.Counter(), collections.Counter(), 0
-        for position, (cue, (start, end)) in enumerate(zip(cues, spans)):
+        for cue, (start, end) in zip(cues, spans):
             events.update(m.lower() for m in MARKER.findall(cue.text))
             spoken = collections.Counter(words(cue.text))
             counts.update(spoken)
             minutes[min(len(minutes) - 1, int((start + end) / 2 // 60))] += sum(spoken.values())
-            if pairs:
-                shared = spoken & collections.Counter(words(pairs[position].text))
-                english.update(shared)
-                urdu.update(spoken - shared)
-                latin += sum(shared.values())
-        if not pairs:
+        if originals:
+            # Latin words in the original are the English ones; everything else in the Roman text is
+            # romanised Urdu. Each English word appears once in both, so counting over the episode gives
+            # the same totals as cue by cue and works when the Roman cues are paced differently.
+            shared = counts & (collections.Counter(w for c in originals for w in words(c.text)) + added_latin(alignment, number))
+            english.update(shared)
+            urdu.update(counts - shared)
+            latin = sum(shared.values())
+        else:
             unaligned.append(number)
         name = f'episode_{number:03d}.js'
         write_if_changed(transcripts / name, f'GANJI_TRANSCRIPT({number},{compact([[round(s, 2), c.text] for c, (s, _) in zip(cues, spans)])});\n')
@@ -245,7 +263,7 @@ def build(roman=ROMAN, source=SOURCE, index_path=INDEX, output=APP / 'data', lab
             'speech': round(sum(end - start for start, end in spans), 2),
             'cues': len(cues),
             'words': total,
-            'english': latin if pairs else None,
+            'english': latin if originals else None,
             'questions': len(items),
             'firstQuestion': next((t for t in starts if t is not None), None),
             'events': dict(sorted(events.items())),
@@ -312,7 +330,7 @@ def build(roman=ROMAN, source=SOURCE, index_path=INDEX, output=APP / 'data', lab
     size = sum(p.stat().st_size for p in output.rglob('*.js'))
     print(f'Wrote {output}: {count} episodes, {len(questions):,} questions, {data["meta"]["words"]:,} words ({size / 1e6:.1f} MB).')
     if unaligned and len(unaligned) < count:
-        print(f'English/Urdu labels unavailable for {len(unaligned)} episodes without a matching source SRT.')
+        print(f'English/Urdu labels unavailable for {len(unaligned)} episodes without an original Crisper SRT.')
     if unlabelled:
         print(f'Placed by keywords, add to {LABELS.name}: episodes {", ".join(map(str, unlabelled))}.')
     return data

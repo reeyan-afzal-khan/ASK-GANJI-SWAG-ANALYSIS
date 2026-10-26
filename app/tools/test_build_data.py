@@ -35,17 +35,17 @@ SOURCE=('1\n00:00:00,000 --> 00:00:05,000\nWelcome [UH] to the show\n\n'
         '2\n00:00:10,000 --> 00:00:20,000\nCanada visa اور masters کا سوال [laughter] I am a twenty-two year old from Lahore\n\n'
         '3\n00:01:05,000 --> 00:01:30,000\nشادی کے بعد wife اور امی\n\n')
 
-def build_fixture(root,labels=None):
+def build_fixture(root,labels=None,roman_text=ROMAN,alignment=None):
     roman=root/'roman';source=root/'source';out=root/'data'
     roman.mkdir();source.mkdir()
-    (roman/'episode_001.srt').write_text(ROMAN,encoding='utf-8')
+    (roman/'episode_001.srt').write_text(roman_text,encoding='utf-8')
     (source/'episode_001.srt').write_text(SOURCE,encoding='utf-8')
     (root/'index.md').write_text(INDEX,encoding='utf-8')
     labels_path=None
     if labels is not None:
         labels_path=root/'labels.json';labels_path.write_text(json.dumps(labels),encoding='utf-8')
     with contextlib.redirect_stdout(io.StringIO()):
-        return build_data.build(roman,source,root/'index.md',out,labels_path),out
+        return build_data.build(roman,source,root/'index.md',out,labels_path,alignment),out
 
 class AppDataTests(unittest.TestCase):
     def test_index_links_and_timestamps(self):
@@ -89,6 +89,34 @@ class AppDataTests(unittest.TestCase):
         self.assertEqual((questions[0]['age'],[data['places'][i]['name'] for i in questions[0]['places']]),(22,['Lahore','Canada']))
         self.assertEqual(data['quality']['unlabelled'],[1])
         self.assertIn('abroad.auto',[s['id'] for c in data['categories'] for s in c['subcategories']])
+
+    def test_english_share_survives_repaced_roman_cues(self):
+        paced=ROMAN.replace('2\n00:00:10,000 --> 00:00:20,000\nCanada visa aur masters ka sawal [laughter] I am a twenty-two year old from Lahore\n\n3\n',
+                            '2\n00:00:10,000 --> 00:00:14,000\nCanada visa aur masters ka sawal\n\n3\n00:00:14,080 --> 00:00:20,000\n[laughter] I am a twenty-two year old from Lahore\n\n4\n')
+        self.assertNotEqual(paced,ROMAN)
+        with tempfile.TemporaryDirectory(dir=TEST_TEMP) as d:
+            data,_=build_fixture(Path(d),roman_text=paced)
+        episode=data['episodes'][0]
+        self.assertEqual((episode['cues'],episode['words'],episode['english']),(4,25,17))
+        self.assertEqual(data['quality']['unaligned'],[])
+
+    def test_added_passages_count_their_english(self):
+        filled=ROMAN.replace('3\n00:01:05,000','3\n00:00:30,000 --> 00:00:40,000\nphir masters application submit ki\n\n4\n00:01:05,000')
+        with tempfile.TemporaryDirectory(dir=TEST_TEMP) as d:
+            root=Path(d);cache=root/'alignment';cache.mkdir()
+            (cache/'episode_001.json').write_text(json.dumps({'supplements':[{'source':'پھر masters application submit کی','applied':True}]}),encoding='utf-8')
+            data,_=build_fixture(root,roman_text=filled,alignment=cache)
+        episode=data['episodes'][0]
+        self.assertEqual((episode['words'],episode['english']),(30,20))
+        # A replaced loop's passage counts instead of the passage it covers.
+        with tempfile.TemporaryDirectory(dir=TEST_TEMP) as d:
+            root=Path(d);cache=root/'alignment';cache.mkdir()
+            (cache/'episode_001.json').write_text(json.dumps({
+                'supplements':[{'source':'پھر masters ki baat','start':31.0,'end':33.0,'applied':True}],
+                'loops':[{'source':'پھر masters application submit کی','span':[29.0,41.0],'phantom':True,'applied':True}]}),encoding='utf-8')
+            data,_=build_fixture(root,roman_text=filled,alignment=cache)
+        episode=data['episodes'][0]
+        self.assertEqual((episode['words'],episode['english']),(30,20))
 
     def test_build_uses_curated_labels_and_rejects_unknown_codes(self):
         with tempfile.TemporaryDirectory(dir=TEST_TEMP) as d:

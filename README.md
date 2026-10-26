@@ -45,7 +45,7 @@ The model files have been moved into `.cache/roman-model/`; the download command
 
 ## Commands
 
-Run the numbered shell scripts in the order below. Steps **01–02 are first-time setup**; for each new episode, run **03 → 04 → 05 → 07**. Step **06 is optional** because Romanization already produces single-line subtitles. Step **08 checks the code** and is useful after changes.
+Run the numbered shell scripts in the order below. Steps **01–02 are first-time setup**; for each new episode, run **03 → 04 → 05 → 07**. Step **06 is optional** because Romanization already produces single-line subtitles. Step **08 checks the code** and is useful after changes. Step 06 now also evens out the pacing of the Roman subtitles: it times every word against the audio on the GPU and regroups the cues into lines of similar length (see [Even pacing](#even-pacing-and-the-audio-check)), so run it after 05 when you want evenly paced cues.
 
 Every entry point supports `--help`. The scripts resolve the project directory themselves. `scripts/.shared/common.sh` and the Python files are helpers; you do not run them as workflow steps.
 
@@ -56,7 +56,7 @@ Every entry point supports `--help`. The scripts resolve the project directory t
 | `bash scripts/03-download-audio/run.sh NUMBER VIDEO_URL` | Download one episode with an explicit filename |
 | `bash scripts/04-transcribe/run.sh` | Transcribe missing MP3 episodes |
 | `bash scripts/05-romanize/run.sh` | Convert missing outputs to single-line Roman Urdu |
-| `bash scripts/06-format/run.sh` | Optional: join multiline subtitle text; back up changed files |
+| `bash scripts/06-format/run.sh` | Optional: join multiline subtitle text; back up changed files; time every word on the GPU and re-pace the Roman cues evenly |
 | `bash scripts/07-validate/run.sh` | Check script, structure, timing and English preservation |
 | `bash scripts/08-test/run.sh` | Optional: run code regression tests after changes |
 
@@ -90,6 +90,7 @@ The smoke test transcribes the first 20 seconds without writing an SRT. Normal t
 bash scripts/06-format/run.sh --check
 
 # Join text lines in all Roman SRTs. Timestamps and wording stay intact.
+# Since the pacing update this also re-times and regroups the cues; the wording still stays intact.
 bash scripts/06-format/run.sh
 
 # Deliberately regenerate one existing Roman file; back it up first.
@@ -100,6 +101,75 @@ bash scripts/05-romanize/run.sh --episodes 243 --cached-only
 ```
 
 New Roman output is already single-line. Formatting is useful for imported or manually edited files. An editor or player may still visually wrap a long line.
+
+### Even pacing and the audio check
+
+The original transcription cut a new cue at every pause and every sentence end, up to 14 words, so cues ranged from a single word flashing by for a quarter of a second to 80-character lines. Step 06 evens this out without transcribing anything again and without touching `urdu_transcript_crisper/`:
+
+1. **Word timing on the GPU** (`scripts/06-format/align.py`). Each window of whole cues from the original Crisper SRT is replayed through CrisperWhisper's decoder with its known text, and every word is placed with the same cross-attention timing the model uses when it transcribes. Each Roman word inherits the time of the Urdu word it came from. Results are cached per episode in `.cache/alignment/`, so later runs only align new or changed episodes. On a laptop RTX 4060 this runs at about 75× real time (around five hours for all 371 hours of audio).
+2. **Pacing** (`scripts/.shared/pacing.py`). The words are regrouped into single-line cues of at most 42 characters, about seven words each. A cue never spans a pause of 1.5 seconds or more, and breaks prefer sentence ends, commas and pauses over phrases such as "ke liye", "the" or "hai". Each cue stays up for at least a second when the next one allows, and cues never overlap. The changed files are backed up to `.cache/backups/` first.
+3. **Clean-up of the original timing.** The long-form transcription sometimes transcribed the end of one chunk again at the start of the next and squeezed the copy into a fraction of a second. Such stitching duplicates (four or more words in an impossibly short time that closely repeat the words just before them) are left out and listed in `.cache/reports/pacing.json`. Other squeezed words are kept and held on screen for at least 0.7 seconds, letting the next cue start up to 1.5 seconds late rather than flash past.
+
+Hand corrections in `urdu_transcript_crisper_roman/` are kept: pacing reads the words from the files as they are, and a corrected word takes the timing of the word it replaced. Edit the Roman files freely, then re-pace with `--skip-align`.
+
+```bash
+# Report what pacing would change, without the GPU or writing files.
+bash scripts/06-format/run.sh --check
+
+# Align only episodes 243 and 244, then pace them.
+bash scripts/06-format/run.sh --episodes 243,244
+
+# Re-pace from the cached alignment after tuning pacing.py; no GPU needed.
+bash scripts/06-format/run.sh --skip-align
+```
+
+The same pass checks the transcripts against the audio and writes `.cache/reports/audio_check.json` for listening review. It lists stretches of six seconds or more that no cue covers but where the model hears speech (possible missed passages), cues whose words the model finds unlikely given the audio, and words or tags repeated four or more times in a row. It also gives the status of every decoding loop (see "Replacing decoding loops" below). These findings change nothing by themselves; only `--fill` and `--loops`, described below, act on them, and only when you run them.
+
+The report is written in Roman Urdu only. What the model heard in uncovered stretches is romanised with the subtitles' own rules (reviewed glossary first, then model candidates, generating any new words on the GPU), then the report is refreshed:
+
+```bash
+# Linux, in the romanization environment:
+bash scripts/05-romanize/run.sh --alignment
+# Or on Windows, where this repository's romanization has been run:
+#   python scripts\05-romanize\romanize.py --alignment
+
+# Refresh the report from the cache (re-pacing is a no-op when nothing changed).
+bash scripts/06-format/run.sh --skip-align
+```
+
+If a Roman file is regenerated with step 05 after pacing, it returns to the original cue timing; run step 06 again to re-pace it from the cache.
+
+#### Filling missed speech
+
+The audio check found speech in hundreds of stretches the original run skipped, often where its loop guard threw away a whole chunk together with a run of `[lipsmack]` tags. `--fill` transcribes only those stretches, with the transcription step's own settings (verbatim Urdu, decoder profiles, hallucination guard), so nothing else is transcribed again. Tag loops are collapsed, words at the edges that repeat the neighbouring cues are dropped, and a stretch is kept only when the full transcription confirms speech. The passages are romanised like any subtitle word and inserted into `urdu_transcript_crisper_roman/` at their own time; `urdu_transcript_crisper/` is not changed. They are listed in `.cache/reports/pacing.json`, and once inserted they are treated like the rest of the file, so hand edits to them are kept and they are never added twice.
+
+```bash
+# Transcribe the missed stretches on the GPU (only those stretches).
+bash scripts/06-format/run.sh --fill
+# Romanise them (Linux romanization environment; on Windows: python scripts\05-romanize\romanize.py --alignment).
+bash scripts/05-romanize/run.sh --alignment
+# Pace them into the Roman subtitles.
+bash scripts/06-format/run.sh --skip-align
+```
+
+#### Replacing decoding loops
+
+Long-form transcription sometimes got stuck on one phrase and wrote it out dozens of times, spread in tiny cues over the stretch where the real answer was. In episode 7, for example, "I'm asking you. I don't know." fills two minutes. Cues cover those stretches, so the missed-speech check cannot see them. Step 06 finds them in the original transcript: any 40 words in a row that use at most 8 different words, or 32 that use at most 4. Stretches made mostly of tags are left alone. `--loops` transcribes each loop's stretch again with the same settings, from the last word before the loop to the first word after it.
+
+A loop is replaced only when the fresh transcription confirms it is a phantom, which means three things:
+- it hears at least three spoken words;
+- it does not loop itself;
+- it says the looped phrase at most twice.
+
+Otherwise the original stays. A confirmed replacement is romanised and paced in like the missed passages, and it also replaces any passage that `--fill` added inside that stretch. `.cache/reports/pacing.json` lists what was replaced, and `.cache/reports/audio_check.json` gives every loop's status in Roman Urdu.
+
+```bash
+# Transcribe every loop's stretch again on the GPU (only those stretches).
+bash scripts/06-format/run.sh --loops
+# Romanise the new text, then pace the confirmed replacements in.
+bash scripts/05-romanize/run.sh --alignment
+bash scripts/06-format/run.sh --skip-align
+```
 
 ## Analytics app
 
@@ -143,7 +213,7 @@ ASK-GANJI-SWAG-ANALYSIS/
 │   ├── 03-download-audio/         # run.sh
 │   ├── 04-transcribe/             # run.sh + transcription + decoder guard
 │   ├── 05-romanize/               # run.sh + Romanization + spelling glossary
-│   ├── 06-format/                 # run.sh (optional)
+│   ├── 06-format/                 # run.sh (optional) + GPU word alignment for even pacing
 │   ├── 07-validate/               # run.sh
 │   ├── 08-test/                   # run.sh + regression tests
 │   └── .shared/                    # Shell setup, paths and subtitle utilities
@@ -201,7 +271,7 @@ Romanization, formatting and validation also accept `--episodes`. Use `--source`
 
 ## Validation and quality
 
-Validation checks that every source episode has a corresponding Roman output, each cue contains one text line, cue IDs/timestamps match, non-Latin letters are absent, and existing English text is retained. It writes `.cache/reports/validation.json` and exits nonzero on failure. `--episodes` limits validation to selected episodes.
+Validation checks that every source episode has a corresponding Roman output, each cue contains one text line, cue IDs/timestamps match, non-Latin letters are absent, and existing English text is retained. It writes `.cache/reports/validation.json` and exits nonzero on failure. `--episodes` limits validation to selected episodes. Roman files paced by step 06 no longer share the source's cue timings, so for them validation checks instead that cues are numbered consecutively, never overlap and stay within the source's time (widened by passages added for missed speech, which include intros and outros the original run skipped), and that every English word survives in order. The exceptions are stitching duplicates and decoding loops, which pacing may leave out; both are found from the original transcript alone, so this check works without the cache. While the alignment cache is present, words that differ from it are listed as hand corrections: a warning, not an error.
 
 Romanization preserves the source transcript rather than correcting it against the recording. Uncertain names, missing vowels, malformed words and original recognition errors still need review. Per-run hashes and review queues are saved under `.cache/reports/romanization/`. A successful structural check is not a transcription accuracy score.
 

@@ -28,6 +28,16 @@ def parse(text):
         cues.append(Cue(lines[0], lines[1], tuple(lines[2:])))
     return cues
 
+def seconds(stamp):
+    hours, minutes, rest = stamp.split(':')
+    secs, ms = rest.split(',')
+    return int(hours) * 3600 + int(minutes) * 60 + int(secs) + int(ms) / 1000
+
+def span(cue):
+    """(start, end) of a cue in seconds."""
+    start, end = cue.timing.split(' --> ')
+    return seconds(start), seconds(end)
+
 def render(cues):
     return ''.join(f'{c.number}\n{c.timing}\n{c.text}\n\n' for c in cues)
 

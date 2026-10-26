@@ -1,1832 +1,2696 @@
 1
-00:00:00,560 --> 00:00:03,390
-haan bhai kya hai bhaiya [UH] last year mein ne ek [UH] silsila shuru
+00:00:00,560 --> 00:00:01,790
+haan bhai kya hai bhaiya [UH] last year
 
 2
-00:00:03,390 --> 00:00:06,340
-kya tha ask Ganji Swag ka jis mein aap mujhe email karein ge apne
+00:00:01,870 --> 00:00:03,490
+mein ne ek [UH] silsila shuru kya tha
 
 3
-00:00:06,340 --> 00:00:08,840
-sawaal jo bhi aap ke sawaal hain jo bhi problem se guzar hai jo
+00:00:03,570 --> 00:00:05,370
+ask Ganji Swag ka jis mein aap mujhe
 
 4
-00:00:08,840 --> 00:00:13,060
-bhi aap ke challenges hain aur mein apne hisaab se jitna mera limited experience
+00:00:05,450 --> 00:00:06,920
+email karein ge apne sawaal jo bhi
 
 5
-00:00:13,540 --> 00:00:15,880
-hai limited exposure aur is ki bunyaad pe mein aap ko jawab doon ga
+00:00:07,000 --> 00:00:08,270
+aap ke sawaal hain jo bhi problem se
 
 6
-00:00:15,880 --> 00:00:18,260
-mein ne is ki ek video bhi banai aur is ke baad bhool gaya
+00:00:08,350 --> 00:00:09,930
+guzar hai jo bhi aap ke challenges hain
 
 7
-00:00:18,900 --> 00:00:22,180
-paanch sau email [UH] aa gayi aur [UH] ab mein yeh ke yeh silsila
+00:00:10,010 --> 00:00:12,570
+aur mein apne hisaab se jitna mera limited
 
 8
-00:00:22,300 --> 00:00:25,540
-continue karoon ga aur regularly karoon ga to aaj hum dobara yeh karte hain
+00:00:12,650 --> 00:00:14,210
+experience hai limited exposure
 
 9
-00:00:25,540 --> 00:00:28,440
-magar is se pehle [UH] Ganji Swag merchandise ke liye aap ja sakte hain
+00:00:14,290 --> 00:00:15,550
+aur is ki bunyaad pe mein aap ko jawab
 
 10
-00:00:28,440 --> 00:00:30,900
-fans store dot p k slash ganji swag pe jahan pe aap ko mil
+00:00:15,630 --> 00:00:17,270
+doon ga mein ne is ki ek video bhi banai
 
 11
-00:00:30,900 --> 00:00:35,260
-sakte hai yeh mug tee sheets toot back waghaira waghaira aur ise aane wali
+00:00:17,350 --> 00:00:19,090
+aur is ke baad bhool gaya paanch sau
 
 12
-00:00:35,260 --> 00:00:39,520
-tamam aam dani tamam funds hum use karein ge [UH] jo abhi hamari library
+00:00:19,170 --> 00:00:20,920
+email [UH] aa gayi aur [UH] ab mein
 
 13
-00:00:39,520 --> 00:00:41,960
-ke projects gul gat mein chal rahe hain Mangho peer Karachi mein chal rahe
+00:00:21,000 --> 00:00:23,050
+yeh ke yeh silsila continue karoon ga
 
 14
-00:00:41,960 --> 00:00:43,000
-to woh wahan pe allocate hoon ge.
+00:00:23,130 --> 00:00:24,790
+aur regularly karoon ga to aaj hum
 
 15
-00:00:43,380 --> 00:00:43,580
-achha
+00:00:24,870 --> 00:00:26,230
+dobara yeh karte hain magar is se pehle
 
 16
-00:00:44,320 --> 00:00:45,460
-aate hain ji pehle sawaal pe
+00:00:26,310 --> 00:00:27,690
+[UH] Ganji Swag merchandise ke liye
 
 17
-00:00:46,140 --> 00:00:49,620
-[UH] jannat bhai don't mention my name or something I'm so constrained I'm making
+00:00:27,770 --> 00:00:29,120
+aap ja sakte hain fans store dot p k
 
 18
-00:00:49,920 --> 00:00:51,580
-things complicated for a girl who
+00:00:29,200 --> 00:00:30,660
+slash ganji swag pe jahan pe aap ko
 
 19
-00:00:53,100 --> 00:00:57,700
-likes me. She's embarrassed when her friends taunt her about me, because of them
+00:00:30,740 --> 00:00:33,040
+mil sakte hai yeh mug tee sheets toot back
 
 20
-00:00:57,700 --> 00:00:58,720
-she's drifting away.
+00:00:33,120 --> 00:00:35,530
+waghaira waghaira aur ise aane wali tamam
 
 21
-00:00:58,940 --> 00:01:00,880
-She's important and even she knows this.
+00:00:35,610 --> 00:00:38,140
+aam dani tamam funds hum use karein ge
 
 22
-00:01:01,460 --> 00:01:02,480
-I don't know what to do.
+00:00:38,220 --> 00:00:39,840
+[UH] jo abhi hamari library ke projects
 
 23
-00:01:03,500 --> 00:01:04,900
-Seriously, life is shit.
+00:00:39,920 --> 00:00:40,900
+gul gat mein chal rahe hain Mangho
 
 24
-00:01:05,640 --> 00:01:09,020
-Dekho bhai, sabse pehle yeh jitni merbaab paancho email hain hain, main ne iski
+00:00:40,980 --> 00:00:41,880
+peer Karachi mein chal rahe
 
 25
-00:01:09,120 --> 00:01:12,800
-koi pachaaas fee-sat dekhi, kol kol ke, eighty percent,
+00:00:41,960 --> 00:00:43,300
+to woh wahan pe allocate hoon ge.
 
 26
-00:01:13,460 --> 00:01:14,000
-ladki ka chakkar.
+00:00:43,380 --> 00:00:45,760
+achha aate hain ji pehle sawaal pe
 
 27
-00:01:14,400 --> 00:01:16,640
-Ladki ka chakkar, kabhi rodi, kabhi sakkar.
+00:00:46,140 --> 00:00:47,580
+[UH] junaid bhai don't mention my name
 
 28
-00:01:16,960 --> 00:01:19,580
-Yeh meri baat, yaad rakhna bhai, life mein kuch ban jao.
+00:00:47,660 --> 00:00:49,320
+or something I'm so constrained I'm
 
 29
-00:01:19,940 --> 00:01:23,600
-Okay, main sab ko yeh keh hoon, focus kar lo apne career pe, yeh
+00:00:49,400 --> 00:00:51,860
+making things complicated for a girl who
 
 30
-00:01:23,600 --> 00:01:24,420
-cheezein chalti rehengi.
+00:00:53,100 --> 00:00:54,910
+likes me. She's embarrassed
 
 31
-00:01:24,980 --> 00:01:27,560
-Jab kuch ban jao ge na life mein, toh yeh joh bolti hai na,
+00:00:54,990 --> 00:00:57,170
+when her friends taunt her about me,
 
 32
-00:01:27,560 --> 00:01:30,920
-joh message scene kar deti hai, jab kuch ban jao ge, toh yeh hi
+00:00:57,250 --> 00:00:58,860
+because of them she's drifting away.
 
 33
-00:01:30,920 --> 00:01:32,940
-inbox mein aake bolenge, yaan bhai, kya scene hai.
+00:00:58,940 --> 00:01:01,380
+She's important and even she knows this.
 
 34
-00:01:33,180 --> 00:01:38,300
-Okay, toh bhai [UM] but I do understand, insaan, wo khatta na, pyaar
+00:01:01,460 --> 00:01:02,780
+I don't know what to do.
 
 35
-00:01:38,720 --> 00:01:40,480
-[UH] kiya nahi jata, ho jata hai.
+00:01:03,500 --> 00:01:05,190
+Seriously, life is shit.
 
 36
-00:01:40,740 --> 00:01:44,220
-Toh yaan peh peh hua hua hai sab ko, gharib aadmi pyari kar sakta
+00:01:05,640 --> 00:01:07,130
+Dekho bhai, sabse pehle yeh jitni
 
 37
-00:01:44,220 --> 00:01:44,960
-aur kar hi kar sakta hai.
+00:01:07,210 --> 00:01:08,610
+merbaab paancho email hain hain,
 
 38
-00:01:45,400 --> 00:01:45,620
-Toh yeh
+00:01:08,690 --> 00:01:10,910
+main ne iski koi pachaaas fee-sat dekhi,
 
 39
-00:01:46,420 --> 00:01:48,400
-bhai ko zarra pyaar ho gaya kisi khatoon se.
+00:01:10,990 --> 00:01:13,100
+kol kol ke, eighty percent,
 
 40
-00:01:50,040 --> 00:01:51,300
-Complicated aap bana rahe hain.
+00:01:13,460 --> 00:01:15,450
+ladki ka chakkar. Ladki ka chakkar,
 
 41
-00:01:51,300 --> 00:01:52,980
-achha in ko bhi pata hai woh important hai.
+00:01:15,530 --> 00:01:17,470
+kabhi rodi, kabhi sakkar. Yeh meri baat,
 
 42
-00:01:52,980 --> 00:01:56,480
-She's embarrassed. dekho agar woh embarrassed hai aap ke liye to phir that means
+00:01:17,550 --> 00:01:19,890
+yaad rakhna bhai, life mein kuch ban jao.
 
 43
-00:01:56,620 --> 00:01:58,580
-she doesn't she she doesn't respect you.
+00:01:19,970 --> 00:01:21,670
+Okay, main sab ko yeh keh hoon,
 
 44
-00:01:59,000 --> 00:02:02,900
-theek hai aur [UH] mein yeh hi kehton ke hamesha aap kisi bhi situation
+00:01:21,750 --> 00:01:23,330
+focus kar lo apne career pe,
 
 45
-00:02:03,160 --> 00:02:05,180
-mein chahe woh relationship ho ya kuch bhi ho.
+00:01:23,410 --> 00:01:24,910
+yeh cheezein chalti rehengi.
 
 46
-00:02:05,420 --> 00:02:07,960
-theek hai na apni self respect sab se pehle.
+00:01:24,990 --> 00:01:26,670
+Jab kuch ban jao ge na life mein,
 
 47
-00:02:07,960 --> 00:02:09,080
-That should be your priority.
+00:01:26,750 --> 00:01:28,330
+toh yeh joh bolti hai na, joh message
 
 48
-00:02:09,380 --> 00:02:12,080
-Toh agar [UH] bandi aap ko respect hi nahi kar rahi woh embarrassed hai
+00:01:28,410 --> 00:01:30,520
+scene kar deti hai, jab kuch ban jao ge,
 
 49
-00:02:12,500 --> 00:02:15,940
-kyun ke is ki dostiyan mazah kar den ke is melay ke saath kyun
+00:01:30,600 --> 00:01:31,700
+toh yeh hi inbox mein aake bolenge,
 
 50
-00:02:15,940 --> 00:02:18,060
-gom rahi hai, matlab isi tarah ki baatein karti hoon gi, theek hai na
+00:01:31,780 --> 00:01:33,970
+yaan bhai, kya scene hai. Okay,
 
 51
-00:02:18,660 --> 00:02:20,760
-[lipsmack] to [UH] agar woh aap ko chhor ke
+00:01:34,050 --> 00:01:36,630
+toh bhai [UM] but I do understand,
 
 52
-00:02:21,760 --> 00:02:23,360
-jahan haala ke is ko pata hai ke aap ke
+00:01:36,710 --> 00:01:38,640
+insaan, wo khatta na, pyaar
 
 53
-00:02:24,020 --> 00:02:27,260
-liye woh bohat important hain yeh jante bhi she is listening to her friends
+00:01:38,720 --> 00:01:40,670
+[UH] kiya nahi jata, ho jata hai.
 
 54
-00:02:27,940 --> 00:02:31,420
-jo ke torn kar rahi hain so clearly in ki priority mein aap nahi
+00:01:40,750 --> 00:01:42,790
+Toh yaan peh peh hua hua hai sab ko,
 
 55
-00:02:31,660 --> 00:02:34,140
-ho aap ki priority mein woh hoon gi lekin in ki priority mein in
+00:01:42,870 --> 00:01:44,450
+gharib aadmi pyari kar sakta aur kar hi
 
 56
-00:02:34,140 --> 00:02:36,640
-ki dostiyan hain to woh in ki baatein sunne to khali wali karna hai
+00:01:44,530 --> 00:01:46,870
+kar sakta hai. Toh yeh bhai ko zarra
 
 57
-00:02:36,640 --> 00:02:40,240
-bhai theek hai na aane wale ko roko nahi jane wale ko thoko nahi.
+00:01:46,950 --> 00:01:48,700
+pyaar ho gaya kisi khatoon se.
 
 58
-00:02:40,540 --> 00:02:42,900
-theek hai khud hi akkl aa jaye gi to aa jayein gi theek hai
+00:01:50,040 --> 00:01:51,220
+Complicated aap bana rahe hain.
 
 59
-00:02:43,120 --> 00:02:45,980
-magar tab tak hopefully bohat der ho jane chahiye and you should move on.
+00:01:51,300 --> 00:01:52,230
+achha in ko bhi pata hai
 
 60
-00:02:46,460 --> 00:02:48,160
-I don't think this is a very healthy
+00:01:52,310 --> 00:01:53,530
+woh important hai. She's embarrassed.
 
 61
-00:02:49,060 --> 00:02:50,120
-[lipsmack] [UH] situation
+00:01:53,610 --> 00:01:55,250
+dekho agar woh embarrassed hai aap ke liye
 
 62
-00:02:51,000 --> 00:02:51,180
-[UH]
+00:01:55,330 --> 00:01:56,930
+to phir that means she doesn't
 
 63
-00:02:51,860 --> 00:02:53,400
-kyun ke bhai wohi wali baat hai.
+00:01:57,010 --> 00:01:59,750
+she she doesn't respect you. theek hai
 
 64
-00:02:53,400 --> 00:02:56,660
-Self respect aage woh hai to sab kuch hai agar respect hi nahi hai
+00:01:59,830 --> 00:02:01,790
+aur [UH] mein yeh hi kehton ke hamesha
 
 65
-00:02:56,660 --> 00:02:58,260
-to bhai respect ke ilawa phir kuch bhi nahi hota.
+00:02:01,870 --> 00:02:03,550
+aap kisi bhi situation mein chahe
 
 66
-00:02:58,600 --> 00:03:01,890
-rmon ka ka nahi manna larki ka theek hai na yeh aksar kalijon mein
+00:02:03,630 --> 00:02:05,460
+woh relationship ho ya kuch bhi ho. theek
 
 67
-00:03:01,890 --> 00:03:05,710
-mein dukhton hum bhi kalij yonyorsi life guzari hai yeh rmon ka ka hote
+00:02:05,540 --> 00:02:07,880
+hai na apni self respect sab se pehle.
 
 68
-00:03:05,710 --> 00:03:08,520
-the har group mein ek jo samose le kar aa rahe hain pepsi le
+00:02:07,960 --> 00:02:09,300
+That should be your priority.
 
 69
-00:03:08,520 --> 00:03:10,900
-kar aa rahe hain tara golt khail rahe hain jab se nikaal ke yeh
+00:02:09,380 --> 00:02:10,710
+Toh agar [UH] bandi aap ko respect hi
 
 70
-00:03:11,400 --> 00:03:16,460
-nahi banna respect demand respect [lipsmack] theek hai na magar is respect demand karne
+00:02:10,790 --> 00:02:12,430
+nahi kar rahi woh embarrassed hai
 
 71
-00:03:16,460 --> 00:03:18,920
-mein bhi jo na aap ne toxic nahi hona theek hai na kabeer sun
+00:02:12,510 --> 00:02:14,270
+kyun ke is ki dostiyan mazah kar den
 
 72
-00:03:18,920 --> 00:03:22,340
-nahi banna thora limit mein reh ke izzat se izzat do izzat lo to
+00:02:14,350 --> 00:02:16,230
+ke is melay ke saath kyun gom rahi hai,
 
 73
-00:03:22,960 --> 00:03:25,920
-agar aap ko izzat nahi mil rahi to bhai aage niklo bas pakar ke
+00:02:16,310 --> 00:02:17,580
+matlab isi tarah ki baatein karti hoon gi,
 
 74
-00:03:25,920 --> 00:03:27,700
-gyarah number ki bas pakar ke kahin aur nikal jo aur
+00:02:17,660 --> 00:02:19,270
+theek hai na [lipsmack] to [UH]
 
 75
-00:03:28,500 --> 00:03:31,120
-zaroori nahi ke aap ne replace hi karna hai matla yeh maqsad nahi hai
+00:02:19,350 --> 00:02:21,850
+agar woh aap ko chhor ke jahan
 
 76
-00:03:31,120 --> 00:03:35,160
-zindagi ka maqsad hai parhai parhai kar lo zindagi mein focus kar lo kriyr
+00:02:21,930 --> 00:02:24,190
+haala ke is ko pata hai ke aap ke liye
 
 77
-00:03:35,160 --> 00:03:38,790
-vrir bnalo yeh sab chalta rahe geh [lipsmack] theek hai ji aate hain ji
+00:02:24,270 --> 00:02:26,020
+woh bohat important hain yeh jante bhi
 
 78
-00:03:38,790 --> 00:03:39,460
-doosri sawaal pe Please
+00:02:26,100 --> 00:02:27,560
+she is listening to her friends
 
 79
-00:03:41,080 --> 00:03:42,920
-give us time management skills.
+00:02:27,940 --> 00:02:29,830
+jo ke torn kar rahi hain so clearly
 
 80
-00:03:43,260 --> 00:03:44,520
-I need to be more productive.
+00:02:29,910 --> 00:02:31,710
+in ki priority mein aap nahi ho
 
 81
-00:03:45,060 --> 00:03:48,600
-poora din guzar jata hai pata hi nahi chalta [lipsmack] achha hai te khakay
+00:02:31,790 --> 00:02:33,090
+aap ki priority mein woh hoon gi
 
 82
-00:03:48,720 --> 00:03:52,030
-te ko pata hi nahi din kahan guzar rahe bhai saare din vidsip pe
+00:02:33,170 --> 00:02:34,550
+lekin in ki priority mein in ki dostiyan
 
 83
-00:03:52,030 --> 00:03:55,820
-guzar rahe fees buk pe guzar rahe khatte wala filtr banane mein guzar rahe
+00:02:34,630 --> 00:02:35,650
+hain to woh in ki baatein sunne
 
 84
-00:03:56,320 --> 00:04:00,140
-yeh sheesha pi rahe mera snapchit bhara hota hai bhai yeh aap ki age
+00:02:35,730 --> 00:02:37,590
+to khali wali karna hai bhai theek hai na
 
 85
-00:04:00,140 --> 00:04:02,340
-group se aap ki age likhi hai mein mein sher nahi kar raha
+00:02:37,670 --> 00:02:39,690
+aane wale ko roko nahi jane wale ko
 
 86
-00:04:03,060 --> 00:04:07,160
-mera fi- [UH] snapchit bhara hota hai yeh wala haath yeh strirng pe nusft
+00:02:39,770 --> 00:02:41,390
+thoko nahi. theek hai khud hi akkl
 
 87
-00:04:07,160 --> 00:04:12,080
-fatah ali Khan laga hota hai aur chars ke dhon hain aa rahe hare hare
+00:02:41,470 --> 00:02:43,050
+aa jaye gi to aa jayein gi theek hai
 
 88
-00:04:12,080 --> 00:04:12,960
-sab yehi kar rahe
+00:02:43,130 --> 00:02:44,550
+magar tab tak hopefully bohat der ho
 
 89
-00:04:13,820 --> 00:04:14,940
-anyway, I'm not generalizing.
+00:02:44,630 --> 00:02:46,390
+jane chahiye and you should move on.
 
 90
-00:04:15,640 --> 00:04:18,560
-magar bhai poora din guzar jata hai aisa kya kar rahe ke guzar rahe
+00:02:46,470 --> 00:02:48,460
+I don't think this is a very healthy
 
 91
-00:04:18,560 --> 00:04:21,120
-aap ko pata nahi chal raha aap ko achhi tarah pattah hai kha ke
+00:02:49,070 --> 00:02:50,420
+[lipsmack] [UH] situation
 
 92
-00:04:21,240 --> 00:04:26,500
-nahi ho pani ko mm nahi bolte theek hai pryortaiz kare zindagi ko prodktyo
+00:02:51,000 --> 00:02:53,320
+[UH] kyun ke bhai wohi wali baat hai.
 
 93
-00:04:26,500 --> 00:04:29,880
-hona hai to aap time management agar seekhnay hai to bhai dekho aap ka
+00:02:53,400 --> 00:02:55,390
+Self respect aage woh hai to sab kuch hai
 
 94
-00:04:29,880 --> 00:04:32,860
-ek long term goal hona chahiye zindagi mein ke aap aap ko pans saal
+00:02:55,470 --> 00:02:56,850
+agar respect hi nahi hai to bhai
 
 95
-00:04:32,860 --> 00:04:35,640
-baad kahan dekh rahe hoon das saal baad pandrh saal baad kahan dekh rahe
+00:02:56,930 --> 00:02:58,520
+respect ke ilawa phir kuch bhi nahi hota.
 
 96
-00:04:35,640 --> 00:04:38,660
-hoon ek hote aap ko short term goal kya hai is haftay mein ne
+00:02:58,600 --> 00:03:00,550
+rmon ka ka nahi manna larki ka theek hai
 
 97
-00:04:38,760 --> 00:04:42,400
-ek kitaab khatam karni hai yani is haftay mein ne jo hai itne chiptrz
+00:03:00,630 --> 00:03:02,250
+na yeh aksar kalijon mein mein dukhton
 
 98
-00:04:42,400 --> 00:04:45,580
-parhne hain yani itne mein ne jo hai itne seasons dekh lena hai chalo
+00:03:02,330 --> 00:03:04,130
+hum bhi kalij yonyorsi life guzari hai
 
 99
-00:04:45,580 --> 00:04:47,540
-kuch bhi hai theek hai na lekin target ko bunun
+00:03:04,210 --> 00:03:06,230
+yeh rmon ka ka hote the har group
 
 100
-00:04:48,460 --> 00:04:50,220
-phir is hisaab se allocate karo
+00:03:06,310 --> 00:03:08,090
+mein ek jo samose le kar aa rahe hain
 
 101
-00:04:51,040 --> 00:04:52,960
-[lipsmack] sab divide karo [lipsmack] [UM] dinon ko
+00:03:08,170 --> 00:03:09,610
+pepsi le kar aa rahe hain tara golt
 
 102
-00:04:53,940 --> 00:04:54,820
-[lipsmack] sab se pehle to bhai
+00:03:09,690 --> 00:03:11,410
+khail rahe hain jab se nikaal ke yeh nahi
 
 103
-00:04:55,500 --> 00:04:58,940
-uthnay ki rotin ek ho nahi chahiye aap ki [lipsmack] sau kabhi bhi subah
+00:03:11,490 --> 00:03:13,870
+banna respect demand respect
 
 104
-00:04:58,940 --> 00:05:02,810
-chaar baje sau chhe baje sau uthnay ka ek time hona chahiye kyun ke
+00:03:13,950 --> 00:03:15,790
+[lipsmack] theek hai na magar is respect
 
 105
-00:05:02,810 --> 00:05:05,860
-jab aap ek time pe uthte na phir aap ki har cheez allignment mein
+00:03:15,870 --> 00:03:17,270
+demand karne mein bhi jo na aap ne
 
 106
-00:05:05,860 --> 00:05:08,460
-aati rahi thi aur jab pata hi nahi hai aaj das baje uth gaye
+00:03:17,350 --> 00:03:18,650
+toxic nahi hona theek hai na kabeer
 
 107
-00:05:08,460 --> 00:05:12,400
-kal saarhe ik baara baje phir derh baje phir saarhe nau ho gaye to
+00:03:18,730 --> 00:03:20,410
+sun nahi banna thora limit mein
 
 108
-00:05:12,400 --> 00:05:16,500
-phir yeh jab [UH] uniformity uthnay mein nahi hai na [lipsmack] phir kisi cheez
+00:03:20,490 --> 00:03:22,260
+reh ke izzat se izzat do izzat lo
 
 109
-00:05:16,500 --> 00:05:19,420
-mein bhi nahi gi uthnay ka time ek kar lo bas yeh ek guarantee
+00:03:22,340 --> 00:03:24,610
+to agar aap ko izzat nahi mil rahi
 
 110
-00:05:19,520 --> 00:05:22,570
-hai. alam laga lo aur isi pe uthna hai saton din ka wohi laga
+00:03:24,690 --> 00:03:26,230
+to bhai aage niklo bas pakar ke gyarah
 
 111
-00:05:22,570 --> 00:05:23,300
-lo tee ke na [lipsmack]
+00:03:26,310 --> 00:03:27,390
+number ki bas pakar ke kahin aur nikal
 
 112
-00:05:24,000 --> 00:05:27,000
-sunday ka chalo aadha ponh ghanta aajay kar lo koi masla nahi anjoys kare
+00:03:27,470 --> 00:03:29,910
+jo aur zaroori nahi ke aap ne replace hi
 
 113
-00:05:27,720 --> 00:05:31,540
-magar uthnay ka time ek rakho aur [UH] cheezein khud hi alayn hoti jein
+00:03:29,990 --> 00:03:31,050
+karna hai matla yeh maqsad nahi hai
 
 114
-00:05:31,540 --> 00:05:34,420
-ge aur apne short trm golz rakho na ke bhai mujhe lanch se pehle
+00:03:31,130 --> 00:03:32,970
+zindagi ka maqsad hai parhai parhai
 
 115
-00:05:34,420 --> 00:05:36,860
-tak yehi cheezein achif kar lein hain ab mujhe aap ne likh ke bataye
+00:03:33,050 --> 00:03:34,660
+kar lo zindagi mein focus kar lo
 
 116
-00:05:36,860 --> 00:05:38,400
-nahi aap ki rotin ke aap parhte hain
+00:03:34,740 --> 00:03:36,950
+kriyr vrir bnalo yeh sab chalta rahe
 
 117
-00:05:39,060 --> 00:05:41,040
-[UH] definitely naukri to nahi karte kyun ke aap
+00:03:37,030 --> 00:03:38,030
+geh [lipsmack] theek hai ji
 
 118
-00:05:41,800 --> 00:05:44,400
-jis tarah time guzar rahe aap ko pata nahi chal raha, prodktyo bhi nahi
+00:03:38,330 --> 00:03:39,750
+aate hain ji doosri sawaal pe Please
 
 119
-00:05:44,400 --> 00:05:46,340
-hai to definitely you're not working
+00:03:41,080 --> 00:03:43,180
+give us time management skills.
 
 120
-00:05:47,120 --> 00:05:47,540
-[UM]
+00:03:43,260 --> 00:03:44,980
+I need to be more productive.
 
 121
-00:05:48,220 --> 00:05:50,900
-aap ki hobbies kya hain bhai hobbies honi chahein zindagi mein.
+00:03:45,060 --> 00:03:46,900
+poora din guzar jata hai pata hi nahi
 
 122
-00:05:51,120 --> 00:05:55,520
-yeh nayis pakdire jo hai na yeh zara site pe thora focus karein, achh
+00:03:46,980 --> 00:03:48,640
+chalta [lipsmack] achha hai te khakay
 
 123
-00:05:55,620 --> 00:05:57,440
-cheezein parheen, achh cheezein dekhein.
+00:03:48,720 --> 00:03:50,730
+te ko pata hi nahi din kahan guzar rahe
 
 124
-00:05:57,440 --> 00:06:02,060
-you tube behtareen university hai is duniya ki woh is university se faida utheen,
+00:03:50,810 --> 00:03:52,750
+bhai saare din vidsip pe guzar rahe
 
 125
-00:06:02,060 --> 00:06:04,680
-achh cheezein dekhein khud hi prodktyo ho jein ge aap.
+00:03:52,830 --> 00:03:54,790
+fees buk pe guzar rahe khatte wala filtr
 
 126
-00:06:05,240 --> 00:06:09,610
-theek hai na [lipsmack] to goal rakhein short term aur aap ne bhurhin target
+00:03:54,870 --> 00:03:57,690
+banane mein guzar rahe yeh sheesha pi rahe
 
 127
-00:06:09,610 --> 00:06:13,720
-banana mein ne itna achieve karna hai screen time bhi rakhein enjoys bhi karein
+00:03:57,770 --> 00:03:59,370
+mera snapchit bhara hota hai bhai
 
 128
-00:06:14,000 --> 00:06:17,680
-mastiyan bhi karein koi masla nahi dekhein season season dekhein sab kuch karein mein
+00:03:59,450 --> 00:04:00,930
+yeh aap ki age group se aap ki age
 
 129
-00:06:17,680 --> 00:06:19,630
-hi nahi keh raha hai ke sab band karo kitaabey kholo mein yeh bhi
+00:04:01,010 --> 00:04:02,630
+likhi hai mein mein sher nahi kar raha
 
 130
-00:06:19,630 --> 00:06:22,960
-nahi keh rahan magar har cheez ke ek time rakho exercise karo walk karo
+00:04:03,060 --> 00:04:04,750
+mera fi- [UH] snapchit bhara hota hai
 
 131
-00:06:22,960 --> 00:06:27,230
-brisk walking karo brisk walking aisa dimagh tumhara khole ga aur aisa thak ke
+00:04:04,830 --> 00:04:07,520
+yeh wala haath yeh strirng pe nusft fatah
 
 132
-00:06:27,230 --> 00:06:29,730
-guru ge na raat ko bistar par pata hi nahi chale ga fornia urr
+00:04:07,600 --> 00:04:10,390
+ali Khan laga hota hai aur chars ke dhon
 
 133
-00:06:29,730 --> 00:06:30,120
-jay sabhar
+00:04:10,470 --> 00:04:13,260
+hain aa rahe hare hare sab yehi kar rahe
 
 134
-00:06:30,800 --> 00:06:33,540
-[UH] you tube pe dekhna brisk walking karte ge bari funny si walking hai
+00:04:13,840 --> 00:04:15,240
+anyway, I'm not generalizing.
 
 135
-00:06:34,240 --> 00:06:35,260
-[lipsmack] magar hai bari faidiman [lipsmack]
+00:04:15,640 --> 00:04:17,080
+magar bhai poora din guzar jata hai
 
 136
-00:06:36,320 --> 00:06:37,600
-[UH] chhaa ji teesra sawaal hai
+00:04:17,160 --> 00:04:18,680
+aisa kya kar rahe ke guzar rahe aap ko
 
 137
-00:06:38,680 --> 00:06:39,040
-[UM]
+00:04:18,760 --> 00:04:20,520
+pata nahi chal raha aap ko achhi tarah
 
 138
-00:06:39,900 --> 00:06:42,440
-as I know you left your old job meri baare mein keh rahe to
+00:04:20,600 --> 00:04:22,160
+pattah hai kha ke nahi ho pani ko mm
 
 139
-00:06:42,440 --> 00:06:45,980
-follow your passion but I would like you to tell us how and what
+00:04:22,240 --> 00:04:24,960
+nahi bolte theek hai pryortaiz kare
 
 140
-00:06:46,280 --> 00:06:48,600
-is required to take a decision like that
+00:04:25,040 --> 00:04:27,600
+zindagi ko prodktyo hona hai to aap time
 
 141
-00:06:49,700 --> 00:06:49,900
-[lipsmack]
+00:04:27,680 --> 00:04:29,140
+management agar seekhnay hai to bhai dekho
 
 142
-00:06:50,740 --> 00:06:53,840
-So [lipsmack] aap mein se jo log [UH] mujhe follow kar rahe I used
+00:04:29,220 --> 00:04:31,140
+aap ka ek long term goal hona chahiye
 
 143
-00:06:53,840 --> 00:06:58,440
-to work before, obviously meri jobs thi [UH] kabhi kya, kabhi kya kabhi kya
+00:04:31,220 --> 00:04:32,780
+zindagi mein ke aap aap ko pans saal
 
 144
-00:06:58,440 --> 00:07:02,200
-last job jo meri thi I was in supply chain [UH] for [UM]
+00:04:32,860 --> 00:04:34,260
+baad kahan dekh rahe hoon das saal baad
 
 145
-00:07:02,860 --> 00:07:04,700
-for an engineering firm in in Sharjah.
+00:04:34,600 --> 00:04:36,130
+pandrh saal baad kahan dekh rahe hoon
 
 146
-00:07:05,400 --> 00:07:09,320
-[breath] theek hai, Sharjah ke sheikh woh company own karte the aur sharjah ke
+00:04:36,210 --> 00:04:37,660
+ek hote aap ko short term goal kya hai
 
 147
-00:07:09,320 --> 00:07:10,480
-jo sheikh hain [UH] woh
+00:04:37,740 --> 00:04:39,360
+is haftay mein ne ek kitaab khatam
 
 148
-00:07:11,260 --> 00:07:16,360
-pakistanio se bohat mohabbat karte aur in ki baees mein se anees companian nuqsaan
+00:04:39,440 --> 00:04:41,090
+karni hai yani is haftay mein ne
 
 149
-00:07:16,360 --> 00:07:19,540
-mein chal rahe hain magar woh logon ko naukri se nahi nikaltay, in ka
+00:04:41,170 --> 00:04:43,220
+jo hai itne chiptrz parhne hain yani
 
 150
-00:07:19,540 --> 00:07:23,360
-yeh maanna hai ke yaar logon ke roti rozi roti chal rahi hai qulli
+00:04:43,300 --> 00:04:44,880
+itne mein ne jo hai itne seasons
 
 151
-00:07:23,360 --> 00:07:26,320
-wali yaar nuqsaan hai koi masla nahi mein sheikh hoon sharjah mein mein kahin
+00:04:44,960 --> 00:04:46,160
+dekh lena hai chalo kuch bhi hai
 
 152
-00:07:26,320 --> 00:07:30,300
-aur se kamalon ga lekin logon ka choola nahi ban munh chahiye haan agar
+00:04:46,240 --> 00:04:47,840
+theek hai na lekin target ko bunun
 
 153
-00:07:30,300 --> 00:07:33,240
-koi chori chkari karte hue pakre ge to forn nikaal de de diye aah
+00:04:48,460 --> 00:04:51,000
+phir is hisaab se allocate karo [lipsmack]
 
 154
-00:07:33,380 --> 00:07:36,270
-aydr waiz accounts mein nahi chal rahe ae chaar mein daal diya ae chaar
+00:04:51,080 --> 00:04:53,260
+sab divide karo [lipsmack] [UM] dinon ko
 
 155
-00:07:36,270 --> 00:07:38,660
-mein nahi chal rahe supply chain mein daal diya is mein nahi chal rahe
+00:04:53,940 --> 00:04:55,120
+[lipsmack] sab se pehle to bhai
 
 156
-00:07:38,660 --> 00:07:41,400
-sales mein daal diya rootti ho de de log tees tees saal se rootti
+00:04:55,500 --> 00:04:56,960
+uthnay ki rotin ek ho nahi chahiye
 
 157
-00:07:41,400 --> 00:07:41,720
-ho rahe the
+00:04:57,040 --> 00:04:58,500
+aap ki [lipsmack] sau kabhi bhi
 
 158
-00:07:42,460 --> 00:07:43,520
-[lipsmack] It was a very secured job
+00:04:58,820 --> 00:05:00,680
+subah chaar baje sau chhe baje sau
 
 159
-00:07:44,600 --> 00:07:48,100
-and I could see myself getting retired from there kyun ke I was performing really
+00:05:00,760 --> 00:05:02,200
+uthnay ka ek time hona chahiye
 
 160
-00:07:48,100 --> 00:07:48,460
-well
+00:05:02,280 --> 00:05:04,130
+kyun ke jab aap ek time pe uthte na
 
 161
-00:07:49,380 --> 00:07:49,620
-[lipsmack] to [lipsmack]
+00:05:04,210 --> 00:05:05,780
+phir aap ki har cheez allignment mein
 
 162
-00:07:50,780 --> 00:07:53,770
-mein woh kar raha tha [lipsmack] balke woh mera passion nahi tha [lipsmack] woh
+00:05:05,860 --> 00:05:07,350
+aati rahi thi aur jab pata hi nahi hai aaj
 
 163
-00:07:53,770 --> 00:07:56,640
-bas yeh tha ke yaar gaya subah roz utho kisi aur ki marzi se
+00:05:07,430 --> 00:05:09,430
+das baje uth gaye kal saarhe ik baara baje
 
 164
-00:07:56,640 --> 00:07:56,720
-[lipsmack]
+00:05:09,510 --> 00:05:11,670
+phir derh baje phir saarhe nau ho gaye
 
 165
-00:07:57,680 --> 00:07:59,320
-traffic mein bhus kaam karo is
+00:05:11,750 --> 00:05:14,990
+to phir yeh jab [UH] uniformity uthnay
 
 166
-00:08:00,020 --> 00:08:02,940
-ki baatein suno is ki baatein suno it was never my passion
+00:05:15,070 --> 00:05:16,210
+mein nahi hai na [lipsmack] phir kisi
 
 167
-00:08:03,780 --> 00:08:07,380
-[lipsmack] On the side mein comedy do hazaar das se kar hi raha tha, stind
+00:05:16,290 --> 00:05:17,530
+cheez mein bhi nahi gi uthnay ka time
 
 168
-00:08:07,380 --> 00:08:09,900
-aap mein do hazaar das se kar raha tha, videos mein do hazaar baara se bana
+00:05:17,610 --> 00:05:19,990
+ek kar lo bas yeh ek guarantee hai.
 
 169
-00:08:09,900 --> 00:08:10,160
-raha tha
+00:05:20,290 --> 00:05:21,840
+alam laga lo aur isi pe uthna hai saton
 
 170
-00:08:10,920 --> 00:08:14,060
-[lipsmack] [UM] matlab like, vlog [lipsmack] teekay na dohar saath se mera channel hai
+00:05:21,920 --> 00:05:23,600
+din ka wohi laga lo tee ke na [lipsmack]
 
 171
-00:08:14,060 --> 00:08:15,760
-mein is waqt bhi banata tha lekin woh [UH]
+00:05:24,000 --> 00:05:25,230
+sunday ka chalo aadha ponh ghanta
 
 172
-00:08:16,540 --> 00:08:18,600
-[UH] woh mein kya karta taswerain joor joor ke
+00:05:25,310 --> 00:05:27,300
+aajay kar lo koi masla nahi anjoys kare
 
 173
-00:08:19,400 --> 00:08:20,420
-[UM] yeh kya hai
+00:05:27,720 --> 00:05:30,210
+magar uthnay ka time ek rakho aur [UH]
 
 174
-00:08:21,180 --> 00:08:24,460
-[UM] movie maker windows ka is se taswerain joor joor ke peechhe funny gana
+00:05:30,290 --> 00:05:31,670
+cheezein khud hi alayn hoti jein ge
 
 175
-00:08:24,460 --> 00:08:26,140
-lagaya hai videos bana di woh karta tha mein
+00:05:31,750 --> 00:05:33,470
+aur apne short trm golz rakho na ke bhai
 
 176
-00:08:26,840 --> 00:08:27,240
-[yawn] khair [lipsmack]
+00:05:33,550 --> 00:05:34,930
+mujhe lanch se pehle tak yehi cheezein
 
 177
-00:08:28,020 --> 00:08:30,940
-to yeh mein side side mein kar raha tha magar yeh sirf mera aisi
+00:05:35,010 --> 00:05:36,110
+achif kar lein hain ab mujhe aap ne
 
 178
-00:08:30,940 --> 00:08:34,340
-passion tha mizag msky mein karta tha jab woh mein karta reh karta reh
+00:05:36,190 --> 00:05:37,710
+likh ke bataye nahi aap ki rotin ke aap
 
 179
-00:08:34,340 --> 00:08:38,300
-karta reh woh bilald hoti raha mera page jo hai na followers barhte ke
+00:05:37,790 --> 00:05:39,380
+parhte hain [UH] definitely
 
 180
-00:08:38,980 --> 00:08:41,680
-magar mein ne kabhi yeh socha meri to pehli video hi itni viral hui
+00:05:39,460 --> 00:05:41,330
+naukri to nahi karte kyun ke aap
 
 181
-00:08:41,680 --> 00:08:44,200
-thi [UH] dozaar baara mein [UH]
+00:05:41,800 --> 00:05:43,110
+jis tarah time guzar rahe aap ko pata
 
 182
-00:08:45,260 --> 00:08:48,240
-ke magar ho saka hamein andaza nahi tha ke yeh profession ban sakta hai
+00:05:43,190 --> 00:05:44,450
+nahi chal raha, prodktyo bhi nahi hai
 
 183
-00:08:48,240 --> 00:08:50,380
-because we didn't have any example to look up to.
+00:05:44,530 --> 00:05:46,640
+to definitely you're not working
 
 184
-00:08:50,600 --> 00:08:53,640
-theek hai na I was among the first few jis ne yeh shuru kya
+00:05:47,130 --> 00:05:49,330
+[UM] aap ki hobbies kya hain bhai
 
 185
-00:08:53,640 --> 00:08:56,900
-tha [sneeze] haan aaj agar aap log is taraf aon to aap ke saamne
+00:05:49,410 --> 00:05:51,050
+hobbies honi chahein zindagi mein.
 
 186
-00:08:56,900 --> 00:09:00,820
-bohat saari misalein hain mein mojood hoon bekar filmz mojood hain Karachi winez hai
+00:05:51,130 --> 00:05:53,330
+yeh nayis pakdire jo hai na yeh zara
 
 187
-00:09:00,820 --> 00:09:03,060
-mooroo hai you know is tarah ke bohat saare ke haan ayhr unhon ne
+00:05:53,410 --> 00:05:55,540
+site pe thora focus karein, achh
 
 188
-00:09:03,060 --> 00:09:07,280
-bhi profession is ko apna banali hai but for me that was not an
+00:05:55,620 --> 00:05:57,380
+cheezein parheen, achh cheezein dekhein.
 
 189
-00:09:07,280 --> 00:09:07,360
-option
+00:05:57,460 --> 00:05:59,200
+you tube behtareen university hai
 
 190
-00:09:08,180 --> 00:09:10,440
-so hamein pata hi nahi the is se paise bantay kaise [lipsmack] theek hai
+00:05:59,280 --> 00:06:01,280
+is duniya ki woh is university se
 
 191
-00:09:10,440 --> 00:09:11,800
-na [UM] hum ne bola khali wali
+00:06:01,360 --> 00:06:03,440
+faida utheen, achh cheezein dekhein
 
 192
-00:09:12,700 --> 00:09:14,660
-mizaak mizaak mein chaltay hain lekin phir zahir hai phir woh
+00:06:03,520 --> 00:06:04,940
+khud hi prodktyo ho jein ge aap.
 
 193
-00:09:15,440 --> 00:09:19,540
-[UH] AdSense aaya aur phir [UH] YouTube kar rahe We knew phir brand endorsement
+00:06:05,240 --> 00:06:07,080
+theek hai na [lipsmack] to goal rakhein
 
 194
-00:09:19,540 --> 00:09:22,220
-jab hum ne duniya mein dekhi ke yaar fulana laila singh bhi kar rahi
+00:06:07,160 --> 00:06:09,600
+short term aur aap ne bhurhin target
 
 195
-00:09:22,340 --> 00:09:24,460
-hai brand endorsement kar rahi hai KC bhi kar raha hai you know is
+00:06:09,680 --> 00:06:11,240
+banana mein ne itna achieve karna hai
 
 196
-00:09:24,460 --> 00:09:24,720
-tarah ke
+00:06:11,320 --> 00:06:13,920
+screen time bhi rakhein enjoys bhi karein
 
 197
-00:09:25,500 --> 00:09:27,800
-[lipsmack] achha is mein paise hi band hain [lipsmack] okay khair woh mein apna
+00:06:14,000 --> 00:06:15,680
+mastiyan bhi karein koi masla nahi dekhein
 
 198
-00:09:28,300 --> 00:09:30,020
-karta raha job chal rahi thi side mein mein
+00:06:15,760 --> 00:06:17,580
+season season dekhein sab kuch karein
 
 199
-00:09:30,720 --> 00:09:33,760
-karta raha apna passion falo passion ko bhi mein itna hi time deta the
+00:06:17,660 --> 00:06:18,680
+mein hi nahi keh raha hai ke sab band karo
 
 200
-00:09:33,760 --> 00:09:35,020
-jitna mein naukri ko deta tha
+00:06:18,760 --> 00:06:20,420
+kitaabey kholo mein yeh bhi nahi keh rahan
 
 201
-00:09:35,700 --> 00:09:39,430
-[lipsmack] gar- office khatam hua gardi nikaali foran bhaga ti kam sharjah se ti
+00:06:20,500 --> 00:06:21,700
+magar har cheez ke ek time rakho exercise
 
 202
-00:09:39,430 --> 00:09:42,030
-kam pathay kitna door aur shaam mein kitna traffic hota hai wahan mera stand
+00:06:21,780 --> 00:06:24,320
+karo walk karo brisk walking karo brisk
 
 203
-00:09:42,030 --> 00:09:42,800
-up hota tha every Wednesday.
+00:06:24,400 --> 00:06:26,100
+walking aisa dimagh tumhara khole ga
 
 204
-00:09:43,720 --> 00:09:45,660
-Wednesdays ko hota tha aur Saturdays ko hota tha
+00:06:26,180 --> 00:06:27,950
+aur aisa thak ke guru ge na raat ko
 
 205
-00:09:46,440 --> 00:09:49,720
-[lipsmack] kabhi marina mein kabhi kahan wahan se seedha wahan office ke kapron mein
+00:06:28,030 --> 00:06:29,170
+bistar par pata hi nahi chale ga
 
 206
-00:09:49,720 --> 00:09:53,220
-bhaga phir wahan par form kya phir raat ko wapas aaya aate aate aate
+00:06:29,250 --> 00:06:31,280
+fornia urr jay sabhar [UH] you tube pe
 
 207
-00:09:53,320 --> 00:09:56,120
-baara baj gaya phir subah chhe baje phir uth ke seedha office to is
+00:06:31,360 --> 00:06:32,620
+dekhna brisk walking karte ge bari
 
 208
-00:09:56,120 --> 00:09:58,040
-tarah dena parta hai theek hai na is ko itna hi time
+00:06:32,700 --> 00:06:34,230
+funny si walking hai [lipsmack]
 
 209
-00:09:59,040 --> 00:10:02,060
-jab woh cheez barhti rahi barhti rahi barhti rahi aur woh itni barh gayi
+00:06:34,310 --> 00:06:35,560
+magar hai bari faidiman [lipsmack]
 
 210
-00:10:02,060 --> 00:10:05,660
-ke jab mujhe laga ke haan now I can make a living out of
+00:06:36,320 --> 00:06:37,900
+[UH] chhaa ji teesra sawaal hai
 
 211
-00:10:05,660 --> 00:10:08,460
-this to mein ne woh naukri itni sikyord naukri jis
+00:06:38,680 --> 00:06:41,440
+[UM] as I know you left your old job
 
 212
-00:10:09,280 --> 00:10:12,790
-mein mujhe pata tha mein mein hoon ke hi nikloon ga mein ne woh
+00:06:41,520 --> 00:06:42,700
+meri baare mein keh rahe to follow
 
 213
-00:10:12,790 --> 00:10:17,400
-chhor di mujhe har bande ne mana kya har dost ne diskarij kya ke
+00:06:42,780 --> 00:06:44,780
+your passion but I would like you to tell
 
 214
-00:10:17,400 --> 00:10:21,240
-nahi karo Allah kya lagi hui rozi ko laat maar rahe ho yeh hai
+00:06:44,860 --> 00:06:47,620
+us how and what is required to take
 
 215
-00:10:21,240 --> 00:10:23,580
-woh hai is tarah ki baatein jo karte na log to mein
+00:06:47,700 --> 00:06:50,200
+a decision like that [lipsmack]
 
 216
-00:10:24,380 --> 00:10:28,160
-ne bola yaar khali bhali life mein na chance lene ka [breath] ritk roshan
+00:06:50,740 --> 00:06:51,710
+So [lipsmack] aap mein se jo log
 
 217
-00:10:28,160 --> 00:10:29,500
-kehta hai na maontn dew ke ad mein
+00:06:51,790 --> 00:06:53,760
+[UH] mujhe follow kar rahe I used
 
 218
-00:10:30,520 --> 00:10:31,480
-[breath] dar ke aage jeetay [breath]
+00:06:53,840 --> 00:06:56,690
+to work before, obviously meri jobs thi
 
 219
-00:10:32,180 --> 00:10:34,820
-hum mein se ninti percent log woh dar mein hi rehte ke nahi yaar
+00:06:56,770 --> 00:06:58,500
+[UH] kabhi kya, kabhi kya kabhi kya last
 
 220
-00:10:34,820 --> 00:10:37,980
-pata nahi kya ho jaye ga hum chansz nahi lete life mein [breath] to
+00:06:58,580 --> 00:07:01,270
+job jo meri thi I was in supply chain
 
 221
-00:10:37,980 --> 00:10:40,280
-yeh jo aap keh rahe hain ke is tarah ka decision kaise liya woh
+00:07:01,350 --> 00:07:03,790
+[UH] for [UM] for an engineering firm
 
 222
-00:10:40,740 --> 00:10:42,200
-decision aise liya ke
+00:07:03,870 --> 00:07:05,710
+in in Sharjah. [breath] theek hai,
 
 223
-00:10:42,900 --> 00:10:45,490
-jab mujh mein mein bilkul confident ho ke ke haan yaar ab mein itna
+00:07:05,790 --> 00:07:07,390
+Sharjah ke sheikh woh company own
 
 224
-00:10:45,490 --> 00:10:48,320
-mashhoor ho gaya hoon [sneeze] achha mujhe yaqeen bhi nahi hota tha mein mashhoor
+00:07:07,470 --> 00:07:10,190
+karte the aur sharjah ke jo sheikh hain
 
 225
-00:10:48,320 --> 00:10:50,860
-hoon mein samjhta tha wahan aisi log dekh lete hain video khali bhali [breath]
+00:07:10,270 --> 00:07:12,520
+[UH] woh pakistanio se bohat mohabbat
 
 226
-00:10:51,540 --> 00:10:54,920
-mujhe ek baar ek yak university ne yahan bulaya [sneeze] ek [UH] talk thi
+00:07:12,600 --> 00:07:15,510
+karte aur in ki baees mein se anees
 
 227
-00:10:55,800 --> 00:10:59,260
-[breath] They flew me in from Dubai [lipsmack] mein aa gaya aaraam se wahan
+00:07:15,590 --> 00:07:16,900
+companian nuqsaan mein chal rahe hain
 
 228
-00:10:59,260 --> 00:11:02,360
-mein [crying] dafittar mein gaaliyan khara hota tha [lipsmack] theek hai na kabhi driveron
+00:07:16,980 --> 00:07:18,520
+magar woh logon ko naukri se nahi
 
 229
-00:11:02,360 --> 00:11:05,140
-se sunna kabhi kya [lipsmack] supply chain ka kaam jis ne kya aap ko
+00:07:18,600 --> 00:07:21,080
+nikaltay, in ka yeh maanna hai ke yaar
 
 230
-00:11:05,140 --> 00:11:06,200
-pata ho ga bara pressure hota hai
+00:07:21,160 --> 00:07:23,140
+logon ke roti rozi roti chal rahi hai
 
 231
-00:11:06,860 --> 00:11:10,320
-yahan mein aaya hai event pe woh bhai gaari se itran red carpet charon
+00:07:23,220 --> 00:07:24,750
+qulli wali yaar nuqsaan hai koi masla nahi
 
 232
-00:11:10,320 --> 00:11:13,680
-taraf navy ke guards aur [sneeze] mein lh yeh kya hai log hain taswerain
+00:07:24,830 --> 00:07:26,260
+mein sheikh hoon sharjah mein mein kahin
 
 233
-00:11:13,680 --> 00:11:16,320
-khech rahe chak chak chak chak mein lh yeh kya mein keh gon shark
+00:07:26,340 --> 00:07:28,560
+aur se kamalon ga lekin logon ka choola
 
 234
-00:11:16,320 --> 00:11:20,320
-chal rahoon idhar mein wahan bangali driveron se mein lar rahoon roz jo hai
+00:07:28,640 --> 00:07:30,580
+nahi ban munh chahiye haan agar koi chori
 
 235
-00:11:20,320 --> 00:11:24,720
-na pathan driveron se apne apne jo colleague the [throatclearing] zahir hai
+00:07:30,660 --> 00:07:32,800
+chkari karte hue pakre ge to forn nikaal
 
 236
-00:11:25,620 --> 00:11:28,260
-pyaar mohabbat hum shaam ko karte the lekin subah kaam ke pressure mein larai
+00:07:32,880 --> 00:07:34,600
+de de diye aah aydr waiz accounts mein
 
 237
-00:11:28,260 --> 00:11:29,060
-shikra bohat hota tha
+00:07:34,680 --> 00:07:36,060
+nahi chal rahe ae chaar mein daal diya ae
 
 238
-00:11:29,740 --> 00:11:32,220
-[lipsmack] [lipsmack] dilaviyrz nahi pohanch rahi yeh nahi ho raha mein ne bole [sneeze]
+00:07:36,140 --> 00:07:37,460
+chaar mein nahi chal rahe supply chain
 
 239
-00:11:32,220 --> 00:11:35,860
-mein hain wahan ek maghaz maari kar rahoon mein to phal sprsttar hoon idhar
+00:07:37,540 --> 00:07:38,580
+mein daal diya is mein nahi chal rahe
 
 240
-00:11:36,040 --> 00:11:39,980
-phir mein wapas gaya within three months I was back [lipsmack] to wahan decision
+00:07:38,660 --> 00:07:40,350
+sales mein daal diya rootti ho de de log
 
 241
-00:11:40,180 --> 00:11:43,060
-wasn't an easy decision [lipsmack] achha mein ne socha mein wapas aon ga paise
+00:07:40,430 --> 00:07:42,020
+tees tees saal se rootti ho rahe the
 
 242
-00:11:43,060 --> 00:11:46,040
-aayein ge shuru ke teen mahinay kaam hi nahi mila le bhai phar gayi
+00:07:42,460 --> 00:07:43,820
+[lipsmack] It was a very secured job
 
 243
-00:11:46,220 --> 00:11:49,280
-[UH] bhai dobayi ki naukri bhi chhor di syongz bhi khatam ho rahi hain
+00:07:44,600 --> 00:07:46,500
+and I could see myself getting retired
 
 244
-00:11:49,280 --> 00:11:49,600
-[UH] bhai
+00:07:46,580 --> 00:07:47,970
+from there kyun ke I was performing
 
 245
-00:11:50,360 --> 00:11:53,480
-[crying] magar ae ke phir aana shuru ho gaya aur phir [UM] ba- baqi
+00:07:48,050 --> 00:07:49,910
+really well [lipsmack] to [lipsmack]
 
 246
-00:11:53,480 --> 00:11:54,060
-aap ke saamne
+00:07:50,780 --> 00:07:51,920
+mein woh kar raha tha [lipsmack]
 
 247
-00:11:54,820 --> 00:11:57,980
-[lipsmack] do hazaar satrah do hazaar solah nommer mein mein wapas aa gaya tha [lipsmack] theek
+00:07:52,000 --> 00:07:53,550
+balke woh mera passion nahi tha [lipsmack]
 
 248
-00:11:57,980 --> 00:11:58,820
-hai paanch saal rehne ke baad.
+00:07:53,630 --> 00:07:55,270
+woh bas yeh tha ke yaar gaya subah roz
 
 249
-00:11:59,860 --> 00:12:03,640
-So yeah, decision aasaan nahi hota lekin decision lena parta hai, risk lena parta
+00:07:55,350 --> 00:07:57,010
+utho kisi aur ki marzi se [lipsmack]
 
 250
-00:12:03,640 --> 00:12:06,900
-hai lekin woh tab le jab aap ko bilkul guarantee ho ke haan ae
+00:07:57,680 --> 00:07:59,130
+traffic mein bhus kaam karo
 
 251
-00:12:06,900 --> 00:12:09,040
-ar ab mein hi kar sakta hoon to mein jitne bhi log hain
+00:07:59,210 --> 00:08:01,330
+is ki baatein suno is ki baatein
 
 252
-00:12:09,780 --> 00:12:11,120
-[UH] jo zabardasti mein
+00:08:01,410 --> 00:08:03,240
+suno it was never my passion
 
 253
-00:12:12,060 --> 00:12:12,160
-[UH]
+00:08:03,780 --> 00:08:05,000
+[lipsmack] On the side mein comedy
 
 254
-00:12:12,860 --> 00:12:16,410
-ya majaboori mein nokarain kar rahe lekin passion kuch aur hai passion mosiq karna
+00:08:05,080 --> 00:08:06,955
+do hazaar das se kar hi raha tha,
 
 255
-00:12:16,410 --> 00:12:20,920
-hai passion art banana hai passion jo hai vlgn karna hai ya passion cooking
+00:08:07,035 --> 00:08:08,169
+stind aap mein do hazaar das se
 
 256
-00:12:20,920 --> 00:12:24,740
-hai [lipsmack] theek hai magar bnki naukri kar rahe [UH] f em si ji
+00:08:08,249 --> 00:08:09,358
+kar raha tha, videos mein do hazaar
 
 257
-00:12:24,740 --> 00:12:26,420
-mein kaam kar rahe to
+00:08:09,438 --> 00:08:10,970
+baara se bana raha tha [lipsmack] [UM]
 
 258
-00:12:27,320 --> 00:12:30,880
-is ko itna time dein wahan se jo kama rahe is business pe lagan
+00:08:11,050 --> 00:08:12,470
+matlab like, vlog [lipsmack] teekay na
 
 259
-00:12:30,880 --> 00:12:34,160
-yeh aap ki investment hai waqt hai aur paisa agar aap ko lagta hai
+00:08:12,550 --> 00:08:14,050
+dohar saath se mera channel hai mein
 
 260
-00:12:34,160 --> 00:12:37,460
-ke paisa agar aap cooking kar rahe finsi khane banane hain aytilin khane banane
+00:08:14,130 --> 00:08:16,050
+is waqt bhi banata tha lekin woh [UH]
 
 261
-00:12:37,460 --> 00:12:38,340
-hain to zahira woh ingredients
+00:08:16,550 --> 00:08:17,870
+[UH] woh mein kya karta taswerain
 
 262
-00:12:39,040 --> 00:12:43,160
-to kharidon hain woh aap ki investment hai woh lagayein apna channel bilald karein
+00:08:17,950 --> 00:08:20,680
+joor joor ke [UM] yeh kya hai
 
 263
-00:12:44,060 --> 00:12:47,220
-[UH] ya phir aap jo bhi kuch karna chaah rahe jab aap ko lage
+00:08:21,180 --> 00:08:22,670
+[UM] movie maker windows ka is se
 
 264
-00:12:47,220 --> 00:12:48,340
-ke haan now I'm confident,
+00:08:22,750 --> 00:08:23,990
+taswerain joor joor ke peechhe funny
 
 265
-00:12:49,000 --> 00:12:52,800
-soch maar de soch maar de khali wali dekho hi nahi peechhe aur bas
+00:08:24,070 --> 00:08:25,330
+gana lagaya hai videos bana di
 
 266
-00:12:52,920 --> 00:12:55,240
-Allah ne ankhen aage dein hai yaar aage dekhne ke liye duniya mein so
+00:08:25,410 --> 00:08:27,490
+woh karta tha mein [yawn] khair [lipsmack]
 
 267
-00:12:55,680 --> 00:12:59,010
-yeah it wasn't an easy decision har taraf se sab ne mana kya tha
+00:08:28,020 --> 00:08:29,990
+to yeh mein side side mein kar raha tha
 
 268
-00:12:59,010 --> 00:13:01,700
-lekin woh hi na dil ki baat sunne ki diya hai suni sab sunon
+00:08:30,070 --> 00:08:31,230
+magar yeh sirf mera aisi passion tha
 
 269
-00:13:01,700 --> 00:13:02,420
-sab ki karo apni
+00:08:31,310 --> 00:08:33,310
+mizag msky mein karta tha jab woh mein
 
 270
-00:13:03,360 --> 00:13:06,480
-theek hai [lipsmack] to mein ne decision yeh jo liya mein sirf apni sun
+00:08:33,390 --> 00:08:35,310
+karta reh karta reh karta reh woh bilald
 
 271
-00:13:06,480 --> 00:13:09,640
-raha tha [lipsmack] har taraf charah taraf se kaanon se nahi yeh nahi yeh
+00:08:35,390 --> 00:08:37,290
+hoti raha mera page jo hai na followers
 
 272
-00:13:09,640 --> 00:13:13,180
-nahi khali wali so yeah not an easy decision magar yeh ke life
+00:08:37,590 --> 00:08:39,760
+barhte ke magar mein ne kabhi yeh socha
 
 273
-00:13:14,260 --> 00:13:16,280
-ji nahi hai to yeh karna parta [lipsmack]
+00:08:39,840 --> 00:08:41,370
+meri to pehli video hi itni viral
 
 274
-00:13:17,780 --> 00:13:18,100
-achha ji
+00:08:41,450 --> 00:08:44,500
+hui thi [UH] dozaar baara mein [UH]
 
 275
-00:13:19,040 --> 00:13:20,000
-choth sawaal hai
+00:08:45,260 --> 00:08:46,610
+ke magar ho saka hamein andaza
 
 276
-00:13:20,840 --> 00:13:22,360
-I'm a foreigner studying in Pakistan
+00:08:46,690 --> 00:08:48,170
+nahi tha ke yeh profession ban sakta hai
 
 277
-00:13:23,140 --> 00:13:23,600
-from a girl
+00:08:48,250 --> 00:08:49,950
+because we didn't have any example to look
 
 278
-00:13:24,400 --> 00:13:27,200
-[UH] I'm studying here due to family issues Allah reham kare.
+00:08:50,030 --> 00:08:51,990
+up to. theek hai na I was among the first
 
 279
-00:13:27,440 --> 00:13:30,410
-It's been two years but I still can't fit in my college, nor make
+00:08:52,070 --> 00:08:54,190
+few jis ne yeh shuru kya tha [sneeze]
 
 280
-00:13:30,410 --> 00:13:33,500
-any friends. I used to be so confident and now I don't speak up
+00:08:54,270 --> 00:08:56,350
+haan aaj agar aap log is taraf aon
 
 281
-00:13:33,500 --> 00:13:33,940
-in class.
+00:08:56,430 --> 00:08:57,850
+to aap ke saamne bohat saari misalein hain
 
 282
-00:13:34,740 --> 00:13:36,300
-I let teachers degrade me.
+00:08:57,930 --> 00:08:59,910
+mein mojood hoon bekar filmz mojood hain
 
 283
-00:13:36,840 --> 00:13:37,880
-My grades are average.
+00:08:59,990 --> 00:09:01,410
+Karachi winez hai mooroo hai you know
 
 284
-00:13:37,880 --> 00:13:38,760
-I could do better.
+00:09:01,490 --> 00:09:02,770
+is tarah ke bohat saare ke haan ayhr
 
 285
-00:13:38,940 --> 00:13:42,100
-I just look at groups of girls and guys with their friends and that
+00:09:02,850 --> 00:09:05,230
+unhon ne bhi profession is ko apna banali
 
 286
-00:13:42,100 --> 00:13:43,420
-makes me feel like I'm a nobody.
+00:09:05,310 --> 00:09:07,660
+hai but for me that was not an option
 
 287
-00:13:44,040 --> 00:13:45,640
-I'm an introvert so [UH] [UM]
+00:09:08,180 --> 00:09:09,240
+so hamein pata hi nahi the is se paise
 
 288
-00:13:46,540 --> 00:13:50,040
-I guess what I'm asking you is how do I stay happy alone, not
+00:09:09,320 --> 00:09:10,530
+bantay kaise [lipsmack] theek hai na
 
 289
-00:13:50,040 --> 00:13:51,260
-caring what others think.
+00:09:10,610 --> 00:09:12,090
+[UM] hum ne bola khali wali
 
 290
-00:13:51,260 --> 00:13:54,220
-Your videos help me a lot even though I just found out about you,
+00:09:12,700 --> 00:09:14,010
+mizaak mizaak mein chaltay hain lekin phir
 
 291
-00:13:54,220 --> 00:13:55,820
-so just wanna say thank you for that.
+00:09:14,090 --> 00:09:16,430
+zahir hai phir woh [UH] AdSense aaya
 
 292
-00:13:56,100 --> 00:13:56,640
-My pleasure.
+00:09:16,510 --> 00:09:18,430
+aur phir [UH] YouTube kar rahe We knew
 
 293
-00:13:57,420 --> 00:13:58,420
-[lipsmack] [UM] So
+00:09:18,510 --> 00:09:19,950
+phir brand endorsement jab hum ne
 
 294
-00:13:59,640 --> 00:14:01,000
-your situation is [UM] family
+00:09:20,030 --> 00:09:21,570
+duniya mein dekhi ke yaar fulana laila
 
 295
-00:14:02,920 --> 00:14:04,980
-issues ki way se you have to move to Pakistan
+00:09:21,650 --> 00:09:23,080
+singh bhi kar rahi hai brand endorsement
 
 296
-00:14:05,920 --> 00:14:07,160
-[UH] which is a very sad thing.
+00:09:23,160 --> 00:09:24,310
+kar rahi hai KC bhi kar raha hai you know
 
 297
-00:14:07,340 --> 00:14:10,680
-[breath] Mekar yeh ke chale ab aagayi toh theek hai, college mein dost nahi
+00:09:24,390 --> 00:09:25,810
+is tarah ke [lipsmack] achha is mein
 
 298
-00:14:10,680 --> 00:14:13,140
-ban re aur ladkiyaan ignore kar ri hai.
+00:09:25,890 --> 00:09:27,170
+paise hi band hain [lipsmack] okay khair
 
 299
-00:14:13,700 --> 00:14:15,780
-For whatever reasons, kuch log hote hain
+00:09:27,250 --> 00:09:29,370
+woh mein apna karta raha job chal rahi thi
 
 300
-00:14:16,740 --> 00:14:18,620
-[UH] jo ke, jaisa ke aap ne mata hai, you're an introvert.
+00:09:29,450 --> 00:09:31,450
+side mein mein karta raha apna passion
 
 301
-00:14:18,820 --> 00:14:22,200
-Even I am, I [UH] lagta bada hu extrovert aur bol rao video.
+00:09:31,530 --> 00:09:33,370
+falo passion ko bhi mein itna hi time
 
 302
-00:14:22,200 --> 00:14:24,600
-Yeh main videos mein bolta hu camera band hota hai, meri bhi awaaz band
+00:09:33,450 --> 00:09:35,210
+deta the jitna mein naukri ko deta tha
 
 303
-00:14:24,720 --> 00:14:25,080
-ho jati hai.
+00:09:35,710 --> 00:09:37,250
+[lipsmack] gar- office khatam hua gardi
 
 304
-00:14:25,480 --> 00:14:27,180
-Yeh jitne log mujhse personally milayin,
+00:09:37,330 --> 00:09:39,190
+nikaali foran bhaga ti kam sharjah se
 
 305
-00:14:27,920 --> 00:14:29,300
-wo is baat ki guarantee denge.
+00:09:39,270 --> 00:09:40,670
+ti kam pathay kitna door aur shaam
 
 306
-00:14:29,620 --> 00:14:31,560
-Mujhse log milte kehte hai, yaar aap has nahi rahe hai, main la, kyun
+00:09:40,750 --> 00:09:41,690
+mein kitna traffic hota hai wahan
 
 307
-00:14:31,560 --> 00:14:32,460
-main paagal hu main jo hasunga.
+00:09:41,770 --> 00:09:43,100
+mera stand up hota tha every Wednesday.
 
 308
-00:14:32,660 --> 00:14:34,080
-Keh rahe hai, nahi aap hasaate hai, main la, yeh ka-
+00:09:43,720 --> 00:09:45,270
+Wednesdays ko hota tha aur Saturdays ko
 
 309
-00:14:34,740 --> 00:14:35,500
-chawal baat maar di.
+00:09:45,350 --> 00:09:46,930
+hota tha [lipsmack] kabhi marina
 
 310
-00:14:36,100 --> 00:14:39,000
-Merey keh in my personal life I'm a very reserved person.
+00:09:47,010 --> 00:09:48,690
+mein kabhi kahan wahan se seedha
 
 311
-00:14:39,760 --> 00:14:43,800
-Now I'm not belittling your problem, I'm just saying keh kuch log hotayin introvert
+00:09:48,770 --> 00:09:50,550
+wahan office ke kapron mein bhaga
 
 312
-00:14:44,460 --> 00:14:48,460
-and [UH] zahir hai, m- chunkay mujhse logon ki badi expectations hoti hain, mil-
+00:09:50,630 --> 00:09:52,080
+phir wahan par form kya phir raat ko
 
 313
-00:14:48,660 --> 00:14:51,480
-milenge toh bahi hasi mazaakon ka main toh chup kar ke apna baitha rahta
+00:09:52,160 --> 00:09:53,660
+wapas aaya aate aate aate baara baj gaya
 
 314
-00:14:51,480 --> 00:14:55,480
-ho. I just observe people, I just observe what the room is talking about,
+00:09:53,740 --> 00:09:55,290
+phir subah chhe baje phir uth ke seedha
 
 315
-00:14:56,440 --> 00:15:00,740
-toh usme log aksar mujhse disappoint ho jatein, kuch log yeh samajhte keh shayad
+00:09:55,370 --> 00:09:57,090
+office to is tarah dena parta hai
 
 316
-00:15:00,740 --> 00:15:00,820
-main
+00:09:57,170 --> 00:09:58,340
+theek hai na is ko itna hi time
 
 317
-00:15:01,840 --> 00:15:04,860
-[UH] wo mujhe pasand nahi hai, toh main chup baitha ho.
+00:09:59,040 --> 00:10:00,450
+jab woh cheez barhti rahi barhti rahi
 
 318
-00:15:04,860 --> 00:15:07,840
-Aisi baat nahi, main main har maifil mein kone mein hi nazar aunga aapko.
+00:10:00,530 --> 00:10:02,420
+barhti rahi aur woh itni barh gayi
 
 319
-00:15:09,080 --> 00:15:09,340
-Anyway,
+00:10:02,500 --> 00:10:04,420
+ke jab mujhe laga ke haan now I can
 
 320
-00:15:10,280 --> 00:15:13,680
-so ye introverts ka ye masalah hota hai, unko wo social acceptance, phir wo
+00:10:04,500 --> 00:10:06,300
+make a living out of this to mein ne
 
 321
-00:15:14,020 --> 00:15:15,000
-mushkil ho jati hai
+00:10:06,380 --> 00:10:08,760
+woh naukri itni sikyord naukri jis
 
 322
-00:15:15,860 --> 00:15:16,120
-[UM]
+00:10:09,280 --> 00:10:11,380
+mein mujhe pata tha mein mein hoon ke hi
 
 323
-00:15:17,560 --> 00:15:18,680
-I understand ke people
+00:10:11,460 --> 00:10:14,320
+nikloon ga mein ne woh chhor di mujhe
 
 324
-00:15:19,780 --> 00:15:20,800
-if people are not
+00:10:14,400 --> 00:10:16,420
+har bande ne mana kya har dost ne
 
 325
-00:15:21,560 --> 00:15:24,560
-[UH] wanting to be friends with you, that's perfectly fine, you don't have to
+00:10:16,500 --> 00:10:19,400
+diskarij kya ke nahi karo Allah kya
 
 326
-00:15:24,560 --> 00:15:25,660
-be friends with such people.
+00:10:19,480 --> 00:10:21,160
+lagi hui rozi ko laat maar rahe ho yeh hai
 
 327
-00:15:26,160 --> 00:15:28,340
-Teachers are degrading you, that's not on.
+00:10:21,240 --> 00:10:22,640
+woh hai is tarah ki baatein jo karte na
 
 328
-00:15:28,580 --> 00:15:29,140
-Ye aap ko
+00:10:22,720 --> 00:10:25,600
+log to mein ne bola yaar khali bhali
 
 329
-00:15:30,120 --> 00:15:33,720
-[UH] magar ye ke agar if you voice your [UH] concerns, toh yaan teacher
+00:10:25,680 --> 00:10:27,820
+life mein na chance lene ka [breath] ritk
 
 330
-00:15:33,860 --> 00:15:36,200
-oltah phir grade bhi garaa deta hai, ye bhi bada masalah hai yaan pe.
+00:10:27,900 --> 00:10:29,800
+roshan kehta hai na maontn dew ke ad mein
 
 331
-00:15:36,860 --> 00:15:40,080
-Try and talk to someone if there is some sort of [UH] [UM]
+00:10:30,570 --> 00:10:31,770
+[breath] dar ke aage jeetay [breath]
 
 332
-00:15:40,940 --> 00:15:44,360
-koi consultation ka koi silsila agar ho aap ke college university mein.
+00:10:32,180 --> 00:10:33,770
+hum mein se ninti percent log woh dar
 
 333
-00:15:44,920 --> 00:15:45,700
-Try and talk to them.
+00:10:33,850 --> 00:10:35,050
+mein hi rehte ke nahi yaar pata nahi
 
 334
-00:15:46,440 --> 00:15:48,420
-Otherwise don't let teachers degrade you.
+00:10:35,130 --> 00:10:37,030
+kya ho jaye ga hum chansz nahi lete life
 
 335
-00:15:48,540 --> 00:15:51,430
-Thodasa opinion voice, apna voice concern zarur karein.
+00:10:37,110 --> 00:10:38,670
+mein [breath] to yeh jo aap keh rahe
 
 336
-00:15:51,430 --> 00:15:53,480
-Main yeh bhi nahi keh raha hai keh bilkul chupp bait jayin, kyunk unki
+00:10:38,750 --> 00:10:40,190
+hain ke is tarah ka decision kaise liya
 
 337
-00:15:53,480 --> 00:15:54,460
-aur himmat badhegi.
+00:10:40,270 --> 00:10:43,290
+woh decision aise liya ke jab mujh mein
 
 338
-00:15:55,180 --> 00:15:58,490
-Magar itna bhi over zada zada overboard ho ki agar aap karein gi to
+00:10:43,370 --> 00:10:44,730
+mein bilkul confident ho ke ke haan
 
 339
-00:15:58,490 --> 00:16:00,220
-phir aisa na ho ke aap ke grades hi giratay hain.
+00:10:44,810 --> 00:10:46,610
+yaar ab mein itna mashhoor ho gaya hoon
 
 340
-00:16:00,700 --> 00:16:03,260
-Rahi baat doston ki [UH] if they if they don't wanna be friends with
+00:10:46,690 --> 00:10:47,490
+[sneeze] achha mujhe yaqeen bhi nahi
 
 341
-00:16:03,260 --> 00:16:04,520
-you, you don't have to be friends with them.
+00:10:47,570 --> 00:10:48,370
+hota tha mein mashhoor hoon mein
 
 342
-00:16:04,580 --> 00:16:04,940
-How
+00:10:48,450 --> 00:10:49,870
+samjhta tha wahan aisi log dekh
 
 343
-00:16:05,980 --> 00:16:08,280
-do I start [UH] stay happy to be alone [UH]
+00:10:49,950 --> 00:10:51,160
+lete hain video khali bhali [breath]
 
 344
-00:16:09,200 --> 00:16:11,020
-That's the best company you'll ever have.
+00:10:51,550 --> 00:10:52,990
+mujhe ek baar ek yak university ne
 
 345
-00:16:11,540 --> 00:16:12,840
-I love being alone.
+00:10:53,070 --> 00:10:55,220
+yahan bulaya [sneeze] ek [UH] talk thi
 
 346
-00:16:12,840 --> 00:16:15,380
-I know so many people who love being alone [UM]
+00:10:55,800 --> 00:10:57,630
+[breath] They flew me in from Dubai
 
 347
-00:16:16,360 --> 00:16:17,100
-Just [UH]
+00:10:57,710 --> 00:10:59,190
+[lipsmack] mein aa gaya aaraam se wahan
 
 348
-00:16:17,760 --> 00:16:18,700
-find [UH]
+00:10:59,270 --> 00:11:00,550
+mein [crying] dafittar mein gaaliyan
 
 349
-00:16:19,720 --> 00:16:21,200
-the best in you and [UH]
+00:11:00,630 --> 00:11:01,550
+khara hota tha [lipsmack] theek hai na
 
 350
-00:16:22,620 --> 00:16:24,020
-main to yeh kounga ke I
+00:11:01,630 --> 00:11:03,190
+kabhi driveron se sunna kabhi kya
 
 351
-00:16:28,000 --> 00:16:30,680
-don't know how to put this because I don't exactly know what your situation
+00:11:03,270 --> 00:11:04,790
+[lipsmack] supply chain ka kaam jis ne kya
 
 352
-00:16:30,680 --> 00:16:33,800
-is, magar yeh ke [UM] ek waqt aata hai insaan pe jab woh apne
+00:11:04,870 --> 00:11:06,500
+aap ko pata ho ga bara pressure hota hai
 
 353
-00:16:33,940 --> 00:16:38,400
-saath hi khush rehna pasand karta hai [UH] but try not to make that
+00:11:06,860 --> 00:11:08,170
+yahan mein aaya hai event pe woh bhai
 
 354
-00:16:38,400 --> 00:16:40,860
-your ha- habit, kyun ke phir aisa na ho ke phir aayein aah ein
+00:11:08,250 --> 00:11:10,610
+gaari se itran red carpet charon taraf
 
 355
-00:16:40,860 --> 00:16:45,040
-da further relationships mein bhi phir aap apna lonely time hi crave karein, to
+00:11:10,690 --> 00:11:11,970
+navy ke guards aur [sneeze] mein
 
 356
-00:16:45,040 --> 00:16:45,620
-itni bhi dependency
+00:11:12,050 --> 00:11:13,610
+lh yeh kya hai log hain taswerain
 
 357
-00:16:46,280 --> 00:16:46,680
-achhi nahi hai.
+00:11:13,690 --> 00:11:14,770
+khech rahe chak chak chak chak mein
 
 358
-00:16:47,000 --> 00:16:48,140
-Try and keep a balance of that.
+00:11:14,850 --> 00:11:16,390
+lh yeh kya mein keh gon shark chal
 
 359
-00:16:48,400 --> 00:16:49,720
-What I'll ask you to do is
+00:11:16,470 --> 00:11:18,690
+rahoon idhar mein wahan bangali
 
 360
-00:16:50,560 --> 00:16:52,900
-if if people don't wanna be friends with you [breath] [lipsmack] try
+00:11:18,770 --> 00:11:20,980
+driveron se mein lar rahoon roz jo hai na
 
 361
-00:16:53,560 --> 00:16:58,600
-and [UH] get yourself involved with some charity work, some volunteer work [UH]
+00:11:21,060 --> 00:11:23,410
+pathan driveron se apne apne jo colleague
 
 362
-00:16:58,600 --> 00:17:02,700
-things that makes you happy [UH] find a ho I'm like if you have
+00:11:23,490 --> 00:11:25,020
+the [throatclearing] zahir hai
 
 363
-00:17:02,700 --> 00:17:05,640
-a hobby get into that if you don't know what your hobby is try
+00:11:25,620 --> 00:11:26,490
+pyaar mohabbat hum shaam ko
 
 364
-00:17:05,640 --> 00:17:07,580
-and find what makes you genuinely happy.
+00:11:26,570 --> 00:11:27,820
+karte the lekin subah kaam ke pressure
 
 365
-00:17:08,240 --> 00:17:12,250
-Usme hoga yeh ke like you'll feel useful like if you create something with
+00:11:27,900 --> 00:11:29,360
+mein larai shikra bohat hota tha
 
 366
-00:17:12,250 --> 00:17:15,760
-your with your bare hands [UH] wo bada therapeutic hota ho.
+00:11:29,740 --> 00:11:30,440
+[lipsmack] [lipsmack] dilaviyrz nahi
 
 367
-00:17:15,760 --> 00:17:17,780
-Wo kata na ke ke ke depression ho, bartan dholo
+00:11:30,520 --> 00:11:32,100
+pohanch rahi yeh nahi ho raha mein ne bole
 
 368
-00:17:18,460 --> 00:17:19,440
-[UM] the foran depression
+00:11:32,180 --> 00:11:34,000
+[sneeze] mein hain wahan ek maghaz maari
 
 369
-00:17:20,100 --> 00:17:20,840
-chala jata hai [breath]
+00:11:34,080 --> 00:11:35,640
+kar rahoon mein to phal sprsttar hoon
 
 370
-00:17:21,620 --> 00:17:22,200
-so [UH]
+00:11:35,720 --> 00:11:37,020
+idhar phir mein wapas gaya within
 
 371
-00:17:23,080 --> 00:17:23,740
-but wo toh khair ekh
+00:11:37,100 --> 00:11:38,800
+three months I was back [lipsmack]
 
 372
-00:17:24,540 --> 00:17:25,120
-chota-mota iska
+00:11:39,220 --> 00:11:41,440
+to wahan decision wasn't an easy decision
 
 373
-00:17:25,880 --> 00:17:28,330
-solution hai, magar iska long term solution [UH] yeh yeh ki like you know
+00:11:41,520 --> 00:11:42,220
+[lipsmack] achha mein ne socha
 
 374
-00:17:28,330 --> 00:17:29,400
-try and involve yourself
+00:11:42,300 --> 00:11:43,740
+mein wapas aon ga paise aayein ge
 
 375
-00:17:30,080 --> 00:17:34,440
-with some volunteer work, agar if the time allows you, obviously, and accessibility,
+00:11:43,820 --> 00:11:44,940
+shuru ke teen mahinay kaam hi nahi
 
 376
-00:17:34,940 --> 00:17:38,860
-kyuki zahera [UM] I'm assuming this is from Karachi, I mean I shouldn't assume
+00:11:45,020 --> 00:11:46,420
+mila le bhai phar gayi [UH] bhai
 
 377
-00:17:38,860 --> 00:17:41,520
-that [UM] agar wherever you are [UH]
+00:11:46,500 --> 00:11:47,940
+dobayi ki naukri bhi chhor di
 
 378
-00:17:42,320 --> 00:17:45,400
-look around, kahin nah kahin se hapko kuch, ab toh social network ka zaman
+00:11:48,020 --> 00:11:49,900
+syongz bhi khatam ho rahi hain [UH] bhai
 
 379
-00:17:45,400 --> 00:17:49,960
-hai, you can easily find things of your interest [UM] events [UH] of your
+00:11:50,420 --> 00:11:51,120
+[crying] magar ae ke phir aana
 
 380
-00:17:49,960 --> 00:17:54,040
-interest, wahan pe jayein, socialize with those people, like minded log [breath]
+00:11:51,200 --> 00:11:53,400
+shuru ho gaya aur phir [UM] ba- baqi
 
 381
-00:17:54,040 --> 00:17:54,240
-[UM]
+00:11:53,480 --> 00:11:55,189
+aap ke saamne [lipsmack] do hazaar
 
 382
-00:17:55,620 --> 00:17:56,480
-pandrah saal pehle to
+00:11:55,269 --> 00:11:56,583
+satrah do hazaar solah nommer mein
 
 383
-00:17:57,220 --> 00:17:59,940
-[UH] ittifaqi hota tha ke [sneeze] ae rahe [UM] aap ko bhi yeh music
+00:11:56,663 --> 00:11:57,780
+mein wapas aa gaya tha [lipsmack]
 
 384
-00:17:59,940 --> 00:18:01,880
-pasand hai, mujhe bhi pasand hai [lipsmack] ab to yeh ke le you go
+00:11:57,860 --> 00:11:59,120
+theek hai paanch saal rehne ke baad.
 
 385
-00:18:02,000 --> 00:18:04,140
-on groups [UH] aur wahan pe aap ko saare ek jaise log mil jate
+00:11:59,860 --> 00:12:01,450
+So yeah, decision aasaan nahi hota
 
 386
-00:18:04,860 --> 00:18:09,000
-[UM] [lipsmack] try and look into that, try social media [UM] magar yeh ke
+00:12:01,530 --> 00:12:02,800
+lekin decision lena parta hai,
 
 387
-00:18:09,140 --> 00:18:09,340
-[UH]
+00:12:02,880 --> 00:12:04,830
+risk lena parta hai lekin woh tab le
 
 388
-00:18:10,240 --> 00:18:13,340
-try to be happy with yourself, that's perfectly fine, magar is mein zyada dependency
+00:12:04,910 --> 00:12:06,640
+jab aap ko bilkul guarantee ho ke haan
 
 389
-00:18:14,400 --> 00:18:15,680
-[lipsmack] kosh karein na karein.
+00:12:06,720 --> 00:12:08,234
+ae ar ab mein hi kar sakta hoon to mein
 
 390
-00:18:16,460 --> 00:18:20,420
-There's also an app for that, magar Pakistan mein mein I won't recommend that.
+00:12:08,314 --> 00:12:11,380
+jitne bhi log hain [UH] jo zabardasti mein
 
 391
-00:18:21,300 --> 00:18:23,420
-However, yeh doosri sahab hai jin ki email hai.
+00:12:12,060 --> 00:12:13,830
+[UH] ya majaboori mein nokarain
 
 392
-00:18:23,420 --> 00:18:25,720
-He's a seventeen year old guy who just moved to Ireland.
+00:12:13,910 --> 00:12:15,330
+kar rahe lekin passion kuch aur hai
 
 393
-00:18:26,220 --> 00:18:29,140
-One thing that I'm facing difficulty with is making friends.
+00:12:15,410 --> 00:12:17,110
+passion mosiq karna hai passion art
 
 394
-00:18:29,140 --> 00:18:29,820
-in ka bhi masla.
+00:12:17,190 --> 00:12:19,990
+banana hai passion jo hai vlgn karna hai
 
 395
-00:18:29,920 --> 00:18:32,240
-Just because of this I feel very isolated and aloof.
+00:12:20,070 --> 00:12:21,370
+ya passion cooking hai [lipsmack]
 
 396
-00:18:32,440 --> 00:18:33,920
-Can you please advise me what should I do?
+00:12:21,450 --> 00:12:23,890
+theek hai magar bnki naukri kar rahe
 
 397
-00:18:34,420 --> 00:18:35,820
-[lipsmack] There's an app called Meetup
+00:12:23,970 --> 00:12:25,990
+[UH] f em si ji mein kaam kar rahe to
 
 398
-00:18:36,720 --> 00:18:39,620
-[UH] website bhi hai meetup dot com [UH] woh mein Pakistan mein is liye
+00:12:27,320 --> 00:12:28,970
+is ko itna time dein wahan se
 
 399
-00:18:39,620 --> 00:18:42,270
-nahi recommend karta mein ne Pakistan mein kabhi use nahi ki mein kisi zamane
+00:12:29,050 --> 00:12:30,800
+jo kama rahe is business pe lagan
 
 400
-00:18:42,270 --> 00:18:44,780
-mein Dubai mein use kar sakta [lipsmack] So meet up mein kya hota hai
+00:12:30,880 --> 00:12:32,410
+yeh aap ki investment hai waqt hai
 
 401
-00:18:45,340 --> 00:18:45,660
-[lipsmack] is mein bohat
+00:12:32,490 --> 00:12:34,410
+aur paisa agar aap ko lagta hai ke paisa
 
 402
-00:18:46,380 --> 00:18:47,920
-saari variety hai of topics.
+00:12:34,490 --> 00:12:35,810
+agar aap cooking kar rahe finsi
 
 403
-00:18:48,960 --> 00:18:54,060
-Arts ki hai, handicraft ki hai, music ki hai, single who wants to mingle
+00:12:35,890 --> 00:12:37,050
+khane banane hain aytilin khane
 
 404
-00:18:54,060 --> 00:18:57,860
-woh bhi ek section hai [UH] so like bohat saare interest groups hain
+00:12:37,130 --> 00:12:38,640
+banane hain to zahira woh ingredients
 
 405
-00:18:58,540 --> 00:19:02,300
-[lipsmack] So whatever you things that that interest you aap in groupz ko join
+00:12:39,110 --> 00:12:40,530
+to kharidon hain woh aap ki investment hai
 
 406
-00:19:02,700 --> 00:19:03,100
-karein
+00:12:40,610 --> 00:12:43,450
+woh lagayein apna channel bilald karein
 
 407
-00:19:03,760 --> 00:19:07,100
-[UH] wahan pe log hote hain try and talk to them, inbox them [lipsmack]
+00:12:44,070 --> 00:12:45,770
+[UH] ya phir aap jo bhi kuch karna
 
 408
-00:19:07,100 --> 00:19:10,220
-in ke meet ups bhi hote hain [lipsmack] wahan pe jayein so for example
+00:12:45,850 --> 00:12:47,810
+chaah rahe jab aap ko lage ke haan now
 
 409
-00:19:10,400 --> 00:19:14,450
-if you like jazz music [lipsmack] to usme jazz kabhi section hoga so aap
+00:12:47,890 --> 00:12:50,770
+I'm confident, soch maar de soch maar de
 
 410
-00:19:14,450 --> 00:19:18,030
-dekhein ke [UH] agar aap I'll just be sharing for example if you're in
+00:12:50,850 --> 00:12:52,840
+khali wali dekho hi nahi peechhe aur bas
 
 411
-00:19:18,030 --> 00:19:18,340
-Dublin
+00:12:52,920 --> 00:12:54,290
+Allah ne ankhen aage dein hai yaar aage
 
 412
-00:19:19,140 --> 00:19:21,640
-[lipsmack] to Dublin mein meet up ka konsa event ho rahe hai jazz music
+00:12:54,370 --> 00:12:55,990
+dekhne ke liye duniya mein so yeah it
 
 413
-00:19:21,640 --> 00:19:26,440
-ka wahan jayein meet e- meet everyone [UH] aur dostyan karein wahan se is
+00:12:56,070 --> 00:12:58,150
+wasn't an easy decision har taraf se
 
 414
-00:19:26,440 --> 00:19:29,680
-tarah this is how you find like minded people [lipsmack] so [UH] uska main
+00:12:58,230 --> 00:12:59,400
+sab ne mana kya tha lekin woh hi na
 
 415
-00:19:29,780 --> 00:19:32,620
-isliye keh rha tha Pakistan ka kyunki main ne Pakistan mai kabhi use nahi
+00:12:59,480 --> 00:13:01,060
+dil ki baat sunne ki diya hai suni
 
 416
-00:19:32,620 --> 00:19:35,640
-ki I don't know how safe is that over here, magar yeh ke I've
+00:13:01,140 --> 00:13:04,050
+sab sunon sab ki karo apni theek hai
 
 417
-00:19:35,640 --> 00:19:36,540
-used that abroad.
+00:13:04,130 --> 00:13:05,410
+[lipsmack] to mein ne decision yeh jo liya
 
 418
-00:19:36,880 --> 00:19:39,040
-It's a very good website, a very good app to
+00:13:05,490 --> 00:13:06,980
+mein sirf apni sun raha tha [lipsmack]
 
 419
-00:19:39,900 --> 00:19:43,780
-make friends, to meet like-minded people, aur toh Facebook groups bhi hai.
+00:13:07,060 --> 00:13:08,810
+har taraf charah taraf se kaanon se nahi
 
 420
-00:19:43,780 --> 00:19:44,760
-Moi toh yeh samaj nahi aata.
+00:13:08,890 --> 00:13:11,080
+yeh nahi yeh nahi khali wali so yeah
 
 421
-00:19:44,760 --> 00:19:47,340
-In the age of social media where everyone's so connected,
+00:13:11,160 --> 00:13:13,480
+not an easy decision magar yeh ke life
 
 422
-00:19:48,160 --> 00:19:48,740
-aur har cheez itni
+00:13:14,260 --> 00:13:16,580
+ji nahi hai to yeh karna parta [lipsmack]
 
 423
-00:19:49,500 --> 00:19:54,410
-filtered hai to your interest, why is why is it that people are finding
+00:13:17,780 --> 00:13:20,300
+achha ji choth sawaal hai
 
 424
-00:19:54,410 --> 00:19:54,960
-so hard
+00:13:20,840 --> 00:13:22,440
+I'm a foreigner studying in Pakistan
 
 425
-00:19:55,620 --> 00:19:56,520
-to befriend people?
+00:13:23,140 --> 00:13:25,470
+from a girl [UH] I'm studying here due
 
 426
-00:19:56,740 --> 00:19:59,940
-Like way before I got famous or way before I started doing this,
+00:13:25,550 --> 00:13:27,360
+to family issues Allah reham kare.
 
 427
-00:20:00,700 --> 00:20:04,760
-I was friends with a lot of people, and that's because my real life
+00:13:27,440 --> 00:13:28,940
+It's been two years but I still can't
 
 428
-00:20:04,760 --> 00:20:05,560
-friends were not there.
+00:13:29,020 --> 00:13:31,360
+fit in my college, nor make any friends.
 
 429
-00:20:05,560 --> 00:20:06,860
-Four were there, four went out.
+00:13:31,440 --> 00:13:32,740
+I used to be so confident and now
 
 430
-00:20:06,860 --> 00:20:09,960
-Australia went, England went, America went, I was alone.
+00:13:32,820 --> 00:13:34,240
+I don't speak up in class.
 
 431
-00:20:10,620 --> 00:20:11,880
-And I said, friend, how should I make?
+00:13:34,740 --> 00:13:36,760
+I let teachers degrade me.
 
 432
-00:20:12,220 --> 00:20:13,340
-At that time these things were already.
+00:13:36,840 --> 00:13:38,860
+My grades are average. I could do better.
 
 433
-00:20:14,140 --> 00:20:17,820
-So my interests were heavy metal music or you know, these kind of things.
+00:13:38,940 --> 00:13:41,020
+I just look at groups of girls and guys
 
 434
-00:20:17,820 --> 00:20:18,820
-So I used to go to groups
+00:13:41,100 --> 00:13:42,270
+with their friends and that makes
 
 435
-00:20:19,600 --> 00:20:22,560
-[UH] used to talk to people, then I got to know, okay, this scene
+00:13:42,350 --> 00:13:43,720
+me feel like I'm a nobody.
 
 436
-00:20:22,560 --> 00:20:24,840
-also happens in Karachi, okay, these events are also happening, let's go there.
+00:13:44,040 --> 00:13:45,940
+I'm an introvert so [UH] [UM]
 
 437
-00:20:25,260 --> 00:20:28,480
-Wahaan gaye, zahar hai [UM] if room full of hundred people [UH] you're you're
+00:13:46,540 --> 00:13:47,890
+I guess what I'm asking you is how
 
 438
-00:20:29,160 --> 00:20:32,100
-you're distant to meet like ten people, usme se doh kaam ke nikalte hi
+00:13:47,970 --> 00:13:50,290
+do I stay happy alone, not caring what
 
 439
-00:20:32,300 --> 00:20:33,720
-nikalte hai. So that's how you filter out.
+00:13:50,370 --> 00:13:52,350
+others think. Your videos help me a lot
 
 440
-00:20:33,720 --> 00:20:35,680
-Thodi si mehnat karni padhegi, ghar se bahar nikalna padhega.
+00:13:52,430 --> 00:13:54,270
+even though I just found out about you, so
 
 441
-00:20:35,680 --> 00:20:38,720
-Aaj kal bacche nao hai na, wo real life interaction se pada bhaagte hai.
+00:13:54,350 --> 00:13:56,020
+just wanna say thank you for that.
 
 442
-00:20:38,720 --> 00:20:41,140
-Wo kata hai je digital kar le, whatsapp pe jo ho sakte ho ja.
+00:13:56,100 --> 00:13:58,720
+My pleasure. [lipsmack] [UM] So
 
 443
-00:20:41,140 --> 00:20:41,800
-Button dabhaane.
+00:13:59,650 --> 00:14:01,290
+your situation is [UM] family
 
 444
-00:20:42,620 --> 00:20:45,560
-Wo isli button dabhaate hain, wo kholne tak ki eks- me nahi aate.
+00:14:02,920 --> 00:14:04,610
+issues ki way se you have to move to
 
 445
-00:20:45,960 --> 00:20:47,760
-Anyway, that's a different topic altogether.
+00:14:04,690 --> 00:14:07,260
+Pakistan [UH] which is a very sad thing.
 
 446
-00:20:48,060 --> 00:20:49,460
-Mager yeh keh [UH] try that app.
+00:14:07,340 --> 00:14:08,870
+[breath] Mekar yeh ke chale ab aagayi
 
 447
-00:20:50,120 --> 00:20:53,390
-I don't know aaj kal kis tarah uska scene hai, magar I had used
+00:14:08,950 --> 00:14:10,600
+toh theek hai, college mein dost nahi
 
 448
-00:20:53,390 --> 00:20:54,960
-that up until two thousand thirteen.
+00:14:10,680 --> 00:14:13,630
+ban re aur ladkiyaan ignore kar ri hai.
 
 449
-00:20:55,880 --> 00:20:58,660
-Tab tak toh bada fit scene tha, aur Dubai mein toh, khair, bada usmein,
+00:14:13,710 --> 00:14:16,070
+For whatever reasons, kuch log hote hain
 
 450
-00:20:58,820 --> 00:21:01,860
-bada acheh log mile, bada acheh dostiyan hui, kuch log aaj tak bhi mer
+00:14:16,740 --> 00:14:17,970
+[UH] jo ke, jaisa ke aap ne mata hai,
 
 451
-00:21:02,060 --> 00:21:02,780
-sat connected hai.
+00:14:18,050 --> 00:14:19,680
+you're an introvert. Even I am, I [UH]
 
 452
-00:21:03,420 --> 00:21:06,720
-So, yeah, yeh the [UH] aaj keh paanch sawal, baaki phir main inshallah [UH]
+00:14:19,760 --> 00:14:22,120
+lagta bada hu extrovert aur bol rao video.
 
 453
-00:21:06,720 --> 00:21:11,200
-dubaara cover karta ho, I hope these these [UH] my answers helped [UH] phir
+00:14:22,200 --> 00:14:23,550
+Yeh main videos mein bolta hu camera band
 
 454
-00:21:11,200 --> 00:21:13,440
-baaki video agli phir aapko kuch hi dinon mein mile gi.
+00:14:23,630 --> 00:14:25,400
+hota hai, meri bhi awaaz band ho jati hai.
 
 455
-00:21:13,760 --> 00:21:16,520
-Agar aap ke koi sawaal ho to askganji swag at gmail dot com pe
+00:14:25,480 --> 00:14:27,480
+Yeh jitne log mujhse personally milayin,
 
 456
-00:21:16,520 --> 00:21:17,340
-mujhe bhej dijin.
+00:14:27,920 --> 00:14:29,540
+wo is baat ki guarantee denge.
 
 457
-00:21:17,340 --> 00:21:21,000
-I'll try and answer all your questions [UH] insha Allah tab tak phir mulaqaat
+00:14:29,620 --> 00:14:30,390
+Mujhse log milte kehte hai,
 
 458
-00:21:21,000 --> 00:21:21,520
-hoti hai [lipsmack]
+00:14:30,470 --> 00:14:31,390
+yaar aap has nahi rahe hai, main la,
+
+459
+00:14:31,470 --> 00:14:32,580
+kyun main paagal hu main jo hasunga.
+
+460
+00:14:32,660 --> 00:14:33,590
+Keh rahe hai, nahi aap hasaate hai,
+
+461
+00:14:33,670 --> 00:14:35,800
+main la, yeh ka- chawal baat maar di.
+
+462
+00:14:36,100 --> 00:14:37,570
+Merey keh in my personal life
+
+463
+00:14:37,650 --> 00:14:39,300
+I'm a very reserved person.
+
+464
+00:14:39,760 --> 00:14:41,500
+Now I'm not belittling your problem,
+
+465
+00:14:41,580 --> 00:14:43,490
+I'm just saying keh kuch log hotayin
+
+466
+00:14:43,570 --> 00:14:45,870
+introvert and [UH] zahir hai,
+
+467
+00:14:45,950 --> 00:14:47,070
+m- chunkay mujhse logon ki badi
+
+468
+00:14:47,150 --> 00:14:48,850
+expectations hoti hain, mil- milenge
+
+469
+00:14:48,930 --> 00:14:50,430
+toh bahi hasi mazaakon ka main toh
+
+470
+00:14:50,510 --> 00:14:51,550
+chup kar ke apna baitha rahta ho.
+
+471
+00:14:51,630 --> 00:14:53,210
+I just observe people, I just observe
+
+472
+00:14:53,290 --> 00:14:56,670
+what the room is talking about, toh usme
+
+473
+00:14:56,750 --> 00:14:59,530
+log aksar mujhse disappoint ho jatein,
+
+474
+00:14:59,610 --> 00:15:01,110
+kuch log yeh samajhte keh shayad main
+
+475
+00:15:01,850 --> 00:15:03,990
+[UH] wo mujhe pasand nahi hai,
+
+476
+00:15:04,070 --> 00:15:04,780
+toh main chup baitha ho.
+
+477
+00:15:04,860 --> 00:15:06,210
+Aisi baat nahi, main main har maifil
+
+478
+00:15:06,290 --> 00:15:08,140
+mein kone mein hi nazar aunga aapko.
+
+479
+00:15:09,080 --> 00:15:11,170
+Anyway, so ye introverts ka ye masalah
+
+480
+00:15:11,250 --> 00:15:13,410
+hota hai, unko wo social acceptance,
+
+481
+00:15:13,490 --> 00:15:16,160
+phir wo mushkil ho jati hai [UM]
+
+482
+00:15:17,560 --> 00:15:18,980
+I understand ke people
+
+483
+00:15:19,780 --> 00:15:22,190
+if people are not [UH] wanting
+
+484
+00:15:22,270 --> 00:15:23,620
+to be friends with you, that's perfectly
+
+485
+00:15:23,700 --> 00:15:24,700
+fine, you don't have to be friends
+
+486
+00:15:24,780 --> 00:15:27,060
+with such people. Teachers are degrading
+
+487
+00:15:27,140 --> 00:15:29,440
+you, that's not on. Ye aap ko
+
+488
+00:15:30,120 --> 00:15:31,620
+[UH] magar ye ke agar if you voice
+
+489
+00:15:31,700 --> 00:15:33,780
+your [UH] concerns, toh yaan teacher
+
+490
+00:15:33,860 --> 00:15:35,120
+oltah phir grade bhi garaa deta hai,
+
+491
+00:15:35,200 --> 00:15:36,500
+ye bhi bada masalah hai yaan pe.
+
+492
+00:15:36,860 --> 00:15:38,380
+Try and talk to someone if there
+
+493
+00:15:38,460 --> 00:15:40,380
+is some sort of [UH] [UM]
+
+494
+00:15:40,940 --> 00:15:42,880
+koi consultation ka koi silsila agar ho
+
+495
+00:15:42,960 --> 00:15:44,840
+aap ke college university mein.
+
+496
+00:15:44,920 --> 00:15:46,000
+Try and talk to them.
+
+497
+00:15:46,440 --> 00:15:47,440
+Otherwise don't let teachers
+
+498
+00:15:47,520 --> 00:15:49,660
+degrade you. Thodasa opinion voice,
+
+499
+00:15:49,740 --> 00:15:51,370
+apna voice concern zarur karein.
+
+500
+00:15:51,450 --> 00:15:52,150
+Main yeh bhi nahi keh raha hai
+
+501
+00:15:52,230 --> 00:15:53,130
+keh bilkul chupp bait jayin,
+
+502
+00:15:53,210 --> 00:15:54,750
+kyunk unki aur himmat badhegi.
+
+503
+00:15:55,210 --> 00:15:57,150
+Magar itna bhi over zada zada overboard
+
+504
+00:15:57,230 --> 00:15:58,880
+ho ki agar aap karein gi to phir aisa na
+
+505
+00:15:58,960 --> 00:16:00,770
+ho ke aap ke grades hi giratay hain. Rahi
+
+506
+00:16:00,850 --> 00:16:02,570
+baat doston ki [UH] if they if they don't
+
+507
+00:16:02,650 --> 00:16:03,610
+wanna be friends with you, you don't
+
+508
+00:16:03,690 --> 00:16:04,990
+have to be friends with them. How
+
+509
+00:16:05,990 --> 00:16:07,970
+do I start [UH] stay happy to be alone
+
+510
+00:16:08,050 --> 00:16:10,390
+[UH] That's the best company you'll
+
+511
+00:16:10,470 --> 00:16:12,770
+ever have. I love being alone.
+
+512
+00:16:12,850 --> 00:16:14,130
+I know so many people who love being
+
+513
+00:16:14,210 --> 00:16:18,990
+alone [UM] Just [UH] find [UH]
+
+514
+00:16:19,720 --> 00:16:21,490
+the best in you and [UH]
+
+515
+00:16:22,630 --> 00:16:24,320
+main to yeh kounga ke I
+
+516
+00:16:28,000 --> 00:16:29,450
+don't know how to put this because I don't
+
+517
+00:16:29,530 --> 00:16:30,910
+exactly know what your situation is,
+
+518
+00:16:30,990 --> 00:16:32,710
+magar yeh ke [UM] ek waqt aata hai
+
+519
+00:16:32,790 --> 00:16:34,410
+insaan pe jab woh apne saath hi khush
+
+520
+00:16:34,490 --> 00:16:37,090
+rehna pasand karta hai [UH] but try
+
+521
+00:16:37,170 --> 00:16:39,310
+not to make that your ha- habit,
+
+522
+00:16:39,390 --> 00:16:40,450
+kyun ke phir aisa na ho ke phir aayein
+
+523
+00:16:40,530 --> 00:16:42,470
+aah ein da further relationships mein bhi
+
+524
+00:16:42,550 --> 00:16:44,890
+phir aap apna lonely time hi crave karein,
+
+525
+00:16:44,970 --> 00:16:46,920
+to itni bhi dependency achhi nahi hai.
+
+526
+00:16:47,000 --> 00:16:48,320
+Try and keep a balance of that.
+
+527
+00:16:48,400 --> 00:16:50,010
+What I'll ask you to do is
+
+528
+00:16:50,570 --> 00:16:51,670
+if if people don't wanna be friends
+
+529
+00:16:51,750 --> 00:16:53,190
+with you [breath] [lipsmack] try
+
+530
+00:16:53,570 --> 00:16:56,150
+and [UH] get yourself involved with some
+
+531
+00:16:56,230 --> 00:16:58,030
+charity work, some volunteer work
+
+532
+00:16:58,430 --> 00:17:01,030
+[UH] things that makes you happy [UH]
+
+533
+00:17:01,110 --> 00:17:03,110
+find a ho I'm like if you have a hobby
+
+534
+00:17:03,190 --> 00:17:04,630
+get into that if you don't know
+
+535
+00:17:04,710 --> 00:17:06,030
+what your hobby is try and find
+
+536
+00:17:06,110 --> 00:17:07,880
+what makes you genuinely happy.
+
+537
+00:17:08,240 --> 00:17:09,610
+Usme hoga yeh ke like you'll feel
+
+538
+00:17:09,690 --> 00:17:12,050
+useful like if you create something
+
+539
+00:17:12,130 --> 00:17:13,830
+with your with your bare hands
+
+540
+00:17:14,330 --> 00:17:15,700
+[UH] wo bada therapeutic hota ho.
+
+541
+00:17:15,780 --> 00:17:17,160
+Wo kata na ke ke ke depression ho,
+
+542
+00:17:17,240 --> 00:17:19,740
+bartan dholo [UM] the foran depression
+
+543
+00:17:20,100 --> 00:17:22,500
+chala jata hai [breath] so [UH]
+
+544
+00:17:23,080 --> 00:17:25,420
+but wo toh khair ekh chota-mota iska
+
+545
+00:17:25,880 --> 00:17:27,240
+solution hai, magar iska long term
+
+546
+00:17:27,320 --> 00:17:28,020
+solution [UH] yeh yeh ki like
+
+547
+00:17:28,100 --> 00:17:29,700
+you know try and involve yourself
+
+548
+00:17:30,080 --> 00:17:30,880
+with some volunteer work,
+
+549
+00:17:30,960 --> 00:17:33,400
+agar if the time allows you, obviously,
+
+550
+00:17:33,480 --> 00:17:36,180
+and accessibility, kyuki zahera [UM]
+
+551
+00:17:36,260 --> 00:17:37,680
+I'm assuming this is from Karachi,
+
+552
+00:17:37,760 --> 00:17:39,900
+I mean I shouldn't assume that [UM]
+
+553
+00:17:39,980 --> 00:17:43,330
+agar wherever you are [UH] look around,
+
+554
+00:17:43,410 --> 00:17:44,350
+kahin nah kahin se hapko kuch, ab
+
+555
+00:17:44,430 --> 00:17:46,250
+toh social network ka zaman hai,
+
+556
+00:17:46,330 --> 00:17:47,530
+you can easily find things
+
+557
+00:17:47,610 --> 00:17:49,670
+of your interest [UM] events [UH]
+
+558
+00:17:49,750 --> 00:17:51,270
+of your interest, wahan pe jayein,
+
+559
+00:17:51,350 --> 00:17:52,930
+socialize with those people,
+
+560
+00:17:53,010 --> 00:17:54,530
+like minded log [breath] [UM]
+
+561
+00:17:55,630 --> 00:17:58,250
+pandrah saal pehle to [UH] ittifaqi
+
+562
+00:17:58,330 --> 00:17:59,250
+hota tha ke [sneeze] ae rahe [UM]
+
+563
+00:17:59,330 --> 00:18:00,590
+aap ko bhi yeh music pasand hai, mujhe bhi
+
+564
+00:18:00,670 --> 00:18:01,540
+pasand hai [lipsmack] ab to yeh ke le
+
+565
+00:18:01,620 --> 00:18:02,890
+you go on groups [UH] aur wahan pe
+
+566
+00:18:02,970 --> 00:18:05,390
+aap ko saare ek jaise log mil jate [UM]
+
+567
+00:18:05,730 --> 00:18:06,710
+[lipsmack] try and look into that, try
+
+568
+00:18:06,790 --> 00:18:09,640
+social media [UM] magar yeh ke [UH]
+
+569
+00:18:10,240 --> 00:18:11,570
+try to be happy with yourself,
+
+570
+00:18:11,650 --> 00:18:12,490
+that's perfectly fine,
+
+571
+00:18:12,570 --> 00:18:13,640
+magar is mein zyada dependency
+
+572
+00:18:14,450 --> 00:18:15,970
+[lipsmack] kosh karein na karein.
+
+573
+00:18:16,460 --> 00:18:18,250
+There's also an app for that, magar
+
+574
+00:18:18,330 --> 00:18:20,670
+Pakistan mein mein I won't recommend that.
+
+575
+00:18:21,300 --> 00:18:22,770
+However, yeh doosri sahab hai
+
+576
+00:18:22,850 --> 00:18:24,030
+jin ki email hai. He's a seventeen year
+
+577
+00:18:24,110 --> 00:18:26,140
+old guy who just moved to Ireland.
+
+578
+00:18:26,220 --> 00:18:27,490
+One thing that I'm facing difficulty
+
+579
+00:18:27,570 --> 00:18:29,840
+with is making friends. in ka bhi masla.
+
+580
+00:18:29,920 --> 00:18:30,910
+Just because of this I feel
+
+581
+00:18:30,990 --> 00:18:32,370
+very isolated and aloof.
+
+582
+00:18:32,450 --> 00:18:34,350
+Can you please advise me what should I do?
+
+583
+00:18:34,430 --> 00:18:36,120
+[lipsmack] There's an app called Meetup
+
+584
+00:18:36,730 --> 00:18:38,530
+[UH] website bhi hai meetup dot com
+
+585
+00:18:38,610 --> 00:18:39,550
+[UH] woh mein Pakistan mein is liye
+
+586
+00:18:39,630 --> 00:18:40,730
+nahi recommend karta mein ne Pakistan
+
+587
+00:18:40,810 --> 00:18:42,190
+mein kabhi use nahi ki mein kisi zamane
+
+588
+00:18:42,270 --> 00:18:43,610
+mein Dubai mein use kar sakta [lipsmack]
+
+589
+00:18:43,690 --> 00:18:45,290
+So meet up mein kya hota hai [lipsmack]
+
+590
+00:18:45,370 --> 00:18:48,220
+is mein bohat saari variety hai of topics.
+
+591
+00:18:48,960 --> 00:18:50,890
+Arts ki hai, handicraft ki hai,
+
+592
+00:18:50,970 --> 00:18:53,990
+music ki hai, single who wants to mingle
+
+593
+00:18:54,070 --> 00:18:56,270
+woh bhi ek section hai [UH] so like
+
+594
+00:18:56,350 --> 00:18:58,160
+bohat saare interest groups hain
+
+595
+00:18:58,540 --> 00:18:59,270
+[lipsmack] So whatever you things
+
+596
+00:18:59,350 --> 00:19:02,150
+that that interest you aap in groupz ko
+
+597
+00:19:02,230 --> 00:19:04,730
+join karein [UH] wahan pe log hote hain
+
+598
+00:19:04,810 --> 00:19:06,990
+try and talk to them, inbox them
+
+599
+00:19:07,070 --> 00:19:08,370
+[lipsmack] in ke meet ups bhi hote hain
+
+600
+00:19:08,450 --> 00:19:10,320
+[lipsmack] wahan pe jayein so for example
+
+601
+00:19:10,400 --> 00:19:11,810
+if you like jazz music [lipsmack]
+
+602
+00:19:11,890 --> 00:19:14,130
+to usme jazz kabhi section hoga so
+
+603
+00:19:14,210 --> 00:19:16,390
+aap dekhein ke [UH] agar aap I'll just
+
+604
+00:19:16,470 --> 00:19:18,640
+be sharing for example if you're in Dublin
+
+605
+00:19:19,140 --> 00:19:20,450
+[lipsmack] to Dublin mein meet up ka konsa
+
+606
+00:19:20,530 --> 00:19:22,230
+event ho rahe hai jazz music ka wahan
+
+607
+00:19:22,310 --> 00:19:24,590
+jayein meet e- meet everyone
+
+608
+00:19:24,670 --> 00:19:26,590
+[UH] aur dostyan karein wahan se is tarah
+
+609
+00:19:26,670 --> 00:19:28,590
+this is how you find like minded people
+
+610
+00:19:28,670 --> 00:19:30,120
+[lipsmack] so [UH] uska main isliye
+
+611
+00:19:30,200 --> 00:19:31,640
+keh rha tha Pakistan ka kyunki main ne
+
+612
+00:19:31,720 --> 00:19:32,880
+Pakistan mai kabhi use nahi ki I don't
+
+613
+00:19:32,960 --> 00:19:34,680
+know how safe is that over here,
+
+614
+00:19:34,760 --> 00:19:36,800
+magar yeh ke I've used that abroad.
+
+615
+00:19:36,880 --> 00:19:38,420
+It's a very good website,
+
+616
+00:19:38,500 --> 00:19:41,040
+a very good app to make friends,
+
+617
+00:19:41,120 --> 00:19:42,420
+to meet like-minded people,
+
+618
+00:19:42,500 --> 00:19:43,700
+aur toh Facebook groups bhi hai.
+
+619
+00:19:43,780 --> 00:19:44,700
+Moi toh yeh samaj nahi aata.
+
+620
+00:19:44,780 --> 00:19:46,000
+In the age of social media
+
+621
+00:19:46,080 --> 00:19:47,640
+where everyone's so connected,
+
+622
+00:19:48,160 --> 00:19:50,040
+aur har cheez itni filtered hai
+
+623
+00:19:50,120 --> 00:19:52,980
+to your interest, why is why
+
+624
+00:19:53,060 --> 00:19:55,260
+is it that people are finding so hard
+
+625
+00:19:55,620 --> 00:19:57,700
+to befriend people? Like way before I got
+
+626
+00:19:57,780 --> 00:20:00,240
+famous or way before I started doing this,
+
+627
+00:20:00,700 --> 00:20:02,560
+I was friends with a lot of people,
+
+628
+00:20:02,640 --> 00:20:04,960
+and that's because my real life friends
+
+629
+00:20:05,040 --> 00:20:05,980
+were not there. Four were there,
+
+630
+00:20:06,060 --> 00:20:07,600
+four went out. Australia went,
+
+631
+00:20:07,680 --> 00:20:10,260
+England went, America went, I was alone.
+
+632
+00:20:10,620 --> 00:20:12,140
+And I said, friend, how should I make?
+
+633
+00:20:12,220 --> 00:20:13,640
+At that time these things were already.
+
+634
+00:20:14,140 --> 00:20:16,180
+So my interests were heavy metal music
+
+635
+00:20:16,260 --> 00:20:17,740
+or you know, these kind of things.
+
+636
+00:20:17,820 --> 00:20:19,120
+So I used to go to groups
+
+637
+00:20:19,600 --> 00:20:20,940
+[UH] used to talk to people, then
+
+638
+00:20:21,020 --> 00:20:22,560
+I got to know, okay, this scene also
+
+639
+00:20:22,640 --> 00:20:23,500
+happens in Karachi, okay, these events
+
+640
+00:20:23,580 --> 00:20:25,190
+are also happening, let's go there.
+
+641
+00:20:25,270 --> 00:20:27,030
+Wahaan gaye, zahar hai [UM] if room full
+
+642
+00:20:27,110 --> 00:20:28,770
+of hundred people [UH] you're you're
+
+643
+00:20:29,160 --> 00:20:30,730
+you're distant to meet like ten people,
+
+644
+00:20:30,810 --> 00:20:32,220
+usme se doh kaam ke nikalte hi
+
+645
+00:20:32,300 --> 00:20:33,650
+nikalte hai. So that's how you filter out.
+
+646
+00:20:33,730 --> 00:20:34,650
+Thodi si mehnat karni padhegi,
+
+647
+00:20:34,730 --> 00:20:35,610
+ghar se bahar nikalna padhega.
+
+648
+00:20:35,690 --> 00:20:37,090
+Aaj kal bacche nao hai na, wo real
+
+649
+00:20:37,170 --> 00:20:38,640
+life interaction se pada bhaagte hai.
+
+650
+00:20:38,720 --> 00:20:40,290
+Wo kata hai je digital kar le, whatsapp pe
+
+651
+00:20:40,370 --> 00:20:42,100
+jo ho sakte ho ja. Button dabhaane.
+
+652
+00:20:42,620 --> 00:20:44,190
+Wo isli button dabhaate hain, wo kholne
+
+653
+00:20:44,270 --> 00:20:46,270
+tak ki eks- me nahi aate. Anyway,
+
+654
+00:20:46,350 --> 00:20:47,980
+that's a different topic altogether.
+
+655
+00:20:48,060 --> 00:20:49,760
+Mager yeh keh [UH] try that app.
+
+656
+00:20:50,120 --> 00:20:51,250
+I don't know aaj kal kis tarah
+
+657
+00:20:51,330 --> 00:20:53,330
+uska scene hai, magar I had used
+
+658
+00:20:53,410 --> 00:20:55,250
+that up until two thousand thirteen.
+
+659
+00:20:55,880 --> 00:20:56,790
+Tab tak toh bada fit scene tha,
+
+660
+00:20:56,870 --> 00:20:57,930
+aur Dubai mein toh, khair,
+
+661
+00:20:58,010 --> 00:20:59,470
+bada usmein, bada acheh log mile,
+
+662
+00:20:59,550 --> 00:21:00,980
+bada acheh dostiyan hui, kuch log
+
+663
+00:21:01,060 --> 00:21:03,070
+aaj tak bhi mer sat connected hai.
+
+664
+00:21:03,420 --> 00:21:04,810
+So, yeah, yeh the [UH] aaj keh
+
+665
+00:21:04,890 --> 00:21:06,630
+paanch sawal, baaki phir main inshallah
+
+666
+00:21:06,710 --> 00:21:07,750
+[UH] dubaara cover karta ho, I hope
+
+667
+00:21:07,830 --> 00:21:10,230
+these these [UH] my answers helped
+
+668
+00:21:10,310 --> 00:21:12,190
+[UH] phir baaki video agli phir
+
+669
+00:21:12,270 --> 00:21:13,680
+aapko kuch hi dinon mein mile gi.
+
+670
+00:21:13,760 --> 00:21:15,370
+Agar aap ke koi sawaal ho to askganji swag
+
+671
+00:21:15,450 --> 00:21:17,260
+at gmail dot com pe mujhe bhej dijin.
+
+672
+00:21:17,340 --> 00:21:19,390
+I'll try and answer all your questions
+
+673
+00:21:19,710 --> 00:21:20,590
+[UH] insha Allah tab tak phir
+
+674
+00:21:20,670 --> 00:21:21,820
+mulaqaat hoti hai [lipsmack]
 
