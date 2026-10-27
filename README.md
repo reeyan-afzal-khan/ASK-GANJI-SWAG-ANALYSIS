@@ -8,7 +8,7 @@ Subtitles and an analytics app for every episode of Ask Ganji Swag.
 
 - **Roman Urdu subtitles**, with English kept as spoken
 - **English subtitles**, translated from the audio
-- **An analytics app** for the 1,422 viewer questions
+- **An analytics app** for the 1,422 viewer questions: [open the dashboard](https://reeyan-afzal-khan.github.io/ASK-GANJI-SWAG-ANALYSIS/)
 
 [Workflow guide](docs/workflow.md) · [Episode index](docs/episode-index.md) · [Reports](docs/reports.md) · [App guide](app/README.md)
 
