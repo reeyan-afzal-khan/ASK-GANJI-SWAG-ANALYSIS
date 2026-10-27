@@ -104,13 +104,13 @@ New Roman output is already single-line. Formatting is useful for imported or ma
 
 ### Even pacing and the audio check
 
-The original transcription cut a new cue at every pause and every sentence end, up to 14 words, so cues ranged from a single word flashing by for a quarter of a second to 80-character lines. Step 06 evens this out without transcribing anything again and without touching `urdu_transcript_crisper/`:
+The original transcription cut a new cue at every pause and every sentence end, up to 14 words, so cues ranged from a single word flashing by for a quarter of a second to 80-character lines. Step 06 evens this out without transcribing anything again and without touching `transcripts-urdu/`:
 
 1. **Word timing on the GPU** (`scripts/06-format/align.py`). Each window of whole cues from the original Crisper SRT is replayed through CrisperWhisper's decoder with its known text, and every word is placed with the same cross-attention timing the model uses when it transcribes. Each Roman word inherits the time of the Urdu word it came from. Results are cached per episode in `.cache/alignment/`, so later runs only align new or changed episodes. On a laptop RTX 4060 this runs at about 75× real time (around five hours for all 371 hours of audio).
 2. **Pacing** (`scripts/.shared/pacing.py`). The words are regrouped into single-line cues of at most 42 characters, about seven words each. A cue never spans a pause of 1.5 seconds or more, and breaks prefer sentence ends, commas and pauses over phrases such as "ke liye", "the" or "hai". Each cue stays up for at least a second when the next one allows, and cues never overlap. The changed files are backed up to `.cache/backups/` first.
 3. **Clean-up of the original timing.** The long-form transcription sometimes transcribed the end of one chunk again at the start of the next and squeezed the copy into a fraction of a second. Such stitching duplicates (four or more words in an impossibly short time that closely repeat the words just before them) are left out and listed in `.cache/reports/pacing.json`. Other squeezed words are kept and held on screen for at least 0.7 seconds, letting the next cue start up to 1.5 seconds late rather than flash past.
 
-Hand corrections in `urdu_transcript_crisper_roman/` are kept: pacing reads the words from the files as they are, and a corrected word takes the timing of the word it replaced. Edit the Roman files freely, then re-pace with `--skip-align`.
+Hand corrections in `transcripts-urdu-roman/` are kept: pacing reads the words from the files as they are, and a corrected word takes the timing of the word it replaced. Edit the Roman files freely, then re-pace with `--skip-align`.
 
 ```bash
 # Report what pacing would change, without the GPU or writing files.
@@ -141,7 +141,7 @@ If a Roman file is regenerated with step 05 after pacing, it returns to the orig
 
 #### Filling missed speech
 
-The audio check found speech in hundreds of stretches the original run skipped, often where its loop guard threw away a whole chunk together with a run of `[lipsmack]` tags. `--fill` transcribes only those stretches, with the transcription step's own settings (verbatim Urdu, decoder profiles, hallucination guard), so nothing else is transcribed again. Tag loops are collapsed, words at the edges that repeat the neighbouring cues are dropped, and a stretch is kept only when the full transcription confirms speech. The passages are romanised like any subtitle word and inserted into `urdu_transcript_crisper_roman/` at their own time; `urdu_transcript_crisper/` is not changed. They are listed in `.cache/reports/pacing.json`, and once inserted they are treated like the rest of the file, so hand edits to them are kept and they are never added twice.
+The audio check found speech in hundreds of stretches the original run skipped, often where its loop guard threw away a whole chunk together with a run of `[lipsmack]` tags. `--fill` transcribes only those stretches, with the transcription step's own settings (verbatim Urdu, decoder profiles, hallucination guard), so nothing else is transcribed again. Tag loops are collapsed, words at the edges that repeat the neighbouring cues are dropped, and a stretch is kept only when the full transcription confirms speech. The passages are romanised like any subtitle word and inserted into `transcripts-urdu-roman/` at their own time; `transcripts-urdu/` is not changed. They are listed in `.cache/reports/pacing.json`, and once inserted they are treated like the rest of the file, so hand edits to them are kept and they are never added twice.
 
 ```bash
 # Transcribe the missed stretches on the GPU (only those stretches).
@@ -171,6 +171,21 @@ bash scripts/05-romanize/run.sh --alignment
 bash scripts/06-format/run.sh --skip-align
 ```
 
+### English translation
+
+`transcripts-english/` holds English subtitles translated from the audio by CrisperWhisper 2.0, the model that made the transcription, running Whisper's translate task from the local Hugging Face cache. Each episode is cut into windows of whole Roman cues (at most 28 seconds, never across a pause of two seconds). A window under four seconds joins a neighbour, because Whisper invents speech for a lone second of audio, and one holding only tags such as [UH] is skipped. Eight windows at a time become timed English sentences. When a window's English repeats itself, as when the model echoes a stutter, it is decoded again a little warmer, the way Whisper does it. When it still looks wrong (repeating, not English, or under a third of the Roman words, as when the model stops where the speaker switches between Urdu and English), the window is translated again in pieces of about ten seconds, then five, and the pieces are kept where they do better. Stock phrases the model invents for unclear audio ("Thank you.", "Peace be upon you.") are dropped where nothing like them was said. Windows that still look wrong are listed in `.cache/reports/translation.json`. The English keeps its own timing. On a laptop RTX 4060 this runs at about 40× real time, roughly nine and a half hours for every episode; episodes already translated are skipped, and `--repair` translates again only the windows of existing files that need it. In a side-by-side test it gave more complete and more faithful English than Whisper large-v3, decoded greedily or with beam search (see `docs/workflow.md`).
+
+```bash
+# English, from the audio (GPU); --episodes translates a few, --force-align translates them again.
+bash scripts/06-format/run.sh --translate
+# Only the windows of existing English files that need another try (GPU).
+bash scripts/06-format/run.sh --translate --repair
+```
+
+Once `transcripts-english/` exists, the app's episode explorer can switch its transcript between Roman Urdu and English.
+
+The original Crisper transcription, `transcripts-urdu/`, has been removed from the working tree; it is still in the Git history under its earlier name, `urdu_transcript_crisper/`. The alignment cache keeps its words, so validation and the app's English labels read them from `.cache/alignment/` instead. Pacing (step 06 without `--translate`) needs the original folder back: restore `urdu_transcript_crisper/` from commit `91c2afd` and rename it `transcripts-urdu/`.
+
 ## Analytics app
 
 `app/` is a self-contained web app for exploring the 1,422 viewer questions in the episode index: what people ask about, how each question fits one of 10 categories and 60 finer subcategories, how that changed across the show, and what Junaid said in reply, with every episode playable in a built-in YouTube player whose transcript follows the video in real time. It is plain HTML and JavaScript with no external libraries, and everything it reads is generated into `app/data/`, so the folder can be published as-is, for example on GitHub Pages. [app/README.md](app/README.md) covers publishing.
@@ -190,15 +205,15 @@ WSL2 forwards `localhost`, so open the printed address in your Windows browser; 
 
 | Section | What it shows |
 | --- | --- |
-| Overview | A dashboard: headline figures, a pie (sunburst) of categories with their subcategories that zooms into a category on click, subjects over time as stacked columns, questions per episode, computed findings, the most common subcategories, rising and falling subjects, askers' ages, the longest answers and a random question spotlight |
+| Overview | A dashboard: a pie (sunburst) of categories with their subcategories that zooms into a category on click, beside a legend with every category's count and share; subjects over time as stacked columns; computed findings, including the most mentioned cities in Pakistan and abroad; questions per episode; the most common subcategories, rising and falling subjects and askers' ages |
 | Categories | A card per category with its trend and top subcategories; each opens a page with its subcategories, trend, a subcategory-by-period heatmap, related categories, title words, ages and its questions |
-| Questions | An explorer of every question: search, category and subcategory chips, sorting, the opening of each answer, and ▶ to play the answer in the episode explorer |
+| Questions | Every question, with category and subcategory chips, sorting, the opening of each answer, and ▶ to play the answer in the episode explorer |
 | Insights | Answer time per subject (one dot per question), answer length by position, askers' stated ages, places mentioned, subjects that come together, title words, and rising and falling subcategories |
 | Episodes | Questions per episode, time per question, intro length and episode length, plus a sortable table of episodes with their subjects |
-| Episode explorer | The episode in a built-in YouTube player, with the question being answered, a clickable timeline, the questions with their categories, a words-per-minute curve and a searchable transcript that highlights and scrolls to the line being spoken |
+| Episode explorer | The episode in a built-in YouTube player, with the question being answered, a clickable timeline, the questions with their categories, a words-per-minute curve and a transcript in Roman Urdu or English that highlights and scrolls to the line being spoken |
 | About | How questions were categorised, every subcategory with its count, measure definitions, caveats and data-quality checks |
 
-Sections sit in a left sidebar (a drawer on phones). Below them, a collapsible **Categories** tree lists every category with its subcategories and counts; picking one filters the Overview, Questions, Insights and Episodes sections, or opens its category page from elsewhere. Click any episode column to open that episode at the start, or any ▶ time to play from that moment. Every chart has a table view, the page follows the system light/dark theme (with a switch in the sidebar), and the current view, including the playback time when paused, is kept in the URL so it can be bookmarked or shared. Colours come from the skins in `app/skins/`: `bash app/run.sh` turns the light and dark skin into `app/assets/theme.css`.
+Sections sit in a left sidebar (a drawer on phones). Under **Categories**, right below the Overview, a collapsible tree lists every category with its subcategories nested beneath it and their counts; picking one filters the Overview, Questions, Insights and Episodes sections, or opens its category page from elsewhere. Click any episode column to open that episode at the start, or any ▶ time to play from that moment. Every chart has a table view, the page follows the system light/dark theme (with a switch in the sidebar), and the current view, including the playback time when paused, is kept in the URL so it can be bookmarked or shared. Colours come from the skins in `app/skins/`: `bash app/run.sh` turns the light and dark skin into `app/assets/theme.css`.
 
 Every question has one hand-checked subcategory, plus any clear second subject, in `app/tools/question_labels.json`: one line per episode, codes in index order, defined in `app/tools/config.json`. Correct a label by editing that line and rebuilding; an unknown code stops the build with the episode and question number. Episodes that are not in the labels file yet (new ones) are placed by the keyword lists in `config.json` and shown as "Not yet sorted" until you add them. *Answer length* is the time until the next indexed question, so it includes reading the question. Stated ages and places are read from the title and the opening of the answer, which is usually the letter being read out. The app's **About** tab lists every definition and caveat.
 
@@ -220,12 +235,13 @@ ASK-GANJI-SWAG-ANALYSIS/
 ├── docs/                          # Workflow guide, episode index and logo
 ├── app/                           # Analytics web app, its generated data and builder
 ├── all_episodes/                  # Local MP3s (ignored by Git)
-├── urdu_transcript_crisper/        # Original Crisper SRTs
-├── urdu_transcript_crisper_roman/  # Roman Urdu SRTs, one text line per cue
+├── transcripts-urdu/              # Original Crisper SRTs (removed; in the Git history as urdu_transcript_crisper/)
+├── transcripts-urdu-roman/        # Roman Urdu SRTs, one text line per cue
+├── transcripts-english/           # English SRTs translated from the audio (step 06 --translate)
 └── .cache/                        # Local models, candidates, reports, backups and logs
 ```
 
-Only two supporting folders remain: `scripts/` and `docs/`. Each numbered step in `scripts/` contains a `run.sh` entry point and its own supporting files; reusable helpers live in `scripts/.shared/`. The three data folders retain their original locations. Historical analysis and experiment snapshots are preserved under `.cache/reports/archive/2026-10-25/analysis/`; active commands no longer depend on them. See the [migration table](docs/workflow.md#migration-from-the-previous-layout) for renamed scripts. `app/` sits apart from the transcription pipeline: it only reads the Roman SRTs and the episode index, and keeps its generated `app/data/` under version control so it can be published without a rebuild.
+Only two supporting folders remain: `scripts/` and `docs/`. Each numbered step in `scripts/` contains a `run.sh` entry point and its own supporting files; reusable helpers live in `scripts/.shared/`. The three data folders retain their original locations. Historical analysis and experiment snapshots are preserved under `.cache/reports/archive/2026-10-25/analysis/`; active commands no longer depend on them. See the [migration table](docs/workflow.md#migration-from-earlier-layouts) for renamed scripts. `app/` sits apart from the transcription pipeline: it only reads the Roman SRTs and the episode index, and keeps its generated `app/data/` under version control so it can be published without a rebuild.
 
 ## Installation on a new machine
 
@@ -271,7 +287,7 @@ Romanization, formatting and validation also accept `--episodes`. Use `--source`
 
 ## Validation and quality
 
-Validation checks that every source episode has a corresponding Roman output, each cue contains one text line, cue IDs/timestamps match, non-Latin letters are absent, and existing English text is retained. It writes `.cache/reports/validation.json` and exits nonzero on failure. `--episodes` limits validation to selected episodes. Roman files paced by step 06 no longer share the source's cue timings, so for them validation checks instead that cues are numbered consecutively, never overlap and stay within the source's time (widened by passages added for missed speech, which include intros and outros the original run skipped), and that every English word survives in order. The exceptions are stitching duplicates and decoding loops, which pacing may leave out; both are found from the original transcript alone, so this check works without the cache. While the alignment cache is present, words that differ from it are listed as hand corrections: a warning, not an error.
+Validation checks that every source episode has a corresponding Roman output, each cue contains one text line, cue IDs/timestamps match, non-Latin letters are absent, and existing English text is retained. It writes `.cache/reports/validation.json` and exits nonzero on failure. `--episodes` limits validation to selected episodes. Roman files paced by step 06 no longer share the source's cue timings, so for them validation checks instead that cues are numbered consecutively, never overlap and stay within the source's time (widened by passages added for missed speech, which include intros and outros the original run skipped), and that every English word survives in order. The exceptions are stitching duplicates and decoding loops, which pacing may leave out; both are found from the original transcript alone, so this check works without the cache. While the alignment cache is present, words that differ from it are listed as hand corrections: a warning, not an error. Without `transcripts-urdu/`, the original cues come from the alignment cache, which holds them word for word, and every cached episode must have its Roman file. When `transcripts-english/` exists, each of its files must belong to a Roman file and be numbered in order, one line per cue, without overlaps.
 
 Romanization preserves the source transcript rather than correcting it against the recording. Uncertain names, missing vowels, malformed words and original recognition errors still need review. Per-run hashes and review queues are saved under `.cache/reports/romanization/`. A successful structural check is not a transcription accuracy score.
 

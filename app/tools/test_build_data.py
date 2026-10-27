@@ -75,6 +75,13 @@ class AppDataTests(unittest.TestCase):
         self.assertEqual(names('How to apply for US visa'),['USA'])
         self.assertEqual(names('Tell us about it'),[])
 
+    def test_cities_are_named_apart_from_their_country(self):
+        rules=build_data.place_rules(CONFIG,'cities')
+        names=lambda text:[CONFIG['cities'][i]['name'] for i in build_data.mentioned_places(rules,text)]
+        self.assertEqual(names('From Karachi, moving to Toronto in Canada'),['Karachi','Toronto'])
+        self.assertEqual(names('Life in Bombay and Pindi'),['Rawalpindi','Mumbai'])
+        self.assertEqual(names('Moving to Canada'),[])
+
     def test_build_with_keyword_fallback(self):
         with tempfile.TemporaryDirectory(dir=TEST_TEMP) as d:
             data,out=build_fixture(Path(d))
@@ -87,6 +94,7 @@ class AppDataTests(unittest.TestCase):
         self.assertEqual([q['length'] for q in questions],[55,25,None])
         self.assertEqual([q['sub'] for q in questions],['abroad.auto','love.auto','other.misc'])
         self.assertEqual((questions[0]['age'],[data['places'][i]['name'] for i in questions[0]['places']]),(22,['Lahore','Canada']))
+        self.assertEqual([data['cities'][i]['name'] for i in questions[0]['cities']],['Lahore'])
         self.assertEqual(data['quality']['unlabelled'],[1])
         self.assertIn('abroad.auto',[s['id'] for c in data['categories'] for s in c['subcategories']])
 
@@ -99,6 +107,19 @@ class AppDataTests(unittest.TestCase):
         episode=data['episodes'][0]
         self.assertEqual((episode['cues'],episode['words'],episode['english']),(4,25,17))
         self.assertEqual(data['quality']['unaligned'],[])
+
+    def test_english_share_comes_from_the_cache_once_the_original_is_gone(self):
+        with tempfile.TemporaryDirectory(dir=TEST_TEMP) as d:
+            root=Path(d);roman=root/'roman';cache=root/'alignment'
+            roman.mkdir();cache.mkdir()
+            (roman/'episode_001.srt').write_text(ROMAN,encoding='utf-8')
+            (root/'index.md').write_text(INDEX,encoding='utf-8')
+            # The cache keeps the original cues as [start, end, text, Roman text, word times].
+            originals=[[*build_data.span(c),c.text,'',[]] for c in build_data.parse(SOURCE)]
+            (cache/'episode_001.json').write_text(json.dumps({'cues':originals}),encoding='utf-8')
+            with contextlib.redirect_stdout(io.StringIO()):
+                data=build_data.build(roman,root/'deleted',root/'index.md',root/'data',None,cache)
+        self.assertEqual(data['episodes'][0]['english'],17)
 
     def test_added_passages_count_their_english(self):
         filled=ROMAN.replace('3\n00:01:05,000','3\n00:00:30,000 --> 00:00:40,000\nphir masters application submit ki\n\n4\n00:01:05,000')

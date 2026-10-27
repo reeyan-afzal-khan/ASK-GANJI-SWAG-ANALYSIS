@@ -1,9 +1,10 @@
 """Build the analytics app data in app/data/ and optionally preview the app locally.
 
 Reads the Roman Urdu SRTs and docs/episode-index.md; standard library only, no GPU or network.
-Writes data/summary.js (all aggregates) and data/transcripts/episode_NNN.js (subtitle text for
-search and the transcript viewer), so app/ is a self-contained static site. The original Crisper
-SRTs are optional and only label each word as English or Urdu.
+Writes data/summary.js (all aggregates) and data/transcripts/episode_NNN.js (subtitle text for the
+transcript viewer), plus data/transcripts-english/ when the English subtitles exist, so app/ is a
+self-contained static site. The original Crisper SRTs, or once they are gone the alignment cache that
+holds their words, only label each word as English or Urdu.
 
 Each question's category comes from question_labels.json (hand-checked subcategories, one list per
 episode in index order). Episodes missing there fall back to the keyword lists in config.json and
@@ -14,7 +15,7 @@ from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 # Allow this entry point to run directly as well as through app/run.sh.
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'scripts' / '.shared'))
-from paths import ROMAN, SOURCE, INDEX, APP, CACHE
+from paths import ROMAN, SOURCE, ENGLISH, INDEX, APP, CACHE
 from subtitles import parse, atomic_write, select_files
 from pacing import covers
 
@@ -22,6 +23,8 @@ CONFIG = Path(__file__).with_name('config.json')
 LABELS = Path(__file__).with_name('question_labels.json')
 ALIGNMENT = CACHE / 'alignment'
 SKINS, THEME = APP / 'skins', APP / 'assets' / 'theme.css'
+# Other versions of the subtitles that the transcript can switch to.
+SCRIPTS = {'english': ENGLISH}
 THEME_TOKENS = ('void rail surface surface-2 surface-3 line line-hot ink ink-soft muted acc acc-hi acc-dim acc-wash on-acc '
                 'h1 h2 h3 h4 h5 h6 h7 h8 tail-1 tail-2 tail-3 seq-0 seq-1 seq-2 seq-3 seq-4 seq-5 seq-6 seq-7 '
                 'seq-ink seq-ink-strong rise fall shadow').split()
@@ -146,10 +149,10 @@ def stated_age(*texts):
             return tens + (SPOKEN_UNITS.index(spoken[1]) + 1 if len(spoken) > 1 else 0)
     return None
 
-def place_rules(config):
-    """Per place, one case-insensitive regex plus one exact-case regex for capitalised aliases (US, UK)."""
+def place_rules(config, key='places'):
+    """Per place (or city), one case-insensitive regex plus one exact-case regex for capitalised aliases (US, UK)."""
     rules = []
-    for place in config.get('places', []):
+    for place in config.get(key, []):
         lower = [a for a in place['aliases'] if not a.isupper()]
         upper = [a for a in place['aliases'] if a.isupper()]
         rules.append((re.compile(r'\b(?:' + '|'.join(map(re.escape, lower)) + r')\b', re.I) if lower else None,
@@ -181,16 +184,26 @@ def added_latin(alignment, number):
     kept = [s for s in data.get('supplements', []) if s.get('applied') and not any(covers(p, s) for p in replaced)]
     return collections.Counter(w for s in kept + replaced for w in words(s['source']))
 
-def read_episode(path, source):
-    """Cues with their spans, plus the original Crisper cues when present (they may be paced differently)."""
+def read_episode(path, source, alignment=None):
+    """Cues with their spans, plus the text of the original Crisper cues (they may be paced differently):
+    from the original SRT when present, or else from the alignment cache, which holds them word for word."""
     cues = parse(path.read_text(encoding='utf-8-sig'))
     original = Path(source) / path.name if source else None
-    originals = parse(original.read_text(encoding='utf-8-sig')) if original and original.is_file() else None
+    cache = Path(alignment) / f'{path.stem}.json' if alignment else None
+    if original and original.is_file():
+        originals = [c.text for c in parse(original.read_text(encoding='utf-8-sig'))]
+    elif cache and cache.is_file():
+        originals = [c[2] for c in json.loads(cache.read_text(encoding='utf-8'))['cues']]
+    else:
+        originals = None
     return cues, [span(c) for c in cues], originals
 
-def build(roman=ROMAN, source=SOURCE, index_path=INDEX, output=APP / 'data', labels_path=LABELS, alignment=ALIGNMENT):
+def build(roman=ROMAN, source=SOURCE, index_path=INDEX, output=APP / 'data', labels_path=LABELS, alignment=ALIGNMENT, scripts=None):
     config = json.loads(CONFIG.read_text(encoding='utf-8'))
+    others ={script: (Path(folder), Path(output) / f'transcripts-{script}', set()) for script, folder in (scripts or {}).items()
+              if Path(folder).is_dir() and any(Path(folder).glob('episode_*.srt'))}
     stopwords, rules, places = set(config['stopwords']), category_rules(config), place_rules(config)
+    cities = place_rules(config, 'cities')
     labels = read_labels(labels_path, {s['id'] for c in config['categories'] for s in c['subcategories']})
     index = read_index(index_path)
     files = select_files(roman)
@@ -201,7 +214,7 @@ def build(roman=ROMAN, source=SOURCE, index_path=INDEX, output=APP / 'data', lab
     unaligned, unlabelled = [], []
     for path in files:
         number = int(re.search(r'\d+', path.stem).group())
-        cues, spans, originals = read_episode(path, source)
+        cues, spans, originals = read_episode(path, source, alignment)
         duration = spans[-1][1]
         minutes = [0] * (int(duration // 60) + 1)
         events, counts, latin = collections.Counter(), collections.Counter(), 0
@@ -214,7 +227,7 @@ def build(roman=ROMAN, source=SOURCE, index_path=INDEX, output=APP / 'data', lab
             # Latin words in the original are the English ones; everything else in the Roman text is
             # romanised Urdu. Each English word appears once in both, so counting over the episode gives
             # the same totals as cue by cue and works when the Roman cues are paced differently.
-            shared = counts & (collections.Counter(w for c in originals for w in words(c.text)) + added_latin(alignment, number))
+            shared = counts & (collections.Counter(w for text in originals for w in words(text)) + added_latin(alignment, number))
             english.update(shared)
             urdu.update(counts - shared)
             latin = sum(shared.values())
@@ -223,6 +236,11 @@ def build(roman=ROMAN, source=SOURCE, index_path=INDEX, output=APP / 'data', lab
         name = f'episode_{number:03d}.js'
         write_if_changed(transcripts / name, f'GANJI_TRANSCRIPT({number},{compact([[round(s, 2), c.text] for c, (s, _) in zip(cues, spans)])});\n')
         written.add(name)
+        for script, (folder, target, done) in others.items():
+            if (folder / path.name).is_file():
+                other = parse((folder / path.name).read_text(encoding='utf-8-sig'))
+                write_if_changed(target / name, f'GANJI_TRANSCRIPT({number},{compact([[round(span(c)[0], 2), c.text] for c in other])},{compact(script)});\n')
+                done.add(name)
         total = sum(counts.values())
         content = collections.Counter({w: c for w, c in counts.items() if len(w) > 2 and w not in stopwords})
         contents[number] = content
@@ -255,6 +273,7 @@ def build(roman=ROMAN, source=SOURCE, index_path=INDEX, output=APP / 'data', lab
             questions.append({'ep': number, 'order': order, 'title': title, 'start': start, 'length': length,
                               'sub': sub, 'also': also, 'age': stated_age(title, opening) if asker else None,
                               'places': mentioned_places(places, f'{title} {reading}') if asker else [],
+                              'cities': mentioned_places(cities, f'{title} {reading}') if asker else [],
                               'words': title_words(title, stopwords), 'excerpt': excerpt})
         episodes.append({
             'n': number,
@@ -271,9 +290,15 @@ def build(roman=ROMAN, source=SOURCE, index_path=INDEX, output=APP / 'data', lab
             'minutes': minutes,
             'top': content.most_common(TOP_WORDS),
         })
-    for stale in transcripts.glob('episode_*.js'):
-        if stale.name not in written:
-            stale.unlink()
+    # Transcripts of removed episodes go, and so do those of a version whose folder is gone.
+    gone = [(Path(output) / f'transcripts-{script}', set()) for script in (scripts or {}) if script not in others]
+    for folder, done in [(transcripts, written)] + [(target, done) for _, target, done in others.values()] + gone:
+        for stale in folder.glob('episode_*.js'):
+            if stale.name not in done:
+                stale.unlink()
+    for folder, _ in gone:
+        if folder.is_dir() and not any(folder.iterdir()):
+            folder.rmdir()
     count = len(episodes)
     # Romanized spellings of rare words are often recognition noise; English words come through intact.
     def distinctive(word):
@@ -306,6 +331,7 @@ def build(roman=ROMAN, source=SOURCE, index_path=INDEX, output=APP / 'data', lab
             'words': sum(e['words'] for e in episodes),
             'seconds': round(sum(e['duration'] for e in episodes), 1),
             'language': language,
+            'scripts': ['roman'] + list(others),
             'playlist': PLAYLIST,
         },
         'categories': [{'id': c['id'], 'name': c['name'], 'description': c['description'],
@@ -314,6 +340,7 @@ def build(roman=ROMAN, source=SOURCE, index_path=INDEX, output=APP / 'data', lab
                                                                if any(q['sub'] == f"{c['id']}.auto" for q in questions) else [])}
                        for c in config['categories']],
         'places': [{'name': p['name'], 'region': p['region']} for p in config.get('places', [])],
+        'cities': [{'name': c['name'], 'country': c['country']} for c in config.get('cities', [])],
         'episodes': episodes,
         'questions': questions,
         'vocabulary': vocabulary,
@@ -401,7 +428,7 @@ def main():
     try:
         if not args.skip_build:
             build_theme()
-            build(args.directory, args.source, args.index, args.output, args.labels)
+            build(args.directory, args.source, args.index, args.output, args.labels, scripts=SCRIPTS)
         if args.serve or args.skip_build:
             serve(args.host, args.port)
         else:

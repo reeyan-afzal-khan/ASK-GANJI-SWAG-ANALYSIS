@@ -31,7 +31,6 @@ function countBy(items, key) {
 }
 const r2 = v => Math.round(v * 100) / 100;
 const shorten = (text, max) => text.length > max ? `${text.slice(0, max - 1)}…` : text;
-const escapeRegex = text => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 function debounce(fn, wait) {
   let timer;
   return (...args) => { clearTimeout(timer); timer = setTimeout(() => fn(...args), wait); };
@@ -45,6 +44,7 @@ const CAT = new Map(CATEGORIES.map(c => [c.id, c]));
 const SUB = new Map();
 for (const c of CATEGORIES) for (const sub of c.subcategories) SUB.set(sub.id, { ...sub, cat: c.id });
 const PLACES = DATA.places;
+const CITIES = DATA.cities || [];
 const EPISODES = DATA.episodes.slice().sort((a, b) => a.n - b.n);
 const BY_EP = new Map(EPISODES.map(e => [e.n, e]));
 const QUESTIONS = DATA.questions;
@@ -60,7 +60,7 @@ for (const q of QUESTIONS) {
   q.catName = catName(q.cat);
   q.subName = subName(q.sub);
   q.alsoCats = [...new Set(q.also.map(catOf))].filter(c => c !== q.cat && CAT.has(c));
-  q.search = `${q.title} ${q.excerpt} ${q.catName} ${q.subName} ${q.also.map(subName).join(' ')}`.toLowerCase();
+  q.cities = q.cities || [];
 }
 const QS_BY_EP = new Map();
 for (const q of QUESTIONS) {
@@ -83,8 +83,9 @@ for (const e of EPISODES) {
 }
 
 /* Colours follow each category's overall size and never change with filters: the eight series hues
-   first, then greys. In part-to-whole charts a category's subcategories alternate lighter and darker
-   tones of its hue (largest first), so neighbours stay apart and still read as one family. */
+   first, then greys. In part-to-whole charts a category's subcategories alternate two ladders of
+   lighter tints of its hue (largest first, in the full hue), so neighbours stay apart and still read
+   as one family without turning dark. */
 const CAT_COUNTS = countBy(QUESTIONS, q => q.cat);
 const SUB_COUNTS = countBy(QUESTIONS, q => q.sub);
 const CAT_ORDER = CATEGORIES.slice().sort((a, b) => (a.id === 'other') - (b.id === 'other') || (CAT_COUNTS.get(b.id) || 0) - (CAT_COUNTS.get(a.id) || 0));
@@ -94,12 +95,12 @@ CAT_ORDER.forEach((c, i) => {
   c.color = `var(--${SLOTS[Math.min(i, SLOTS.length - 1)]})`;
   c.subs = c.subcategories.map(sb => SUB.get(sb.id)).filter(sb => SUB_COUNTS.get(sb.id))
     .sort((a, b) => SUB_COUNTS.get(b.id) - SUB_COUNTS.get(a.id));
-  const tints = Math.ceil((c.subs.length - 1) / 2), shades = Math.floor((c.subs.length - 1) / 2);
+  const pale = Math.ceil((c.subs.length - 1) / 2), soft = Math.floor((c.subs.length - 1) / 2);
   c.subs.forEach((sb, j) => {
     sb.color = c.color;
     sb.tone = j === 0 ? c.color
-      : j % 2 ? `color-mix(in oklab, ${c.color} ${Math.round(100 - spread(tints, 30, 76, (j - 1) / 2))}%, var(--surface))`
-      : `color-mix(in oklab, ${c.color} ${Math.round(100 - spread(shades, 24, 52, j / 2 - 1))}%, var(--ink))`;
+      : j % 2 ? `color-mix(in oklab, ${c.color} ${Math.round(spread(pale, 58, 34, (j - 1) / 2))}%, var(--surface))`
+      : `color-mix(in oklab, ${c.color} ${Math.round(spread(soft, 82, 66, j / 2 - 1))}%, var(--surface))`;
   });
 });
 const LIVE_CATS = CAT_ORDER.filter(c => CAT_COUNTS.get(c.id));
@@ -117,34 +118,38 @@ const SORTS = {
   title: { label: 'Title A–Z', compare: (a, b) => a.title.localeCompare(b.title) },
 };
 const state = {
-  tab: 'overview', cat: '', sub: '', q: '', sort: 'episode', openings: true, share: true,
-  ep: EPISODES[EPISODES.length - 1].n, focus: 0, t: null, play: false, find: '',
+  tab: 'overview', cat: '', sub: '', sort: 'episode', openings: true, share: true,
+  ep: EPISODES[EPISODES.length - 1].n, focus: 0, t: null, play: false, script: 'roman',
 };
+// The transcript's language (Roman Urdu or English) carries over between visits.
+try {
+  const saved = localStorage.getItem('ganji-script');
+  if ((DATA.meta.scripts || []).includes(saved)) state.script = saved;
+} catch (error) { /* storage unavailable */ }
 let lastHash = '';
 
 function readHash() {
   const p = new URLSearchParams(location.hash.slice(1));
   let tab = p.get('tab');
-  // Links to the old transcript search tab land on the question search instead.
-  if (tab === 'search') { tab = 'questions'; if (p.get('search')) p.set('q', p.get('search')); }
+  // Links to the old search tab land on the question list instead.
+  if (tab === 'search') tab = 'questions';
   state.tab = TABS.includes(tab) ? tab : 'overview';
   state.sub = SUB.has(p.get('sub')) ? p.get('sub') : '';
   state.cat = CAT.has(p.get('cat')) ? p.get('cat') : (state.sub ? SUB.get(state.sub).cat : '');
   if (state.sub && SUB.get(state.sub).cat !== state.cat) state.sub = '';
-  state.q = p.get('q') || '';
   state.sort = SORTS[p.get('sort')] ? p.get('sort') : 'episode';
   state.ep = BY_EP.has(Number(p.get('ep'))) ? Number(p.get('ep')) : state.ep;
   const t = Number(p.get('t'));
   state.t = p.has('t') && Number.isFinite(t) && t >= 0 ? t : null;
-  state.find = p.get('find') || '';
+  if ((DATA.meta.scripts || []).includes(p.get('script'))) state.script = p.get('script');
   state.focus = 0;
   state.play = false;
 }
 function writeHash(push = false) {
   const p = new URLSearchParams({ tab: state.tab });
   if (FILTER_TABS.has(state.tab)) { if (state.cat) p.set('cat', state.cat); if (state.sub) p.set('sub', state.sub); }
-  if (state.tab === 'questions') { if (state.q) p.set('q', state.q); if (state.sort !== 'episode') p.set('sort', state.sort); }
-  if (state.tab === 'episode') { p.set('ep', state.ep); if (state.t) p.set('t', Math.floor(state.t)); if (state.find) p.set('find', state.find); }
+  if (state.tab === 'questions' && state.sort !== 'episode') p.set('sort', state.sort);
+  if (state.tab === 'episode') { p.set('ep', state.ep); if (state.t) p.set('t', Math.floor(state.t)); if (state.script !== 'roman') p.set('script', state.script); }
   const hash = `#${p}`;
   if (location.hash !== hash) history[push ? 'pushState' : 'replaceState'](null, '', hash);
   lastHash = location.hash;
@@ -228,8 +233,8 @@ function go(tab, changes = {}) {
 const setFilter = (cat, sub = '') => navigate({ cat, sub });
 // The sidebar tree filters the current tab when it can, and opens the category page otherwise.
 const pickCategory = (cat, sub = '') => go(FILTER_TABS.has(state.tab) ? state.tab : 'categories', { cat, sub });
-function openEpisode(n, { order = 0, t = null, play = false, find = '' } = {}) {
-  go('episode', { ep: n, focus: order, t, play, find });
+function openEpisode(n, { order = 0, t = null, play = false } = {}) {
+  go('episode', { ep: n, focus: order, t, play });
 }
 const openQuestion = q => openEpisode(q.ep, { order: q.order, t: q.start, play: true });
 
@@ -251,7 +256,7 @@ function playButton(q) {
 }
 function subTag(q) {
   return h('a', { class: 'tag primary', href: `#tab=questions&cat=${q.cat}&sub=${q.sub}`, style: catStyle(q.cat), title: (SUB.get(q.sub) || {}).description || '',
-    on: { click: ev => { ev.preventDefault(); go('questions', { cat: q.cat, sub: q.sub, q: '' }); } } },
+    on: { click: ev => { ev.preventDefault(); go('questions', { cat: q.cat, sub: q.sub }); } } },
   h('span', { class: 'dot' }), `${q.catName} › ${q.subName}`);
 }
 
@@ -333,9 +338,9 @@ function simpleTable({ columns, rows }) {
     h('thead', {}, h('tr', {}, columns.map(c => h('th', { class: c.num ? 'num' : null, scope: 'col', text: c.label })))),
     h('tbody', {}, rows.map(row => h('tr', {}, row.map((cell, i) => h('td', { class: columns[i].num ? 'num' : null }, cell))))));
 }
-function kpi(label, value, sub, { span = 'span-2', accent = false } = {}) {
+function kpi(label, value, sub) {
   const wordy = /[a-z]{3}/i.test(value) && value.length > 9;
-  return h('div', { class: `kpi ${span}${accent ? ' accent' : ''}` },
+  return h('div', { class: 'kpi' },
     h('div', { class: 'kpi-label', text: label }),
     h('div', { class: wordy ? 'kpi-value text' : 'kpi-value', text: value, title: value }),
     sub ? h('div', { class: 'kpi-sub', text: sub }) : null);
@@ -471,11 +476,15 @@ function sunburst(container, { cat, sub, onPick, onBack }) {
   const hover = key => { if (hovered !== key) { hovered = key; paint(); } };
 
   const chartBox = h('div', { class: 'donut-chart' });
-  const legendBox = h('div', { class: 'donut-legend' });
+  const legendBox = h('div', { class: 'donut-legend' },
+    h('div', { class: 'legend-head', 'aria-hidden': 'true' }, h('span'), h('span', { text: focus ? 'Subcategory' : 'Category' }), h('span'),
+      h('span', { class: 'num', text: 'Questions' }), h('span', { class: 'pct', text: 'Share' })));
+  const largest = Math.max(1, ...items.map(it => it.value));
   for (const it of items) {
     const row = h('button', { class: 'legend-row', type: 'button', style: `--cat:${it.color}`, 'aria-pressed': String(selected === it.key) },
       h('span', { class: 'swatch', style: `opacity:${it.shade}` }),
       h('span', { class: 'name', text: it.label }),
+      h('span', { class: 'share-track' }, h('span', { class: 'share-bar', style: `width:${r2(it.value / largest * 100)}%` })),
       h('span', { class: 'num', text: fmtInt(it.value) }),
       h('span', { class: 'pct', text: fmtShare(it.value / total) }));
     row.addEventListener('pointerenter', () => hover(it.key));
@@ -491,7 +500,7 @@ function sunburst(container, { cat, sub, onPick, onBack }) {
   function draw() {
     chartBox.replaceChildren();
     slices.clear();
-    const S = Math.round(Math.max(220, Math.min(400, chartBox.clientWidth || 320)));
+    const S = Math.round(Math.max(240, Math.min(420, chartBox.clientWidth || 320)));
     const c = S / 2, TAU = Math.PI * 2;
     const svg = s('svg', { viewBox: `0 0 ${S} ${S}`, width: S, height: S, role: 'img',
       'aria-label': focus ? `${focus.name}: questions by subcategory` : 'Questions by category and subcategory' });
@@ -522,9 +531,9 @@ function sunburst(container, { cat, sub, onPick, onBack }) {
     }
     const hole = (focus ? 0.3 : 0.22) * S;
     const g = s('g', { class: focus ? 'donut-centre donut-back' : 'donut-centre' });
-    const num = s('text', { class: 'donut-center-number', x: c, y: r2(c - 2), 'text-anchor': 'middle' });
-    const label = s('text', { class: 'donut-center-label', x: c, y: r2(c + 18), 'text-anchor': 'middle' });
-    const note = s('text', { class: 'donut-center-note', x: c, y: r2(c + 35), 'text-anchor': 'middle' });
+    const num = s('text', { class: 'donut-center-number', x: c, 'text-anchor': 'middle' });
+    const label = s('text', { class: 'donut-center-label', x: c, 'text-anchor': 'middle' });
+    const note = s('text', { class: 'donut-center-note', x: c, 'text-anchor': 'middle' });
     g.append(s('circle', { class: 'centre-hit', cx: c, cy: c, r: r2(hole - 4) }), num, label, note);
     if (focus) {
       g.setAttribute('role', 'button');
@@ -535,16 +544,28 @@ function sunburst(container, { cat, sub, onPick, onBack }) {
     }
     svg.append(g);
     const fit = Math.max(10, Math.floor(hole * 2 / 7.4));
+    // Long names take two lines in the centre rather than being cut short.
+    function lines(text) {
+      if (text.length <= fit) return [text];
+      const words = text.split(' ');
+      let first = '';
+      while (words.length && `${first} ${words[0]}`.trim().length <= fit) first = `${first} ${words.shift()}`.trim();
+      return first ? [first, shorten(words.join(' '), fit)] : [shorten(text, fit)];
+    }
+    function setCentre(value, name, detail) {
+      const parts = lines(name), top = c - (parts.length > 1 ? 10 : 2);
+      num.textContent = value;
+      num.setAttribute('y', r2(top));
+      label.replaceChildren(...parts.map((part, i) => s('tspan', { x: c, y: r2(top + 20 + i * 15) }, part)));
+      note.textContent = detail;
+      note.setAttribute('y', r2(top + 37 + (parts.length - 1) * 15));
+    }
     centre = key => {
       const it = byKey.get(key || selected);
       if (it) {
-        num.textContent = fmtInt(it.value);
-        label.textContent = shorten(it.label, fit);
-        note.textContent = SUB.has(it.key) ? `${fmtShare(it.value / CAT_COUNTS.get(it.cat))} of ${focus ? 'category' : shorten(catName(it.cat), fit - 8)}` : `${fmtShare(it.value / total)} of all`;
+        setCentre(fmtInt(it.value), it.label, SUB.has(it.key) ? `${fmtShare(it.value / CAT_COUNTS.get(it.cat))} of ${focus ? 'the category' : shorten(catName(it.cat), fit - 8)}` : `${fmtShare(it.value / total)} of all`);
       } else {
-        num.textContent = fmtInt(total);
-        label.textContent = focus ? shorten(focus.name, fit) : 'questions';
-        note.textContent = focus ? '↩ all categories' : `in ${TOPICS.length} categories`;
+        setCentre(fmtInt(total), focus ? focus.name : 'questions', focus ? '↩ all categories' : `in ${TOPICS.length} categories`);
       }
     };
     chartBox.append(svg);
@@ -915,7 +936,7 @@ function questionList(container, list, pageSize = 24) {
     more.hidden = shown >= list.length;
   };
   more.addEventListener('click', showMore);
-  container.replaceChildren(list.length ? box : h('p', { class: 'notice' }, 'No questions match. Try another search or clear the filter.'), h('div', { class: 'list-footer' }, count, more));
+  container.replaceChildren(list.length ? box : h('p', { class: 'notice' }, 'No questions in this selection. Clear the filter to see them all.'), h('div', { class: 'list-footer' }, count, more));
   showMore();
 }
 
@@ -953,6 +974,11 @@ function placeItems(qs) {
   const counts = new Map();
   for (const q of qs) for (const i of q.places) counts.set(i, (counts.get(i) || 0) + 1);
   return [...counts.entries()].map(([i, value]) => ({ key: i, label: PLACES[i].name, value, note: PLACES[i].region })).sort((a, b) => b.value - a.value);
+}
+function cityItems(qs) {
+  const counts = new Map();
+  for (const q of qs) for (const i of q.cities) counts.set(i, (counts.get(i) || 0) + 1);
+  return [...counts.entries()].map(([i, value]) => ({ key: i, label: CITIES[i].name, value, country: CITIES[i].country })).sort((a, b) => b.value - a.value);
 }
 function regionItems(qs) {
   const counts = new Map();
@@ -1039,10 +1065,16 @@ function findings(qs) {
   if (ages.length >= 10) {
     items.push([`${plural(ages.length, 'asker')} state their age: the median is `, strong(String(median(ages))), `, and ${fmtPct(ages.filter(a => a < 30).length / ages.length)} are under 30.`]);
   }
-  const places = placeItems(qs);
-  if (places.length) {
+  // Cities rather than countries: the cities in Pakistan, then the ones abroad.
+  const cities = cityItems(qs);
+  if (cities.length) {
+    const named = list => list.map((c, i) => [i ? (i === list.length - 1 ? ' and ' : ', ') : '', strong(c.label), ` (${fmtInt(c.value)})`]);
+    const home = cities.filter(c => c.country === 'Pakistan').slice(0, 3), away = cities.filter(c => c.country !== 'Pakistan').slice(0, 3);
+    const first = home.length ? home : away;
     const abroad = qs.filter(q => q.places.some(i => PLACES[i].region !== 'Pakistan')).length;
-    items.push(['The most mentioned place is ', strong(places[0].label), ` (${plural(places[0].value, 'question')}); ${fmtPct(abroad / total)} of these questions mention somewhere outside Pakistan.`]);
+    items.push([`The most mentioned ${first.length > 1 ? 'cities are' : 'city is'} `, named(first),
+      home.length && away.length ? ['; abroad, it is ', named(away)] : '',
+      `. ${fmtPct(abroad / total)} of these questions mention somewhere outside Pakistan.`]);
   }
   const multi = qs.filter(q => q.alsoCats.length).length;
   const pairs = pairItems(qs, state.cat);
@@ -1059,7 +1091,7 @@ function findings(qs) {
   return h('ul', { class: 'findings' }, items.map(parts => h('li', {}, parts)));
 }
 
-/* ---------- Sidebar: sections, category tree, theme and the phone drawer ---------- */
+/* ---------- Sidebar: sections with the category tree, theme and the phone drawer ---------- */
 const SECTIONS = {
   overview: { label: 'Overview', icon: 'M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z' },
   categories: { label: 'Categories', icon: 'M11 5a8 8 0 1 0 8 8h-8zM13 3a8 8 0 0 1 8 8h-8z' },
@@ -1070,12 +1102,17 @@ const SECTIONS = {
   about: { label: 'About', icon: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 11v5M12 8v.01' },
 };
 const navBox = document.getElementById('nav');
+const navItems = new Map();
+// The category tree hangs under its section, right below the Overview: categories, each with its
+// subcategories below it.
+const treeBody = h('div', { class: 'tree-body', id: 'tree' });
+const treeToggle = h('button', { class: 'nav-expand', type: 'button', 'aria-controls': 'tree', 'aria-label': 'Show or hide the categories' },
+  h('span', { class: 'chevron', 'aria-hidden': 'true' }));
 for (const tab of TABS) {
-  navBox.append(h('button', { class: 'nav-item', type: 'button', 'data-tab': tab, on: { click: () => go(tab) } }, icon(SECTIONS[tab].icon), h('span', { text: SECTIONS[tab].label })));
+  const item = h('button', { class: 'nav-item', type: 'button', 'data-tab': tab, on: { click: () => go(tab) } }, icon(SECTIONS[tab].icon), h('span', { text: SECTIONS[tab].label }));
+  navItems.set(tab, item);
+  navBox.append(tab === 'categories' ? h('div', { class: 'nav-group' }, h('div', { class: 'nav-row' }, item, treeToggle), treeBody) : item);
 }
-
-const treeBody = document.getElementById('tree');
-const treeToggle = document.getElementById('tree-toggle');
 const openCats = new Set();
 let treeCat = '';
 function setTreeOpen(open) {
@@ -1149,20 +1186,14 @@ document.getElementById('rail-close').addEventListener('click', () => { closeRai
 document.addEventListener('keydown', ev => { if (ev.key === 'Escape') { hideTip(); closeRail(); } });
 document.getElementById('playlist-link').href = DATA.meta.playlist;
 
-/* ---------- Top bar: page title, active filter and quick search ---------- */
+/* ---------- Top bar: page title and active filter ---------- */
 const pageTitle = document.getElementById('page-title');
 const pageSub = document.getElementById('page-sub');
 const chipBox = document.getElementById('filter-chip');
-const quickForm = document.getElementById('quick-search');
-const quickInput = document.getElementById('quick-search-input');
-quickForm.addEventListener('submit', ev => {
-  ev.preventDefault();
-  go('questions', { q: quickInput.value.trim(), cat: '', sub: '' });
-});
 const SUBTITLES = {
   overview: () => `${fmtInt(QUESTIONS.length)} viewer questions from ${fmtInt(EPISODES.length)} episodes, in ${TOPICS.length} categories and ${SUBTOPIC_COUNT} subcategories`,
   categories: () => state.cat ? CAT.get(state.cat).description : 'How the questions are grouped, and how each subject changed over the years',
-  questions: () => 'Search, filter and play every question',
+  questions: () => 'Every question, by category, with its answer one click away',
   insights: () => 'Answer lengths, ages, places, words and the subjects on the rise',
   episodes: () => 'Length, pace and questions for every episode',
   episode: () => {
@@ -1172,8 +1203,8 @@ const SUBTITLES = {
   about: () => 'How the data was made, what the measures mean, and their limits',
 };
 function updateChrome() {
-  for (const b of navBox.children) {
-    if (b.dataset.tab === state.tab) b.setAttribute('aria-current', 'page');
+  for (const [tab, b] of navItems) {
+    if (tab === state.tab) b.setAttribute('aria-current', 'page');
     else b.removeAttribute('aria-current');
   }
   const title = state.tab === 'categories' && state.cat ? catName(state.cat) : SECTIONS[state.tab].label;
@@ -1186,7 +1217,6 @@ function updateChrome() {
       h('span', { class: 'dot' }), h('span', { text: state.sub ? `${catName(state.cat)} › ${subName(state.sub)}` : catName(state.cat) }),
       h('button', { type: 'button', 'aria-label': 'Clear the category filter', title: 'Clear filter', text: '×', on: { click: () => setFilter('', '') } })));
   }
-  if (document.activeElement !== quickInput) quickInput.value = state.tab === 'questions' ? state.q : '';
   renderTree();
 }
 
@@ -1195,31 +1225,18 @@ function renderOverview(panel) {
   const qs = scopedQuestions();
   const cat = state.cat ? CAT.get(state.cat) : null;
   const scope = scopeName();
-  const answered = qs.filter(q => q.length != null).map(q => q.length);
   const ages = qs.map(q => q.age).filter(Boolean);
-  const places = placeItems(qs);
-  const episodesWith = new Set(qs.map(q => q.ep)).size;
-  const leadSub = cat && !state.sub ? subItems(qs, cat.id)[0] : null;
-  panel.append(
-    kpi(scope ? `${scope}` : 'Questions', fmtInt(qs.length), scope ? (state.sub ? `${fmtPct(qs.length / CAT_COUNTS.get(cat.id))} of ${cat.name}` : `${fmtPct(qs.length / QUESTIONS.length)} of all questions`) : `from ${plural(EPISODES.length, 'episode')}`, { accent: true }),
-    cat ? kpi('Episodes', fmtInt(episodesWith), `of ${fmtInt(EPISODES.length)} include one`)
-      : kpi('Categories', String(TOPICS.length), `split into ${SUBTOPIC_COUNT} subcategories`),
-    leadSub ? kpi('Top subcategory', leadSub.label, `${plural(leadSub.value, 'question')}, ${fmtPct(leadSub.value / qs.length)}`)
-      : state.sub ? kpi('Share of all', fmtShare(qs.length / QUESTIONS.length), 'of every question asked')
-      : kpi('Per episode', fmt1(qs.length / EPISODES.length), 'questions on average'),
-    kpi('Median answer', fmtDuration(median(answered)), answered.length ? `${fmtDuration(sum(answered))} of answers in all` : 'No timed answers'),
-    kpi('Asker age', ages.length ? String(median(ages)) : '–', ages.length ? `median of ${plural(ages.length, 'stated age')}` : 'No ages stated'),
-    kpi('Top place', places.length ? places[0].label : '–', places.length ? `named in ${plural(places[0].value, 'question')}` : 'No places named'));
 
   const donutRows = () => ({
     columns: [{ label: 'Category' }, { label: 'Subcategory' }, { label: 'Questions', num: true }, { label: 'Share', num: true }],
     rows: (cat ? [cat] : LIVE_CATS).flatMap(c => c.subs.map((sb, i) => [i ? '' : c.name, sb.name, fmtInt(SUB_COUNTS.get(sb.id)), fmtShare(SUB_COUNTS.get(sb.id) / (cat ? CAT_COUNTS.get(c.id) : QUESTIONS.length))])),
   });
   const donut = card({ title: cat ? `Inside ${cat.name}` : 'What viewers ask about',
-    subtitle: cat ? 'Subcategories by number of questions · click one to filter, or the centre to go back' : 'Categories in the inner ring, their subcategories outside · click a slice to zoom in',
-    span: 'span-7', table: donutRows });
+    subtitle: cat ? 'Subcategories by number of questions · click one to filter, or the centre to go back' : 'Categories in the inner ring, their subcategories outside · click a slice or a row to zoom in',
+    table: donutRows });
   if (cat) donut.actions.prepend(h('button', { class: 'small-button', type: 'button', text: '← All categories', on: { click: () => setFilter('', '') } }));
   sunburst(donut.body, { cat: state.cat, sub: state.sub, onPick: (c, sb) => setFilter(c, sb), onBack: () => setFilter('', '') });
+  panel.append(donut.el);
 
   const series = cat ? cat.subs.map(sb => ({ key: sb.id, label: sb.name, color: sb.tone, shade: 1 }))
     : LIVE_CATS.map(c => ({ key: c.id, label: c.name, color: c.color, shade: 1 }));
@@ -1227,7 +1244,7 @@ function renderOverview(panel) {
   const pool = cat ? QUESTIONS.filter(q => q.cat === cat.id) : QUESTIONS;
   const groupOf = cat ? q => q.sub : q => q.cat;
   const trend = card({ title: cat ? `${cat.name} over time` : 'Subjects over time',
-    subtitle: `Questions in each block of ${Math.ceil(EPISODES.length / blocks.length)} episodes · click a band to filter`, span: 'span-5', legend: seriesLegend(series),
+    subtitle: `Questions in each block of ${Math.ceil(EPISODES.length / blocks.length)} episodes · click a band to filter`, span: 'span-7', legend: seriesLegend(series),
     table: () => ({
       columns: [{ label: 'Episodes' }].concat(series.map(sr => ({ label: sr.label, num: true }))),
       rows: blocks.map(b => { const list = pool.filter(q => q.ep >= b.from && q.ep <= b.to), counts = countBy(list, groupOf); return [b.label].concat(series.map(sr => fmtInt(counts.get(sr.key) || 0))); }),
@@ -1235,17 +1252,16 @@ function renderOverview(panel) {
   const stacked = stackedColumns(trend.body, { qs: pool, series, groupOf, selected: state.sub || null,
     onPick: key => cat ? setFilter(cat.id, state.sub === key ? '' : key) : setFilter(key, '') });
   trend.actions.prepend(segmented('Measure', [['Share', true], ['Count', false]], state.share, on => { state.share = on; stacked.setShare(on); }));
-  panel.append(donut.el, trend.el);
+  const summary = card({ title: 'Key findings', subtitle: scope ? `For questions about ${scope}` : 'Across all episodes', span: 'span-5' });
+  summary.body.append(findings(qs));
+  panel.append(trend.el, summary.el);
 
   const counts = countBy(qs, q => q.ep);
   panel.append(episodeCard(EPISODES, {
     title: scope ? `${scope}: questions per episode` : 'Questions per episode', subtitle: 'Index entries in each episode · click a column to open it',
-    label: 'Questions', value: e => counts.get(e.n) || 0, format: fmtInt, color: cat ? cat.color : null, span: 'span-8', height: 320,
+    label: 'Questions', value: e => counts.get(e.n) || 0, format: fmtInt, color: cat ? cat.color : null, span: 'span-12', height: 300,
     extra: e => (QS_BY_EP.get(e.n) || []).filter(inScope).slice(0, 3).map(q => ({ value: `Q${q.order}`, label: shorten(q.title, 60) })),
   }));
-  const summary = card({ title: 'Key findings', subtitle: scope ? `For questions about ${scope}` : 'Across all episodes', span: 'span-4' });
-  summary.body.append(findings(qs));
-  panel.append(summary.el);
 
   const top = cat ? null : subItems(qs).slice(0, 10);
   const second = cat
@@ -1266,21 +1282,6 @@ function renderOverview(panel) {
   const agesCard = card({ title: 'How old are the askers?', subtitle: ages.length ? `${plural(ages.length, 'question')} state an age · median ${median(ages)}` : 'No ages stated in these questions', span: 'span-4', table: itemsTable('Age', ageList, fmtInt) });
   ordinalColumns(agesCard.body, { items: ageList, format: fmtInt, label: 'questions', height: 250 });
   panel.append(second.el, change.el, agesCard.el);
-
-  const longest = qs.filter(q => q.length != null).sort((a, b) => b.length - a.length).slice(0, 8);
-  const longCard = card({ title: 'Longest answers', subtitle: 'Minutes from the question to the next one · click to play', span: 'span-6' });
-  barList(longCard.body, { items: longest.map(q => ({ key: q, label: q.title, value: q.length / 60, color: colorOf(q.cat), rows: [{ value: `Episode ${q.ep} · Q${q.order}`, label: q.subName }], note: 'Click to play this answer' })),
-    format: fmtMinutes, valueLabel: 'until the next question', onSelect: q => openQuestion(q) });
-  const spotCard = card({ title: 'Question spotlight', subtitle: 'A random question from this selection', span: 'span-6' });
-  const spot = h('div');
-  // Comment round-ups are not questions, so the spotlight skips them unless they are the selection.
-  const letters = qs.filter(q => q.sub !== 'show.comments');
-  const spotPool = letters.length ? letters : qs;
-  const show = () => spot.replaceChildren(questionCard(spotPool[Math.floor(Math.random() * spotPool.length)]));
-  spotCard.actions.append(h('button', { class: 'small-button', type: 'button', text: 'Show another', on: { click: show } }));
-  spotCard.body.append(spot);
-  show();
-  panel.append(longCard.el, spotCard.el);
 }
 
 /* ---------- Categories ---------- */
@@ -1315,22 +1316,19 @@ function renderCategoryDetail(panel) {
   const inCat = QUESTIONS.filter(q => q.cat === cat.id), qs = inCat.filter(inScope);
   const sub = state.sub ? SUB.get(state.sub) : null;
   const crumb = (label, onClick) => h('a', { href: '#', on: { click: ev => { ev.preventDefault(); onClick(); } } }, label);
+  const answered = qs.filter(q => q.length != null).map(q => q.length);
+  const ages = qs.map(q => q.age).filter(Boolean);
+  const facts = [plural(qs.length, 'question'),
+    sub ? `${fmtPct(qs.length / inCat.length)} of ${cat.name}` : `${fmtShare(qs.length / QUESTIONS.length)} of all questions`,
+    `in ${fmtInt(new Set(qs.map(q => q.ep)).size)} of ${plural(EPISODES.length, 'episode')}`,
+    answered.length ? `median answer ${fmtDuration(median(answered))}` : null];
   panel.append(h('div', { class: 'detail span-12' },
     h('nav', { class: 'crumbs', 'aria-label': 'Breadcrumb' },
       crumb('All categories', () => setFilter('', '')), h('span', { 'aria-hidden': 'true', text: '›' }),
       sub ? [crumb(cat.name, () => setFilter(cat.id, '')), h('span', { 'aria-hidden': 'true', text: '›' }), h('span', { text: sub.name })] : h('span', { text: cat.name })),
     h('div', { class: 'detail-head', style: `--cat:${cat.color}` }, h('span', { class: 'dot' }),
-      h('div', {}, h('h2', { text: sub ? sub.name : cat.name }), h('p', { text: sub ? sub.description : cat.description })))));
-  const answered = qs.filter(q => q.length != null).map(q => q.length);
-  const ages = qs.map(q => q.age).filter(Boolean);
-  const places = placeItems(qs);
-  panel.append(
-    kpi('Questions', fmtInt(qs.length), sub ? `${fmtPct(qs.length / inCat.length)} of ${cat.name}` : `${fmtShare(qs.length / QUESTIONS.length)} of all questions`, { accent: true }),
-    kpi('Episodes', fmtInt(new Set(qs.map(q => q.ep)).size), `of ${fmtInt(EPISODES.length)} include one`),
-    kpi('Median answer', fmtDuration(median(answered)), answered.length ? `longest ${fmtDuration(Math.max(...answered))}` : 'No timed answers'),
-    kpi('Asker age', ages.length ? String(median(ages)) : '–', ages.length ? `median of ${plural(ages.length, 'stated age')}` : 'No ages stated'),
-    kpi('Top place', places.length ? places[0].label : '–', places.length ? `named in ${plural(places[0].value, 'question')}` : 'No places named'),
-    kpi('Two subjects', fmtPct(qs.filter(q => q.alsoCats.length).length / qs.length), 'touch another category'));
+      h('div', {}, h('h2', { text: sub ? sub.name : cat.name }), h('p', { text: sub ? sub.description : cat.description }),
+        h('p', { class: 'detail-facts', text: facts.filter(Boolean).join(' · ') })))));
 
   const subsCard = card({ title: 'Subcategories', subtitle: 'Click one to narrow this page', span: 'span-5', table: itemsTable('Subcategory', subItems(inCat, cat.id), fmtInt) });
   barList(subsCard.body, { items: subItems(inCat, cat.id), format: fmtInt, valueLabel: 'questions', selected: state.sub, onSelect: key => setFilter(cat.id, state.sub === key ? '' : key) });
@@ -1359,8 +1357,8 @@ function renderCategoryDetail(panel) {
   const pairCard = card({ title: 'Often comes with', subtitle: 'Other categories tagged on the same questions', span: 'span-4', table: itemsTable('Category', pairs, fmtInt) });
   barList(pairCard.body, { items: pairs.slice(0, 8), format: fmtInt, valueLabel: 'questions in both', onSelect: key => go('categories', { cat: key, sub: '' }) });
   const words = wordItems(qs);
-  const wordCard = card({ title: 'Words in these questions', subtitle: 'Most frequent title words · click one to search', span: 'span-4', table: itemsTable('Word', words.slice(0, 30), fmtInt) });
-  barList(wordCard.body, { items: words.slice(0, 10), format: fmtInt, valueLabel: 'titles', onSelect: word => go('questions', { q: word }) });
+  const wordCard = card({ title: 'Words in these questions', subtitle: 'Most frequent words in the question titles', span: 'span-4', table: itemsTable('Word', words.slice(0, 30), fmtInt) });
+  barList(wordCard.body, { items: words.slice(0, 10), format: fmtInt, valueLabel: 'titles' });
   const ageList = ageItems(qs);
   const agesCard = card({ title: 'Asker ages', subtitle: ages.length ? `${plural(ages.length, 'question')} state an age` : 'No ages stated', span: 'span-4', table: itemsTable('Age', ageList, fmtInt) });
   ordinalColumns(agesCard.body, { items: ageList, format: fmtInt, label: 'questions', height: 250 });
@@ -1374,13 +1372,12 @@ function renderCategoryDetail(panel) {
 /* ---------- Questions explorer ---------- */
 function renderQuestions(panel) {
   const inCat = state.cat ? QUESTIONS.filter(q => q.cat === state.cat) : QUESTIONS;
-  const controls = card({ title: 'Find questions', subtitle: 'Search titles and the opening of each answer · ▶ plays an answer in the episode explorer' });
-  const input = h('input', { class: 'text-input', type: 'search', placeholder: 'Search, e.g. canada visa, cousin, freelancing', value: state.q, 'aria-label': 'Search questions' });
+  const controls = card({ title: 'Browse questions', subtitle: 'Choose a category and an order · ▶ plays an answer in the episode explorer' });
   const sort = h('select', { class: 'select', 'aria-label': 'Sort questions' }, Object.entries(SORTS).map(([key, it]) => h('option', { value: key, text: it.label })));
   sort.value = state.sort;
   const openings = h('input', { type: 'checkbox', checked: state.openings });
   append(controls.body, [
-    h('div', { class: 'controls' }, input, sort, h('label', { class: 'checkbox' }, openings, 'Show openings')),
+    h('div', { class: 'controls' }, sort, h('label', { class: 'checkbox' }, openings, 'Show openings')),
     h('div', { class: 'chips' }, h('span', { class: 'chips-label', text: 'Category' }),
       chipButton('All', QUESTIONS.length, !state.cat, () => setFilter('', '')),
       categoryItems(QUESTIONS).map(c => chipButton(c.label, c.value, state.cat === c.key, () => setFilter(c.key, ''), c.color))),
@@ -1391,11 +1388,9 @@ function renderQuestions(panel) {
   const results = h('div', { class: 'span-12' });
   panel.append(results);
   const update = () => {
-    const words = state.q.toLowerCase().split(/[\s,]+/).filter(Boolean);
-    const list = inCat.filter(q => (!state.sub || q.sub === state.sub) && words.every(w => q.search.includes(w))).sort(SORTS[state.sort].compare);
+    const list = inCat.filter(q => !state.sub || q.sub === state.sub).sort(SORTS[state.sort].compare);
     questionList(results, list, 24);
   };
-  input.addEventListener('input', debounce(() => { state.q = input.value.trim(); writeHash(); update(); }, 150));
   sort.addEventListener('change', () => { state.sort = sort.value; writeHash(); update(); });
   openings.addEventListener('change', () => { state.openings = openings.checked; update(); });
   update();
@@ -1406,7 +1401,7 @@ function renderInsights(panel) {
   const qs = scopedQuestions();
   if (!qs.length) { panel.append(notice('No questions match this filter.')); return; }
   const scope = scopeName();
-  panel.append(h('p', { class: 'lead span-12', text: `Patterns across ${plural(qs.length, 'question')}${scope ? ` about ${scope}` : ''}. Pick a category in the sidebar to focus every chart on it.` }));
+  panel.append(h('p', { class: 'lead span-12', text: `Patterns across ${plural(qs.length, 'question')}${scope ? ` about ${scope}` : ''}. Pick a category under Categories in the sidebar to focus every chart on it.` }));
 
   const groups = state.cat
     ? CAT.get(state.cat).subs.map(sb => ({ label: sb.name, color: sb.color, test: q => q.sub === sb.id }))
@@ -1444,8 +1439,8 @@ function renderInsights(panel) {
   panel.append(placesCard.el, regionCard.el, pairCard.el);
 
   const words = wordItems(qs);
-  const wordCard = card({ title: 'Words in question titles', subtitle: 'Click a word to list its questions', span: 'span-6', table: itemsTable('Word', words.slice(0, 40), fmtInt) });
-  barList(wordCard.body, { items: words.slice(0, 14), format: fmtInt, valueLabel: 'titles', onSelect: word => go('questions', { q: word }) });
+  const wordCard = card({ title: 'Words in question titles', subtitle: 'The most frequent words, leaving out common English and Urdu ones', span: 'span-6', table: itemsTable('Word', words.slice(0, 40), fmtInt) });
+  barList(wordCard.body, { items: words.slice(0, 14), format: fmtInt, valueLabel: 'titles' });
   const keys = state.cat ? CAT.get(state.cat).subs.map(sb => sb.id) : TOPICS.flatMap(c => c.subs.map(sb => sb.id));
   const shifts = shiftItems(state.cat ? QUESTIONS.filter(q => q.cat === state.cat) : QUESTIONS, q => q.sub, keys, subName).filter(it => it.n >= 6).sort((a, b) => b.value - a.value);
   const movers = shifts.filter(it => it.value > 0).slice(0, 7).concat(shifts.filter(it => it.value < 0).slice(-7));
@@ -1485,48 +1480,39 @@ function renderEpisodes(panel) {
   panel.append(table.el);
 }
 
-/* ---------- Transcripts: data/transcripts/episode_NNN.js call GANJI_TRANSCRIPT ---------- */
+/* ---------- Transcripts: data/transcripts(-english)/episode_NNN.js call GANJI_TRANSCRIPT ----------
+   Roman Urdu always; English when the build found it (DATA.meta.scripts). */
+const SCRIPT_NAMES = { roman: 'Roman Urdu', english: 'English' };
+const SCRIPTS = (DATA.meta.scripts || ['roman']).filter(s => SCRIPT_NAMES[s]);
 const transcriptCache = new Map();
 const transcriptWaiting = new Map();
-window.GANJI_TRANSCRIPT = (n, cues) => {
-  const resolve = transcriptWaiting.get(n);
-  transcriptWaiting.delete(n);
+window.GANJI_TRANSCRIPT = (n, cues, script = 'roman') => {
+  const resolve = transcriptWaiting.get(`${script}:${n}`);
+  transcriptWaiting.delete(`${script}:${n}`);
   if (resolve) resolve({ cues: cues.map(([start, text]) => ({ start, text })) });
 };
-function loadTranscript(n) {
-  if (!transcriptCache.has(n)) {
+function loadTranscript(n, script = 'roman') {
+  const id = `${script}:${n}`;
+  if (!transcriptCache.has(id)) {
     const promise = new Promise((resolve, reject) => {
-      const script = document.createElement('script');
-      script.src = `data/transcripts/episode_${String(n).padStart(3, '0')}.js`;
-      transcriptWaiting.set(n, resolve);
-      script.onload = () => {
-        script.remove();
-        if (transcriptWaiting.delete(n)) reject(new Error(`${script.src} did not contain a transcript`));
+      const tag = document.createElement('script');
+      tag.src = `data/${script === 'roman' ? 'transcripts' : `transcripts-${script}`}/episode_${String(n).padStart(3, '0')}.js`;
+      transcriptWaiting.set(id, resolve);
+      tag.onload = () => {
+        tag.remove();
+        if (transcriptWaiting.delete(id)) reject(new Error(`${tag.src} did not contain a transcript`));
       };
-      script.onerror = () => {
-        script.remove();
-        transcriptWaiting.delete(n);
-        reject(new Error(`could not load ${script.src}`));
+      tag.onerror = () => {
+        tag.remove();
+        transcriptWaiting.delete(id);
+        reject(new Error(`could not load ${tag.src}`));
       };
-      document.head.append(script);
+      document.head.append(tag);
     });
-    promise.catch(() => transcriptCache.delete(n));
-    transcriptCache.set(n, promise);
+    promise.catch(() => transcriptCache.delete(id));
+    transcriptCache.set(id, promise);
   }
-  return transcriptCache.get(n);
-}
-const stripSounds = text => text.replace(/\[[a-z]+\]/gi, ' ').replace(/\s+/g, ' ').trim();
-function highlighted(text, regex) {
-  const out = [];
-  let last = 0;
-  regex.lastIndex = 0;
-  for (const m of text.matchAll(regex)) {
-    if (!m[0]) continue;
-    out.push(text.slice(last, m.index), h('mark', { text: m[0] }));
-    last = m.index + m[0].length;
-  }
-  out.push(text.slice(last));
-  return out;
+  return transcriptCache.get(id);
 }
 function cueText(text) {
   return text.split(/(\[[a-z]+\])/i).filter(Boolean).map(part => /^\[[a-z]+\]$/i.test(part) ? h('span', { class: 'sound', text: part }) : part);
@@ -1732,18 +1718,18 @@ function paceChart(container, e, timed, onSeek) {
   registerChart(draw);
   return { setTime };
 }
-async function mountTranscript(box, findInput, counter, sess, timed, seek) {
+async function mountTranscript(box, sess, timed, seek, script = 'roman') {
   const e = sess.e;
   box.replaceChildren(h('p', { class: 'muted', text: 'Loading transcript…' }));
   let t;
-  try { t = await loadTranscript(e.n); } catch (error) {
-    box.replaceChildren(h('p', { class: 'notice' }, h('strong', { text: 'The transcript needs the files in data/transcripts/. ' }),
-      'Run ', h('code', { text: 'bash app/run.sh' }), ' to generate them, then reload this page.'));
-    findInput.disabled = true;
+  try { t = await loadTranscript(e.n, script); } catch (error) {
+    box.replaceChildren(h('p', { class: 'notice' }, h('strong', { text: `The ${SCRIPT_NAMES[script]} transcript of this episode is not in data/. ` }),
+      'Run ', h('code', { text: 'bash app/run.sh' }), ' to generate it, then reload this page.'));
     return null;
   }
   if (session !== sess) return null;
-  const list = h('div', { class: 'transcript', tabindex: '0', 'aria-label': `Transcript of episode ${e.n}` });
+  const list = h('div', { class: `transcript ${script}`, tabindex: '0', 'aria-label': `Transcript of episode ${e.n}`,
+    lang: script === 'english' ? 'en' : null });
   const rows = [], starts = [], headers = new Map();
   let qi = 0;
   for (const c of t.cues) {
@@ -1754,11 +1740,10 @@ async function mountTranscript(box, findInput, counter, sess, timed, seek) {
       list.append(header);
       qi++;
     }
-    const textBox = h('span', { class: 'cue-text' }, cueText(c.text));
     const time = h('button', { class: 'cue-time', type: 'button', text: fmtClock(c.start), title: sess.live ? 'Play from this line' : 'Open YouTube at this line',
       on: { click: () => seek(Math.max(0, c.start - (sess.live ? 0.3 : 2)), { external: true }) } });
-    const row = h('div', { class: 'cue' }, time, textBox);
-    rows.push({ row, textBox, c, lower: stripSounds(c.text).toLowerCase() });
+    const row = h('div', { class: 'cue' }, time, h('span', { class: 'cue-text' }, cueText(c.text)));
+    rows.push(row);
     starts.push(c.start);
     list.append(row);
   }
@@ -1778,11 +1763,11 @@ async function mountTranscript(box, findInput, counter, sess, timed, seek) {
       if (starts[mid] <= time + 0.2) { idx = mid; lo = mid + 1; } else hi = mid - 1;
     }
     if (idx !== current) {
-      if (current >= 0) rows[current].row.classList.remove('current');
+      if (current >= 0) rows[current].classList.remove('current');
       current = idx;
-      if (idx >= 0) rows[idx].row.classList.add('current');
+      if (idx >= 0) rows[idx].classList.add('current');
     }
-    if (idx >= 0 && following && !rows[idx].row.hidden && sess.live) { keepInView(rows[idx].row, jump); jump = false; }
+    if (idx >= 0 && following && sess.live) { keepInView(rows[idx], jump); jump = false; }
   }
   const stopFollowing = () => {
     if (!following || !sess.live) return;
@@ -1800,34 +1785,14 @@ async function mountTranscript(box, findInput, counter, sess, timed, seek) {
     update(sess.time);
   });
 
-  const apply = () => {
-    const query = findInput.value.trim();
-    state.find = query;
-    writeHash();
-    const lower = query.toLowerCase();
-    let matches = 0;
-    const regex = query ? new RegExp(escapeRegex(lower).replace(/\s+/g, '\\s+'), 'gi') : null;
-    for (const r of rows) {
-      const hit = !query || r.lower.includes(lower);
-      r.row.hidden = !hit;
-      if (hit && query) { matches++; r.textBox.replaceChildren(...highlighted(stripSounds(r.c.text), regex)); r.marked = true; }
-      else if (r.marked) { r.textBox.replaceChildren(...cueText(r.c.text)); r.marked = false; }
-    }
-    for (const header of headers.values()) header.hidden = !!query;
-    counter.textContent = query ? `${plural(matches, 'line')} with “${query}”` : `${fmtInt(rows.length)} lines`;
-    if (query) stopFollowing();
-  };
-  findInput.disabled = false;
-  findInput.addEventListener('input', debounce(apply, 150));
-  apply();
   sess.followers.push(update);
   update(sess.time);
   return {
+    detach() { sess.followers = sess.followers.filter(fn => fn !== update); },
     follow() { following = true; jump = true; followButton.hidden = true; },
     showQuestion(q) {
       const header = headers.get(q);
       if (!header) return;
-      if (findInput.value) { findInput.value = ''; apply(); }
       const anchor = header.nextElementSibling || header;
       // Headers are sticky, so measure from the first line after the header instead.
       list.scrollTop = Math.max(0, anchor.offsetTop - header.offsetHeight - 2);
@@ -1951,37 +1916,51 @@ function renderEpisode(panel) {
 
   const facts = card({ title: 'Episode facts' });
   facts.body.append(h('div', { class: 'mini-kpis' },
-    kpi('Length', fmtDuration(e.duration), `${fmtInt(e.cues)} subtitle lines`, { span: '' }),
-    kpi('Questions', fmtInt(e.questions), e.firstQuestion != null ? `first at ${fmtClock(e.firstQuestion)}` : 'no timestamps', { span: '' }),
-    kpi('Per question', fmtMinutes(e.perQuestion), 'on average', { span: '' }),
-    kpi('Words', fmtCompact(e.words), `${fmtInt(e.pace)} per spoken minute`, { span: '' }),
-    e.englishShare != null ? kpi('English', fmtPct(e.englishShare), `${fmtPct(1 - e.englishShare)} Urdu`, { span: '' }) : null,
-    kpi('Laughter', fmtInt(e.laughs), `${fmt1(e.laughRate)} per hour`, { span: '' })));
+    kpi('Length', fmtDuration(e.duration), `${fmtInt(e.cues)} subtitle lines`),
+    kpi('Questions', fmtInt(e.questions), e.firstQuestion != null ? `first at ${fmtClock(e.firstQuestion)}` : 'no timestamps'),
+    kpi('Per question', fmtMinutes(e.perQuestion), 'on average'),
+    kpi('Words', fmtCompact(e.words), `${fmtInt(e.pace)} per spoken minute`),
+    e.englishShare != null ? kpi('English', fmtPct(e.englishShare), `${fmtPct(1 - e.englishShare)} Urdu`) : null,
+    kpi('Laughter', fmtInt(e.laughs), `${fmt1(e.laughRate)} per hour`)));
   const pace = card({ title: 'Words per minute', subtitle: 'How densely it is spoken, minute by minute · lines mark questions · click to play from there' });
   const paceView = paceChart(pace.body, e, timed, t => seek(t, { external: true }));
   sess.followers.push(paceView.setTime);
 
-  const find = h('input', { class: 'text-input', type: 'search', placeholder: 'Find in this transcript', value: state.find, 'aria-label': 'Find in transcript', disabled: true });
-  const words = card({ title: 'Words', subtitle: 'Signature words are unusually frequent in this episode · click one to find it in the transcript' });
+  const words = card({ title: 'Words', subtitle: 'Signature words are unusually frequent in this episode' });
   words.body.append(h('div', { class: 'chips' }, e.signature.length
-    ? e.signature.map(w => h('button', { class: 'chip', type: 'button', text: w, on: { click: () => { find.value = w; find.dispatchEvent(new Event('input')); } } }))
+    ? e.signature.map(w => h('span', { class: 'tag', text: w }))
     : h('span', { class: 'muted', text: 'None found' })));
   const commonBox = h('div');
   words.body.append(h('h4', { class: 'section-label', text: 'Most used content words' }), commonBox);
   barList(commonBox, { items: e.topList.slice(0, 10).map(([i, c]) => ({ key: i, label: VOCAB[i], value: c, lang: VOCAB_LANG ? (VOCAB_LANG[i] === 'e' ? 'EN' : 'UR') : null })), format: fmtInt, valueLabel: 'uses' });
 
-  const counter = h('span', { class: 'find-count' });
   const box = h('div', { class: 'transcript-box' });
+  const transcriptActions = h('div', { class: 'card-actions' });
   const transcriptCard = h('section', { class: 'card transcript-card' },
     h('div', { class: 'card-head' }, h('div', { class: 'card-titles' }, h('h3', { text: 'Transcript' }),
-      h('p', { class: 'subtitle', text: sess.live ? 'Follows the video as it plays · click a time to jump there' : 'Roman Urdu subtitles · times open YouTube' }))),
-    h('div', { class: 'controls' }, find, counter), box);
+      h('p', { class: 'subtitle', text: sess.live ? 'Follows the video as it plays · click a time to jump there' : 'Subtitles · times open YouTube' })),
+    transcriptActions),
+    box);
+  // Roman Urdu or English: the choice is kept for the next episode and in the link.
+  const showScript = script => {
+    if (transcript) transcript.detach();
+    transcript = null;
+    mountTranscript(box, sess, timed, seek, script).then(view => { if (session === sess && state.script === script) transcript = view; });
+  };
+  if (SCRIPTS.length > 1) {
+    transcriptActions.append(segmented('Transcript language', SCRIPTS.map(s => [SCRIPT_NAMES[s], s]), state.script, script => {
+      state.script = script;
+      try { localStorage.setItem('ganji-script', script); } catch (error) { /* storage unavailable */ }
+      writeHash();
+      showScript(script);
+    }));
+  }
   panel.append(h('div', { class: 'stack span-7' }, playerCard, qCard.el, facts.el, pace.el, words.el), h('div', { class: 'side span-5' }, transcriptCard));
 
   if (sess.live) mountPlayer(frame, sess, startAt, autoplay, now, tick);
   else playerFallback(frame, sess, e.video ? 'The built-in player works when the app is served over http(s): on the published site, or locally with bash app/run.sh --serve.' : 'No video is linked to this episode.', now);
   tick(startAt);
-  mountTranscript(box, find, counter, sess, timed, seek).then(view => {
+  mountTranscript(box, sess, timed, seek, state.script).then(view => {
     transcript = view;
     if (view && focusQ && !sess.live) view.showQuestion(focusQ);
   });
@@ -2022,7 +2001,7 @@ function renderAbout(panel) {
     h('thead', {}, h('tr', {}, ['Category', 'Subcategory', 'What it covers'].map(label => h('th', { scope: 'col', text: label })), h('th', { scope: 'col', class: 'num', text: 'Questions' }), h('th', { scope: 'col', class: 'num', text: 'Share of category' }))),
     h('tbody', {}, LIVE_CATS.flatMap(c => c.subs.map((sb, i) => h('tr', {},
       h('td', {}, i ? '' : h('span', { class: 'tax-cat', style: `--cat:${c.color}` }, h('span', { class: 'dot' }), c.name)),
-      h('td', {}, h('a', { href: `#tab=questions&cat=${c.id}&sub=${sb.id}`, on: { click: ev => { ev.preventDefault(); go('questions', { cat: c.id, sub: sb.id, q: '' }); } } }, sb.name)),
+      h('td', {}, h('a', { href: `#tab=questions&cat=${c.id}&sub=${sb.id}`, on: { click: ev => { ev.preventDefault(); go('questions', { cat: c.id, sub: sb.id }); } } }, sb.name)),
       h('td', { class: 'muted', text: sb.description }),
       h('td', { class: 'num', text: fmtInt(SUB_COUNTS.get(sb.id)) }),
       h('td', { class: 'num', text: fmtShare(SUB_COUNTS.get(sb.id) / CAT_COUNTS.get(c.id)) }))))))));
@@ -2044,7 +2023,7 @@ function renderAbout(panel) {
   const sources = card({ title: 'Sources and rights', span: 'span-5', cls: 'prose' });
   sources.body.append(
     h('p', {}, 'Videos play from YouTube in its privacy-enhanced mode and stay on the creators’ channel; this site hosts no video or audio.'),
-    h('p', {}, 'All episode content belongs to its creators. This analysis is unofficial and not affiliated with the show.'),
+    h('p', {}, 'All episode content belongs to its creators. This fan-made analysis by ', strong('Reeyan-Afzal-Khan'), ' is unofficial and not affiliated with the show.'),
     h('p', {}, h('a', { href: meta.playlist, target: '_blank', rel: 'noopener', text: 'The full playlist on YouTube ↗' })));
   panel.append(checks.el, sources.el);
 }

@@ -3,8 +3,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 AUDIO = ROOT / 'all_episodes'
-SOURCE = ROOT / 'urdu_transcript_crisper'
-ROMAN = ROOT / 'urdu_transcript_crisper_roman'
+SOURCE = ROOT / 'transcripts-urdu'
+ROMAN = ROOT / 'transcripts-urdu-roman'
+# English subtitles, translated from the audio (scripts/06-format/translate.py).
+ENGLISH = ROOT / 'transcripts-english'
 CACHE = ROOT / '.cache'
 MODELS = CACHE / 'roman-model'
 REPORTS = CACHE / 'reports'

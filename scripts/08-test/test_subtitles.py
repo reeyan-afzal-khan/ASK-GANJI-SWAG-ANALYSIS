@@ -18,6 +18,12 @@ TEST_TEMP.mkdir(parents=True,exist_ok=True)
 
 SAMPLE='1\n00:00:00,000 --> 00:00:02,000\nHello\nworld\n\n2\n00:00:02,000 --> 00:00:03,000\nI am here.\n\n'
 
+def setUpModule():
+    # Validation also checks transcripts-english/; keep the tests away from the real one.
+    english=patch.object(manage,'ENGLISH',TEST_TEMP/'no-english')
+    english.start()
+    unittest.addModuleCleanup(english.stop)
+
 class SubtitleTests(unittest.TestCase):
     def test_single_line_preserves_ids_timing_and_words(self):
         before=parse(SAMPLE)
@@ -136,6 +142,25 @@ class PacingTests(unittest.TestCase):
                 self.assertFalse(manage.validate(roman,source))
                 self.assertFalse(manage.pace(roman,source))
                 self.assertIn('sawaal',p.read_text(encoding='utf-8'))
+
+    def test_validation_reads_the_original_from_the_cache_once_its_folder_is_gone(self):
+        with tempfile.TemporaryDirectory(dir=TEST_TEMP) as d:
+            root=Path(d);source=root/'source';roman=root/'roman';cache=root/'alignment'
+            for folder in (source,roman,cache):folder.mkdir()
+            (source/'episode_001.srt').write_text(SOURCE_CUES,encoding='utf-8')
+            p=roman/'episode_001.srt';p.write_text(ROMAN_CUES,encoding='utf-8')
+            (cache/'episode_001.json').write_text(json.dumps(alignment(source/'episode_001.srt')),encoding='utf-8')
+            with patch.object(manage,'ROOT',root),patch.object(manage,'ALIGNMENT',cache),patch.object(manage,'REPORTS',root/'reports'):
+                self.assertFalse(manage.pace(roman,source))
+                paced=p.read_text(encoding='utf-8')
+                gone=root/'deleted'
+                self.assertFalse(manage.validate(roman,gone))
+                p.write_text(paced.replace('masters','master'),encoding='utf-8')
+                self.assertTrue(manage.validate(roman,gone))
+                # Every cached episode still needs its Roman file.
+                p.write_text(paced,encoding='utf-8')
+                (cache/'episode_002.json').write_text(json.dumps(alignment(source/'episode_001.srt')),encoding='utf-8')
+                self.assertTrue(manage.validate(roman,gone))
 
     def test_stitching_duplicates_are_left_out_and_still_validate(self):
         source=('1\n00:00:00,000 --> 00:00:03,000\nwe went to the market today\n\n'
@@ -307,6 +332,77 @@ class PacingTests(unittest.TestCase):
         self.assertEqual(words(align.collapse_loops(timed('nahi nahi nahi nahi'))),'nahi nahi nahi nahi')
         self.assertEqual(words(align.collapse_loops(timed('w- w- w- w- w- w- ok'))),'w- w- ok')
         self.assertEqual(words(align.trim_edges(timed('ki thi phir naya jumla aur'),'hum ne baat ki thi'.split(),'aur phir'.split())),'phir naya jumla')
+
+    def test_translation_windows_and_cues(self):
+        sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'06-format'))
+        spec=importlib.util.spec_from_file_location('translate',Path(__file__).resolve().parents[1]/'06-format'/'translate.py')
+        translate=importlib.util.module_from_spec(spec)
+        here=os.getcwd()
+        try:spec.loader.exec_module(translate)
+        finally:os.chdir(here)
+        # Whole cues, at most 28 s, never across a pause of two seconds or more.
+        self.assertEqual(translate.windows_for([(0,5),(5.5,10),(13,20),(20,45)]),[(0,10.2),(12.8,20.2),(19.8,45.2)])
+        # A window under four seconds joins the one before it, or else the one after; short=0 keeps it apart.
+        self.assertEqual(translate.windows_for([(0,5),(8,9),(12,20)]),[(0,9.2),(11.8,20.2)])
+        self.assertEqual(translate.windows_for([(0,1),(4,10)]),[(0,10.2)])
+        self.assertEqual(translate.windows_for([(0,5),(8,9),(12,20)],short=0),[(0,5.2),(7.8,9.2),(11.8,20.2)])
+        # A second try's pieces: about ten seconds of whole cues each.
+        self.assertEqual(translate.windows_for([(0,4),(4.5,8),(8.5,12),(12.5,14)],longest=10),[(0,8.2),(8.3,14.2)])
+        self.assertEqual(translate.spoken('[UH] haan [breath] bhai.'),['haan','bhai.'])
+        decode=lambda ids:' '.join(f'w{i}' for i in ids)
+        stamp=1000  # Whisper's <|0.00|>; stamps count 0.02 s each
+        self.assertEqual(translate.segments_of([stamp,5,6,stamp+100,stamp+100,7,stamp+150],(10.0,14.0),stamp,decode),
+                         [(10.0,12.0,'w5 w6'),(12.0,13.0,'w7')])
+        # The prompt, end of text and the model's own tags after <|30.00|> are not text.
+        self.assertEqual(translate.segments_of([900,stamp,5,stamp+50,950,stamp+1501],(0.0,5.0),stamp,decode,900),[(0.0,1.0,'w5')])
+        cues=translate.cues_of([(0.0,2.0,'Hello there.'),(1.5,3.0,'Hello there.'),(1.8,4.0,'How are you?')])
+        self.assertEqual([(c.timing,c.text) for c in cues],[('00:00:00,000 --> 00:00:01,720','Hello there.'),('00:00:01,800 --> 00:00:04,000','How are you?')])
+        # Two pieces that both heard one sentence: it is kept once, whatever its capitals and punctuation.
+        self.assertEqual([c.text for c in translate.cues_of([(0.0,2.0,'Because it is not.'),(2.5,4.0,'because it is not')])],['Because it is not.'])
+        # A fragment of the cue next to it goes; it keeps the earlier start. Short phrases may repeat, as people do.
+        cues=translate.cues_of([(0.0,2.0,'few upsets in recent years.'),(2.0,6.0,'Few upsets in recent years against USA, Afghanistan.'),
+                                (6.5,7.0,'I quit.'),(7.5,9.0,'I quit is very easy.')])
+        self.assertEqual([(c.timing[:12],c.text) for c in cues],[('00:00:00,000','Few upsets in recent years against USA, Afghanistan.'),
+                                                                  ('00:00:06,500','I quit.'),('00:00:07,500','I quit is very easy.')])
+        # A long segment splits between sentences, which share its speech by length and skip its silences.
+        self.assertEqual(translate.sentences([(0.0,10.0,'Aaaa. Bbbb.')],[(0.0,2.0),(8.0,10.0)]),[(0.0,2.0,'Aaaa.'),(8.0,10.0,'Bbbb.')])
+        self.assertEqual(translate.sentences([(0.0,10.0,'Mr. Zaidi asked.')],[]),[(0.0,10.0,'Mr. Zaidi asked.')])
+        self.assertEqual(translate.sentences([(0.0,5.0,'Short. Ones stay.')],[]),[(0.0,5.0,'Short. Ones stay.')])
+        # A long sentence is cut at commas into parts of about 90 characters; a number's comma is not a cut.
+        self.assertEqual(translate.pieces('So if she leaves you, even though she knows that she is very important to you, '
+                                          'even knowing this she is listening to her friends who are taunting her, so clearly '
+                                          'you are not in their priority. She owes 1,000 rupees.'),
+                         ['So if she leaves you, even though she knows that she is very important to you,',
+                          'even knowing this she is listening to her friends who are taunting her,',
+                          'so clearly you are not in their priority.','She owes 1,000 rupees.'])
+        # A runaway echo of a stutter is caught; ordinary English, and empty windows without speech, are not.
+        self.assertEqual(translate.doubts('if you get so '+'over-'*40,10),['repeats'])
+        self.assertEqual(translate.doubts('I love being alone. That is the best company you will ever have.',12),[])
+        self.assertEqual((translate.doubts('',20),translate.doubts('',3)),(['empty'],[]))
+        # English under a third of the spoken Roman words has lost speech, as when the model stops early.
+        self.assertEqual(translate.doubts('Zimbabwe does not say that.',40),['thin'])
+        self.assertLess(translate.score([(0,9,'We are not that kind of people at all.')],20),translate.score([(0,9,'We are')],20))
+        # A thin try beats an invented loop, however many words the loop has.
+        self.assertLess(translate.score([(0,9,'We are fine.')],30),translate.score([(0,9,' '.join(['Good bye.']*40))],30))
+        # Stock phrases go where nothing like them was said nearby; a sentence looping four times or more is kept once.
+        roman=[((0,3),'aap ka bohat shukriya'),((20,23),'phir woh chala gaya'),((40,45),'allah hafiz')]
+        self.assertEqual(translate.clean([(0,3,'Thank you very much.'),(20,23,'He left. Thank you.'),(30,32,'Peace be upon you.'),
+                                          (40,45,' '.join(['Good bye.']*6)),(50,55,"It's okay. It's okay. It's okay."),
+                                          (60,65,'see you do not send remittances to the country,')],roman),
+                         [(0,3,'Thank you very much.'),(20,23,'He left.'),(40,45,'Good bye.'),(50,55,"It's okay. It's okay. It's okay."),
+                          (60,65,'see you do not send remittances to the country,')])
+        # Run-together stock phrases go too, and "like" as a filler word is no reason to keep "Please like…".
+        roman=[((0,6),'phir like obviously she will miss her family'),((20,26),'video ko like kariye aur subscribe kariye')]
+        self.assertEqual(translate.clean([(0,6,'Please like and subscribe..Thankyou. Obviously she will miss her family.'),
+                                          (20,26,'Please like and subscribe.'),(30,32,'The U.S.A. is far.')],roman),
+                         [(0,6,'Obviously she will miss her family.'),(20,26,'Please like and subscribe.'),(30,32,'The U.S.A. is far.')])
+        # Repair keeps the English of windows the file was made with, by start; joined windows go again.
+        with tempfile.TemporaryDirectory(dir=TEST_TEMP) as d:
+            path=Path(d)/'episode_001.srt'
+            path.write_text('1\n00:00:00,000 --> 00:00:04,000\nHello.\n\n2\n00:00:07,800 --> 00:00:09,000\nThank you very much.\n\n'
+                            '3\n00:00:11,800 --> 00:00:19,000\nNext part.\n\n',encoding='utf-8')
+            spans=[(0,5),(8,9),(12,20)]
+            self.assertEqual(translate.existing(path,translate.windows_for(spans),spans),{1:[(11.8,19.0,'Next part.')]})
 
     def test_review_finds_repetition_loops(self):
         self.assertEqual(manage.loops('a b b b b c'.split()),[(1,4,'b')])

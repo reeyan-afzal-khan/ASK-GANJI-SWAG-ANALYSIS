@@ -8,7 +8,7 @@ import re
 import unicodedata
 from zipfile import ZipFile, ZIP_DEFLATED
 from pathlib import Path
-from paths import ROOT, ROMAN, SOURCE, REPORTS, CACHE
+from paths import ROOT, ROMAN, SOURCE, ENGLISH, REPORTS, CACHE
 from subtitles import Cue, parse, render, atomic_write, select_files, span
 import pacing
 
@@ -29,13 +29,26 @@ def alignment_for(path, source):
     data = json.loads(cache.read_text(encoding='utf-8'))
     return data if data.get('source_sha256') == sha256(original) else None
 
+def original_cues(path, source):
+    """The original transcription's cues for a Roman file, with its alignment cache (see alignment_for):
+    from the source SRT, or once that folder is gone, from the cache, which holds them word for word."""
+    original = Path(source) / Path(path).name
+    if original.is_file():
+        return parse(original.read_text(encoding='utf-8-sig')), alignment_for(path, source)
+    cache = ALIGNMENT / f'{Path(path).stem}.json'
+    if not cache.is_file():
+        raise ValueError(f'Source not found: {original}')
+    data = json.loads(cache.read_text(encoding='utf-8'))
+    return [Cue(str(n), f'{pacing.stamp(c[0])} --> {pacing.stamp(c[1])}', (c[2],)) for n, c in enumerate(data['cues'], 1)], data
+
 def aligned_words(data):
     return ' '.join(cue[3] for cue in data['cues']).split()
 
-def check_paced(path, source, cues, before):
+def check_paced(path, data, cues, before):
     """A paced file keeps every source word in order, inside the source's time, without overlaps.
 
-    Passages added from the audio may widen that time (a skipped intro or outro).
+    Passages added from the audio may widen that time (a skipped intro or outro). `data` is the
+    episode's alignment cache, or None when it was made from another version of the source.
     Returns warnings: Roman words that differ from the alignment cache are hand corrections, kept.
     """
     if [c.number for c in cues] != [str(n) for n in range(1, len(cues) + 1)]:
@@ -47,7 +60,6 @@ def check_paced(path, source, cues, before):
     for k in range(1, len(spans)):
         if spans[k][0] < spans[k - 1][1]:
             raise ValueError(f'Cue {cues[k].number} overlaps the cue before it')
-    data = alignment_for(path, source)
     applied = [s for s in data.get('supplements', []) if s.get('applied')] if data else []
     timing = [span(c) for c in before] + [(s['start'], s['end']) for s in applied]
     if spans[0][0] < min(start for start, _ in timing) - 0.5 or spans[-1][1] > max(end for _, end in timing) + 2.0:
@@ -84,11 +96,31 @@ def check_paced(path, source, cues, before):
                   difflib.SequenceMatcher(None, expected, words, autojunk=False).get_opcodes() if tag != 'equal')
     return [f'{path.name}: {changed} words differ from the alignment cache (hand corrections, kept)']
 
+def check_english(folder, episodes=None):
+    """English subtitles: one per Roman file, numbered in order, one line each, in time order without overlaps."""
+    errors=[]; cues_total=0; files=select_files(folder,episodes)
+    roman={p.name for p in select_files(ROMAN,episodes)} if ROMAN.is_dir() else set()
+    errors.extend(f'{folder.name}/{name}: no Roman subtitles for it' for name in sorted({p.name for p in files}-roman))
+    for path in files:
+        try:
+            cues=parse(path.read_text(encoding='utf-8-sig'))
+            if [c.number for c in cues]!=[str(n) for n in range(1,len(cues)+1)]:raise ValueError('cue numbers are not consecutive')
+            if any(len(c.lines)!=1 or not c.text.strip() for c in cues):raise ValueError('a cue is empty or spans several lines')
+            spans=[span(c) for c in cues]
+            if any(e<=s for s,e in spans) or any(spans[k][0]<spans[k-1][1] for k in range(1,len(spans))):raise ValueError('cues overlap or run backwards')
+            cues_total+=len(cues)
+        except ValueError as exc:
+            errors.append(f'{folder.name}/{path.name}: {exc}')
+    print(f'English: {len(files)} files, {cues_total:,} cues, {len(errors)} errors.')
+    return {'files':len(files),'cues':cues_total,'errors':errors}
+
 def validate(folder, source, episodes=None):
     results = []; errors = []; warnings = []
     files = select_files(folder, episodes)
-    if not episodes and Path(source).is_dir():
-        missing = {p.name for p in Path(source).glob('episode_*.srt')} - {p.name for p in files}
+    if not episodes:
+        # The original transcription's episodes: its SRT folder, or once that is gone, the alignment cache.
+        originals = Path(source).glob('episode_*.srt') if Path(source).is_dir() else ALIGNMENT.glob('episode_*.json')
+        missing = {f'{p.stem}.srt' for p in originals} - {p.name for p in files}
         errors.extend(f'Missing output: {name}' for name in sorted(missing))
     for path in files:
         try:
@@ -97,13 +129,10 @@ def validate(folder, source, episodes=None):
                 raise ValueError('Subtitle text spans multiple lines')
             if any(non_latin(c.text) for c in cues):
                 raise ValueError('Non-Latin letters remain')
-            original = Path(source) / path.name
-            if not original.is_file():
-                raise ValueError(f'Source not found: {original}')
-            before = parse(original.read_text(encoding='utf-8-sig'))
+            before, data = original_cues(path, source)
             paced = [(c.number,c.timing) for c in cues] != [(c.number,c.timing) for c in before]
             if paced:
-                warnings.extend(check_paced(path, source, cues, before))
+                warnings.extend(check_paced(path, data, cues, before))
                 long = sum(len(c.text) > pacing.MAX_CHARS and len(c.text.split()) > 1 for c in cues)
                 if long: warnings.append(f'{path.name}: {long} cues longer than {pacing.MAX_CHARS} characters')
             else:
@@ -121,7 +150,10 @@ def validate(folder, source, episodes=None):
             results.append({'file':path.name,'cues':len(cues),'paced':paced,'sha256':hashlib.sha256(path.read_bytes()).hexdigest()})
         except ValueError as exc:
             errors.append(f'{path.name}: {exc}')
-    report={'files':len(files),'validated':len(results),'cues':sum(r['cues'] for r in results),'paced':sum(r['paced'] for r in results),'errors':errors,'warnings':warnings,'results':results}
+    # The English translation (step 06 --translate) keeps its own timing; it only needs to be sound.
+    english=check_english(ENGLISH,episodes) if ENGLISH.is_dir() else None
+    if english:errors.extend(english['errors'])
+    report={'files':len(files),'validated':len(results),'cues':sum(r['cues'] for r in results),'paced':sum(r['paced'] for r in results),'errors':errors,'warnings':warnings,'results':results,'english':english}
     REPORTS.mkdir(parents=True,exist_ok=True)
     atomic_write(REPORTS/'validation.json', json.dumps(report,indent=2))
     print(f'Validated {len(results)}/{len(files)} files ({report["paced"]} paced); {report["cues"]:,} cues; {len(errors)} errors; {len(warnings)} warnings.')
@@ -292,6 +324,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('action',choices=['format','validate','review'])
     parser.add_argument('--directory',type=Path,default=ROMAN)
+    # The original transcription; once its folder is gone, validation reads it from the alignment cache.
     parser.add_argument('--source',type=Path,default=SOURCE)
     parser.add_argument('--episodes',help='Comma-separated episode numbers')
     parser.add_argument('--check',action='store_true',help='Report pacing changes without writing')

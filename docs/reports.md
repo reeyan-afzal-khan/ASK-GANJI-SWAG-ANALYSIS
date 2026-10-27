@@ -16,6 +16,8 @@ Generated files live under `.cache/` and are excluded from Git. They are preserv
 | `.cache/reports/pacing.json` | Cue statistics before and after the latest pacing, plus the stitching duplicates left out, missed speech added and decoding loops replaced |
 | `.cache/reports/audio_check.json` | Possible missed speech, low-confidence cues and repetition loops for listening review, plus each decoding loop's status (Roman Urdu only) |
 | `.cache/reports/alignment.log` | Progress of a long alignment run, when started with `tee` |
+| `.cache/reports/translate.log` | Progress of a long English translation run, when started with `tee` |
+| `.cache/reports/translation.json` | Per episode, the English windows still doubtful after every try: repeating, not English, or empty or thin where the Roman cues have speech |
 
 Run `bash scripts/07-validate/run.sh` for current results. Historical reports are reference snapshots: their old paths and hashes may predate formatting or reorganizations.
 

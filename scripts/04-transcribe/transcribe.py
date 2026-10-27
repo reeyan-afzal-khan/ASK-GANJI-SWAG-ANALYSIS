@@ -21,7 +21,7 @@ logging.getLogger("crisperwhisper.longform").setLevel(logging.INFO)
 
 MODEL_PATH = os.environ.get("CRISPER_MODEL", "CrisperWhisper2_Large" if Path("CrisperWhisper2_Large").is_dir() else "large")
 AUDIO_DIR = Path("all_episodes")
-OUTPUT_DIR = Path("urdu_transcript_crisper")
+OUTPUT_DIR = Path("transcripts-urdu")
 FIRST_EPISODE = int(os.environ.get("FIRST_EPISODE", "1"))
 LAST_EPISODE = int(os.environ.get("LAST_EPISODE", str(max(
     (int(p.stem.split("_")[-1]) for p in AUDIO_DIR.glob("episode_*.mp3")
