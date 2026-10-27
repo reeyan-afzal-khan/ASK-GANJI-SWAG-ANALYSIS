@@ -35,7 +35,7 @@ bash app/run.sh
 bash app/run.sh --serve
 ```
 
-The builder uses only Python's standard library, and it also regenerates `assets/theme.css` from `skins/`. On Windows, `python app\tools\build_data.py --serve` does the same. Use the preview, not the file on disk, to try the episode explorer's player. Unchanged data files are left untouched, so rebuilding without new input produces no Git changes. `bash scripts/08-test/run.sh` runs the builder's tests with the rest of the repository's tests.
+The builder uses only Python's standard library, and it also regenerates `assets/theme.css` from `skins/`. On Windows, `python app\tools\build_data.py --serve` does the same. In WSL2, open the printed address in your Windows browser; Ctrl+C stops the preview. Use the preview, not the file on disk, to try the episode explorer's player. Unchanged data files are left untouched, so rebuilding without new input produces no Git changes. `bash scripts/08-test/run.sh` runs the builder's tests with the rest of the repository's tests.
 
 ## Categories
 
@@ -57,7 +57,7 @@ Broad subjects are split into finer subcategories under the same category: love 
 
 ## Publish on GitHub Pages
 
-The data is about 31 MB in total (about 0.9 MB loads on first visit; transcripts load on demand), well within GitHub Pages limits. Commit `app/data/` after each rebuild so the published site stays current. Choose one of the following:
+The data is about 58 MB in total, with the English transcripts (about 1.5 MB loads on first visit; transcripts load on demand), well within GitHub Pages limits. Commit `app/data/` after each rebuild so the published site stays current. Choose one of the following:
 
 - **From this repository with GitHub Actions.** In the repository's *Settings → Pages*, set *Source* to *GitHub Actions* and use a workflow that uploads the `app/` folder as the Pages artifact. The site is then `https://<username>.github.io/<repository>/`.
 - **From this repository's branch, with no workflow.** Pages can only publish the repository root or `docs/`, so choose the `main` branch and `/ (root)`. The app is then at `https://<username>.github.io/<repository>/app/`. This publishes every tracked file in the repository; add an empty `.nojekyll` at the root to skip Jekyll processing.

@@ -12,6 +12,130 @@
 
 Run scripts with Bash in Ubuntu/WSL2. Each resolves the repository root from its own location, so it also works when invoked by absolute path from another directory. Paths with spaces are quoted. Each numbered folder under `scripts/` contains its `run.sh` command and step-specific helpers or settings. `scripts/.shared/` contains the shell environment helper, repository paths, subtitle parser and the management code shared by formatting, validation and tests. Run steps 01–02 once, then 03 → 04 → 05 → 07 for each new episode; step 06 is optional formatting and step 08 runs code tests. The analytics app in `app/` is rebuilt with `bash app/run.sh`; it takes no lock because it only reads subtitles and writes `app/data/`. Runtime files are kept in the ignored `.cache/` folder. The shared `.ct2-batch.lock` prevents overlapping download, setup, transcription, romanization and formatting commands. Do not remove a lock to bypass a running process.
 
+## Commands
+
+Every entry point takes `--help`. `scripts/.shared/common.sh` and the Python files are helpers, not workflow steps.
+
+| Command | Purpose |
+| --- | --- |
+| `bash scripts/01-setup/run.sh [all\|transcription\|roman]` | Prepare the Linux environments |
+| `bash scripts/02-download-model/run.sh` | Fetch the pinned Roman Urdu model and tokenizer (skips files already in `.cache/roman-model/`) |
+| `bash scripts/03-download-audio/run.sh NUMBER VIDEO_URL` | Download one episode with an explicit filename |
+| `bash scripts/04-transcribe/run.sh` | Transcribe missing MP3 episodes |
+| `bash scripts/05-romanize/run.sh` | Convert missing outputs to single-line Roman Urdu |
+| `bash scripts/06-format/run.sh` | Optional: time every word on the GPU and re-pace the Roman cues evenly, after backing up changed files |
+| `bash scripts/06-format/run.sh --translate` | English subtitles from the audio (GPU) |
+| `bash scripts/07-validate/run.sh` | Check script, structure, timing and English preservation |
+| `bash scripts/08-test/run.sh` | Run the code tests, including the app's |
+
+Download with the video's watch URL and an explicit episode number: playlist positions change, so they must not decide filenames. The downloader keeps existing files and stores the video metadata next to the MP3.
+
+### Transcription
+
+```bash
+bash scripts/04-transcribe/run.sh --episodes 123,163,183
+FIRST_EPISODE=240 LAST_EPISODE=242 bash scripts/04-transcribe/run.sh
+# The first 20 seconds only, without writing an SRT.
+bash scripts/04-transcribe/run.sh --smoke-test 48
+
+# Keep a log.
+mkdir -p .cache/logs
+set -o pipefail
+bash scripts/04-transcribe/run.sh 2>&1 | tee .cache/logs/transcribe.log
+```
+
+Normal transcription starts at episode 1, stops at the highest MP3 number and skips nonempty outputs.
+
+### Roman Urdu
+
+```bash
+# Regenerate one existing Roman file; the old one is backed up first.
+bash scripts/05-romanize/run.sh --episodes 243 --overwrite
+# Use only the glossary and cached candidates; no GPU generation.
+bash scripts/05-romanize/run.sh --episodes 243 --cached-only
+```
+
+New Roman output is already single-line; an editor or player may still wrap a long line on screen. A Roman file regenerated after pacing returns to the original cue timing: run step 06 again to re-pace it from the cache.
+
+### Pacing, missed speech and decoding loops
+
+```bash
+# What pacing would change, without the GPU or writing files.
+bash scripts/06-format/run.sh --check
+# Align only episodes 243 and 244 on the GPU, then pace them.
+bash scripts/06-format/run.sh --episodes 243,244
+# Re-pace from the cached alignment, e.g. after hand edits or tuning pacing.py; no GPU.
+bash scripts/06-format/run.sh --skip-align
+
+# Missed speech: transcribe only the uncovered stretches, romanise them, pace them in.
+bash scripts/06-format/run.sh --fill
+bash scripts/05-romanize/run.sh --alignment   # on Windows: python scripts\05-romanize\romanize.py --alignment
+bash scripts/06-format/run.sh --skip-align
+
+# Decoding loops: transcribe each loop's stretch again, romanise, pace in the confirmed replacements.
+bash scripts/06-format/run.sh --loops
+bash scripts/05-romanize/run.sh --alignment
+bash scripts/06-format/run.sh --skip-align
+```
+
+Word alignment runs at about 75× real time on a laptop RTX 4060, around five hours for all 371 hours of audio, and later runs only align new or changed episodes. Paced cues are single lines of at most 42 characters, about seven words, that never span a pause of 1.5 s; changed files are backed up to `.cache/backups/` first. Hand corrections in `transcripts-urdu-roman/` are kept: a corrected word takes the timing of the word it replaced. The audio check, `.cache/reports/audio_check.json` (Roman Urdu), lists possible missed passages, unlikely cues, repeated words and every decoding loop's status; it changes nothing by itself, and only `--fill` and `--loops` act on it. Pacing needs `transcripts-urdu/`: restore `urdu_transcript_crisper/` from commit `91c2afd` and rename it.
+
+### English
+
+```bash
+# Translate episodes not translated yet (GPU); --episodes picks some, --force-align translates them again.
+bash scripts/06-format/run.sh --translate
+# Translate again only the windows of existing English files that need it (GPU).
+bash scripts/06-format/run.sh --translate --repair
+```
+
+## Validation
+
+Validation checks that every source episode has a corresponding Roman output, each cue contains one text line, cue IDs and timestamps match, non-Latin letters are absent, and existing English text is retained. It writes `.cache/reports/validation.json` and exits nonzero on failure; `--episodes` limits it to selected episodes.
+
+Roman files paced by step 06 no longer share the source's cue timings, so for them validation checks instead that cues are numbered consecutively, never overlap and stay within the source's time (widened by passages added for missed speech, which include intros and outros the original run skipped), and that every English word survives in order. The exceptions are stitching duplicates and decoding loops, which pacing may leave out; both are found from the original transcript alone, so this check works without the cache. While the alignment cache is present, words that differ from it are listed as hand corrections: a warning, not an error. Without `transcripts-urdu/`, the original cues come from the alignment cache, which holds them word for word, and every cached episode must have its Roman file. When `transcripts-english/` exists, each of its files must belong to a Roman file and be numbered in order, one line per cue, without overlaps.
+
+Romanization preserves the source transcript rather than correcting it against the recording. Per-run hashes and review queues are saved under `.cache/reports/romanization/`. A successful structural check is not a transcription accuracy score.
+
+## Settings
+
+| Setting | Default / behaviour |
+| --- | --- |
+| `GANJI_PYTHON` | Override the interpreter used by a shell entry point |
+| `CRISPER_PYTHON` | Transcription-specific override, kept for the previous workflow |
+| `CRISPER_MODEL` | `large`, or the legacy local `CrisperWhisper2_Large/` folder when present |
+| `EPISODES` | Comma-separated transcription episode numbers |
+| `FIRST_EPISODE` / `LAST_EPISODE` | Transcription range; defaults to 1 / highest MP3 |
+| `scripts/05-romanize/roman_glossary.json` | Reviewed Urdu → Roman spelling overrides |
+| `scripts/02-download-model/roman_model.json` | Pinned model and tokenizer revisions |
+| `app/tools/question_labels.json` | Hand-checked subcategory of every indexed question, one line per episode |
+| `app/tools/config.json` | Analytics app categories, subcategories, fallback keywords, places and stopwords |
+| `app/skins/*.json` | Analytics app colours: the first light and first dark skin become `app/assets/theme.css` |
+
+Romanization, formatting and validation also accept `--episodes`. Use `--source`, `--output` or `--directory` as their `--help` shows for other folders. `bash app/run.sh` also accepts `--index`, `--serve`, `--skip-build`, `--host` and `--port`.
+
+## Setup on a new machine
+
+Use Ubuntu/WSL2 with an NVIDIA GPU and a CUDA-compatible Windows driver. Setup creates Python 3.12 environments with the repository's pinned stack; `python3-venv` and `ffmpeg` come first:
+
+```bash
+# Run as root; otherwise use sudo for apt-get.
+apt-get update
+apt-get install -y python3-venv ffmpeg
+bash scripts/01-setup/run.sh
+bash scripts/02-download-model/run.sh
+```
+
+For audio downloads, keep yt-dlp in its own environment, and repeat the `export` in each downloader session:
+
+```bash
+python3 -m venv "$HOME/.venvs/yt-dlp"
+"$HOME/.venvs/yt-dlp/bin/python" -m pip install -U "yt-dlp[default]"
+export PATH="$HOME/.venvs/yt-dlp/bin:$PATH"
+```
+
+Follow [yt-dlp's EJS instructions](https://github.com/yt-dlp/yt-dlp/wiki/EJS) if YouTube asks for a JavaScript runtime or challenge solver. Transcription and Romanization use separate environments to protect the Crisper CT2 fork. Models, caches, reports, backups, logs, local environments, audio and video, model weights and archives are excluded from Git by folder and file type; subtitles, source code and the spelling glossary stay under version control.
+
 ## Transcription
 
 The original CrisperWhisper 2.0 Large/CT2 workflow is now in `scripts/04-transcribe/transcribe.py`. CUDA float16, verbatim mode, word timestamps, continuation, retry profiles and the decoder guard are retained. The default episode range now begins at 1 and ends at the highest available MP3 number. Existing nonempty SRTs skip; they are not proof of transcription accuracy.
@@ -72,6 +196,19 @@ The model was chosen side by side on episodes 2 and 3, read against the Roman te
 `app/tools/build_data.py` parses every Roman SRT with the shared subtitle parser, joins it to `docs/episode-index.md` by episode number, and writes `app/data/summary.js` (all aggregates) plus `app/data/transcripts/episode_NNN.js` (subtitle text for the episode explorer, where it follows the embedded YouTube player). It also turns the light and dark skins in `app/skins/` into `app/assets/theme.css`. Output is deterministic: unchanged files are not rewritten, and transcripts of removed episodes are deleted. The data files are JavaScript that the page loads with script tags, so the app works from disk, from the preview server and on static hosts such as GitHub Pages. The YouTube video for each episode comes from its index links, and question timestamps come from their `t=` parameter. When `transcripts-urdu/` is present, each word is labelled English (Latin script in the source) or Urdu (romanised), counted over the whole episode so it also works after the Roman cues are re-paced. Passages that step 06 added for missed speech are not in the original SRT, so when `.cache/alignment/` is present their Latin words count as English too. The same goes for passages that replaced decoding loops, while a missed-speech passage inside a replaced loop's stretch no longer counts. Without `transcripts-urdu/`, the original cues are read from `.cache/alignment/`, which holds them word for word. The builder also writes `app/data/transcripts-english/` from `transcripts-english/` when it exists; these files call `GANJI_TRANSCRIPT(n, cues, 'english')`, load only when chosen, and are removed when the folder is gone. `meta.scripts` lists what the transcript can switch to. Without the original SRTs or the cache, the app hides the language views.
 
 Categories, subcategories, places and stopwords live in `app/tools/config.json`. Each question's subcategory comes from `app/tools/question_labels.json`, which holds one list per episode in index order; the first code is the main subcategory and any further codes are second subjects. The labels were checked by hand from each title and, for vague titles, the opening of the answer. If an episode is missing from that file or its count no longer matches the index, its questions are placed by the category keyword lists instead (keywords ending in `*` match word endings; `weak` hints count half; `title_only` categories ignore the transcript), shown as "Not yet sorted", and listed in the build output and the app's data-quality table. Stated ages come from the title and the first 90 seconds of the answer, places from the title and the first 45 seconds; YouTube comment segments are skipped for both.
+
+With `transcripts-english/`, the builder reads each episode's translation alongside the Roman SRT:
+
+- **Ages.** `own_age` accepts only first-person ages from the translated first 90 seconds ("I am 24", "I'm a 24-year-old", "my age is twenty-one"), because the translated letter also gives other people's ages and past ones. It is used when the title and the Roman opening state none.
+- **Places and openings.** Places and cities are searched in the translated first 45 seconds as well. Each question gets `excerptEn`, its English opening, and the keyword fallback reads the translated opening too.
+- **Answer words.** `answer_words` counts the content words of each answer's translation, from its timestamp to the next question, comment segments included. It folds plurals into their more used form. It then compares each category, and each subcategory with at least 12 answers, against all other answers; Other is left out.
+  - **Kept:** up to 12 words with a log-odds z-score of at least 1.96 (informative Dirichlet prior of 2,000 words; Monroe, Colaresi & Quinn 2008).
+  - **Conditions:** each word must be used in at least four answers and a tenth of the subject's answers, and its share there must be at least 1.5 times its share elsewhere.
+  - **Output:** `answerWords` stores each word with the answers using it in the subject, the answers using it elsewhere, and its uses.
+
+The app draws the second subjects as Sankey diagrams. On the Categories page they run from each main category to the category of the second subject; on a category page, from each subcategory to the second subject's category, another subcategory of the same category, or none. Clicking a band lists its questions under the chart.
+
+Category names are in title case (Love & Marriage). Subcategory names are in sentence case, except that the word after an ampersand is capitalised too (Rishtas & Proposals), so the two levels read apart.
 
 `--serve` previews `app/` with a small standard-library web server that serves that folder only, as a static host would, with caching disabled so edits show on reload. Use `--host 0.0.0.0` only if you deliberately want other devices on your network to reach it.
 

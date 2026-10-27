@@ -2,33 +2,33 @@
   "categories": [
     {
       "id": "love",
-      "name": "Love & marriage",
+      "name": "Love & Marriage",
       "description": "Finding a partner, marriages in trouble, divorce, dating, breakups, cheating and intimacy.",
       "subcategories": [
-        {"id": "love.rishta", "name": "Rishtas & proposals", "description": "Finding a match the family way: proposals, engagements, cousin and watta-satta marriages, and pressure to marry."},
+        {"id": "love.rishta", "name": "Rishtas & Proposals", "description": "Finding a match the family way: proposals, engagements, cousin and watta-satta marriages, and pressure to marry."},
         {"id": "love.choosing", "name": "Choosing the right partner", "description": "Weighing up one person: age gaps, red flags, their past, habits, health or income, and deciding between proposals."},
-        {"id": "love.across", "name": "Across caste, faith & borders", "description": "Love or marriage across caste, class, sect, religion, race or nationality, including India–Pakistan couples."},
+        {"id": "love.across", "name": "Across caste, faith & Borders", "description": "Love or marriage across caste, class, sect, religion, race or nationality, including India–Pakistan couples."},
         {"id": "love.marriage", "name": "Marriage problems", "description": "A marriage in trouble: arguments, trust, incompatibility, money, children and second marriages."},
         {"id": "love.spouse", "name": "Difficult spouses", "description": "A husband's or wife's habits, attitude, control or violence."},
-        {"id": "love.divorce", "name": "Divorce & separation", "description": "Deciding to leave, divorce, separation and starting again."},
-        {"id": "love.dating", "name": "Crushes & dating", "description": "Crushes, dating, situationships and long-distance or online relationships."},
-        {"id": "love.breakup", "name": "Breakups & toxic relationships", "description": "Heartbreak, exes and closure, red flags, catfishing and relationships gone wrong."},
-        {"id": "love.cheating", "name": "Cheating & affairs", "description": "Infidelity by a partner or parent, affairs and their aftermath."},
-        {"id": "love.intimacy", "name": "Sex & intimacy", "description": "Intimacy in marriage, sexual health and sexuality questions."}
+        {"id": "love.divorce", "name": "Divorce & Separation", "description": "Deciding to leave, divorce, separation and starting again."},
+        {"id": "love.dating", "name": "Crushes & Dating", "description": "Crushes, dating, situationships and long-distance or online relationships."},
+        {"id": "love.breakup", "name": "Breakups & Toxic relationships", "description": "Heartbreak, exes and closure, red flags, catfishing and relationships gone wrong."},
+        {"id": "love.cheating", "name": "Cheating & Affairs", "description": "Infidelity by a partner or parent, affairs and their aftermath."},
+        {"id": "love.intimacy", "name": "Sex & Intimacy", "description": "Intimacy in marriage, sexual health and sexuality questions."}
       ],
       "keywords": ["marri*", "marry", "marrying", "wedding*", "wife", "wives", "husband*", "spouse*", "fianc*", "engage*", "proposal*", "propose*", "rishta*", "rishte*", "rishtey", "divorce*", "girlfriend*", "boyfriend*", "relationship*", "love", "loved", "lover*", "in love", "dating", "crush*", "breakup*", "break up", "cheat*", "affair*", "partner*", "romance", "romantic", "suhaag*", "nikah", "sex", "sexual*", "intima*", "virgin*", "first night", "bride*", "groom", "dowry", "jahez*", "haq mehr", "polygamy", "honeymoon", "shaadi*", "shadi*", "biwi*", "shohar*", "mohabbat", "pyar", "pyaar", "ishq", "mangni", "mangetar", "talaq", "dulhan", "dulha", "muzz", "catfish", "cat fish", "gf", "bf", "dates", "onlyfans", "flirt*", "pregnan*", "bedroom", "unnatural"],
       "weak": ["girl", "girls", "larki", "larka"]
     },
     {
       "id": "family",
-      "name": "Family & friends",
+      "name": "Family & Friends",
       "description": "Parents, in-laws, siblings and relatives, raising children, supporting family, and friendships.",
       "subcategories": [
-        {"id": "family.parents", "name": "Parents & their expectations", "description": "Strict or controlling parents, pressure over study, career or marriage, and living up to their expectations."},
-        {"id": "family.toxic", "name": "Difficult & abusive parents", "description": "Toxic, abusive, absent or embarrassing parents, broken homes and parents who fight."},
+        {"id": "family.parents", "name": "Parents & Their expectations", "description": "Strict or controlling parents, pressure over study, career or marriage, and living up to their expectations."},
+        {"id": "family.toxic", "name": "Difficult & Abusive parents", "description": "Toxic, abusive, absent or embarrassing parents, broken homes and parents who fight."},
         {"id": "family.secrets", "name": "A parent's affair or secret", "description": "A parent's affair, remarriage, sex life or hidden life."},
         {"id": "family.inlaws", "name": "In-laws", "description": "Mothers-in-law, joint families and the spouse's relatives."},
-        {"id": "family.siblings", "name": "Siblings & relatives", "description": "Brothers, sisters, cousins, aunts, uncles and inheritance fights."},
+        {"id": "family.siblings", "name": "Siblings & Relatives", "description": "Brothers, sisters, cousins, aunts, uncles and inheritance fights."},
         {"id": "family.parenting", "name": "Raising children", "description": "Parents asking how to bring up their children."},
         {"id": "family.duty", "name": "Caring for family", "description": "Supporting ageing parents, family finances and responsibility."},
         {"id": "family.friends", "name": "Friendships", "description": "Friends, betrayal and social circles."}
@@ -43,49 +43,49 @@
       "subcategories": [
         {"id": "edu.choice", "name": "What to study", "description": "Choosing a subject, degree or field."},
         {"id": "edu.abroad", "name": "Studying abroad", "description": "Universities, scholarships and student life in another country."},
-        {"id": "edu.student", "name": "Student life & exams", "description": "Grades, exams, pressure and university life."},
-        {"id": "edu.system", "name": "Degrees, skills & the system", "description": "Whether degrees matter and how education works in Pakistan and India."}
+        {"id": "edu.student", "name": "Student life & Exams", "description": "Grades, exams, pressure and university life."},
+        {"id": "edu.system", "name": "Degrees, skills & The system", "description": "Whether degrees matter and how education works in Pakistan and India."}
       ],
       "keywords": ["study", "studies", "studying", "student*", "universit*", "college*", "school*", "degree*", "bachelor*", "masters", "master's", "mba", "bba", "phd", "fsc", "matric", "o level*", "a level*", "exam*", "scholarship*", "fulbright", "admission*", "graduat*", "thesis", "research*", "teacher*", "teaching", "education*", "academic*", "mdcat", "ecat", "ielts", "toefl", "semester*", "campus", "parhai", "padhai", "plagiarism"],
       "weak": []
     },
     {
       "id": "career",
-      "name": "Career & work",
+      "name": "Career & Work",
       "description": "Finding work, the workplace, choosing or changing careers, government jobs and creative careers.",
       "subcategories": [
-        {"id": "career.jobs", "name": "Job hunting & layoffs", "description": "Finding a job, rejections, unemployment and layoffs."},
-        {"id": "career.workplace", "name": "Workplace, bosses & pay", "description": "Office politics, bosses, pay, ethics and work culture."},
+        {"id": "career.jobs", "name": "Job hunting & Layoffs", "description": "Finding a job, rejections, unemployment and layoffs."},
+        {"id": "career.workplace", "name": "Workplace, bosses & Pay", "description": "Office politics, bosses, pay, ethics and work culture."},
         {"id": "career.path", "name": "Choosing or changing career", "description": "Picking a path, switching fields and mid-career crises."},
-        {"id": "career.govt", "name": "CSS & government jobs", "description": "Civil services, government jobs and the armed forces."},
-        {"id": "career.creative", "name": "Creative & online careers", "description": "YouTube, design, film, music, photography and other creative work."}
+        {"id": "career.govt", "name": "CSS & Government jobs", "description": "Civil services, government jobs and the armed forces."},
+        {"id": "career.creative", "name": "Creative & Online careers", "description": "YouTube, design, film, music, photography and other creative work."}
       ],
       "keywords": ["job", "jobs", "career*", "salary", "salaries", "boss*", "office", "offices", "workplace*", "corporate", "company", "companies", "employ*", "unemploy*", "interview*", "promotion*", "resign*", "hiring", "hire", "hired", "internship*", "profession*", "engineer*", "css", "ccs", "upsc", "naukri*", "skill*", "cv", "resume", "linkedin", "chatgpt", "programming", "software", "coding", "developer*", "it field", "layoff*", "laid off", "youtuber*", "filmmak*", "photograph*", "artist*", "designer*", "nursing", "lawyer*"],
       "weak": ["work", "working", "kaam"]
     },
     {
       "id": "money",
-      "name": "Money & business",
+      "name": "Money & Business",
       "description": "Starting a business, freelancing, debt, saving and investing, and scams.",
       "subcategories": [
         {"id": "money.business", "name": "Starting a business", "description": "Business ideas, partners and running a company."},
-        {"id": "money.freelance", "name": "Freelancing & online income", "description": "Freelancing, remote work and earning online."},
-        {"id": "money.struggle", "name": "Debt & money trouble", "description": "Debt, loans, poverty and family money problems."},
-        {"id": "money.invest", "name": "Saving & investing", "description": "Property, savings, crypto and financial planning."},
-        {"id": "money.scam", "name": "Scams & fraud", "description": "Being scammed, frauds and how to avoid them."}
+        {"id": "money.freelance", "name": "Freelancing & Online income", "description": "Freelancing, remote work and earning online."},
+        {"id": "money.struggle", "name": "Debt & Money trouble", "description": "Debt, loans, poverty and family money problems."},
+        {"id": "money.invest", "name": "Saving & Investing", "description": "Property, savings, crypto and financial planning."},
+        {"id": "money.scam", "name": "Scams & Fraud", "description": "Being scammed, frauds and how to avoid them."}
       ],
       "keywords": ["money", "business*", "startup*", "start up", "invest*", "debt*", "loan*", "financ*", "earn", "earning*", "earns", "income*", "freelanc*", "crypto*", "bitcoin", "stock*", "property", "properties", "real estate", "saving*", "rich", "poor", "poverty", "ghareeb", "gharib", "paisa", "paise", "paison", "rupee*", "rupay", "dollar*", "pkr", "lakh*", "laakh", "crore*", "rent", "rental", "cost of living", "inflation", "economy", "economic*", "scam*", "fraud*", "client*", "payment*", "shop", "shops", "restaurant*", "brand*", "marketing", "sales", "customer*", "profit*", "tax", "taxes", "ecommerce", "e commerce", "amazon", "dropshipping", "online income", "side hustle"],
       "weak": []
     },
     {
       "id": "abroad",
-      "name": "Migration & abroad",
+      "name": "Migration & Abroad",
       "description": "Whether to move abroad, visas and passports, life overseas and moving back.",
       "subcategories": [
         {"id": "abroad.move", "name": "Should I move abroad?", "description": "Whether and where to migrate."},
-        {"id": "abroad.visa", "name": "Visas & passports", "description": "Visas, citizenship, PR, embassies and travelling on a Pakistani passport."},
+        {"id": "abroad.visa", "name": "Visas & Passports", "description": "Visas, citizenship, PR, embassies and travelling on a Pakistani passport."},
         {"id": "abroad.life", "name": "Life as an overseas desi", "description": "Everyday life abroad country by country, work and costs, and how desi communities behave."},
-        {"id": "abroad.identity", "name": "Belonging, identity & racism", "description": "Homesickness, clashing values, raising children abroad, racism and fitting in."},
+        {"id": "abroad.identity", "name": "Belonging, identity & Racism", "description": "Homesickness, clashing values, raising children abroad, racism and fitting in."},
         {"id": "abroad.return", "name": "Moving back to Pakistan", "description": "Returning home after living abroad."}
       ],
       "keywords": ["abroad", "overseas", "migrat*", "immigra*", "emigra*", "visa*", "passport*", "citizenship*", "permanent resident", "permanent residency", "pr", "asylum", "refugee*", "embass*", "canada", "canadian*", "dubai", "uae", "emirates", "abu dhabi", "saudi*", "ksa", "gulf", "qatar", "doha", "oman", "bahrain", "kuwait", "uk", "britain", "british", "england", "london", "birmingham", "manchester", "scotland", "usa", "america", "american*", "germany", "german*", "australia*", "new zealand", "europe*", "ireland", "italy", "spain", "france", "netherlands", "holland", "norway", "norwegian*", "sweden", "denmark", "finland", "malaysia*", "singapore", "japan*", "korea*", "turkey", "middle east", "move abroad", "moving abroad", "bahar ke mulk"],
@@ -93,60 +93,60 @@
     },
     {
       "id": "mind",
-      "name": "Mental health & self",
+      "name": "Mental Health & Self",
       "description": "Depression and anxiety, addictions, confidence, trauma and feeling lost.",
       "subcategories": [
-        {"id": "mind.depression", "name": "Depression & anxiety", "description": "Depression, anxiety, stress and suicidal thoughts."},
-        {"id": "mind.addiction", "name": "Addictions & habits", "description": "Porn, drugs, smoking, gaming, phones and other compulsions."},
-        {"id": "mind.growth", "name": "Confidence & self-improvement", "description": "Confidence, communication, discipline and personal growth."},
-        {"id": "mind.trauma", "name": "Trauma & abuse", "description": "Abuse, bullying and the trauma they leave."},
-        {"id": "mind.purpose", "name": "Feeling lost, regret & purpose", "description": "Direction in life, regret, guilt, grief and loneliness."}
+        {"id": "mind.depression", "name": "Depression & Anxiety", "description": "Depression, anxiety, stress and suicidal thoughts."},
+        {"id": "mind.addiction", "name": "Addictions & Habits", "description": "Porn, drugs, smoking, gaming, phones and other compulsions."},
+        {"id": "mind.growth", "name": "Confidence & Self-improvement", "description": "Confidence, communication, discipline and personal growth."},
+        {"id": "mind.trauma", "name": "Trauma & Abuse", "description": "Abuse, bullying and the trauma they leave."},
+        {"id": "mind.purpose", "name": "Feeling lost, regret & Purpose", "description": "Direction in life, regret, guilt, grief and loneliness."}
       ],
       "keywords": ["depress*", "anxiety", "anxious", "stress*", "mental*", "trauma*", "traumat*", "suicid*", "kill myself", "end my life", "want to die", "lonely", "loneliness", "lonel*", "confiden*", "insecur*", "motivat*", "guilt*", "overthink*", "over thinking", "adhd", "ocd", "bipolar", "panic", "therap*", "psychiatr*", "psycholog*", "counsel*", "addict*", "smok*", "drug*", "alcohol*", "drinking", "porn*", "masturbat*", "abuse*", "abusive", "harass*", "bully*", "bullied", "self esteem", "self worth", "self sabotag*", "disab*", "exhausted", "burnout", "burn out", "pareshan*", "tension", "dimagh*", "popcorn brain", "gadget*", "screen time", "unhappy", "ungrateful", "mindset", "complex", "complexed", "jealous*", "envy", "ego", "anger", "angry", "grief", "death", "die", "dying", "self", "growth"],
       "weak": ["peace", "happy", "happiness", "lost", "confused"]
     },
     {
       "id": "health",
-      "name": "Health & daily life",
+      "name": "Health & Daily Life",
       "description": "Illness, looks and fitness, and everyday practical problems.",
       "subcategories": [
-        {"id": "health.medical", "name": "Illness & medical", "description": "Illness, disability, fertility and medical decisions."},
-        {"id": "health.body", "name": "Looks, weight & fitness", "description": "Appearance, weight, hair loss and fitness."},
-        {"id": "health.daily", "name": "Everyday life & neighbours", "description": "Housing, roommates, neighbours and daily hassles."}
+        {"id": "health.medical", "name": "Illness & Medical", "description": "Illness, disability, fertility and medical decisions."},
+        {"id": "health.body", "name": "Looks, weight & Fitness", "description": "Appearance, weight, hair loss and fitness."},
+        {"id": "health.daily", "name": "Everyday life & Neighbours", "description": "Housing, roommates, neighbours and daily hassles."}
       ],
       "keywords": ["health*", "sick*", "illness", "disease*", "cancer", "diabetes", "weight", "obes*", "gym", "fitness", "diet*", "bald*", "hygiene", "sleep*", "insomnia", "autism", "hair", "pregnan*", "hospital*", "surgery", "medic*", "neighbo*", "roommate*", "landlord", "eyesight", "infertil*"],
       "weak": []
     },
     {
       "id": "society",
-      "name": "Society & culture",
+      "name": "Society & Culture",
       "description": "How Pakistanis live and behave, class and customs, religion, gender, politics, India, sport, media and the wider world.",
       "subcategories": [
-        {"id": "society.pakistan", "name": "Pakistani mindset & habits", "description": "How Pakistanis think and behave: work and leisure, food, hobbies, unity and national character."},
-        {"id": "society.manners", "name": "Civic sense & public life", "description": "Etiquette, cleanliness, queues, roads, pollution and behaviour in public places."},
-        {"id": "society.class", "name": "Class, status & prejudice", "description": "Classism, racism and colourism, caste pride, wealth and who gets respect."},
-        {"id": "society.customs", "name": "Weddings & customs", "description": "Wedding culture, guests, dowry and other traditions."},
-        {"id": "society.religion", "name": "Religion & faith", "description": "Faith, doubt, minorities and religious practice."},
-        {"id": "society.gender", "name": "Gender & sexuality", "description": "Women's freedom and safety, harassment, and LGBT questions."},
+        {"id": "society.pakistan", "name": "Pakistani mindset & Habits", "description": "How Pakistanis think and behave: work and leisure, food, hobbies, unity and national character."},
+        {"id": "society.manners", "name": "Civic sense & Public life", "description": "Etiquette, cleanliness, queues, roads, pollution and behaviour in public places."},
+        {"id": "society.class", "name": "Class, status & Prejudice", "description": "Classism, racism and colourism, caste pride, wealth and who gets respect."},
+        {"id": "society.customs", "name": "Weddings & Customs", "description": "Wedding culture, guests, dowry and other traditions."},
+        {"id": "society.religion", "name": "Religion & Faith", "description": "Faith, doubt, minorities and religious practice."},
+        {"id": "society.gender", "name": "Gender & Sexuality", "description": "Women's freedom and safety, harassment, and LGBT questions."},
         {"id": "society.indopak", "name": "India & Pakistan", "description": "Relations, rivalry and culture across the border."},
-        {"id": "society.politics", "name": "Politics, law & economy", "description": "Government, police, crime, the economy and the state."},
-        {"id": "society.sport", "name": "Cricket & sport", "description": "Pakistan cricket, the PSL, players and other sports."},
-        {"id": "society.media", "name": "Films, dramas & music", "description": "Cinema, TV dramas, music, celebrities and recommendations."},
-        {"id": "society.online", "name": "Social media & news", "description": "Influencers, reels, memes, YouTubers and news channels."},
-        {"id": "society.world", "name": "World affairs & other cultures", "description": "Other countries, international politics and cultures."}
+        {"id": "society.politics", "name": "Politics, law & Economy", "description": "Government, police, crime, the economy and the state."},
+        {"id": "society.sport", "name": "Cricket & Sport", "description": "Pakistan cricket, the PSL, players and other sports."},
+        {"id": "society.media", "name": "Films, dramas & Music", "description": "Cinema, TV dramas, music, celebrities and recommendations."},
+        {"id": "society.online", "name": "Social media & News", "description": "Influencers, reels, memes, YouTubers and news channels."},
+        {"id": "society.world", "name": "World affairs & Other cultures", "description": "Other countries, international politics and cultures."}
       ],
       "keywords": ["india", "indian*", "societ*", "culture*", "cultural", "desi*", "religio*", "islam*", "muslim*", "quran*", "namaz", "prayer*", "hijab", "burqa", "deen", "mazhab*", "sunni", "shia", "ahmadi*", "hindu*", "christian*", "atheis*", "politic*", "government*", "election*", "vote", "voting", "democra*", "army", "military", "establishment", "war", "wars", "conflict*", "terror*", "police", "law", "laws", "legal", "court*", "judge*", "corrupt*", "bribe*", "crime*", "criminal*", "snatch*", "robbery", "nadra", "karachi", "lahore", "islamabad", "punjab*", "sindh*", "balochistan", "kashmir*", "afghan*", "cricket*", "sport*", "pcb", "bcci", "racis*", "discriminat*", "ethic*", "etiquette*", "manners", "traffic", "tourism", "media", "journalis*", "influencer*", "tiktok*", "chapri", "feminis*", "patriarch*", "gender", "lgbt*", "gay", "lesbian", "transgender", "black magic", "superstition*", "jinn*", "taweez", "nuclear", "china", "chinese", "israel*", "palestin*", "gaza", "iran*", "history", "historical", "kohinoor", "grooming gangs", "sex education", "documentary", "harassment", "women", "elite", "middle class"],
       "weak": ["pakistan*", "country", "mulk"]
     },
     {
       "id": "show",
-      "name": "The show & Junaid",
+      "name": "The Show & Junaid",
       "description": "YouTube comment segments, thanks and feedback, and questions about Junaid and the channel.",
       "title_only": true,
       "subcategories": [
         {"id": "show.comments", "name": "YouTube comments", "description": "Segments where Junaid reads viewers' comments."},
-        {"id": "show.feedback", "name": "Thanks, feedback & updates", "description": "Appreciation, suggestions and follow-ups from earlier askers."},
-        {"id": "show.junaid", "name": "About Junaid & the channel", "description": "Junaid's life, opinions, the channel and its projects."}
+        {"id": "show.feedback", "name": "Thanks, feedback & Updates", "description": "Appreciation, suggestions and follow-ups from earlier askers."},
+        {"id": "show.junaid", "name": "About Junaid & The channel", "description": "Junaid's life, opinions, the channel and its projects."}
       ],
       "keywords": ["comment*", "feedback", "appreciat*", "thank you", "thanks", "thankful", "grateful", "gratitude", "patreon", "patron*", "subscriber*", "podcast*", "junaid", "ganji*", "ganjiswag", "akram", "letter", "inspired by", "your work", "your videos", "these videos", "caller", "conclusion", "ask ganjiswag", "ask ganji swag", "fan", "fans", "not a question", "update", "suggestion*", "constructive", "swag family", "youtube comments", "merchandise", "merch", "your channel", "your show", "this show", "mentor"],
       "weak": []

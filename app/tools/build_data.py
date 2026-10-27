@@ -9,6 +9,8 @@ holds their words, only label each word as English or Urdu.
 Each question's category comes from question_labels.json (hand-checked subcategories, one list per
 episode in index order). Episodes missing there fall back to the keyword lists in config.json and
 are flagged for review. Stated ages and places come from the title and the opening of the answer.
+When the English translation exists, it adds first-person ages and places from the same opening,
+an English opening for each question, and the words that stand out in each subject's answers.
 """
 import argparse, bisect, collections, http.server, json, math, re, sys
 from pathlib import Path
@@ -39,12 +41,24 @@ TOP_WORDS, SIGNATURE_WORDS, CORPUS_WORDS, STABLE_SPELLING = 60, 8, 60, 20
 SPOKEN_TEENS = 'thirteen fourteen fifteen sixteen seventeen eighteen nineteen'.split()
 SPOKEN_TENS = 'twenty thirty forty fifty sixty'.split()
 SPOKEN_UNITS = 'one two three four five six seven eight nine'.split()
+SPOKEN = rf"(?:{'|'.join(SPOKEN_TEENS)}|(?:{'|'.join(SPOKEN_TENS)})(?:[\s-](?:{'|'.join(SPOKEN_UNITS)}))?)"
 AGE = re.compile(r"\b(?:i'm|i am|aged?)\s+(?:an?\s+)?(1[3-9]|[2-6]\d)\b(?![%$]|[.,]\d|\s*(?:k\b|lakh|percent|hours?|minutes?|days?|weeks?|months?|times?|kg|km))"
                  r"|\b(1[3-9]|[2-6]\d)\s*-?\s*(?:years?|yrs?)\s*-?\s*old\b"
                  r"|\b(1[3-9]|[2-6]\d)\s*(?:yo|y/o|y\.o)\b"
-                 rf"|\b({'|'.join(SPOKEN_TEENS)}|(?:{'|'.join(SPOKEN_TENS)})(?:[\s-](?:{'|'.join(SPOKEN_UNITS)}))?)[\s-](?:years?|yrs?)[\s-]old\b"
-                 rf"|\b(?:i'm|i am)\s+(?:an?\s+)?({'|'.join(SPOKEN_TEENS)}|(?:{'|'.join(SPOKEN_TENS)})(?:[\s-](?:{'|'.join(SPOKEN_UNITS)}))?)\b"
+                 rf"|\b({SPOKEN})[\s-](?:years?|yrs?)[\s-]old\b"
+                 rf"|\b(?:i'm|i am)\s+(?:an?\s+)?({SPOKEN})\b"
                  r"(?![\s-]*(?:percent|hours?|minutes?|days?|weeks?|months?|times?|thousand|hundred|lakh|k)\b)", re.I)
+# The machine translation of a letter also gives other people's ages and past ones, so from it only
+# the asker's own age counts, said in the first person: "I am 24", "I'm a 24-year-old", "my age is 21".
+OWN_AGE = re.compile(rf"\b(?:i'm|i am)\s+(?:(?:only|just|now|a|an)\s+)*(1[3-9]|[2-6]\d|{SPOKEN})"
+                     r"(?=[\s-]*(?:years?|yrs?)\b|\s*[,.;]|\s+(?:and|from|living|currently|male|female|guy|girl|boy|man|woman"
+                     r"|single|married|unmarried|studying|working|unemployed)\b)"
+                     rf"|\bmy age is\s+(?:(?:about|around)\s+)?(1[3-9]|[2-6]\d|{SPOKEN})\b", re.I)
+# Words that stand out in a subject's answers: at most this many per subject, each used in at least four
+# of its answers and this share of them, and in this many times the share of other answers; scored
+# against a prior of this many words spread like the whole translation; only for subjects with enough answers.
+ANSWER_WORDS, ANSWER_SHARE, ANSWER_LIFT, ANSWER_PRIOR, ANSWER_Z = 12, 0.1, 1.5, 2000, 1.96
+CATEGORY_ANSWERS, SUBCATEGORY_ANSWERS = 15, 12
 TITLE_NOISE = {'question', 'questions', 'advice', 'help', 'seeking', 'guidance', 'need', 'needs', 'problem', 'problems',
                'issue', 'issues', 'dilemma', 'confused', 'confusion', 'story', 'tale', 'comments', 'youtube', 'update', 'request',
                'getting', 'living', 'feeling', 'trying', 'dealing', 'facing', 'struggling', 'wanting', 'stuck'}
@@ -136,18 +150,26 @@ def read_labels(path, known):
                 raise ValueError(f'{Path(path).name}: episode {episode} question {order} has unknown subcategory {unknown or "(empty)"}')
     return labels
 
+def age_value(value):
+    """24 from '24', 'twenty-four' or 'twenty four'."""
+    if value.isdigit():
+        return int(value)
+    spoken = value.lower().replace('-', ' ').split()
+    tens = SPOKEN_TENS.index(spoken[0]) * 10 + 20 if spoken[0] in SPOKEN_TENS else SPOKEN_TEENS.index(spoken[0]) + 13
+    return tens + (SPOKEN_UNITS.index(spoken[1]) + 1 if len(spoken) > 1 else 0)
+
 def stated_age(*texts):
     """The first age stated as '22 years old', '19 yo', "I'm 24", "I'm thirty six" or 'twenty-four year old'."""
     for text in texts:
         match = AGE.search(text.replace('\N{RIGHT SINGLE QUOTATION MARK}', "'"))
         if match:
-            digits = next((g for g in match.groups()[:3] if g), None)
-            if digits:
-                return int(digits)
-            spoken = (match.group(4) or match.group(5)).lower().replace('-', ' ').split()
-            tens = SPOKEN_TENS.index(spoken[0]) * 10 + 20 if spoken[0] in SPOKEN_TENS else SPOKEN_TEENS.index(spoken[0]) + 13
-            return tens + (SPOKEN_UNITS.index(spoken[1]) + 1 if len(spoken) > 1 else 0)
+            return age_value(next(g for g in match.groups() if g))
     return None
+
+def own_age(text):
+    """The asker's own age in the English translation: "I am 24", "I'm a 24-year-old", "my age is twenty-one"."""
+    match = OWN_AGE.search(text.replace('\N{RIGHT SINGLE QUOTATION MARK}', "'"))
+    return age_value(next(g for g in match.groups() if g)) if match else None
 
 def place_rules(config, key='places'):
     """Per place (or city), one case-insensitive regex plus one exact-case regex for capitalised aliases (US, UK)."""
@@ -168,6 +190,93 @@ def title_words(title, stopwords):
         if len(word) > 2 and word not in stopwords and word not in TITLE_NOISE and word not in seen:
             seen.append(word)
     return seen
+
+def text_in(cues, starts, low, high):
+    """The plain text of the cues that start between two times."""
+    first, last = bisect.bisect_left(starts, low), bisect.bisect_left(starts, high)
+    return plain(' '.join(c.text for c in cues[first:last]))
+
+def clip(text):
+    return text[:EXCERPT_CHARS].rsplit(' ', 1)[0] + '\N{HORIZONTAL ELLIPSIS}' if len(text) > EXCERPT_CHARS else text
+
+def content_words(text, stopwords):
+    return collections.Counter(w for w in words(text) if len(w) > 2 and "'" not in w and w not in stopwords)
+
+def plural_folds(vocabulary):
+    """Plurals fold into their singular when both occur: scams → scam, countries → country."""
+    def fold(word):
+        if word.endswith('ies') and word[:-3] + 'y' in vocabulary:
+            return word[:-3] + 'y'
+        if word.endswith('s') and not word.endswith(('ss', 'us', 'is')) and word[:-1] in vocabulary:
+            return word[:-1]
+        return word
+    return {word: fold(word) for word in vocabulary}
+
+def pooled(parts):
+    """Word uses, answers using each word, and the number of answers, over several groups of answers."""
+    uses, using, count = collections.Counter(), collections.Counter(), 0
+    for part_uses, part_using, part_count in parts:
+        uses.update(part_uses)
+        using.update(part_using)
+        count += part_count
+    return uses, using, count
+
+def standout(group, rest, background):
+    """Words used unusually often in one group of answers compared with another: the log-odds ratio
+    with an informative Dirichlet prior (Monroe, Colaresi & Quinn 2008), as a z-score, so a word needs
+    both a large difference and enough uses. A word must also turn up in a clearly larger share of the
+    group's answers than of the others, so a word common everywhere is left out. Each entry is [word,
+    answers in the group that use it, answers in the comparison that use it, uses in the group], most
+    distinctive first."""
+    (uses, using, count), (other, other_using, others) = group, rest
+    size, mine, theirs = sum(background.values()), sum(uses.values()), sum(other.values())
+    scored = []
+    for word, k in uses.items():
+        if using[word] < max(4, ANSWER_SHARE * count) or using[word] * others < ANSWER_LIFT * other_using[word] * count:
+            continue
+        prior = ANSWER_PRIOR * background[word] / size
+        delta = (math.log((k + prior) / (mine + ANSWER_PRIOR - k - prior))
+                 - math.log((other[word] + prior) / (theirs + ANSWER_PRIOR - other[word] - prior)))
+        z = delta / math.sqrt(1 / (k + prior) + 1 / (other[word] + prior))
+        if z >= ANSWER_Z:
+            scored.append((-z, word))
+    return [[word, using[word], other_using[word], uses[word]] for _, word in sorted(scored)[:ANSWER_WORDS]]
+
+def answer_words(answers, categories):
+    """The words that stand out in the English translation of each subject's answers, compared with
+    every other answer: per category, and per subcategory with enough answers. Other, the questions
+    too unclear to place, has no subject to describe."""
+    raw = collections.Counter()
+    for _, counts in answers:
+        raw.update(counts)
+    folds = plural_folds(set(raw))
+    # A word shows in its most used form: parents rather than parent, scam rather than scams.
+    shown = {}
+    for word, _ in raw.most_common():
+        shown.setdefault(folds[word], word)
+    by_sub = {}
+    for sub, counts in answers:
+        uses, using, count = by_sub.get(sub, (collections.Counter(), collections.Counter(), 0))
+        folded = collections.Counter()
+        for word, k in counts.items():
+            folded[folds[word]] += k
+        uses.update(folded)
+        using.update(folded.keys())
+        by_sub[sub] = (uses, using, count + 1)
+    everything = pooled(by_sub.values())
+    groups = {}
+    for category in categories:
+        if category['id'] == 'other':
+            continue
+        inside = pooled(v for sub, v in by_sub.items() if sub.split('.')[0] == category['id'])
+        parts = [(category['id'], inside, CATEGORY_ANSWERS)]
+        parts += [(sub['id'], by_sub[sub['id']], SUBCATEGORY_ANSWERS) for sub in category['subcategories'] if sub['id'] in by_sub]
+        for key, part, minimum in parts:
+            if part[2] >= minimum:
+                rest = (everything[0] - part[0], everything[1] - part[1], everything[2] - part[2])
+                groups[key] = {'answers': part[2], 'versus': rest[2],
+                               'words': [[shown[word], *counts] for word, *counts in standout(part, rest, everything[0])]}
+    return {'answers': everything[2], 'groups': groups}
 
 def added_latin(alignment, number):
     """Latin words of passages that step 06 added for speech the original run skipped or looped over.
@@ -211,7 +320,7 @@ def build(roman=ROMAN, source=SOURCE, index_path=INDEX, output=APP / 'data', lab
     episodes, questions, contents, written = [], [], {}, set()
     corpus, document_frequency = collections.Counter(), collections.Counter()
     english, urdu = collections.Counter(), collections.Counter()
-    unaligned, unlabelled = [], []
+    unaligned, unlabelled, answers = [], [], []
     for path in files:
         number = int(re.search(r'\d+', path.stem).group())
         cues, spans, originals = read_episode(path, source, alignment)
@@ -236,9 +345,10 @@ def build(roman=ROMAN, source=SOURCE, index_path=INDEX, output=APP / 'data', lab
         name = f'episode_{number:03d}.js'
         write_if_changed(transcripts / name, f'GANJI_TRANSCRIPT({number},{compact([[round(s, 2), c.text] for c, (s, _) in zip(cues, spans)])});\n')
         written.add(name)
+        translated = {}
         for script, (folder, target, done) in others.items():
             if (folder / path.name).is_file():
-                other = parse((folder / path.name).read_text(encoding='utf-8-sig'))
+                other = translated[script] = parse((folder / path.name).read_text(encoding='utf-8-sig'))
                 write_if_changed(target / name, f'GANJI_TRANSCRIPT({number},{compact([[round(span(c)[0], 2), c.text] for c in other])},{compact(script)});\n')
                 done.add(name)
         total = sum(counts.values())
@@ -249,9 +359,8 @@ def build(roman=ROMAN, source=SOURCE, index_path=INDEX, output=APP / 'data', lab
         items = index.get(number, [])
         starts = [start for _, _, start in items]
         cue_starts = [start for start, _ in spans]
-        def text_between(low, high):
-            first, last = bisect.bisect_left(cue_starts, low), bisect.bisect_left(cue_starts, high)
-            return plain(' '.join(c.text for c in cues[first:last]))
+        translation = translated.get('english', [])
+        translation_starts = [span(c)[0] for c in translation]
         curated = labels.get(number)
         if items and (curated is None or len(curated) != len(items)):
             unlabelled.append(number)
@@ -260,21 +369,28 @@ def build(roman=ROMAN, source=SOURCE, index_path=INDEX, output=APP / 'data', lab
             following = next((t for t in starts[order:] if t is not None), None)
             finish = min(following if following is not None else duration, duration)
             length = round(finish - start, 1) if start is not None and finish > start else None
-            reading = text_between(start - 1, min(start + EXCERPT_SECONDS, finish)) if length else ''
-            opening = text_between(start - 1, min(start + TOPIC_SECONDS, finish)) if length else ''
-            excerpt = reading[:EXCERPT_CHARS].rsplit(' ', 1)[0] + '\N{HORIZONTAL ELLIPSIS}' if len(reading) > EXCERPT_CHARS else reading
+            reading = text_in(cues, cue_starts, start - 1, min(start + EXCERPT_SECONDS, finish)) if length else ''
+            opening = text_in(cues, cue_starts, start - 1, min(start + TOPIC_SECONDS, finish)) if length else ''
+            # The same seconds in the English translation, when there is one.
+            reading_en = text_in(translation, translation_starts, start - 1, min(start + EXCERPT_SECONDS, finish)) if length else ''
+            opening_en = text_in(translation, translation_starts, start - 1, min(start + TOPIC_SECONDS, finish)) if length else ''
             if curated:
                 sub, *also = curated[order - 1]
             else:
-                category = classify(rules, title, opening)[0]
+                category = classify(rules, title, f'{opening} {opening_en}')[0]
                 sub, also = ('other.misc' if category == 'other' else f'{category}.auto'), []
             # Comment segments quote many viewers, so they have no single asker to describe.
             asker = sub != 'show.comments'
-            questions.append({'ep': number, 'order': order, 'title': title, 'start': start, 'length': length,
-                              'sub': sub, 'also': also, 'age': stated_age(title, opening) if asker else None,
-                              'places': mentioned_places(places, f'{title} {reading}') if asker else [],
-                              'cities': mentioned_places(cities, f'{title} {reading}') if asker else [],
-                              'words': title_words(title, stopwords), 'excerpt': excerpt})
+            question = {'ep': number, 'order': order, 'title': title, 'start': start, 'length': length,
+                        'sub': sub, 'also': also, 'age': (stated_age(title, opening) or own_age(opening_en)) if asker else None,
+                        'places': mentioned_places(places, f'{title} {reading} {reading_en}') if asker else [],
+                        'cities': mentioned_places(cities, f'{title} {reading} {reading_en}') if asker else [],
+                        'words': title_words(title, stopwords), 'excerpt': clip(reading)}
+            if translation:
+                question['excerptEn'] = clip(reading_en)
+                if length:
+                    answers.append((sub, content_words(text_in(translation, translation_starts, start - 1, finish), stopwords)))
+            questions.append(question)
         episodes.append({
             'n': number,
             'video': next((video for _, video, _ in items if video), None),
@@ -346,6 +462,7 @@ def build(roman=ROMAN, source=SOURCE, index_path=INDEX, output=APP / 'data', lab
         'vocabulary': vocabulary,
         'vocabularyLanguage': ''.join('e' if english[w] > urdu[w] else 'u' for w in vocabulary) if language else None,
         'corpus': [[position[w], corpus[w], document_frequency[w]] for w in vocabulary[:CORPUS_WORDS]],
+        'answerWords': answer_words(answers, config['categories']) if answers else None,
         'quality': {
             'unindexed': [e['n'] for e in episodes if not e['questions']],
             'missingTranscripts': sorted(set(index) - {e['n'] for e in episodes}),

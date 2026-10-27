@@ -31,6 +31,15 @@ function countBy(items, key) {
 }
 const r2 = v => Math.round(v * 100) / 100;
 const shorten = (text, max) => text.length > max ? `${text.slice(0, max - 1)}…` : text;
+// Whole words on as many lines as they need, each line at most max characters where the words allow.
+function wrapWords(text, max) {
+  const lines = [];
+  for (const word of text.split(' ')) {
+    if (lines.length && `${lines[lines.length - 1]} ${word}`.length <= max) lines[lines.length - 1] += ` ${word}`;
+    else lines.push(word);
+  }
+  return lines;
+}
 function debounce(fn, wait) {
   let timer;
   return (...args) => { clearTimeout(timer); timer = setTimeout(() => fn(...args), wait); };
@@ -157,6 +166,12 @@ function writeHash(push = false) {
 const inScope = q => (!state.cat || q.cat === state.cat) && (!state.sub || q.sub === state.sub);
 const scopedQuestions = () => QUESTIONS.filter(inScope);
 const scopeName = () => state.sub ? subName(state.sub) : state.cat ? catName(state.cat) : '';
+// A question's opening follows the transcript language: the English translation when chosen and there.
+const excerptOf = q => state.script === 'english' && q.excerptEn ? q.excerptEn : q.excerpt;
+function setScript(script) {
+  state.script = script;
+  try { localStorage.setItem('ganji-script', script); } catch (error) { /* storage unavailable */ }
+}
 
 /* ---------- DOM helpers ---------- */
 function append(el, children) {
@@ -296,10 +311,30 @@ function attachTip(el, content) {
 /* ---------- Chart registry: charts redraw on width changes ---------- */
 let activeCharts = [];
 const hoverBus = new Set();
-function registerChart(draw) {
+function registerChart(draw, fill = null) {
   activeCharts.push(draw);
+  let height = null;
   // Charts measure their container, so draw after the current render has attached the card.
-  queueMicrotask(() => { if (activeCharts.includes(draw)) draw(); });
+  queueMicrotask(() => {
+    if (!activeCharts.includes(draw)) return;
+    if (fill) height = Math.round(fill.clientHeight);
+    draw();
+  });
+  // A chart that fills its card redraws when the card's height changes, as when the cards beside it grow.
+  if (fill) {
+    const watch = new ResizeObserver(([entry]) => {
+      if (!activeCharts.includes(draw)) { watch.disconnect(); return; }
+      const next = Math.round(entry.contentRect.height);
+      if (height !== null && Math.abs(next - height) > 1) { height = next; draw(); }
+    });
+    watch.observe(fill);
+  }
+}
+// The chart takes whatever height its card has to spare in its row, and at least its natural height.
+function fillCard(container, natural) {
+  container.classList.add('fill');
+  container.style.setProperty('--fill-min', `${natural}px`);
+  return () => Math.max(natural, Math.floor(container.clientHeight));
 }
 let lastWidth = 0;
 const redraw = debounce(() => activeCharts.forEach(draw => draw()), 120);
@@ -435,7 +470,9 @@ function eras(eps, count = 10) {
 }
 
 /* ---------- Sunburst: categories inside, their subcategories outside; click to zoom ---------- */
+let glows = 0;
 function sunburst(container, { cat, sub, onPick, onBack }) {
+  const glow = `sunburst-glow-${++glows}`;
   const focus = cat ? CAT.get(cat) : null;
   const qs = focus ? QUESTIONS.filter(q => q.cat === cat) : QUESTIONS;
   const total = qs.length;
@@ -495,6 +532,7 @@ function sunburst(container, { cat, sub, onPick, onBack }) {
     rows.set(it.key, row);
     legendBox.append(row);
   }
+  container.classList.add('donut-host');
   container.replaceChildren(h('div', { class: 'donut-wrap' }, chartBox, legendBox));
 
   function draw() {
@@ -504,12 +542,19 @@ function sunburst(container, { cat, sub, onPick, onBack }) {
     const c = S / 2, TAU = Math.PI * 2;
     const svg = s('svg', { viewBox: `0 0 ${S} ${S}`, width: S, height: S, role: 'img',
       'aria-label': focus ? `${focus.name}: questions by subcategory` : 'Questions by category and subcategory' });
+    // Translucent rings over a soft halo of their own colours.
+    svg.append(s('defs', {}, s('filter', { id: glow, x: '-25%', y: '-25%', width: '150%', height: '150%', 'color-interpolation-filters': 'sRGB' },
+      s('feGaussianBlur', { in: 'SourceGraphic', stdDeviation: r2(S * 0.03), result: 'blur' }),
+      s('feComponentTransfer', { in: 'blur', result: 'halo' }, s('feFuncA', { type: 'linear', slope: 0.9 })),
+      s('feMerge', {}, s('feMergeNode', { in: 'halo' }), s('feMergeNode', { in: 'SourceGraphic' })))));
+    const rings = s('g', { class: 'rings', filter: `url(#${glow})` });
+    svg.append(rings);
     const add = (it, r0, r1, a0, a1) => {
-      const path = s('path', { class: 'slice', d: arcPath(c, r0, r1, a0, a1), 'fill-rule': 'evenodd', style: `fill:${it.color};fill-opacity:${it.shade}` });
+      const path = s('path', { class: 'slice', d: arcPath(c, r0, r1, a0, a1), 'fill-rule': 'evenodd', style: `fill:${it.color}` });
       path.addEventListener('pointermove', ev => { hover(it.key); showTip(ev, ...tip(it)); });
       path.addEventListener('pointerleave', () => { hover(null); hideTip(); });
       path.addEventListener('click', () => { hideTip(); pick(it); });
-      svg.append(path);
+      rings.append(path);
       slices.set(it.key, path);
     };
     let a = 0;
@@ -577,9 +622,10 @@ function sunburst(container, { cat, sub, onPick, onBack }) {
 /* ---------- Stacked columns: each block of episodes split by subject ---------- */
 function stackedColumns(container, { qs, series, groupOf, selected, onPick }) {
   let shareMode = state.share;
+  const height = fillCard(container, 290);
   function draw() {
     container.replaceChildren();
-    const W = Math.max(260, container.clientWidth), H = 290;
+    const W = Math.max(260, container.clientWidth), H = height();
     const columns = eras(EPISODES, W < 420 ? 5 : W < 600 ? 7 : 10);
     const cells = columns.map(col => {
       const list = qs.filter(q => q.ep >= col.from && q.ep <= col.to);
@@ -623,13 +669,14 @@ function stackedColumns(container, { qs, series, groupOf, selected, onPick }) {
     container.append(svg);
     emphasise(selected);
   }
-  registerChart(draw);
+  registerChart(draw, container);
   return { setShare(on) { shareMode = on; draw(); } };
 }
 
 /* ---------- Episode column chart (columns + rolling average, crosshair, click to open) ---------- */
 function episodeChart(container, cfg) {
   let setCross = null;
+  const height = fillCard(container, cfg.height || 200);
   function draw() {
     if (setCross) hoverBus.delete(setCross);
     container.replaceChildren();
@@ -637,7 +684,7 @@ function episodeChart(container, cfg) {
     const values = eps.map(e => { const v = cfg.value(e); return v == null || !Number.isFinite(v) ? null : v; });
     const defined = values.filter(v => v != null);
     if (!defined.length) { container.append(h('p', { class: 'muted', text: 'No data to show.' })); return; }
-    const W = Math.max(260, container.clientWidth), H = cfg.height || 200;
+    const W = Math.max(260, container.clientWidth), H = height();
     const m = { t: 8, r: 6, b: 22, l: 42 };
     const pw = W - m.l - m.r, ph = H - m.t - m.b;
     const { max, ticks } = niceTicks(Math.max(...defined), 4);
@@ -662,7 +709,9 @@ function episodeChart(container, cfg) {
     const cross = s('line', { class: 'crosshair', x1: 0, x2: 0, y1: m.t, y2: m.t + ph, visibility: 'hidden' });
     const hit = s('rect', { class: cfg.onSelect ? 'hit-area clickable' : 'hit-area', x: m.l, y: m.t, width: pw, height: ph });
     svg.append(highlight, cross, hit);
-    container.append(svg);
+    // While another chart on the page is hovered, this one shows its own figures for that episode beside its crosshair.
+    const peek = h('div', { class: 'peek', hidden: true, 'aria-hidden': 'true' });
+    container.append(svg, peek);
 
     const indexAt = ev => {
       const box = svg.getBoundingClientRect();
@@ -675,23 +724,37 @@ function episodeChart(container, cfg) {
       const v = values[i];
       highlight.setAttribute('d', v > 0 ? columnPath(X(i) - bw / 2, Y(v), bw, Y(0) - Y(v), 4) : '');
     };
-    setCross = ep => mark(ep == null ? null : eps.findIndex(e => e.n === ep));
-    hoverBus.add(setCross);
-    const broadcast = ep => hoverBus.forEach(fn => { if (fn !== setCross) fn(ep); });
     const colKey = cfg.color ? { color: cfg.color, shade: 0.42 } : { color: 'var(--acc-dim)' };
     const avgKey = { color: cfg.color || 'var(--acc-hi)' };
+    const rowsAt = i => [{ value: values[i] == null ? '–' : cfg.format(values[i]), label: cfg.label, ...colKey }]
+      .concat(average && average[i] != null ? [{ value: cfg.format(average[i]), label: `${AVG}-episode average`, ...avgKey }] : []);
+    const showPeek = i => {
+      if (i == null || i < 0) { peek.hidden = true; return; }
+      peek.replaceChildren(h('div', { class: 'tt-title', text: `Episode ${eps[i].n}` }), ...rowsAt(i).map(row => h('div', { class: 'tt-row' },
+        h('span', { class: 'tt-key', style: `background:${row.color};opacity:${row.shade || 1}` }), h('strong', { text: row.value }), h('span', { text: row.label }))));
+      peek.hidden = false;
+      // Beside the crosshair, on whichever side has room.
+      const x = X(i), width = peek.offsetWidth;
+      peek.style.left = `${Math.round(x + 10 + width <= W - m.r ? x + 10 : Math.max(0, x - 10 - width))}px`;
+      peek.style.top = `${m.t}px`;
+    };
+    setCross = ep => {
+      const i = ep == null ? null : eps.findIndex(e => e.n === ep);
+      mark(i);
+      showPeek(i);
+    };
+    hoverBus.add(setCross);
+    const broadcast = ep => hoverBus.forEach(fn => { if (fn !== setCross) fn(ep); });
     hit.addEventListener('pointermove', ev => {
       const i = indexAt(ev), e = eps[i];
       mark(i);
       broadcast(e.n);
-      const rows = [{ value: values[i] == null ? '–' : cfg.format(values[i]), label: cfg.label, ...colKey }];
-      if (average && average[i] != null) rows.push({ value: cfg.format(average[i]), label: `${AVG}-episode average`, ...avgKey });
-      showTip(ev, `Episode ${e.n}`, rows.concat(cfg.extra ? cfg.extra(e) : []), cfg.onSelect ? 'Click to open this episode' : null);
+      showTip(ev, `Episode ${e.n}`, rowsAt(i).concat(cfg.extra ? cfg.extra(e) : []), cfg.onSelect ? 'Click to open this episode' : null);
     });
     hit.addEventListener('click', ev => { if (cfg.onSelect) { hideTip(); cfg.onSelect(eps[indexAt(ev)].n); } });
     hit.addEventListener('pointerleave', () => { mark(null); broadcast(null); hideTip(); });
   }
-  registerChart(draw);
+  registerChart(draw, container);
 }
 function episodeCard(eps, spec) {
   const table = () => ({
@@ -709,7 +772,8 @@ function episodeCard(eps, spec) {
 /* ---------- Horizontal bars ---------- */
 function barList(container, { items, format, valueLabel, onSelect, selected }) {
   if (!items.length) { container.replaceChildren(h('p', { class: 'muted', text: 'Nothing to show for this selection.' })); return; }
-  const max = Math.max(0, ...items.map(it => it.value)) || 1;
+  // An item's ref, when given, is a tick on the same scale: the value to compare the bar with.
+  const max = Math.max(0, ...items.map(it => Math.max(it.value, it.ref || 0))) || 1;
   const box = h('div', { class: 'bars' });
   for (const it of items) {
     const classes = ['bar-row'];
@@ -719,12 +783,44 @@ function barList(container, { items, format, valueLabel, onSelect, selected }) {
       'aria-pressed': onSelect && selected ? String(selected === it.key) : null, tabindex: onSelect ? null : '0',
     },
     h('span', { class: 'bar-label', title: it.label }, h('span', { class: 'bar-text', text: it.label }), it.lang ? h('span', { class: 'lang', text: it.lang }) : null),
-    h('span', { class: 'bar-track' }, h('span', { class: 'bar-fill', style: `width:${(Math.max(0, it.value) / max * 100).toFixed(2)}%` })),
+    h('span', { class: 'bar-track' }, h('span', { class: 'bar-fill', style: `width:${(Math.max(0, it.value) / max * 100).toFixed(2)}%` }),
+      it.ref != null ? h('span', { class: 'bar-ref', style: `left:${(it.ref / max * 100).toFixed(2)}%` }) : null),
     h('span', { class: 'bar-value', text: format(it.value) }));
     attachTip(row, () => [it.title || it.label, [{ value: format(it.value), label: valueLabel, color: it.color }].concat(it.rows || []), it.note]);
     if (onSelect) row.addEventListener('click', () => { hideTip(); onSelect(it.key); });
     box.append(row);
   }
+  container.replaceChildren(box);
+}
+
+/* ---------- Ranges: the middle half of each group's values, with the median, on one shared scale ---------- */
+function quantile(sorted, p) {
+  if (!sorted.length) return null;
+  const at = (sorted.length - 1) * p, low = Math.floor(at);
+  return sorted[low] + (sorted[Math.min(low + 1, sorted.length - 1)] - sorted[low]) * (at - low);
+}
+function rangeList(container, { items }) {
+  if (!items.length) { container.replaceChildren(h('p', { class: 'muted', text: 'Not enough stated ages for this selection.' })); return; }
+  const lo = Math.floor(Math.min(...items.map(it => it.low)) / 5) * 5, hi = Math.max(lo + 5, Math.ceil(Math.max(...items.map(it => it.high)) / 5) * 5);
+  const at = v => ((v - lo) / (hi - lo) * 100).toFixed(2);
+  const box = h('div', { class: 'bars ranges' });
+  for (const it of items) {
+    const row = h('div', { class: 'bar-row', tabindex: '0', style: `--cat:${it.color}` },
+      h('span', { class: 'bar-label', title: it.label }, h('span', { class: 'bar-text', text: it.label })),
+      h('span', { class: 'range-track' },
+        h('span', { class: 'range-band', style: `left:${at(it.low)}%;width:${(at(it.high) - at(it.low)).toFixed(2)}%` }),
+        h('span', { class: 'range-median', style: `left:${at(it.median)}%` })),
+      h('span', { class: 'bar-value' }, h('span', { class: 'range-span', text: `${fmtInt(it.low)}–${fmtInt(it.high)}` }), fmtInt(it.median)));
+    attachTip(row, () => [it.label, [
+      { value: fmtInt(it.median), label: 'median age', color: it.color },
+      { value: `${fmtInt(it.low)}–${fmtInt(it.high)}`, label: 'the middle half of stated ages' },
+      { value: fmtInt(it.n), label: 'stated ages' }]]);
+    box.append(row);
+  }
+  // The shared age scale, under the last row.
+  const ticks = [];
+  for (let t = lo; t <= hi; t += 5) ticks.push(t);
+  box.append(h('div', { class: 'range-axis', 'aria-hidden': 'true' }, ticks.map(t => h('span', { style: `left:${at(t)}%`, text: String(t) }))));
   container.replaceChildren(box);
 }
 
@@ -773,6 +869,165 @@ function heatmap(container, { rows, cols, cell, title }) {
     h('span', { class: 'scale-steps' }, [1, 2, 3, 4, 5, 6, 7].map(i => h('span', { style: `background:var(--seq-${i})` }))),
     h('span', { text: fmtPct(max) }));
   container.replaceChildren(grid, scale);
+}
+
+/* ---------- Sankey: groups of questions flowing from one set of subjects (left) to another (right) ----------
+   Nodes are { key, label, color, note, hint, onPick, pinned }; links { from, to, value, color, questions }. Left nodes
+   keep their order; right nodes sit by the average height of the questions reaching them, pinned ones last. A band
+   with its questions lists them under the chart when clicked; openFlow(from, to) does the same from elsewhere. */
+function sankey(container, { left, right, links, heads, selected = null, label }) {
+  const byKey = new Map([...left, ...right].map(n => [n.key, { ...n, value: 0, out: [], in: [] }]));
+  const flows = links.filter(l => l.value > 0 && byKey.has(l.from) && byKey.has(l.to))
+    .map(l => ({ ...l, source: byKey.get(l.from), target: byKey.get(l.to) }));
+  if (!flows.length) { container.replaceChildren(h('p', { class: 'muted', text: 'No questions to show for this selection.' })); return { openFlow() {} }; }
+  for (const f of flows) { f.source.value += f.value; f.target.value += f.value; f.source.out.push(f); f.target.in.push(f); }
+  const lefts = left.map(n => byKey.get(n.key)).filter(n => n.value);
+  const rights = right.map(n => byKey.get(n.key)).filter(n => n.value);
+  const total = sum(flows.map(f => f.value));
+  const questions = n => (n === 1 ? 'question' : 'questions');
+  const bands = [], marks = new Map();
+  let hovered = null, chosen = null;
+
+  // The chosen band's questions, under the chart; the band stays lit until the list is closed.
+  const detail = h('div', { class: 'flow-detail', hidden: true });
+  container.after(detail);
+  function openFlow(f) {
+    if (!f || !f.questions) return;
+    if (chosen === f) { closeFlow(); return; }
+    chosen = f;
+    const list = f.questions.slice().sort(SORTS.newest.compare), box = h('div');
+    detail.replaceChildren(h('div', { class: 'flow-head' },
+      h('div', {},
+        h('h4', {}, h('span', { class: 'dot', style: `--cat:${f.source.color}` }), f.source.label, h('span', { class: 'flow-arrow', text: '→' }),
+          h('span', { class: 'dot', style: `--cat:${f.target.color}` }), f.target.label),
+        h('p', { class: 'subtitle', text: `${plural(list.length, 'question')} · newest first · click one to play its answer` })),
+      h('button', { class: 'small-button', type: 'button', text: 'Close', on: { click: closeFlow } })), box);
+    questionList(box, list, 6);
+    detail.hidden = false;
+    paint();
+    detail.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }
+  function closeFlow() {
+    chosen = null;
+    detail.hidden = true;
+    detail.replaceChildren();
+    paint();
+  }
+
+  // A node lights up with its own bands and the nodes at their other ends; a band with its two nodes.
+  const touches = (f, key) => f.source.key === key || f.target.key === key;
+  function paint() {
+    const active = hovered || (chosen ? { flow: chosen } : selected && byKey.has(selected) ? { node: selected } : null);
+    const lit = f => !active || (active.flow ? f === active.flow : touches(f, active.node));
+    for (const [f, path] of bands) {
+      path.classList.toggle('hot', !!active && lit(f));
+      path.classList.toggle('faded', !lit(f));
+    }
+    for (const [key, g] of marks) g.classList.toggle('faded', !!active && active.node !== key && !flows.some(f => lit(f) && touches(f, key)));
+  }
+  const hover = next => {
+    if ((next && next.flow) === (hovered && hovered.flow) && (next && next.node) === (hovered && hovered.node)) return;
+    hovered = next;
+    paint();
+  };
+  function nodeTip(n, outgoing) {
+    const ends = (outgoing ? n.out : n.in).slice().sort((a, b) => b.value - a.value).slice(0, 3);
+    return [n.label, [
+      { value: fmtInt(n.value), label: questions(n.value), color: n.color },
+      { value: fmtShare(n.value / total), label: `of the ${fmtInt(total)} shown` }]
+      .concat(ends.map(f => { const other = outgoing ? f.target : f.source; return { value: fmtInt(f.value), label: `${outgoing ? '→' : '←'} ${other.label}`, color: other.color }; })),
+    [n.note, n.onPick ? n.hint : null]];
+  }
+  const flowTip = f => [`${f.source.label} → ${f.target.label}`, [
+    { value: fmtInt(f.value), label: questions(f.value), color: f.color || f.source.color },
+    { value: fmtShare(f.value / f.source.value), label: `of ${f.source.label}` },
+    { value: fmtShare(f.value / f.target.value), label: `of ${f.target.label}` }],
+  f.questions ? (chosen === f ? 'Click to close the list' : `Click to list ${f.value === 1 ? 'this question' : `these ${fmtInt(f.value)} questions`}`) : null];
+
+  function draw() {
+    container.replaceChildren();
+    bands.length = 0;
+    marks.clear();
+    const W = Math.max(300, container.clientWidth);
+    // Each side keeps a column for its labels, which wrap onto more lines rather than being cut short.
+    const side = Math.round(Math.min(230, Math.max(96, W * (W < 520 ? 0.33 : 0.27))));
+    const barW = 10, LINE = 15, top = heads ? 28 : 6;
+    const chars = Math.max(10, Math.floor((side - 18) / 6.4));
+    const x0 = side - barW, x1 = W - side;
+    const k = Math.min(6, Math.max(160, Math.min(380, total * 1.2)) / total);
+    // The count stays with the last word, and an ampersand with the word before it (no-break spaces).
+    for (const n of byKey.values()) { n.count = fmtInt(n.value); n.lines = wrapWords(`${n.label.replace(/ &/g, ' &')} ${n.count}`, chars); }
+    // Gaps keep neighbouring labels apart; each column's bars add up to the same total.
+    const column = nodes => {
+      const gaps = nodes.slice(1).map((n, i) => Math.max(10, (nodes[i].lines.length + n.lines.length) * LINE / 2 + 5 - (nodes[i].value + n.value) * k / 2));
+      return { nodes, gaps, height: total * k + sum(gaps) };
+    };
+    const stack = (col, from) => {
+      let y = from;
+      col.nodes.forEach((n, i) => { n.y = y; n.h = n.value * k; y += n.h + (col.gaps[i] || 0); });
+    };
+    const L = column(lefts);
+    stack(L, 0);
+    const centre = n => n.y + n.h / 2;
+    const placed = rights.filter(n => !n.pinned).map(n => [sum(n.in.map(f => f.value * centre(f.source))) / n.value, n]).sort((a, b) => a[0] - b[0]).map(([, n]) => n);
+    const R = column(placed.concat(rights.filter(n => n.pinned)));
+    const inner = Math.max(L.height, R.height), H = Math.round(top + inner + 8);
+    stack(L, top + (inner - L.height) / 2);
+    stack(R, top + (inner - R.height) / 2);
+    // Bands leave and reach each bar in the order of their other ends, so they cross as little as possible.
+    for (const n of L.nodes) { let y = n.y; for (const f of n.out.slice().sort((a, b) => a.target.y - b.target.y)) { f.y0 = y; y += f.value * k; } }
+    for (const n of R.nodes) { let y = n.y; for (const f of n.in.slice().sort((a, b) => a.source.y - b.source.y)) { f.y1 = y; y += f.value * k; } }
+
+    const svg = s('svg', { viewBox: `0 0 ${W} ${H}`, width: W, height: H, role: 'group', 'aria-label': label });
+    if (heads) {
+      svg.append(s('text', { class: 'sankey-head', x: x0 + barW, y: 12, 'text-anchor': 'end' }, heads[0]),
+        s('text', { class: 'sankey-head', x: x1, y: 12 }, heads[1]));
+    }
+    const xa = x0 + barW, xb = x1, xm = (xa + xb) / 2;
+    const linkLayer = s('g'), nodeLayer = s('g');
+    for (const f of flows) {
+      const w = f.value * k;
+      const path = s('path', { class: f.questions ? 'sankey-link clickable' : 'sankey-link', style: `fill:${f.color || f.source.color}`,
+        d: `M${r2(xa)},${r2(f.y0)}C${r2(xm)},${r2(f.y0)} ${r2(xm)},${r2(f.y1)} ${r2(xb)},${r2(f.y1)}V${r2(f.y1 + w)}C${r2(xm)},${r2(f.y1 + w)} ${r2(xm)},${r2(f.y0 + w)} ${r2(xa)},${r2(f.y0 + w)}Z` });
+      path.addEventListener('pointermove', ev => { hover({ flow: f }); showTip(ev, ...flowTip(f)); });
+      path.addEventListener('pointerleave', () => { hover(null); hideTip(); });
+      if (f.questions) path.addEventListener('click', () => { hideTip(); openFlow(f); });
+      linkLayer.append(path);
+      bands.push([f, path]);
+    }
+    const place = (n, onLeft) => {
+      const x = onLeft ? x0 : x1, cy = n.y + n.h / 2;
+      const g = s('g', { class: n.onPick ? 'sankey-node clickable' : 'sankey-node' });
+      g.append(s('rect', { class: 'sankey-bar', x: r2(x), y: r2(n.y), width: barW, height: r2(Math.max(1.5, n.h)), rx: 2, style: `fill:${n.color}` }));
+      // The count follows the name on its last line, in a quieter ink.
+      const text = s('text', { class: 'sankey-label', 'text-anchor': onLeft ? 'end' : 'start' });
+      const tx = onLeft ? x - 8 : x + barW + 8, first = cy - (n.lines.length - 1) * LINE / 2 + 4;
+      n.lines.forEach((line, i) => text.append(s('tspan', { x: r2(tx), y: r2(first + i * LINE) }, i === n.lines.length - 1 ? line.slice(0, line.lastIndexOf(' ') + 1) : line)));
+      text.append(s('tspan', { class: 'sankey-count' }, n.count));
+      const reach = Math.max(n.h, n.lines.length * LINE + 4);
+      const hit = s('rect', { class: 'sankey-hit', x: onLeft ? 0 : x, y: r2(cy - reach / 2), width: onLeft ? x + barW : W - x, height: r2(reach),
+        tabindex: '0', role: n.onPick ? 'button' : null, 'aria-label': `${n.label}: ${fmtInt(n.value)} ${questions(n.value)}` });
+      const tip = () => nodeTip(n, onLeft);
+      hit.addEventListener('pointermove', ev => { hover({ node: n.key }); showTip(ev, ...tip()); });
+      hit.addEventListener('pointerleave', () => { hover(null); hideTip(); });
+      hit.addEventListener('focus', () => { hover({ node: n.key }); showTip(pointOf(hit), ...tip()); });
+      hit.addEventListener('blur', () => { hover(null); hideTip(); });
+      if (n.onPick) {
+        hit.addEventListener('click', () => { hideTip(); n.onPick(); });
+        hit.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); hideTip(); n.onPick(); } });
+      }
+      g.append(text, hit);
+      nodeLayer.append(g);
+      marks.set(n.key, g);
+    };
+    L.nodes.forEach(n => place(n, true));
+    R.nodes.forEach(n => place(n, false));
+    svg.append(linkLayer, nodeLayer);
+    container.append(svg);
+    paint();
+  }
+  registerChart(draw);
+  return { openFlow: (from, to) => openFlow(flows.find(f => f.from === from && f.to === to)) };
 }
 
 /* ---------- Strip plot: one dot per question, a tick at the median ---------- */
@@ -831,10 +1086,11 @@ function stripPlot(container, { rows, onPick }) {
 
 /* ---------- Columns for a handful of ordered groups (ages, positions) ---------- */
 function ordinalColumns(container, { items, format, label, height = 220 }) {
+  const fit = fillCard(container, height);
   function draw() {
     container.replaceChildren();
     if (!items.some(it => it.value > 0)) { container.append(h('p', { class: 'muted', text: 'Nothing to show for this selection.' })); return; }
-    const W = Math.max(240, container.clientWidth), H = height;
+    const W = Math.max(240, container.clientWidth), H = fit();
     const m = { t: 20, r: 6, b: 24, l: 34 };
     const pw = W - m.l - m.r, ph = H - m.t - m.b;
     const { max, ticks } = niceTicks(Math.max(0, ...items.map(it => it.value)), 4);
@@ -856,7 +1112,7 @@ function ordinalColumns(container, { items, format, label, height = 220 }) {
     });
     container.append(svg);
   }
-  registerChart(draw);
+  registerChart(draw, container);
 }
 
 /* ---------- Sparkline: share of questions in each block of episodes ---------- */
@@ -872,7 +1128,7 @@ function sparkline(values, labels, title) {
 }
 
 /* ---------- Sortable, paged table ---------- */
-function dataTable(container, { columns, rows, sortKey, sortDir = 'asc', pageSize = 50, empty = 'Nothing matches.' }) {
+function dataTable(container, { columns, rows, sortKey, sortDir = 'asc', pageSize = 50, empty = 'Nothing matches.', cls = null }) {
   let key = sortKey, dir = sortDir, shown = pageSize;
   function compare(a, b) {
     if (a == null && b == null) return 0;
@@ -899,13 +1155,16 @@ function dataTable(container, { columns, rows, sortKey, sortDir = 'asc', pageSiz
       } else th.textContent = c.label;
       return th;
     }));
-    const body = h('tbody', {}, sorted.slice(0, shown).map(row => h('tr', {}, columns.map(c => h('td', { class: c.num ? 'num' : null }, c.render ? c.render(row) : c.sort(row))))));
+    // Each cell carries its column's name, for layouts that stack a row's cells as labelled figures.
+    const body = h('tbody', {}, sorted.slice(0, shown).map(row => h('tr', {}, columns.map(c => h('td', { class: c.num ? 'num' : null, 'data-label': c.label }, c.render ? c.render(row) : c.sort(row))))));
     if (!rows.length) body.append(h('tr', {}, h('td', { colspan: String(columns.length), class: 'muted', text: empty })));
     const footer = h('div', { class: 'table-footer' }, h('span', { text: rows.length ? `Showing ${fmtInt(Math.min(shown, rows.length))} of ${fmtInt(rows.length)}` : '' }));
     if (shown < rows.length) {
       footer.append(h('button', { class: 'small-button', type: 'button', text: `Show ${fmtInt(Math.min(pageSize, rows.length - shown))} more`, on: { click: () => { shown += pageSize; draw(); } } }));
     }
-    container.replaceChildren(h('div', { class: 'table-wrap' }, h('table', {}, h('thead', {}, head), body)), footer);
+    // Set column widths keep the columns steady while sorting and paging.
+    const widths = columns.some(c => c.width) ? h('colgroup', {}, columns.map(c => h('col', { style: c.width ? `width:${c.width}` : null }))) : null;
+    container.replaceChildren(h('div', { class: 'table-wrap' }, h('table', { class: cls }, widths, h('thead', {}, head), body)), footer);
   }
   draw();
 }
@@ -917,11 +1176,17 @@ function questionCard(q) {
   if (q.age) facts.push(` · age ${q.age}`);
   if (q.places.length) facts.push(` · ${q.places.map(i => PLACES[i].name).join(', ')}`);
   const yt = youtubeLink(q.ep, q.start, 'YouTube ↗');
-  return h('article', { class: 'q-card', style: catStyle(q.cat) },
+  const el = h('article', { class: 'q-card', style: catStyle(q.cat) },
     h('div', { class: 'q-head' }, h('h4', { class: 'q-title', text: q.title }), h('div', { class: 'q-actions' }, playButton(q))),
     h('div', { class: 'q-meta' }, subTag(q), q.also.map(code => h('span', { class: 'tag', title: 'Also about', text: subName(code) }))),
     h('div', { class: 'q-meta' }, facts, yt ? [' · ', yt] : null),
-    state.openings && q.excerpt ? h('p', { class: 'q-excerpt', text: q.excerpt }) : null);
+    state.openings && excerptOf(q) ? h('p', { class: 'q-excerpt', text: excerptOf(q) }) : null);
+  // A click anywhere on the card plays the answer, like its ▶ button; its own links keep their jobs, and selecting text does nothing.
+  el.addEventListener('click', ev => {
+    if (ev.target.closest('a, button') || String(window.getSelection())) return;
+    openQuestion(q);
+  });
+  return el;
 }
 function questionList(container, list, pageSize = 24) {
   let shown = 0;
@@ -969,11 +1234,6 @@ function pairItems(qs, focus) {
     key, value, color: focus ? colorOf(key) : null,
     label: focus ? catName(key) : key.split('+').map(catName).join(' + '),
   })).sort((a, b) => b.value - a.value);
-}
-function placeItems(qs) {
-  const counts = new Map();
-  for (const q of qs) for (const i of q.places) counts.set(i, (counts.get(i) || 0) + 1);
-  return [...counts.entries()].map(([i, value]) => ({ key: i, label: PLACES[i].name, value, note: PLACES[i].region })).sort((a, b) => b.value - a.value);
 }
 function cityItems(qs) {
   const counts = new Map();
@@ -1030,6 +1290,29 @@ function positionItems(qs) {
       rows: [{ value: fmtInt(lengths.length), label: 'timed answers' }] };
   });
 }
+/* ---------- Answer words: what stands out in the English translation of a subject's answers ---------- */
+const ANSWER_GROUPS = (DATA.answerWords || {}).groups || {};
+function answerItems(key) {
+  const group = ANSWER_GROUPS[key];
+  return group ? group.words.map(([word, inside, outside, uses]) => ({
+    key: word, label: word, value: inside / group.answers, ref: outside / group.versus, color: colorOf(key),
+    rows: [{ value: fmtPct(outside / group.versus), label: 'of all other answers', color: 'var(--ink-soft)' },
+      { value: fmtInt(uses), label: `uses in ${plural(inside, 'answer')}` }],
+  })) : [];
+}
+function answerCard(key, span) {
+  const group = ANSWER_GROUPS[key], items = answerItems(key);
+  const c = card({ title: 'What the answers talk about', subtitle: 'Words that set these answers apart, in the English translation · share of answers using each', span,
+    legend: items.length ? h('div', { class: 'legend' },
+      h('span', {}, h('span', { class: 'key-rect', style: `background:${colorOf(key)}` }), `These ${plural(group.answers, 'answer')}`),
+      h('span', {}, h('span', { class: 'key-tick' }), 'All other answers')) : null,
+    table: items.length ? () => ({ columns: [{ label: 'Word' }, { label: 'These answers', num: true }, { label: 'Other answers', num: true }, { label: 'Uses', num: true }],
+      rows: group.words.map(([word, inside, outside, uses]) => [word, fmtPct(inside / group.answers), fmtPct(outside / group.versus), fmtInt(uses)]) }) : null });
+  if (items.length) barList(c.body, { items: items.slice(0, 10), format: v => fmtPct(v), valueLabel: 'of these answers' });
+  else c.body.append(h('p', { class: 'muted', text: group ? 'No word stands out clearly in these answers.' : 'Too few answers here to compare.' }));
+  return c.el;
+}
+
 function findings(qs) {
   const items = [], total = qs.length;
   if (!state.cat) {
@@ -1044,6 +1327,11 @@ function findings(qs) {
     if (subs.length) items.push(['Within ', strong(catName(state.cat)), ', the most common subject is ', strong(subs[0].label), ` (${plural(subs[0].value, 'question')}, ${fmtPct(subs[0].value / total)}).`]);
   } else {
     items.push([strong(subName(state.sub)), ` makes up ${fmtPct(total / CAT_COUNTS.get(state.cat))} of ${catName(state.cat)} questions and ${fmtShare(total / QUESTIONS.length)} of all questions.`]);
+  }
+  const standout = ANSWER_GROUPS[state.sub || state.cat];
+  if (standout && standout.words.length >= 3) {
+    const [first, second, third] = standout.words.map(([word]) => word);
+    items.push(['The words that most set ', strong(scopeName()), ' answers apart are ', strong(first), ', ', strong(second), ' and ', strong(third), ', going by the English translation.']);
   }
   const shifts = shiftsFor(5);
   const { firstLabel, secondLabel } = halves(EPISODES);
@@ -1200,7 +1488,7 @@ const SUBTITLES = {
     const e = BY_EP.get(state.ep);
     return e ? `Episode ${e.n} · ${fmtDuration(e.duration)} · ${plural(e.questions, 'question')}` : '';
   },
-  about: () => 'How the data was made, what the measures mean, and their limits',
+  about: () => 'What this app shows, how to use it, and how the data was made',
 };
 function updateChrome() {
   for (const [tab, b] of navItems) {
@@ -1285,6 +1573,50 @@ function renderOverview(panel) {
 }
 
 /* ---------- Categories ---------- */
+// Questions grouped by the band they make in a Sankey: pairOf(q) names its two ends as "from>to".
+function bandsOf(qs, pairOf) {
+  const groups = new Map();
+  for (const q of qs) {
+    for (const pair of [].concat(pairOf(q))) {
+      if (!groups.has(pair)) groups.set(pair, []);
+      groups.get(pair).push(q);
+    }
+  }
+  return [...groups.entries()].map(([pair, questions]) => ({ pair: pair.split('>'), value: questions.length, questions })).sort((a, b) => b.value - a.value);
+}
+// In a Sankey's table, a band's count lists its questions under the chart, as clicking the band does.
+const bandButton = (chart, l) => h('button', { class: 'link-button', type: 'button', text: fmtInt(l.value), title: 'List these questions under the chart',
+  on: { click: () => chart.openFlow(l.from, l.to) } });
+// The questions that also touch a second category, from their main category to that one.
+function connectionsCard() {
+  const links = bandsOf(QUESTIONS, q => q.alsoCats.map(other => `${q.cat}>${other}`)).map(l => ({ ...l, from: `from:${l.pair[0]}`, to: `to:${l.pair[1]}` }));
+  const total = sum(links.map(l => l.value));
+  const node = (end, c) => ({ key: `${end}:${c.id}`, label: c.name, color: c.color, note: c.description, hint: 'Click to open this category',
+    onPick: () => go('categories', { cat: c.id, sub: '' }) });
+  const flows = card({ title: 'How subjects connect', subtitle: `The ${plural(total, 'question')} that also touch a second category, from their main category to the other · click a band to list its questions, or a category to open it`,
+    table: () => ({ columns: [{ label: 'Main category' }, { label: 'Also about' }, { label: 'Questions', num: true }, { label: 'Of its questions', num: true }],
+      rows: links.map(l => [catName(l.pair[0]), catName(l.pair[1]), bandButton(chart, l), fmtShare(l.value / CAT_COUNTS.get(l.pair[0]))]) }) });
+  const chart = sankey(flows.body, { left: LIVE_CATS.map(c => node('from', c)), right: LIVE_CATS.map(c => node('to', c)), links,
+    heads: ['Main category', 'Also about'], label: 'Questions by main category and the second category they touch' });
+  return flows.el;
+}
+// A category's questions, from their subcategory to the second subject they are tagged with, if any.
+function secondSubjectsCard(cat, inCat) {
+  const links = bandsOf(inCat, q => `${q.sub}>${q.alsoCats[0] || (q.also.length ? 'same' : 'none')}`)
+    .map(l => ({ ...l, from: l.pair[0], to: l.pair[1], color: l.pair[1] === 'none' ? 'var(--muted)' : null }));
+  const left = cat.subs.map(sb => ({ key: sb.id, label: sb.name, color: sb.tone, note: sb.description,
+    hint: state.sub === sb.id ? 'Click to show the whole category' : 'Click to narrow this page to it', onPick: () => setFilter(cat.id, state.sub === sb.id ? '' : sb.id) }));
+  const right = LIVE_CATS.filter(c => c.id !== cat.id).map(c => ({ key: c.id, label: c.name, color: c.color, note: c.description,
+    hint: 'Click to open this category', onPick: () => go('categories', { cat: c.id, sub: '' }) }))
+    .concat([{ key: 'same', label: `Another ${cat.name} subject`, color: cat.color, note: `Tagged with a second subcategory of ${cat.name}`, pinned: true },
+      { key: 'none', label: 'No second subject', color: 'var(--muted)', note: 'Questions about this subject alone', pinned: true }]);
+  const toName = key => right.find(n => n.key === key).label;
+  const flows = card({ title: 'Subcategories and second subjects', subtitle: 'Each band is a group of questions, from their subcategory to the other subject they also touch · click a band to list its questions, or either side to go there',
+    table: () => ({ columns: [{ label: 'Subcategory' }, { label: 'Also about' }, { label: 'Questions', num: true }, { label: 'Of the subcategory', num: true }],
+      rows: links.map(l => [subName(l.from), toName(l.to), bandButton(chart, l), fmtShare(l.value / SUB_COUNTS.get(l.from))]) }) });
+  const chart = sankey(flows.body, { left, right, links, heads: ['Subcategory', 'Also about'], selected: state.sub || null, label: `${cat.name} questions by subcategory and second subject` });
+  return flows.el;
+}
 function categoryCard(cat, eraList) {
   const inCat = QUESTIONS.filter(q => q.cat === cat.id);
   const answered = inCat.filter(q => q.length != null).map(q => q.length);
@@ -1305,10 +1637,7 @@ function categoryCard(cat, eraList) {
 function renderCategories(panel) {
   if (state.cat) { renderCategoryDetail(panel); return; }
   const eraList = eras(EPISODES);
-  const multi = QUESTIONS.filter(q => q.alsoCats.length).length;
-  panel.append(h('p', { class: 'lead span-12' },
-    `Each of the ${fmtInt(QUESTIONS.length)} questions has one main subcategory, checked by hand from its title and opening; ${fmtPct(multi / QUESTIONS.length)} also carry a second subject as an extra tag. `,
-    'Broad subjects are split into finer subcategories under their category. The small columns show each category’s share of questions across blocks of episodes, newest on the right.'));
+  panel.append(connectionsCard());
   panel.append(h('div', { class: 'cat-grid' }, LIVE_CATS.map(c => categoryCard(c, eraList))));
 }
 function renderCategoryDetail(panel) {
@@ -1352,10 +1681,16 @@ function renderCategoryDetail(panel) {
     heatmap(heat.body, { rows, cols, cell, title: 'Share of the category’s questions by block of episodes' });
     panel.append(heat.el);
   }
+  panel.append(secondSubjectsCard(cat, inCat));
 
-  const pairs = pairItems(qs, cat.id);
-  const pairCard = card({ title: 'Often comes with', subtitle: 'Other categories tagged on the same questions', span: 'span-4', table: itemsTable('Category', pairs, fmtInt) });
-  barList(pairCard.body, { items: pairs.slice(0, 8), format: fmtInt, valueLabel: 'questions in both', onSelect: key => go('categories', { cat: key, sub: '' }) });
+  // With the English translation, what the answers talk about; the flows above already show the second subjects.
+  let pairCard;
+  if (DATA.answerWords) pairCard = { el: answerCard(sub ? sub.id : cat.id, 'span-4') };
+  else {
+    const pairs = pairItems(qs, cat.id);
+    pairCard = card({ title: 'Often comes with', subtitle: 'Other categories tagged on the same questions', span: 'span-4', table: itemsTable('Category', pairs, fmtInt) });
+    barList(pairCard.body, { items: pairs.slice(0, 8), format: fmtInt, valueLabel: 'questions in both', onSelect: key => go('categories', { cat: key, sub: '' }) });
+  }
   const words = wordItems(qs);
   const wordCard = card({ title: 'Words in these questions', subtitle: 'Most frequent words in the question titles', span: 'span-4', table: itemsTable('Word', words.slice(0, 30), fmtInt) });
   barList(wordCard.body, { items: words.slice(0, 10), format: fmtInt, valueLabel: 'titles' });
@@ -1376,13 +1711,15 @@ function renderQuestions(panel) {
   const sort = h('select', { class: 'select', 'aria-label': 'Sort questions' }, Object.entries(SORTS).map(([key, it]) => h('option', { value: key, text: it.label })));
   sort.value = state.sort;
   const openings = h('input', { type: 'checkbox', checked: state.openings });
+  // The openings in Roman Urdu or the English translation, the same choice as the episode transcript.
+  const language = SCRIPTS.length > 1 ? segmented('Language of the openings', SCRIPTS.map(script => [SCRIPT_NAMES[script], script]), state.script, script => { setScript(script); update(); }) : null;
+  // Each row of chips has its label in a column of its own, so chips that wrap line up under the first.
+  const chipRow = (label, ...chips) => h('div', { class: 'chip-row' }, h('span', { class: 'chips-label', text: label }), h('div', { class: 'chips' }, chips));
   append(controls.body, [
-    h('div', { class: 'controls' }, sort, h('label', { class: 'checkbox' }, openings, 'Show openings')),
-    h('div', { class: 'chips' }, h('span', { class: 'chips-label', text: 'Category' }),
-      chipButton('All', QUESTIONS.length, !state.cat, () => setFilter('', '')),
+    h('div', { class: 'controls' }, sort, h('label', { class: 'checkbox' }, openings, 'Show openings'), language),
+    chipRow('Category', chipButton('All', QUESTIONS.length, !state.cat, () => setFilter('', '')),
       categoryItems(QUESTIONS).map(c => chipButton(c.label, c.value, state.cat === c.key, () => setFilter(c.key, ''), c.color))),
-    state.cat ? h('div', { class: 'chips' }, h('span', { class: 'chips-label', text: 'Subcategory' }),
-      chipButton(`All of ${catName(state.cat)}`, inCat.length, !state.sub, () => setFilter(state.cat, '')),
+    state.cat ? chipRow('Subcategory', chipButton(`All of ${catName(state.cat)}`, inCat.length, !state.sub, () => setFilter(state.cat, '')),
       subItems(inCat, state.cat).map(sb => chipButton(sb.label, sb.value, state.sub === sb.key, () => setFilter(state.cat, sb.key)))) : null]);
   panel.append(controls.el);
   const results = h('div', { class: 'span-12' });
@@ -1400,8 +1737,6 @@ function renderQuestions(panel) {
 function renderInsights(panel) {
   const qs = scopedQuestions();
   if (!qs.length) { panel.append(notice('No questions match this filter.')); return; }
-  const scope = scopeName();
-  panel.append(h('p', { class: 'lead span-12', text: `Patterns across ${plural(qs.length, 'question')}${scope ? ` about ${scope}` : ''}. Pick a category under Categories in the sidebar to focus every chart on it.` }));
 
   const groups = state.cat
     ? CAT.get(state.cat).subs.map(sb => ({ label: sb.name, color: sb.color, test: q => q.sub === sb.id }))
@@ -1414,36 +1749,60 @@ function renderInsights(panel) {
   stripPlot(strip.body, { rows, onPick: openQuestion });
   panel.append(strip.el);
 
+  // Rows of two cards of about the same height: time and age, then subjects, then places.
   const positions = positionItems(qs);
-  const position = card({ title: 'Does the first question get the most time?', subtitle: 'Median minutes per answer by the question’s position in its episode', span: 'span-4', table: itemsTable('Position', positions, fmtMinutes) });
-  ordinalColumns(position.body, { items: positions, format: v => fmt1(v), label: 'median minutes' });
+  const position = card({ title: 'Does the first question get the most time?', subtitle: 'Median minutes per answer by the question’s position in its episode', span: 'span-6', table: itemsTable('Position', positions, fmtMinutes) });
+  ordinalColumns(position.body, { items: positions, format: v => fmt1(v), label: 'median minutes', height: 240 });
   const ageList = ageItems(qs), ages = qs.map(q => q.age).filter(Boolean);
-  const agesCard = card({ title: 'How old are the askers?', subtitle: ages.length ? `${plural(ages.length, 'question')} state an age · median ${median(ages)}` : 'No ages stated in these questions', span: 'span-4', table: itemsTable('Age', ageList, fmtInt) });
-  ordinalColumns(agesCard.body, { items: ageList, format: fmtInt, label: 'questions' });
-  const ageByGroup = (state.cat ? subItems(qs, state.cat) : categoryItems(qs)).map(it => {
-    const list = qs.filter(q => (state.cat ? q.sub : q.cat) === it.key).map(q => q.age).filter(Boolean);
-    return { key: it.key, label: it.label, color: it.color, value: median(list) || 0, rows: [{ value: fmtInt(list.length), label: 'stated ages' }], n: list.length };
-  }).filter(it => it.n >= 4).sort((a, b) => b.value - a.value);
-  const ageGroups = card({ title: 'Median age by subject', subtitle: 'Subjects with at least four stated ages', span: 'span-4', table: itemsTable('Subject', ageByGroup, fmtInt) });
-  barList(ageGroups.body, { items: ageByGroup, format: fmtInt, valueLabel: 'median age' });
-  panel.append(position.el, agesCard.el, ageGroups.el);
+  const agesCard = card({ title: 'How old are the askers?', subtitle: ages.length ? `${plural(ages.length, 'question')} state an age · median ${median(ages)}` : 'No ages stated in these questions', span: 'span-6', table: itemsTable('Age', ageList, fmtInt) });
+  ordinalColumns(agesCard.body, { items: ageList, format: fmtInt, label: 'questions', height: 240 });
+  panel.append(position.el, agesCard.el);
 
-  const places = placeItems(qs), regions = regionItems(qs);
-  const placesCard = card({ title: 'Places mentioned', subtitle: 'Cities and countries named in the title or the first 45 seconds', span: 'span-4', table: itemsTable('Place', places, fmtInt) });
-  barList(placesCard.body, { items: places.slice(0, 12), format: fmtInt, valueLabel: 'questions' });
-  const regionCard = card({ title: 'By region', subtitle: 'Questions naming at least one place in each region', span: 'span-4', table: itemsTable('Region', regions, fmtInt) });
-  barList(regionCard.body, { items: regions, format: fmtInt, valueLabel: 'questions' });
+  // Medians alone differ by a few years, so each subject shows the middle half of its stated ages too.
+  const ageRanges = (state.cat ? subItems(qs, state.cat) : categoryItems(qs).filter(it => it.key !== 'other')).map(it => {
+    const list = qs.filter(q => (state.cat ? q.sub : q.cat) === it.key).map(q => q.age).filter(Boolean).sort((a, b) => a - b);
+    return { key: it.key, label: it.label, color: it.color, n: list.length, median: median(list), low: quantile(list, 0.25), high: quantile(list, 0.75) };
+  }).filter(it => it.n >= 4).sort((a, b) => b.median - a.median);
+  const ageGroups = card({ title: 'Ages by subject', subtitle: 'The middle half of stated ages in each subject, and its median · subjects with at least four ages', span: 'span-6',
+    legend: h('div', { class: 'legend' }, h('span', {}, h('span', { class: 'key-band' }), 'Middle half of the ages'), h('span', {}, h('span', { class: 'key-tick' }), 'Median')),
+    table: () => ({ columns: [{ label: 'Subject' }, { label: 'Stated ages', num: true }, { label: 'Median', num: true }, { label: 'Middle half', num: true }],
+      rows: ageRanges.map(it => [it.label, fmtInt(it.n), fmtInt(it.median), `${fmtInt(it.low)}–${fmtInt(it.high)}`]) }) });
+  rangeList(ageGroups.body, { items: ageRanges });
   const pairs = pairItems(qs, state.cat);
-  const pairCard = card({ title: state.cat ? 'Often comes with' : 'Subjects that come together', subtitle: 'Questions tagged with both categories', span: 'span-4', table: itemsTable('Pair', pairs, fmtInt) });
-  barList(pairCard.body, { items: pairs.slice(0, 10), format: fmtInt, valueLabel: 'questions' });
-  panel.append(placesCard.el, regionCard.el, pairCard.el);
+  const pairCard = card({ title: state.cat ? 'Often comes with' : 'Subjects that come together', subtitle: 'Questions tagged with both categories', span: 'span-6', table: itemsTable('Pair', pairs, fmtInt) });
+  barList(pairCard.body, { items: pairs.slice(0, Math.max(4, ageRanges.length)), format: fmtInt, valueLabel: 'questions' });
+  panel.append(ageGroups.el, pairCard.el);
 
-  const words = wordItems(qs);
-  const wordCard = card({ title: 'Words in question titles', subtitle: 'The most frequent words, leaving out common English and Urdu ones', span: 'span-6', table: itemsTable('Word', words.slice(0, 40), fmtInt) });
-  barList(wordCard.body, { items: words.slice(0, 14), format: fmtInt, valueLabel: 'titles' });
+  // Cities rather than whole countries; the regions sum the countries and cities up.
+  const cities = cityItems(qs).map(c => ({ ...c, note: c.country })), regions = regionItems(qs);
+  const cityCard = card({ title: 'Cities mentioned', subtitle: 'Named in the title or the first 45 seconds, in Roman Urdu or the English translation', span: 'span-6', table: itemsTable('City', cities, fmtInt) });
+  barList(cityCard.body, { items: cities.slice(0, Math.max(6, regions.length)), format: fmtInt, valueLabel: 'questions' });
+  const regionCard = card({ title: 'By region', subtitle: 'Questions naming at least one place in each region', span: 'span-6', table: itemsTable('Region', regions, fmtInt) });
+  barList(regionCard.body, { items: regions, format: fmtInt, valueLabel: 'questions' });
+  panel.append(cityCard.el, regionCard.el);
+
+  // What each subject's answers talk about: categories, or the subcategories of the chosen one.
+  const subjects = (state.cat ? CAT.get(state.cat).subs.map(sb => ({ key: sb.id, label: sb.name, color: sb.color, cat: state.cat, sub: sb.id }))
+    : TOPICS.map(c => ({ key: c.id, label: c.name, color: c.color, cat: c.id, sub: '' }))).filter(g => answerItems(g.key).length);
+  if (subjects.length) {
+    const map = card({ title: 'What the answers talk about', subtitle: 'The words that most set each subject’s answers apart, in the English translation · click a subject for the full list',
+      table: () => ({ columns: [{ label: 'Subject' }, { label: 'Answers', num: true }, { label: 'Words that stand out' }],
+        rows: subjects.map(g => [g.label, fmtInt(ANSWER_GROUPS[g.key].answers), ANSWER_GROUPS[g.key].words.map(([word]) => word).join(', ')]) }) });
+    map.body.append(h('div', { class: 'word-map' }, subjects.map(g => h('div', { class: 'word-row', style: `--cat:${g.color}` },
+      h('a', { class: 'word-subject', href: `#tab=categories&cat=${g.cat}${g.sub ? `&sub=${g.sub}` : ''}`, on: { click: ev => { ev.preventDefault(); go('categories', { cat: g.cat, sub: g.sub }); } } },
+        h('span', { class: 'dot' }), g.label),
+      h('div', { class: 'chips' }, answerItems(g.key).slice(0, 8).map(it => h('span', { class: 'tag', text: it.label,
+        title: `Used in ${fmtPct(it.value)} of these answers and ${fmtPct(it.ref)} of all others` })))))));
+    panel.append(map.el);
+  }
+
   const keys = state.cat ? CAT.get(state.cat).subs.map(sb => sb.id) : TOPICS.flatMap(c => c.subs.map(sb => sb.id));
   const shifts = shiftItems(state.cat ? QUESTIONS.filter(q => q.cat === state.cat) : QUESTIONS, q => q.sub, keys, subName).filter(it => it.n >= 6).sort((a, b) => b.value - a.value);
   const movers = shifts.filter(it => it.value > 0).slice(0, 7).concat(shifts.filter(it => it.value < 0).slice(-7));
+  // As many title words as there are movers beside them, so the two cards end level.
+  const words = wordItems(qs);
+  const wordCard = card({ title: 'Words in question titles', subtitle: 'The most frequent words, leaving out common English and Urdu ones', span: 'span-6', table: itemsTable('Word', words.slice(0, 40), fmtInt) });
+  barList(wordCard.body, { items: words.slice(0, Math.max(6, movers.length)), format: fmtInt, valueLabel: 'titles' });
   const { firstLabel, secondLabel } = halves(EPISODES);
   const moverCard = card({ title: 'Rising and falling subcategories', subtitle: `Change in share of questions, ${firstLabel} vs ${secondLabel}`, span: 'span-6', legend: divergingLegend(firstLabel, secondLabel),
     table: () => ({ columns: [{ label: 'Subcategory' }, { label: 'First half', num: true }, { label: 'Second half', num: true }, { label: 'Change', num: true }], rows: shifts.map(it => [it.label, fmtPct(it.a, 1), fmtPct(it.b, 1), fmtPoints(it.value)]) }) });
@@ -1464,17 +1823,17 @@ function renderEpisodes(panel) {
     episodeCard(EPISODES, { title: 'Episode length', subtitle: 'Minutes per episode', label: 'Length', value: e => e.lengthMin, format: fmtMinutes, span: 'span-6' }));
   const table = card({ title: 'All episodes', subtitle: 'Sort by any column · subjects are the categories of each episode’s questions' });
   dataTable(table.body, {
-    rows: EPISODES, sortKey: 'n', sortDir: 'desc', pageSize: 50,
+    rows: EPISODES, sortKey: 'n', sortDir: 'desc', pageSize: 50, cls: 'episode-table',
     columns: [
-      { key: 'n', label: 'Ep', num: true, sort: e => e.n, firstDir: 'desc', render: e => episodeLink(e.n, String(e.n)) },
-      { key: 'len', label: 'Length', num: true, sort: e => e.duration, render: e => fmtClock(e.duration) },
-      { key: 'q', label: scope ? 'Matching' : 'Questions', num: true, sort: e => scope ? counts.get(e.n) || 0 : e.questions, render: e => fmtInt(scope ? counts.get(e.n) || 0 : e.questions) },
-      { key: 'subjects', label: 'Subjects', sort: null, render: e => h('div', { class: 'words' }, [...countBy(e.qs, q => q.cat).entries()].sort((a, b) => b[1] - a[1]).slice(0, 4)
+      { key: 'n', label: 'Ep', num: true, width: '62px', sort: e => e.n, firstDir: 'desc', render: e => episodeLink(e.n, String(e.n)) },
+      { key: 'len', label: 'Length', num: true, width: '92px', sort: e => e.duration, render: e => fmtClock(e.duration) },
+      { key: 'q', label: scope ? 'Matching' : 'Questions', num: true, width: '112px', sort: e => scope ? counts.get(e.n) || 0 : e.questions, render: e => fmtInt(scope ? counts.get(e.n) || 0 : e.questions) },
+      { key: 'subjects', label: 'Subjects', width: '30%', sort: null, render: e => h('div', { class: 'tag-list' }, [...countBy(e.qs, q => q.cat).entries()].sort((a, b) => b[1] - a[1]).slice(0, 4)
         .map(([c, n]) => h('span', { class: 'tag', style: catStyle(c) }, h('span', { class: 'dot' }), `${catName(c)}${n > 1 ? ` ×${n}` : ''}`))) },
-      { key: 'pq', label: 'Min / question', num: true, sort: e => e.perQuestion, render: e => e.perQuestion == null ? '–' : fmt1(e.perQuestion) },
-      { key: 'intro', label: 'Intro', num: true, sort: e => e.firstQuestion, render: e => e.firstQuestion == null ? '–' : fmtClock(e.firstQuestion) },
-      { key: 'sig', label: 'Signature words', sort: null, render: e => h('span', { class: 'words', text: e.signature.join(', ') }) },
-      { key: 'watch', label: 'Watch', sort: null, render: e => h('button', { class: 'q-play', type: 'button', text: '▶ Play', on: { click: () => openEpisode(e.n, { play: true }) } }) },
+      { key: 'pq', label: 'Min / question', num: true, width: '108px', sort: e => e.perQuestion, render: e => e.perQuestion == null ? '–' : fmt1(e.perQuestion) },
+      { key: 'intro', label: 'Intro', num: true, width: '82px', sort: e => e.firstQuestion, render: e => e.firstQuestion == null ? '–' : fmtClock(e.firstQuestion) },
+      { key: 'sig', label: 'Signature words', sort: null, render: e => h('span', { class: 'sig-words', text: e.signature.join(', ') }) },
+      { key: 'watch', label: 'Watch', num: true, width: '96px', sort: null, render: e => h('button', { class: 'q-play', type: 'button', text: '▶ Play', on: { click: () => openEpisode(e.n, { play: true }) } }) },
     ],
   });
   panel.append(table.el);
@@ -1889,15 +2248,18 @@ function renderEpisode(panel) {
   sess.followers.push(now.update, timeline.setTime);
 
   const qCard = card({ title: plural(e.qs.length, 'question'), subtitle: e.qs.length ? 'Click a question to play its answer · tags list similar questions' : 'This episode has no index entries' });
-  const qRows = new Map();
+  const qRows = new Map(), openingLines = [];
   qCard.body.append(h('div', { class: 'question-list' }, e.qs.map(q => {
+    // The opening follows the transcript language, so it is kept to update when that changes.
+    const opening = excerptOf(q) ? h('div', { class: 'excerpt', text: excerptOf(q) }) : null;
+    if (opening) openingLines.push([q, opening]);
     const row = h('div', { class: 'question-item', style: catStyle(q.cat) },
       h('span', { class: 'question-number', text: `Q${q.order}` }),
       h('div', {},
         h('div', { class: 'question-title' }, h('button', { type: 'button', text: q.title, on: { click: () => seek(q.start, { q }) } })),
         h('div', { class: 'q-meta' }, subTag(q), q.also.map(code => h('span', { class: 'tag', text: subName(code) })),
           q.age ? h('span', { class: 'tag', text: `age ${q.age}` }) : null, q.places.map(i => h('span', { class: 'tag', text: PLACES[i].name }))),
-        q.excerpt ? h('div', { class: 'excerpt', text: q.excerpt }) : null),
+        opening),
       h('div', { class: 'num' },
         q.start == null ? h('span', { class: 'muted', text: 'No time' })
           : h('button', { class: 'q-play', type: 'button', text: `▶ ${fmtClock(q.start)}`, on: { click: () => seek(q.start, { q, external: true }) } }),
@@ -1949,10 +2311,10 @@ function renderEpisode(panel) {
   };
   if (SCRIPTS.length > 1) {
     transcriptActions.append(segmented('Transcript language', SCRIPTS.map(s => [SCRIPT_NAMES[s], s]), state.script, script => {
-      state.script = script;
-      try { localStorage.setItem('ganji-script', script); } catch (error) { /* storage unavailable */ }
+      setScript(script);
       writeHash();
       showScript(script);
+      for (const [q, line] of openingLines) line.textContent = excerptOf(q);
     }));
   }
   panel.append(h('div', { class: 'stack span-7' }, playerCard, qCard.el, facts.el, pace.el, words.el), h('div', { class: 'side span-5' }, transcriptCard));
@@ -1967,50 +2329,96 @@ function renderEpisode(panel) {
 }
 
 /* ---------- About ---------- */
+// A card whose body stays folded away until asked for: reference tables that would crowd the page.
+function foldCard({ title, subtitle }, content) {
+  const c = card({ title, subtitle });
+  c.body.hidden = true;
+  const button = h('button', { class: 'small-button', type: 'button', 'aria-expanded': 'false', text: 'Show' });
+  button.addEventListener('click', () => {
+    const open = button.getAttribute('aria-expanded') !== 'true';
+    button.setAttribute('aria-expanded', String(open));
+    button.textContent = open ? 'Hide' : 'Show';
+    if (open && !c.body.childElementCount) c.body.append(content());
+    c.body.hidden = !open;
+  });
+  c.actions.append(button);
+  return c.el;
+}
 function renderAbout(panel) {
   const meta = DATA.meta, quality = DATA.quality;
+  const english = SCRIPTS.includes('english');
   const sorted = QUESTIONS.filter(x => !x.sub.endsWith('.auto')).length;
-  const intro = card({ title: 'About this app', span: 'span-7', cls: 'prose' });
+  const intro = card({ title: 'About this app' });
   intro.body.append(
-    h('p', {}, 'An unofficial, fan-made way to explore the ', strong(`${fmtInt(meta.questions)} viewer questions`),
-      ` answered on Ask Ganji Swag across ${fmtInt(meta.episodes)} episodes (${fmt1(meta.seconds / 3600)} hours). The questions and their timestamps come from a hand-made episode index; the transcripts come from CrisperWhisper speech recognition, converted word by word to Roman Urdu with English kept as spoken.`),
-    h('p', {}, 'Every episode plays inside the ', strong('Episode explorer'), ', where the transcript follows the video line by line and the timeline shows which question is being answered. Every chart has a table view, and every question links to the moment it is read out.'));
-  const how = card({ title: 'How questions are categorised', span: 'span-5', cls: 'prose' });
-  how.body.append(
-    h('p', {}, 'Each question has one main subcategory, chosen by reading its title and, where the title was vague, the opening of the answer, which is usually the letter being read out. Questions that clearly cover a second subject carry it as an extra tag.'),
-    h('p', {}, `Subcategories sit inside ${TOPICS.length} categories. Where a subject was too broad, such as love and marriage or Pakistani society, it is split into finer subcategories under the same category, ${SUBTOPIC_COUNT} in all.`),
-    h('p', {}, 'The labels live in ', h('code', { text: 'app/tools/question_labels.json' }), ' in the source repository and can be corrected there. New episodes that are not in that file yet are placed by keywords and shown as “Not yet sorted”.'));
-  const measures = card({ title: 'Measures', span: 'span-7', cls: 'prose' });
-  measures.body.append(h('ul', {},
-    h('li', {}, strong('Answer length'), ': time from a question’s timestamp to the next question (or the end of the episode). It includes reading the question out and any tangents.'),
-    h('li', {}, strong('Asker age'), ': an age stated as “22 years old”, “19 yo”, “I’m 24” or “twenty-four year old” in the title or the first 90 seconds. Occasionally it is someone else’s age in the letter.'),
-    h('li', {}, strong('Places'), ': cities and countries named in the title or the first 45 seconds. The YouTube comment segments are left out of ages and places.'),
-    h('li', {}, strong('Rising and falling'), ': each subject’s share of questions in the second half of all episodes minus its share in the first half, in percentage points.'),
-    h('li', {}, strong('Signature words'), ': terms unusually frequent in one episode’s transcript (TF-IDF), limited to words seen in at least two episodes with reliable spellings.'),
-    h('li', {}, strong('English share'), ': words the recogniser wrote in Latin script. Loanwords and place names it wrote in Urdu script count as Urdu.')));
-  const caveats = card({ title: 'Caveats', span: 'span-5', cls: 'prose' });
-  caveats.body.append(h('ul', {},
-    h('li', { text: 'Transcripts are machine-generated: names, vowels and rare words can be wrong or spelled inconsistently (shaadi / shadi).' }),
-    h('li', { text: 'The transcript follows the video by its subtitle timings, which can drift by a second or two.' }),
-    h('li', { text: 'Categories are one reader’s judgement of short titles and openings. Many questions could reasonably sit in two places; the extra tags show the most obvious second subject.' }),
-    h('li', { text: 'Index titles were written by different people over time, so their style varies between early and recent episodes.' })));
-  panel.append(intro.el, how.el, measures.el, caveats.el);
+    h('p', { class: 'about-lead' }, 'An unofficial, fan-made analysis of the ', strong(`${fmtInt(meta.questions)} viewer questions`),
+      ` answered on Ask Ganji Swag across ${fmtInt(meta.episodes)} episodes (${fmt1(meta.seconds / 3600)} hours). See what viewers ask about, how that changed over the years and what was said in reply, with every answer one click away from its moment in the video.`),
+    h('p', { class: 'about-credit' }, 'Made by ', strong('Reeyan-Afzal-Khan'), ' and not affiliated with the show. All episode content belongs to its creators; videos play from YouTube, and this site hosts no video or audio. ',
+      h('a', { href: meta.playlist, target: '_blank', rel: 'noopener', text: 'Full playlist on YouTube ↗' })));
 
-  const taxonomy = card({ title: 'Categories and subcategories', subtitle: 'With the number of questions in each, across all episodes' });
-  taxonomy.body.append(h('div', { class: 'table-wrap' }, h('table', {},
+  // A tile for each section, in sidebar order, then the moves that work everywhere.
+  const tiles = [
+    ['overview', 'The big picture: what viewers ask about, how subjects changed over the years, and the key findings.'],
+    ['categories', 'Every category and its subcategories, how subjects connect, and what their answers talk about.'],
+    ['questions', `All ${fmtInt(meta.questions)} questions by subject, each with its opening${english ? ' in Roman Urdu or English' : ''} and ▶ to play the answer.`],
+    ['insights', 'How long answers run, who asks (ages and cities), and the words that set each subject apart.'],
+    ['episodes', `Length, pace and subjects of all ${fmtInt(meta.episodes)} episodes, as charts and a sortable table.`],
+    ['episode', `An episode’s video with a transcript${english ? ' in Roman Urdu or English' : ''} that follows along, and its questions.`],
+  ];
+  const guide = card({ title: 'How to use this app', subtitle: 'Six sections, listed in the sidebar · pick a tile to open one' });
+  guide.body.append(
+    h('div', { class: 'guide-grid' }, tiles.map(([tab, text]) => h('button', { class: 'guide-tile', type: 'button', on: { click: () => go(tab) } },
+      h('span', { class: 'guide-icon' }, icon(SECTIONS[tab].icon)), h('span', { class: 'guide-name', text: SECTIONS[tab].label }), h('span', { class: 'guide-text', text })))),
+    h('h4', { class: 'section-label', text: 'Tips' }),
+    h('ul', { class: 'tips' },
+      h('li', {}, strong('Focus on a subject'), ': pick a category or subcategory under Categories in the sidebar; Overview, Questions, Insights and Episodes follow it.'),
+      h('li', {}, strong('Click the charts'), ': slices, bars and columns filter the page or open the question or episode behind them.'),
+      h('li', {}, strong('See exact numbers'), ': every chart has a Table button.'),
+      h('li', {}, strong('Play any moment'), ': a ▶ time opens the episode explorer and plays from that point.'),
+      h('li', {}, strong('Share a view'), ': the address keeps the page, the filter and the playback time.'),
+      h('li', {}, strong('Light or dark'), ': switch the theme at the bottom of the sidebar.')));
+  panel.append(intro.el, guide.el);
+
+  const made = card({ title: 'How the data was made', span: 'span-6' });
+  made.body.append(h('ol', { class: 'steps' },
+    h('li', {}, h('span', {}, strong('Questions'), ': a hand-made episode index lists every question with a link to its moment in the video.')),
+    h('li', {}, h('span', {}, strong('Transcripts'), ': CrisperWhisper speech recognition, converted word by word to Roman Urdu with English kept as spoken.')),
+    english ? h('li', {}, h('span', {}, strong('English'), ': CrisperWhisper also translated every episode into English, straight from the audio.')) : null,
+    h('li', {}, h('span', {}, strong('Categories'), `: each question has one hand-checked subcategory, plus a second subject when it clearly covers one; ${TOPICS.length} categories hold ${SUBTOPIC_COUNT} subcategories.`))));
+  const limits = card({ title: 'Keep in mind', span: 'span-6' });
+  limits.body.append(h('ul', { class: 'notes' },
+    h('li', { text: 'Transcripts are machine-made: names and rare words can be misheard or spelled two ways (shaadi, shadi).' }),
+    english ? h('li', { text: 'The English is a machine translation that can drop or invent a phrase, so figures drawn from it are close rather than exact.' }) : null,
+    h('li', { text: 'Categories are one reader’s judgement of short titles and openings; many questions could sit in two places.' }),
+    h('li', { text: 'Transcripts follow the video by their subtitle timings, which can drift by a second or two.' })));
+  panel.append(made.el, limits.el);
+
+  const terms = [
+    ['Answer length', 'Time from a question to the next one, or to the end of the episode, including reading the question out.'],
+    ['Asker age', `An age stated in the title or the first 90 seconds${english ? ', or said in the first person (“I am 24”) in the English translation' : ''}.`],
+    ['Places', `Cities and countries named in the title or the first 45 seconds${english ? ', in Roman Urdu or English' : ''}. Comment segments are left out of ages and places.`],
+    ['Second subject', 'The extra tag a question carries when it clearly covers a second subject. The flows on the Categories pages follow it.'],
+    english ? ['Answer words', 'The words that most set a subject’s answers apart from all others in the English translation. Bars show the share of its answers using a word; ticks, the share of other answers.'] : null,
+    ['Rising and falling', 'A subject’s share of questions in the second half of all episodes minus its share in the first half, in percentage points.'],
+    ['Signature words', 'Words unusually frequent in one episode’s transcript compared with the others (TF-IDF).'],
+    ['English share', 'Words the recogniser wrote in Latin script. Loanwords it wrote in Urdu script count as Urdu.'],
+  ].filter(Boolean);
+  const measures = card({ title: 'What the measures mean' });
+  measures.body.append(h('dl', { class: 'terms' }, terms.map(([term, text]) => h('div', {}, h('dt', { text: term }), h('dd', { text })))));
+  panel.append(measures.el);
+
+  // Reference tables, folded away until asked for.
+  panel.append(foldCard({ title: 'Categories and subcategories', subtitle: 'Every subcategory, with what it covers and its number of questions' }, () => h('div', { class: 'table-wrap' }, h('table', {},
     h('thead', {}, h('tr', {}, ['Category', 'Subcategory', 'What it covers'].map(label => h('th', { scope: 'col', text: label })), h('th', { scope: 'col', class: 'num', text: 'Questions' }), h('th', { scope: 'col', class: 'num', text: 'Share of category' }))),
     h('tbody', {}, LIVE_CATS.flatMap(c => c.subs.map((sb, i) => h('tr', {},
       h('td', {}, i ? '' : h('span', { class: 'tax-cat', style: `--cat:${c.color}` }, h('span', { class: 'dot' }), c.name)),
       h('td', {}, h('a', { href: `#tab=questions&cat=${c.id}&sub=${sb.id}`, on: { click: ev => { ev.preventDefault(); go('questions', { cat: c.id, sub: sb.id }); } } }, sb.name)),
       h('td', { class: 'muted', text: sb.description }),
       h('td', { class: 'num', text: fmtInt(SUB_COUNTS.get(sb.id)) }),
-      h('td', { class: 'num', text: fmtShare(SUB_COUNTS.get(sb.id) / CAT_COUNTS.get(c.id)) }))))))));
-  panel.append(taxonomy.el);
+      h('td', { class: 'num', text: fmtShare(SUB_COUNTS.get(sb.id) / CAT_COUNTS.get(c.id)) })))))))));
 
   const missingStart = QUESTIONS.filter(x => x.start == null);
   const replacement = EPISODES.filter(e => e.replacement);
-  const checks = card({ title: 'Data quality', subtitle: 'Checks on the inputs behind these numbers', span: 'span-7' });
-  checks.body.append(h('div', { class: 'table-wrap' }, simpleTable({ columns: [{ label: 'Check' }, { label: 'Result' }], rows: [
+  panel.append(foldCard({ title: 'Data checks', subtitle: 'Checks on the inputs behind these numbers' }, () => h('div', { class: 'table-wrap' }, simpleTable({ columns: [{ label: 'Check' }, { label: 'Result' }], rows: [
     ['Episodes with transcripts', fmtInt(EPISODES.length)],
     ['Questions categorised by hand', `${fmtInt(sorted)} of ${fmtInt(QUESTIONS.length)}`],
     ['Episodes placed by keywords (add to question_labels.json)', quality.unlabelled.length ? quality.unlabelled.join(', ') : 'None'],
@@ -2019,13 +2427,7 @@ function renderAbout(panel) {
     ['Questions without a timestamp', missingStart.length ? missingStart.map(x => `Ep ${x.ep} Q${x.order}`).join(', ') : 'None'],
     ['Episodes with unreadable characters (�)', replacement.length ? `${replacement.length}: ${replacement.map(x => `${x.n} (${x.replacement})`).join(', ')}` : 'None'],
     ['Questions in “Other”', fmtInt(QUESTIONS.filter(x => x.cat === 'other').length)],
-  ] })));
-  const sources = card({ title: 'Sources and rights', span: 'span-5', cls: 'prose' });
-  sources.body.append(
-    h('p', {}, 'Videos play from YouTube in its privacy-enhanced mode and stay on the creators’ channel; this site hosts no video or audio.'),
-    h('p', {}, 'All episode content belongs to its creators. This fan-made analysis by ', strong('Reeyan-Afzal-Khan'), ' is unofficial and not affiliated with the show.'),
-    h('p', {}, h('a', { href: meta.playlist, target: '_blank', rel: 'noopener', text: 'The full playlist on YouTube ↗' })));
-  panel.append(checks.el, sources.el);
+  ] }))));
 }
 
 /* ---------- Render loop ---------- */

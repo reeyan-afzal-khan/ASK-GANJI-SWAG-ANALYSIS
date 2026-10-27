@@ -35,17 +35,24 @@ SOURCE=('1\n00:00:00,000 --> 00:00:05,000\nWelcome [UH] to the show\n\n'
         '2\n00:00:10,000 --> 00:00:20,000\nCanada visa اور masters کا سوال [laughter] I am a twenty-two year old from Lahore\n\n'
         '3\n00:01:05,000 --> 00:01:30,000\nشادی کے بعد wife اور امی\n\n')
 
-def build_fixture(root,labels=None,roman_text=ROMAN,alignment=None):
+ENGLISH=('1\n00:00:00,500 --> 00:00:05,000\nWelcome to the show.\n\n'
+         '2\n00:00:10,500 --> 00:00:20,000\nA question about a Canada visa and a masters.\n\n'
+         '3\n00:01:06,000 --> 00:01:30,000\nAfter marriage my wife and my mother fight. I am 31 years old, living in Toronto.\n\n')
+
+def build_fixture(root,labels=None,roman_text=ROMAN,alignment=None,english=None):
     roman=root/'roman';source=root/'source';out=root/'data'
     roman.mkdir();source.mkdir()
     (roman/'episode_001.srt').write_text(roman_text,encoding='utf-8')
     (source/'episode_001.srt').write_text(SOURCE,encoding='utf-8')
     (root/'index.md').write_text(INDEX,encoding='utf-8')
-    labels_path=None
+    labels_path=scripts=None
     if labels is not None:
         labels_path=root/'labels.json';labels_path.write_text(json.dumps(labels),encoding='utf-8')
+    if english is not None:
+        (root/'english').mkdir();(root/'english'/'episode_001.srt').write_text(english,encoding='utf-8')
+        scripts={'english':root/'english'}
     with contextlib.redirect_stdout(io.StringIO()):
-        return build_data.build(roman,source,root/'index.md',out,labels_path,alignment),out
+        return build_data.build(roman,source,root/'index.md',out,labels_path,alignment,scripts),out
 
 class AppDataTests(unittest.TestCase):
     def test_index_links_and_timestamps(self):
@@ -67,6 +74,33 @@ class AppDataTests(unittest.TestCase):
         self.assertEqual(build_data.stated_age('25 yo girl from US'),25)
         self.assertEqual(build_data.stated_age('','I mean, I\'m thirty six and a housewife; thirteen year old boys are'),36)
         self.assertIsNone(build_data.stated_age('Married for twenty years','I am 100% sure, 40 job rejections'))
+
+    def test_translated_ages_are_the_askers_own(self):
+        self.assertEqual(build_data.own_age('Salam. I am 24 years old and my sister is 30.'),24)
+        self.assertEqual(build_data.own_age('I\N{RIGHT SINGLE QUOTATION MARK}m a 24-year-old engineer'),24)
+        self.assertEqual(build_data.own_age('Hope you are well, my age is twenty-one.'),21)
+        self.assertEqual(build_data.own_age('I\'m only twenty one, born in Karachi'),21)
+        # Someone else's age, a past one, or a number that is not an age.
+        self.assertIsNone(build_data.own_age('My father is 56 years old and I have two girls, age 13 and 9.'))
+        self.assertIsNone(build_data.own_age('I was 15 years old when it started'))
+        self.assertIsNone(build_data.own_age('I am 30 minutes late and I am 100 percent sure'))
+
+    def test_answer_words_are_what_sets_a_subject_apart(self):
+        answers=([('love.rishta',build_data.collections.Counter({'marriage':3,'proposal':3,'family':1,'scams':1}))]*20
+                 +[('career.jobs',build_data.collections.Counter({'jobs':2,'job':3,'family':1,'scam':2}))]*20
+                 +[('other.misc',build_data.collections.Counter({'chicken':2,'family':1}))]*15)
+        categories=[{'id':'love','subcategories':[{'id':'love.rishta'}]},{'id':'career','subcategories':[{'id':'career.jobs'}]},
+                    {'id':'other','subcategories':[{'id':'other.misc'}]}]
+        result=build_data.answer_words(answers,categories)
+        groups=result['groups']
+        self.assertEqual(result['answers'],55)
+        # Other has no subject to describe; a word used everywhere (family) never stands out.
+        self.assertEqual(sorted(groups),['career','career.jobs','love','love.rishta'])
+        self.assertEqual([w[0] for w in groups['love']['words']][:2],['marriage','proposal'])
+        self.assertNotIn('family',[w[0] for g in groups.values() for w in g['words']])
+        # Plurals fold into the more used form, and the counts are [answers using it here, elsewhere, uses here].
+        self.assertEqual(groups['career']['words'][0],['job',20,0,100])
+        self.assertEqual((groups['love']['answers'],groups['love']['versus']),(20,35))
 
     def test_places_respect_case_for_short_names(self):
         rules=build_data.place_rules(CONFIG)
@@ -97,6 +131,25 @@ class AppDataTests(unittest.TestCase):
         self.assertEqual([data['cities'][i]['name'] for i in questions[0]['cities']],['Lahore'])
         self.assertEqual(data['quality']['unlabelled'],[1])
         self.assertIn('abroad.auto',[s['id'] for c in data['categories'] for s in c['subcategories']])
+
+    def test_build_reads_the_english_translation(self):
+        with tempfile.TemporaryDirectory(dir=TEST_TEMP) as d:
+            data,out=build_fixture(Path(d),english=ENGLISH)
+            transcript=(out/'transcripts-english'/'episode_001.js').read_text(encoding='utf-8')
+        self.assertTrue(transcript.endswith(',"english");\n'))
+        self.assertEqual(data['meta']['scripts'],['roman','english'])
+        first,second,untimed=data['questions']
+        self.assertEqual(first['excerptEn'],'A question about a Canada visa and a masters.')
+        # The Roman opening gives the first age; the second is only said, in the first person, in the translation.
+        self.assertEqual((first['age'],second['age']),(22,31))
+        self.assertEqual([data['cities'][i]['name'] for i in second['cities']],['Toronto'])
+        self.assertEqual((untimed['excerptEn'],untimed['age']),('',None))
+        self.assertEqual(data['answerWords'],{'answers':2,'groups':{}})
+        # Without the translation nothing of it is added.
+        with tempfile.TemporaryDirectory(dir=TEST_TEMP) as d:
+            data,_=build_fixture(Path(d))
+        self.assertNotIn('excerptEn',data['questions'][0])
+        self.assertIsNone(data['answerWords'])
 
     def test_english_share_survives_repaced_roman_cues(self):
         paced=ROMAN.replace('2\n00:00:10,000 --> 00:00:20,000\nCanada visa aur masters ka sawal [laughter] I am a twenty-two year old from Lahore\n\n3\n',
