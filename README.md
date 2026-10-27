@@ -1,6 +1,8 @@
 # Ask Ganji Swag — Transcripts and Analytics
 
-![Ask Ganji Swag](docs/logo.png)
+<p align="center">
+  <img src="docs/logo.png" alt="Ask Ganji Swag" width="200" />
+</p>
 
 Subtitles and an analytics app for every episode of Ask Ganji Swag.
 
