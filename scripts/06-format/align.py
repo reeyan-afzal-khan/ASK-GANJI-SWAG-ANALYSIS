@@ -25,7 +25,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / '.shared'))
 from paths import ROOT, AUDIO, SOURCE, ROMAN, CACHE, REPORTS
-from subtitles import parse, atomic_write, select_files
+from subtitles import parse, atomic_write
 import pacing
 
 os.chdir(ROOT)
@@ -60,7 +60,8 @@ def cache_path(name):
 
 
 def is_current(path):
-    """A cache is current when it was made from this exact source SRT."""
+    """A cache is current when it was made from this exact source SRT, or when that SRT is gone
+    and the cache, which holds its words, is the record of it."""
     cached = cache_path(path.stem)
     if not cached.is_file():
         return False
@@ -68,7 +69,19 @@ def is_current(path):
         data = json.loads(cached.read_text(encoding='utf-8'))
     except ValueError:
         return False
-    return data.get('version') == VERSION and data.get('source_sha256') == sha256(path)
+    return data.get('version') == VERSION and (not path.is_file() or data.get('source_sha256') == sha256(path))
+
+
+def episode_paths(episodes):
+    """Where the source SRT of each episode to work on is, or was: the chosen episodes, or else every
+    episode with an SRT or a cache."""
+    if episodes:
+        numbers = sorted(set(int(n) for n in episodes.split(',')))
+        if any(n < 1 for n in numbers):
+            raise ValueError('Episode numbers must be positive')
+        return [SOURCE / f'episode_{n:03d}.srt' for n in numbers]
+    names = {p.stem for p in SOURCE.glob('episode_*.srt')} | {p.stem for p in ALIGNMENT.glob('episode_*.json')}
+    return [SOURCE / f'{name}.srt' for name in sorted(names)]
 
 
 def load_audio_copy(name):
@@ -526,7 +539,7 @@ def main():
                         help='Instead of aligning, transcribe the stretch of every decoding loop again')
     args = parser.parse_args()
     try:
-        files = select_files(SOURCE, args.episodes)
+        files = episode_paths(args.episodes)
     except ValueError as exc:
         parser.exit(1, f'Error: {exc}\n')
     if args.fill or args.loops:
@@ -542,6 +555,9 @@ def main():
     print(f'{len(todo)} episodes to align; {len(files) - len(todo)} already cached in {ALIGNMENT}', flush=True)
     if not todo:
         return
+    missing = [p.stem for p in todo if not p.is_file()]
+    if missing:
+        parser.exit(1, f'Error: no original transcription of {", ".join(missing)}; run bash scripts/04-transcribe/run.sh first\n')
     missing = [p.stem for p in todo if not (AUDIO / f'{p.stem}.mp3').is_file()]
     if missing:
         parser.exit(1, f'Error: missing audio for {", ".join(missing)}\n')

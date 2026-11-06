@@ -1,6 +1,6 @@
 # Ask Ganji Swag Analytics app
 
-An interactive, static web app for exploring the 1,422 viewer questions answered on Ask Ganji Swag, listed in the [episode index](../docs/episode-index.md). It shows what people ask about, which of 10 categories and 60 subcategories each question falls into, and how that changed across 242 episodes. It also covers how long each subject is discussed, askers' stated ages, and the places they mention. The episode explorer plays each episode in a built-in YouTube player, with the transcript following the video line by line and the question being answered shown as it plays.
+An interactive, static web app for exploring the viewer questions answered on Ask Ganji Swag, listed in the [episode index](../docs/episode-index.md). It shows what people ask about, which of 10 categories and 60 subcategories each question falls into, and how that changed across the episodes. It also covers how long each subject is discussed, askers' stated ages, and the places they mention. The episode explorer plays each episode in a built-in YouTube player, with the transcript following the video line by line and the question being answered shown as it plays.
 
 It is plain HTML, CSS and JavaScript with no external libraries. Everything it reads is generated into `data/`, so this folder works on its own: open `index.html` from disk, preview it locally, or publish it on any static host such as GitHub Pages. The only outside requests go to YouTube, when you open the episode explorer: its player (in privacy-enhanced mode) and video thumbnails. YouTube only plays embedded videos on pages served over http(s), so opened from disk the explorer shows the transcript and opens timestamps on YouTube instead.
 
@@ -16,7 +16,7 @@ app/
 │   └── transcripts/    # One file per episode for the transcript in the episode explorer
 ├── tools/
 │   ├── build_data.py   # Builds data/ from the Roman SRTs, the episode index and the labels
-│   ├── question_labels.json  # Hand-checked subcategory of every question, one line per episode
+│   ├── question_labels.json  # The subcategory of every question, one line per episode
 │   ├── config.json     # Categories, subcategories, fallback keywords, places and stopwords
 │   └── test_build_data.py
 ├── run.sh              # Build data/; --serve previews the app
@@ -45,9 +45,18 @@ Each question's category comes from `tools/question_labels.json`. The file has o
 "7": ["love.marriage", "career.path edu.choice", "money.struggle", ...]
 ```
 
-The first code is the question's subcategory, and any further codes are clear second subjects. All codes are defined, with names and descriptions, in `tools/config.json`. The labels were assigned by reading each title and, where a title was vague, the opening of the answer, which is usually the letter being read out. To correct one, edit its code and rebuild; an unknown code stops the build and names the episode and question.
+The first code is the question's subcategory, and any further codes are clear second subjects. All codes are defined, with names and descriptions, in `tools/config.json`. The labels up to episode 243 were assigned by reading each title and, where a title was vague, the opening of the answer, which is usually the letter being read out. To correct one, edit its code and rebuild, or use `--review` below; an unknown code stops the build and names the episode and question.
 
-After you add a new episode to the index, add its line here too. Until then its questions are placed by the keyword lists in `config.json` and appear as "Not yet sorted". The build output and the app's **About** tab both list such episodes.
+New episodes are sorted by `bash scripts/add-episode.sh`, or on their own with:
+
+```bash
+# Give every question without a label its best guess.
+bash ganji-model/run.sh label
+# Then, to go through an episode's questions one by one, keeping or correcting each.
+bash ganji-model/run.sh label --review --episodes 244
+```
+
+The guesses come from the [Ganji model](../ganji-model/README.md), which shows how sure it is of each one. The app's **About** tab lists the episodes it has sorted that nobody has checked yet. An episode that is not labelled at all is placed by the keyword lists in `config.json` and appears as "Not yet sorted", and the build output and the same tab list those too.
 
 Broad subjects are split into finer subcategories under the same category: love and marriage, for example, has separate subcategories for rishtas, choosing a partner, love across caste, faith and borders, marriage problems and difficult spouses. To add a subcategory, define it in `config.json` under its category, use its code in the labels file and rebuild; the sidebar, charts and tables pick it up on their own.
 

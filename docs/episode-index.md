@@ -2875,6 +2875,22 @@
 
 </details>
 
+<details open>
+<summary><strong>Episode 243</strong></summary>
+
+1. [Youtube Comments](https://youtu.be/YqrQiilUf5g?list=PLinUrn8TVRE-hm3-CsyoQaySKYbxLtG6B&t=190)
+2. [Pyaar ya Pressure](https://youtu.be/YqrQiilUf5g?list=PLinUrn8TVRE-hm3-CsyoQaySKYbxLtG6B&t=1145)
+3. [Two Months Abroad & Observation About Pakistan](https://youtu.be/YqrQiilUf5g?list=PLinUrn8TVRE-hm3-CsyoQaySKYbxLtG6B&t=2233)
+4. [Sapney Vs Indian Father](https://youtu.be/YqrQiilUf5g?list=PLinUrn8TVRE-hm3-CsyoQaySKYbxLtG6B&t=3832)
+5. [Thank You After 5 years of listening](https://youtu.be/YqrQiilUf5g?list=PLinUrn8TVRE-hm3-CsyoQaySKYbxLtG6B&t=6391)
+6. [Germany to Australia ~ Moving back to Pakistan?](https://youtu.be/YqrQiilUf5g?list=PLinUrn8TVRE-hm3-CsyoQaySKYbxLtG6B&t=8520)
+7. [Husband Wants to do Boys Trip with Alcoholic Friends](https://youtu.be/YqrQiilUf5g?list=PLinUrn8TVRE-hm3-CsyoQaySKYbxLtG6B&t=9775)
+8. [Stuck-up Pakistani People](https://youtu.be/YqrQiilUf5g?list=PLinUrn8TVRE-hm3-CsyoQaySKYbxLtG6B&t=11200)
+9. [An old Friend, A New Invoice](https://youtu.be/YqrQiilUf5g?list=PLinUrn8TVRE-hm3-CsyoQaySKYbxLtG6B&t=13584)
+10. [Political Character Shown in "Mitti De Baway"](https://youtu.be/YqrQiilUf5g?list=PLinUrn8TVRE-hm3-CsyoQaySKYbxLtG6B&t=15247)
+
+</details>
+
 
 
 

@@ -1,0 +1,4 @@
+# Not pinned on purpose: yt-dlp has to keep up with YouTube, so setup updates it.
+# Deno is the JavaScript runtime yt-dlp needs for YouTube's challenges.
+yt-dlp[default]
+deno

@@ -9,7 +9,7 @@ from pathlib import Path
 # Allow this entry point to run directly as well as through run.sh.
 import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / '.shared'))
-from paths import ROOT
+from paths import ROOT, SOURCE as OUTPUT_DIR, ROMAN
 os.chdir(ROOT)
 
 import ctranslate2
@@ -21,7 +21,8 @@ logging.getLogger("crisperwhisper.longform").setLevel(logging.INFO)
 
 MODEL_PATH = os.environ.get("CRISPER_MODEL", "CrisperWhisper2_Large" if Path("CrisperWhisper2_Large").is_dir() else "large")
 AUDIO_DIR = Path("all_episodes")
-OUTPUT_DIR = Path("transcripts-urdu")
+# Transcribe again even when the episode already has subtitles (run.sh --force).
+FORCE = os.environ.get("TRANSCRIBE_FORCE") == "1"
 FIRST_EPISODE = int(os.environ.get("FIRST_EPISODE", "1"))
 LAST_EPISODE = int(os.environ.get("LAST_EPISODE", str(max(
     (int(p.stem.split("_")[-1]) for p in AUDIO_DIR.glob("episode_*.mp3")
@@ -130,9 +131,22 @@ def save_atomically(destination, contents):
                 pass
 
 
+def finished(label):
+    """A nonempty original SRT is complete, and so is an episode with Roman subtitles: its
+    original words live on in .cache/alignment/ after the SRT has gone."""
+    if FORCE:
+        return False
+    return any(path.is_file() and path.stat().st_size > 0
+               for path in (OUTPUT_DIR / f"{label}.srt", ROMAN / f"{label}.srt"))
+
+
 def main():
     if not AUDIO_DIR.is_dir():
         raise SystemExit(f"Audio directory not found: {AUDIO_DIR.resolve()}")
+    smoke_test = os.environ.get("CT2_SMOKE_TEST") == "1"
+    if not smoke_test and all(finished(f"episode_{episode:03d}") for episode in EPISODES):
+        print("Nothing to transcribe: these episodes already have subtitles.", flush=True)
+        return
     if ctranslate2.get_cuda_device_count() < 1:
         raise SystemExit("CT2 cannot find a CUDA GPU. Check WSL2 NVIDIA GPU access.")
 
@@ -147,7 +161,7 @@ def main():
     install_decoder_guard(model)
 
     # Exercise the real CT2 path without changing existing subtitle files.
-    if os.environ.get("CT2_SMOKE_TEST") == "1":
+    if smoke_test:
         import soundfile as sf
         audio_path = AUDIO_DIR / f"episode_{FIRST_EPISODE:03d}.mp3"
         with sf.SoundFile(audio_path) as audio_file:
@@ -173,8 +187,7 @@ def main():
         audio_path = AUDIO_DIR / f"{label}.mp3"
         srt_path = OUTPUT_DIR / f"{label}.srt"
 
-        # Resume: an existing, nonempty .srt is considered complete.
-        if srt_path.is_file() and srt_path.stat().st_size > 0:
+        if finished(label):
             print(f"[SKIP] {label}: already completed", flush=True)
             skipped += 1
             continue

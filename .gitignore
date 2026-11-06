@@ -22,6 +22,8 @@
 *.hdf5
 *.npz
 *.npy
+# The Ganji model's own weights are small and belong to this project
+!/ganji-model/weights/*.npz
 
 # Source media (transcript .srt files remain versioned)
 *.mp3

@@ -1180,7 +1180,7 @@ function questionCard(q) {
     h('div', { class: 'q-head' }, h('h4', { class: 'q-title', text: q.title }), h('div', { class: 'q-actions' }, playButton(q))),
     h('div', { class: 'q-meta' }, subTag(q), q.also.map(code => h('span', { class: 'tag', title: 'Also about', text: subName(code) }))),
     h('div', { class: 'q-meta' }, facts, yt ? [' · ', yt] : null),
-    state.openings && excerptOf(q) ? h('p', { class: 'q-excerpt', text: excerptOf(q) }) : null);
+    state.openings ? h('p', { class: 'q-excerpt', text: excerptOf(q) }) : null);
   // A click anywhere on the card plays the answer, like its ▶ button; its own links keep their jobs, and selecting text does nothing.
   el.addEventListener('click', ev => {
     if (ev.target.closest('a, button') || String(window.getSelection())) return;
@@ -2380,10 +2380,10 @@ function renderAbout(panel) {
 
   const made = card({ title: 'How the data was made', span: 'span-6' });
   made.body.append(h('ol', { class: 'steps' },
-    h('li', {}, h('span', {}, strong('Questions'), ': a hand-made episode index lists every question with a link to its moment in the video.')),
+    h('li', {}, h('span', {}, strong('Questions'), ': an episode index, from each video\'s chapters, lists every question with a link to its moment in the video.')),
     h('li', {}, h('span', {}, strong('Transcripts'), ': CrisperWhisper speech recognition, converted word by word to Roman Urdu with English kept as spoken.')),
     english ? h('li', {}, h('span', {}, strong('English'), ': CrisperWhisper also translated every episode into English, straight from the audio.')) : null,
-    h('li', {}, h('span', {}, strong('Categories'), `: each question has one hand-checked subcategory, plus a second subject when it clearly covers one; ${TOPICS.length} categories hold ${SUBTOPIC_COUNT} subcategories.`))));
+    h('li', {}, h('span', {}, strong('Categories'), `: each question has one subcategory, plus a second subject when it clearly covers one; ${TOPICS.length} categories hold ${SUBTOPIC_COUNT} subcategories. They were checked by hand, though the newest episodes may be sorted by the Ganji model, which learned from those labels and the show’s own subtitles.`))));
   const limits = card({ title: 'Keep in mind', span: 'span-6' });
   limits.body.append(h('ul', { class: 'notes' },
     h('li', { text: 'Transcripts are machine-made: names and rare words can be misheard or spelled two ways (shaadi, shadi).' }),
@@ -2420,8 +2420,9 @@ function renderAbout(panel) {
   const replacement = EPISODES.filter(e => e.replacement);
   panel.append(foldCard({ title: 'Data checks', subtitle: 'Checks on the inputs behind these numbers' }, () => h('div', { class: 'table-wrap' }, simpleTable({ columns: [{ label: 'Check' }, { label: 'Result' }], rows: [
     ['Episodes with transcripts', fmtInt(EPISODES.length)],
-    ['Questions categorised by hand', `${fmtInt(sorted)} of ${fmtInt(QUESTIONS.length)}`],
-    ['Episodes placed by keywords (add to question_labels.json)', quality.unlabelled.length ? quality.unlabelled.join(', ') : 'None'],
+    ['Questions with a subcategory', `${fmtInt(sorted)} of ${fmtInt(QUESTIONS.length)}`],
+    ['Episodes placed by keywords (run bash ganji-model/run.sh label)', quality.unlabelled.length ? quality.unlabelled.join(', ') : 'None'],
+    ['Episodes sorted by the Ganji model, not yet checked by hand', quality.unreviewed.length ? quality.unreviewed.join(', ') : 'None'],
     ['Index episodes without a transcript', quality.missingTranscripts.length ? quality.missingTranscripts.join(', ') : 'None'],
     ['Transcribed episodes missing from the index', quality.unindexed.length ? quality.unindexed.join(', ') : 'None'],
     ['Questions without a timestamp', missingStart.length ? missingStart.map(x => `Ep ${x.ep} Q${x.order}`).join(', ') : 'None'],

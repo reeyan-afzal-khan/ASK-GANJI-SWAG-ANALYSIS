@@ -15,6 +15,8 @@ from datetime import datetime, timezone
 if os.name == 'nt':
     sys.path.insert(0,str(ROOT/'.cache/windows-roman-dependencies'))
 WORD=re.compile(r'[\u0620-\u065f\u066e-\u06d3\u06fa-\u06fc]+')
+# Arabic ligatures and presentation forms, such as U+FDFA for a whole blessing, stand for ordinary words.
+FORMS=re.compile(r'[\ufb50-\ufdff\ufe70-\ufefc]+')
 CACHE=CACHE_DIR/'roman_candidates.jsonl'
 FILES=[]
 
@@ -23,10 +25,13 @@ def normalized(s):
     s=unicodedata.normalize('NFKC',s).translate(str.maketrans({'ي':'ی','ك':'ک','ى':'ی','ۀ':'ہ','ة':'ہ'}))
     return ''.join(c for c in s if not unicodedata.combining(c) and c!='ـ')
 
+def expanded(text):
+    return FORMS.sub(lambda m:unicodedata.normalize('NFKC',m[0]),text)
+
 def vocabulary():
     counter=collections.Counter()
     for path in FILES:
-        counter.update(normalized(w) for w in WORD.findall(path.read_text(encoding='utf-8-sig')))
+        counter.update(normalized(w) for w in WORD.findall(expanded(path.read_text(encoding='utf-8-sig'))))
     counter.pop('',None)
     return counter
 
@@ -141,7 +146,7 @@ def convert(output, overwrite=False):
                 def replace_word(m):
                     key=normalized(m[0])
                     return lex[key] if key else ''
-                text=WORD.sub(replace_word,cue.text).translate(punctuation)
+                text=WORD.sub(replace_word,expanded(cue.text)).translate(punctuation)
                 def replace_other(m):
                     chunk=m[0]
                     if any(c.isalpha() and 'LATIN' not in unicodedata.name(c,'') for c in chunk):
@@ -156,7 +161,7 @@ def convert(output, overwrite=False):
                     if pos<0:raise ValueError(f'English changed: {path.name}, cue {cue.number}')
                     cursor=pos+len(token)
                 if cue.text.isascii() and text!=cue.text:raise ValueError('ASCII text changed')
-                flagged=sorted({normalized(w) for w in WORD.findall(cue.text)} & uncertain)
+                flagged=sorted({normalized(w) for w in WORD.findall(expanded(cue.text))} & uncertain)
                 if flagged:queue.append({'file':path.name,'cue':cue.number,'timing':cue.timing,'words':flagged,'source':cue.text,'roman':text})
                 after.append(Cue(cue.number,cue.timing,(text,)))
             result=render(after)
@@ -180,7 +185,7 @@ def convert(output, overwrite=False):
     print(f'Report: {run_dir}')
 
 
-def romanize_alignment(cached_only=False):
+def romanize_alignment(cached_only=False,episodes=None):
     """Romanise what step 06's audio check heard in uncovered stretches, by the subtitles' own rules.
 
     The heard passages go through the unchanged SRT conversion as cues of a temporary file, so new
@@ -188,7 +193,8 @@ def romanize_alignment(cached_only=False):
     Roman text is stored next to them in .cache/alignment/ for the audio-check report.
     """
     import tempfile
-    caches=[(p,json.loads(p.read_text(encoding='utf-8'))) for p in sorted((CACHE_DIR/'alignment').glob('episode_*.json'))]
+    wanted={f'episode_{int(n):03d}' for n in episodes.split(',')} if episodes else None
+    caches=[(p,json.loads(p.read_text(encoding='utf-8'))) for p in sorted((CACHE_DIR/'alignment').glob('episode_*.json')) if wanted is None or p.stem in wanted]
     heard=[(g[2],lambda roman,g=g:g.__setitem__(slice(3,None),[roman])) for _,data in caches for g in data.get('gaps',[]) if g[2].strip()]
     # Passages transcribed by align.py --fill that are not romanised yet (applied ones stay as they are).
     added=[(s['source'],lambda roman,s=s:s.__setitem__('roman',roman)) for _,data in caches for s in data.get('supplements',[]) if s.get('roman') is None]
@@ -215,6 +221,19 @@ def romanize_alignment(cached_only=False):
     print(f'Stored Roman Urdu for {len(heard)} heard and {len(added)} new passages.',flush=True)
 
 
+def pending(source,output,episodes,overwrite):
+    """(source SRTs to convert, how many skipped). An episode that already has its Roman file is
+    skipped before its source is looked for, since the source may be gone by then."""
+    done=lambda name:not overwrite and (output/name).is_file() and (output/name).stat().st_size>0
+    if episodes:
+        numbers=sorted(set(int(n) for n in episodes.split(',')))
+        todo=[n for n in numbers if not done(f'episode_{n:03d}.srt')]
+        return (select_files(source,','.join(map(str,todo))) if todo else []),len(numbers)-len(todo)
+    files=sorted(source.glob('episode_*.srt'))
+    todo=[p for p in files if not done(p.name)]
+    return todo,len(files)-len(todo)
+
+
 def main():
     global FILES
     parser=argparse.ArgumentParser(description='Convert live Crisper subtitles to single-line Roman Urdu; preserve English and timing.')
@@ -229,13 +248,12 @@ def main():
     if args.alignment:
         try:
             CACHE_DIR.mkdir(exist_ok=True);REPORTS.mkdir(parents=True,exist_ok=True)
-            romanize_alignment(args.cached_only)
+            romanize_alignment(args.cached_only,args.episodes)
         except (ValueError,OSError,ImportError) as exc:parser.exit(1,f'Error: {exc}\n')
         return
     try:
-        files=select_files(args.source,args.episodes)
-        FILES=[p for p in files if args.overwrite or not (args.output/p.name).is_file() or not (args.output/p.name).stat().st_size]
-        print(f'{len(FILES)} pending; {len(files)-len(FILES)} existing outputs skipped.')
+        FILES,skipped=pending(args.source,args.output,args.episodes,args.overwrite)
+        print(f'{len(FILES)} pending; {skipped} existing outputs skipped.')
         if not FILES:return
         CACHE_DIR.mkdir(exist_ok=True);REPORTS.mkdir(parents=True,exist_ok=True)
         if not args.cached_only:

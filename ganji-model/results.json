@@ -1,0 +1,504 @@
+{
+ "quick": {
+  "questions": 1432,
+  "episodes": 243,
+  "strict": false,
+  "word_counts": {
+   "category": 0.7122905027932961,
+   "subcategory": 0.4657821229050279,
+   "any_subject": 0.526536312849162,
+   "best_three": 0.6829608938547486
+  },
+  "untrained": {
+   "category": 0.7339385474860335,
+   "subcategory": 0.5048882681564246,
+   "any_subject": 0.5747206703910615,
+   "best_three": 0.7311452513966481
+  },
+  "model": {
+   "category": 0.7409217877094972,
+   "subcategory": 0.5195530726256983,
+   "any_subject": 0.5893854748603352,
+   "best_three": 0.7458100558659218
+  },
+  "title_only": {
+   "category": 0.651536312849162,
+   "subcategory": 0.4399441340782123,
+   "any_subject": 0.5104748603351955,
+   "best_three": 0.645949720670391
+  },
+  "text_only": {
+   "category": 0.5991620111731844,
+   "subcategory": 0.33589385474860334,
+   "any_subject": 0.4001396648044693,
+   "best_three": 0.5670391061452514
+  },
+  "evidence_weights": {
+   "title_words": 0.809,
+   "text_words": 0.718,
+   "letter_words": 0.932,
+   "title_vectors": 0.395,
+   "text_vectors": 0.259,
+   "keywords": 0.117
+  },
+  "overrides": {
+   "share": 0.3400837988826816,
+   "model_right": 0.35523613963039014,
+   "title_right": 0.12114989733059549
+  },
+  "who_decides": {
+   "share": 0.7283519553072626,
+   "with_title": 0.5340364333652924,
+   "with_text": 0.24352828379674019,
+   "with_neither": 0.2224352828379674,
+   "model_right": 0.42953020134228187,
+   "title_right": 0.3202301054650048,
+   "text_right": 0.17737296260786195,
+   "margin_from_title": 0.1163969349863031,
+   "margin_from_text": 0.029336068519084147
+  },
+  "more_text": {
+   "0.5": {
+    "category": 0.7046089385474861,
+    "subcategory": 0.4979050279329609,
+    "any_subject": 0.5747206703910615,
+    "best_three": 0.7192737430167597,
+    "with_text": 0.14093959731543623
+   },
+   "1": {
+    "category": 0.7164804469273743,
+    "subcategory": 0.5090782122905028,
+    "any_subject": 0.5782122905027933,
+    "best_three": 0.7332402234636871,
+    "with_text": 0.25311601150527324
+   },
+   "1.5": {
+    "category": 0.7185754189944135,
+    "subcategory": 0.5020949720670391,
+    "any_subject": 0.5705307262569832,
+    "best_three": 0.7241620111731844,
+    "with_text": 0.34995206136145734
+   },
+   "2": {
+    "category": 0.7094972067039106,
+    "subcategory": 0.48463687150837986,
+    "any_subject": 0.5537709497206704,
+    "best_three": 0.7081005586592178,
+    "with_text": 0.4314477468839885
+   },
+   "3": {
+    "category": 0.6941340782122905,
+    "subcategory": 0.4650837988826816,
+    "any_subject": 0.5328212290502793,
+    "best_three": 0.6941340782122905,
+    "with_text": 0.535953978906999
+   }
+  },
+  "ranges": {
+   "subcategory": [
+    0.4951714066471632,
+    0.5434665252630582
+   ],
+   "category": [
+    0.7157892768570642,
+    0.7633794091710758
+   ],
+   "gain_subcategory": [
+    0.03283091475792975,
+    0.0738976519337017
+   ],
+   "gain_category": [
+    0.011077124332738716,
+    0.04834393018412441
+   ]
+  },
+  "by_category": {
+   "abroad": {
+    "questions": 125,
+    "found": 0.768,
+    "guesses_right": 0.7007299270072993
+   },
+   "career": {
+    "questions": 91,
+    "found": 0.7252747252747253,
+    "guesses_right": 0.7674418604651163
+   },
+   "edu": {
+    "questions": 36,
+    "found": 0.6666666666666666,
+    "guesses_right": 0.7058823529411765
+   },
+   "family": {
+    "questions": 194,
+    "found": 0.7731958762886598,
+    "guesses_right": 0.7352941176470589
+   },
+   "health": {
+    "questions": 42,
+    "found": 0.38095238095238093,
+    "guesses_right": 0.8421052631578947
+   },
+   "love": {
+    "questions": 301,
+    "found": 0.8039867109634552,
+    "guesses_right": 0.7908496732026143
+   },
+   "mind": {
+    "questions": 143,
+    "found": 0.6503496503496503,
+    "guesses_right": 0.6838235294117647
+   },
+   "money": {
+    "questions": 59,
+    "found": 0.6101694915254238,
+    "guesses_right": 0.6666666666666666
+   },
+   "other": {
+    "questions": 13,
+    "found": 0.0,
+    "guesses_right": 0.0
+   },
+   "show": {
+    "questions": 139,
+    "found": 0.7338129496402878,
+    "guesses_right": 0.864406779661017
+   },
+   "society": {
+    "questions": 289,
+    "found": 0.8166089965397924,
+    "guesses_right": 0.7023809523809523
+   }
+  },
+  "calibration": {
+   "best_scale": 1.0500000000000005,
+   "loss": 1.7744934936572374,
+   "bands": [
+    {
+     "from": 0,
+     "to": 0.2,
+     "questions": 217,
+     "right": 0.23963133640552994
+    },
+    {
+     "from": 0.2,
+     "to": 0.3,
+     "questions": 208,
+     "right": 0.30288461538461536
+    },
+    {
+     "from": 0.3,
+     "to": 0.4,
+     "questions": 207,
+     "right": 0.36231884057971014
+    },
+    {
+     "from": 0.4,
+     "to": 0.5,
+     "questions": 172,
+     "right": 0.4476744186046512
+    },
+    {
+     "from": 0.5,
+     "to": 0.6,
+     "questions": 146,
+     "right": 0.636986301369863
+    },
+    {
+     "from": 0.6,
+     "to": 0.7,
+     "questions": 114,
+     "right": 0.5877192982456141
+    },
+    {
+     "from": 0.7,
+     "to": 0.8,
+     "questions": 101,
+     "right": 0.7425742574257426
+    },
+    {
+     "from": 0.8,
+     "to": 1.0,
+     "questions": 267,
+     "right": 0.9063670411985019
+    }
+   ],
+   "sure_at": {
+    "0.30": {
+     "share": 0.7032122905027933,
+     "right": 0.6246276067527309
+    },
+    "0.40": {
+     "share": 0.5586592178770949,
+     "right": 0.6925
+    },
+    "0.50": {
+     "share": 0.43854748603351956,
+     "right": 0.7595541401273885
+    },
+    "0.60": {
+     "share": 0.3365921787709497,
+     "right": 0.7966804979253111
+    },
+    "0.70": {
+     "share": 0.2569832402234637,
+     "right": 0.8614130434782609
+    },
+    "0.80": {
+     "share": 0.18645251396648044,
+     "right": 0.9063670411985019
+    }
+   }
+  },
+  "translations": {
+   "words": 30,
+   "reach": 20,
+   "found": 17,
+   "which": [
+    "shaadi",
+    "biwi",
+    "naukri",
+    "paisa",
+    "dost",
+    "ghar",
+    "beti",
+    "beta",
+    "behen",
+    "mulk",
+    "namaz",
+    "gaari",
+    "shehar",
+    "zindagi",
+    "khushi",
+    "kaam",
+    "taleem"
+   ]
+  }
+ },
+ "strict": {
+  "questions": 1432,
+  "episodes": 243,
+  "strict": true,
+  "word_counts": {
+   "category": 0.7122905027932961,
+   "subcategory": 0.4657821229050279,
+   "any_subject": 0.526536312849162,
+   "best_three": 0.6829608938547486
+  },
+  "untrained": {
+   "category": 0.7318435754189944,
+   "subcategory": 0.49860335195530725,
+   "any_subject": 0.5705307262569832,
+   "best_three": 0.7248603351955307
+  },
+  "model": {
+   "category": 0.7346368715083799,
+   "subcategory": 0.5111731843575419,
+   "any_subject": 0.5837988826815642,
+   "best_three": 0.7339385474860335
+  },
+  "title_only": {
+   "category": 0.6536312849162011,
+   "subcategory": 0.44064245810055863,
+   "any_subject": 0.5062849162011173,
+   "best_three": 0.6452513966480447
+  },
+  "text_only": {
+   "category": 0.590782122905028,
+   "subcategory": 0.32821229050279327,
+   "any_subject": 0.39175977653631283,
+   "best_three": 0.5670391061452514
+  },
+  "evidence_weights": {
+   "title_words": 0.818,
+   "text_words": 0.76,
+   "letter_words": 0.941,
+   "title_vectors": 0.382,
+   "text_vectors": 0.243,
+   "keywords": 0.117
+  },
+  "overrides": {
+   "share": 0.34916201117318435,
+   "model_right": 0.34,
+   "title_right": 0.138
+  },
+  "ranges": {
+   "subcategory": [
+    0.48532515971388746,
+    0.5362539089773722
+   ],
+   "category": [
+    0.7086900687414799,
+    0.7571282823582676
+   ],
+   "gain_subcategory": [
+    0.02435097025845028,
+    0.06593582074419546
+   ],
+   "gain_category": [
+    0.005134240310452873,
+    0.041115641524222694
+   ]
+  },
+  "by_category": {
+   "abroad": {
+    "questions": 125,
+    "found": 0.76,
+    "guesses_right": 0.7089552238805971
+   },
+   "career": {
+    "questions": 91,
+    "found": 0.7032967032967034,
+    "guesses_right": 0.7529411764705882
+   },
+   "edu": {
+    "questions": 36,
+    "found": 0.6111111111111112,
+    "guesses_right": 0.6470588235294118
+   },
+   "family": {
+    "questions": 194,
+    "found": 0.7577319587628866,
+    "guesses_right": 0.7277227722772277
+   },
+   "health": {
+    "questions": 42,
+    "found": 0.3333333333333333,
+    "guesses_right": 0.8235294117647058
+   },
+   "love": {
+    "questions": 301,
+    "found": 0.8006644518272426,
+    "guesses_right": 0.7774193548387097
+   },
+   "mind": {
+    "questions": 143,
+    "found": 0.6433566433566433,
+    "guesses_right": 0.6618705035971223
+   },
+   "money": {
+    "questions": 59,
+    "found": 0.5932203389830508,
+    "guesses_right": 0.6730769230769231
+   },
+   "other": {
+    "questions": 13,
+    "found": 0.0,
+    "guesses_right": 0.0
+   },
+   "show": {
+    "questions": 139,
+    "found": 0.7482014388489209,
+    "guesses_right": 0.896551724137931
+   },
+   "society": {
+    "questions": 289,
+    "found": 0.8235294117647058,
+    "guesses_right": 0.6938775510204082
+   }
+  },
+  "calibration": {
+   "best_scale": 1.0500000000000005,
+   "loss": 1.7934281651349346,
+   "bands": [
+    {
+     "from": 0,
+     "to": 0.2,
+     "questions": 218,
+     "right": 0.22935779816513763
+    },
+    {
+     "from": 0.2,
+     "to": 0.3,
+     "questions": 213,
+     "right": 0.28169014084507044
+    },
+    {
+     "from": 0.3,
+     "to": 0.4,
+     "questions": 212,
+     "right": 0.38207547169811323
+    },
+    {
+     "from": 0.4,
+     "to": 0.5,
+     "questions": 185,
+     "right": 0.4702702702702703
+    },
+    {
+     "from": 0.5,
+     "to": 0.6,
+     "questions": 151,
+     "right": 0.5827814569536424
+    },
+    {
+     "from": 0.6,
+     "to": 0.7,
+     "questions": 95,
+     "right": 0.6526315789473685
+    },
+    {
+     "from": 0.7,
+     "to": 0.8,
+     "questions": 103,
+     "right": 0.7475728155339806
+    },
+    {
+     "from": 0.8,
+     "to": 1.0,
+     "questions": 255,
+     "right": 0.8901960784313725
+    }
+   ],
+   "sure_at": {
+    "0.30": {
+     "share": 0.6990223463687151,
+     "right": 0.6213786213786214
+    },
+    "0.40": {
+     "share": 0.5509776536312849,
+     "right": 0.6856780735107731
+    },
+    "0.50": {
+     "share": 0.42178770949720673,
+     "right": 0.7516556291390728
+    },
+    "0.60": {
+     "share": 0.316340782122905,
+     "right": 0.8079470198675497
+    },
+    "0.70": {
+     "share": 0.25,
+     "right": 0.8491620111731844
+    },
+    "0.80": {
+     "share": 0.17807262569832402,
+     "right": 0.8901960784313725
+    }
+   }
+  },
+  "translations": {
+   "words": 30,
+   "reach": 20,
+   "found": 17,
+   "which": [
+    "shaadi",
+    "biwi",
+    "naukri",
+    "paisa",
+    "dost",
+    "ghar",
+    "beti",
+    "beta",
+    "behen",
+    "mulk",
+    "namaz",
+    "gaari",
+    "shehar",
+    "zindagi",
+    "khushi",
+    "kaam",
+    "taleem"
+   ]
+  }
+ }
+}

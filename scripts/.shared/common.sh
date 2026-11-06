@@ -16,6 +16,12 @@ select_python() {
     else RUN_PYTHON=python
     fi
 }
+select_downloader() {
+    # Setup keeps yt-dlp and deno together in their own environment.
+    if [[ -x "$HOME/.venvs/yt-dlp/bin/yt-dlp" ]]; then export PATH="$HOME/.venvs/yt-dlp/bin:$PATH"; fi
+    command -v yt-dlp >/dev/null || { echo 'yt-dlp is missing. Run bash scripts/01-setup/run.sh download' >&2; exit 1; }
+    command -v ffmpeg >/dev/null || { echo 'ffmpeg is missing. Run bash scripts/01-setup/run.sh download' >&2; exit 1; }
+}
 lock_pipeline() {
     command -v flock >/dev/null || { echo 'flock is required; run inside Ubuntu/WSL2.' >&2; exit 1; }
     exec 9>"$PROJECT_ROOT/.ct2-batch.lock"

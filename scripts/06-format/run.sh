@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 source "$(dirname -- "${BASH_SOURCE[0]}")/../.shared/common.sh"
 if [[ "${1:-}" == --help || "${1:-}" == -h ]]; then
-    echo 'Usage: bash scripts/06-format/run.sh [--episodes 243,244] [--check] [--skip-align] [--force-align] [--fill] [--loops]'
+    echo 'Usage: bash scripts/06-format/run.sh [--episodes 243,244] [--check] [--skip-align] [--force-align] [--fill] [--loops] [--no-pace]'
     echo 'Times every word of the original Crisper SRTs against the audio on the GPU (cached in .cache/alignment/),'
     echo 'then rewrites the Roman SRTs as evenly paced single-line cues. --check reports without writing or the GPU.'
     echo '--fill also transcribes the stretches the audio check found speech in, and --loops transcribes the stretch'
     echo 'of every decoding loop again; romanise them with bash scripts/05-romanize/run.sh --alignment, then run'
-    echo 'this again with --skip-align to pace them in.'
+    echo 'this again with --skip-align to pace them in. --no-pace stops before rewriting the Roman SRTs.'
     echo '--translate instead writes transcripts-english/ from the audio with CrisperWhisper on the GPU'
     echo '(--force-align also redoes episodes already translated; --repair redoes only the windows that need it).'
     exit 0
 fi
-episodes=(); force=(); check=false; align=true; fill=false; loops=false; translate=false; repair=()
+episodes=(); force=(); check=false; align=true; fill=false; loops=false; pace=true; translate=false; repair=()
 while (($#)); do
     case "$1" in
         --episodes) episodes=(--episodes "${2:?Missing episode list}"); shift 2 ;;
@@ -20,6 +20,7 @@ while (($#)); do
         --force-align) force=(--force); shift ;;
         --fill) fill=true; shift ;;
         --loops) loops=true; shift ;;
+        --no-pace) pace=false; shift ;;
         --translate) translate=true; shift ;;
         --repair) repair=(--repair); shift ;;
         *) echo "Unknown argument: $1" >&2; exit 2 ;;
@@ -51,5 +52,6 @@ if [[ "$align" == true || "$fill" == true || "$loops" == true ]]; then
         fi
     )
 fi
+[[ "$pace" == true ]] || exit 0
 select_python
 exec "$RUN_PYTHON" "$PROJECT_ROOT/scripts/.shared/manage_subtitles.py" format "${episodes[@]}"

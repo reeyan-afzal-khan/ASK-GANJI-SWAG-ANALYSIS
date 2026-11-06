@@ -6,9 +6,9 @@ transcript viewer), plus data/transcripts-english/ when the English subtitles ex
 self-contained static site. The original Crisper SRTs, or once they are gone the alignment cache that
 holds their words, only label each word as English or Urdu.
 
-Each question's category comes from question_labels.json (hand-checked subcategories, one list per
-episode in index order). Episodes missing there fall back to the keyword lists in config.json and
-are flagged for review. Stated ages and places come from the title and the opening of the answer.
+Each question's category comes from question_labels.json (subcategories, one list per episode in
+index order; the Ganji model in ganji-model/ adds new episodes). Episodes missing there fall back to the
+keyword lists in config.json and are flagged. Stated ages and places come from the title and the opening of the answer.
 When the English translation exists, it adds first-person ages and places from the same opening,
 an English opening for each question, and the words that stand out in each subject's answers.
 """
@@ -17,7 +17,7 @@ from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 # Allow this entry point to run directly as well as through app/run.sh.
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'scripts' / '.shared'))
-from paths import ROMAN, SOURCE, ENGLISH, INDEX, APP, CACHE
+from paths import ROMAN, SOURCE, ENGLISH, INDEX, APP, CACHE, PLAYLIST, UNREVIEWED
 from subtitles import parse, atomic_write, select_files
 from pacing import covers
 
@@ -30,8 +30,7 @@ SCRIPTS = {'english': ENGLISH}
 THEME_TOKENS = ('void rail surface surface-2 surface-3 line line-hot ink ink-soft muted acc acc-hi acc-dim acc-wash on-acc '
                 'h1 h2 h3 h4 h5 h6 h7 h8 tail-1 tail-2 tail-3 seq-0 seq-1 seq-2 seq-3 seq-4 seq-5 seq-6 seq-7 '
                 'seq-ink seq-ink-strong rise fall shadow').split()
-PLAYLIST = 'https://www.youtube.com/playlist?list=PLinUrn8TVRE-hm3-CsyoQaySKYbxLtG6B'
-ITEM = re.compile(r'^\s*(\d+)\.\s+\[(.*)\]\((.*)\)\s*$')
+ITEM =re.compile(r'^\s*(\d+)\.\s+\[(.*)\]\((.*)\)\s*$')
 MARKER = re.compile(r'\[([A-Za-z]+)\]')
 WORD = re.compile(r"[a-z]+(?:'[a-z]+)*")
 CLOCK = re.compile(r'(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s?)?')
@@ -123,14 +122,18 @@ def category_rules(config):
 def matching_text(text):
     return ' '.join(re.sub(r"[^\w']+", ' ', text.lower().replace('\N{RIGHT SINGLE QUOTATION MARK}', "'")).split())
 
-def classify(rules, title, excerpt=''):
-    """Keyword fallback for unlabelled questions: primary and secondary categories. Title terms
-    decide; the opening transcript breaks ties and places vague titles, never outweighing a title term."""
+def keyword_scores(rules, title, excerpt=''):
+    """{category: how strongly its keyword lists match}. Title terms decide; the opening transcript breaks
+    ties and places vague titles, never outweighing a title term."""
     title, excerpt = matching_text(title), matching_text(excerpt)
     def score(strong, weak, text):
         return sum(factor * len(set(regex.findall(text))) for factor, regex in ((1, strong), (0.5, weak)) if regex and text)
-    scores = {topic: 3 * score(strong, weak, title) + (0 if title_only else min(2.5, score(strong, weak, excerpt) / 2))
-              for topic, strong, weak, title_only in rules}
+    return {topic: 3 * score(strong, weak, title) + (0 if title_only else min(2.5, score(strong, weak, excerpt) / 2))
+            for topic, strong, weak, title_only in rules}
+
+def classify(rules, title, excerpt=''):
+    """Keyword fallback for unlabelled questions: primary and secondary categories."""
+    scores = keyword_scores(rules, title, excerpt)
     best = max(scores.values(), default=0)
     if best < 1:
         return 'other', []
@@ -452,7 +455,7 @@ def build(roman=ROMAN, source=SOURCE, index_path=INDEX, output=APP / 'data', lab
         },
         'categories': [{'id': c['id'], 'name': c['name'], 'description': c['description'],
                         'subcategories': c['subcategories'] + ([{'id': f"{c['id']}.auto", 'name': 'Not yet sorted',
-                                                                 'description': 'Placed by keywords; add the episode to question_labels.json.'}]
+                                                                 'description': 'Placed by keywords until the episode is labelled: bash ganji-model/run.sh label.'}]
                                                                if any(q['sub'] == f"{c['id']}.auto" for q in questions) else [])}
                        for c in config['categories']],
         'places': [{'name': p['name'], 'region': p['region']} for p in config.get('places', [])],
@@ -468,6 +471,7 @@ def build(roman=ROMAN, source=SOURCE, index_path=INDEX, output=APP / 'data', lab
             'missingTranscripts': sorted(set(index) - {e['n'] for e in episodes}),
             'unaligned': unaligned,
             'unlabelled': unlabelled,
+            'unreviewed': json.loads(UNREVIEWED.read_text(encoding='utf-8')) if UNREVIEWED.is_file() else [],
         },
     }
     write_if_changed(output / 'summary.js', f'window.GANJI_DATA = {compact(data)};\n')
@@ -476,7 +480,7 @@ def build(roman=ROMAN, source=SOURCE, index_path=INDEX, output=APP / 'data', lab
     if unaligned and len(unaligned) < count:
         print(f'English/Urdu labels unavailable for {len(unaligned)} episodes without an original Crisper SRT.')
     if unlabelled:
-        print(f'Placed by keywords, add to {LABELS.name}: episodes {", ".join(map(str, unlabelled))}.')
+        print(f'Placed by keywords until labelled, run bash ganji-model/run.sh label: episodes {", ".join(map(str, unlabelled))}.')
     return data
 
 
@@ -535,7 +539,7 @@ def main():
     parser.add_argument('--directory', type=Path, default=ROMAN, help='Roman Urdu SRT folder')
     parser.add_argument('--source', type=Path, default=SOURCE, help='Original Crisper SRT folder (optional)')
     parser.add_argument('--index', type=Path, default=INDEX, help='Markdown question index')
-    parser.add_argument('--labels', type=Path, default=LABELS, help='Hand-checked question subcategories')
+    parser.add_argument('--labels', type=Path, default=LABELS, help='Question subcategories')
     parser.add_argument('--output', type=Path, default=APP / 'data', help='Data folder the app reads')
     parser.add_argument('--serve', action='store_true', help='After building, preview app/ at http://localhost:PORT/')
     parser.add_argument('--skip-build', action='store_true', help='Preview the existing data without rebuilding')

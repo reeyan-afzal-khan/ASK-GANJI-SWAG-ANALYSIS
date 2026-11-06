@@ -21,13 +21,14 @@ def sha256(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 def alignment_for(path, source):
-    """The cached word alignment of an episode, if it was made from the current source SRT."""
+    """The cached word alignment of an episode, if it was made from the current source SRT.
+    Once that SRT is gone, the cache, which holds its words, is the record of it."""
     cache = ALIGNMENT / f'{Path(path).stem}.json'
     original = Path(source) / Path(path).name
-    if not cache.is_file() or not original.is_file():
+    if not cache.is_file():
         return None
     data = json.loads(cache.read_text(encoding='utf-8'))
-    return data if data.get('source_sha256') == sha256(original) else None
+    return data if not original.is_file() or data.get('source_sha256') == sha256(original) else None
 
 def original_cues(path, source):
     """The original transcription's cues for a Roman file, with its alignment cache (see alignment_for):
@@ -118,8 +119,8 @@ def validate(folder, source, episodes=None):
     results = []; errors = []; warnings = []
     files = select_files(folder, episodes)
     if not episodes:
-        # The original transcription's episodes: its SRT folder, or once that is gone, the alignment cache.
-        originals = Path(source).glob('episode_*.srt') if Path(source).is_dir() else ALIGNMENT.glob('episode_*.json')
+        # The original transcription's episodes: its SRTs, and the alignment cache of those now gone.
+        originals = [*Path(source).glob('episode_*.srt'), *ALIGNMENT.glob('episode_*.json')]
         missing = {f'{p.stem}.srt' for p in originals} - {p.name for p in files}
         errors.extend(f'Missing output: {name}' for name in sorted(missing))
     for path in files:
@@ -324,7 +325,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('action',choices=['format','validate','review'])
     parser.add_argument('--directory',type=Path,default=ROMAN)
-    # The original transcription; once its folder is gone, validation reads it from the alignment cache.
+    # The original transcription; where an episode's SRT is gone, its words come from the alignment cache.
     parser.add_argument('--source',type=Path,default=SOURCE)
     parser.add_argument('--episodes',help='Comma-separated episode numbers')
     parser.add_argument('--check',action='store_true',help='Report pacing changes without writing')
