@@ -1,0 +1,13 @@
+# GitHub Pages builds the site from the repository root. The site is only index.html and the app:
+# everything else stays in the repository but is left out of what gets published.
+exclude:
+  - README.md
+  - docs
+  - ganji-model
+  - scripts
+  - transcripts-english
+  - transcripts-urdu-roman
+  - app/README.md
+  - app/run.sh
+  - app/skins
+  - app/tools
