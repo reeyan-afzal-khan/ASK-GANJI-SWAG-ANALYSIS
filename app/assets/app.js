@@ -1085,6 +1085,17 @@ function stripPlot(container, { rows, onPick }) {
 }
 
 /* ---------- Columns for a handful of ordered groups (ages, positions) ---------- */
+const labelRuler = document.createElement('canvas').getContext('2d');
+// Each label has its column's width to itself, measured in this device's font. One too wide for that wraps at its
+// spaces, and if a word is still too wide, all the labels get a little smaller, so none runs into the next.
+function fitColumnLabels(labels, room) {
+  const SIZE = 11, SMALLEST = 9;   // SIZE as .col-label in app.css
+  labelRuler.font = `${SIZE}px ${getComputedStyle(document.body).fontFamily}`;
+  const width = text => labelRuler.measureText(text).width;
+  const lines = labels.map(text => width(text) > room ? text.split(' ') : [text]);
+  const size = Math.max(SMALLEST, Math.min(SIZE, SIZE * room / Math.max(...lines.flat().map(width))));
+  return { lines, size: r2(size), rowHeight: Math.round(size * 1.2), rows: Math.max(...lines.map(parts => parts.length)) };
+}
 function ordinalColumns(container, { items, format, label, height = 220 }) {
   const fit = fillCard(container, height);
   function draw() {
@@ -1092,9 +1103,11 @@ function ordinalColumns(container, { items, format, label, height = 220 }) {
     if (!items.some(it => it.value > 0)) { container.append(h('p', { class: 'muted', text: 'Nothing to show for this selection.' })); return; }
     const W = Math.max(240, container.clientWidth), H = fit();
     const m = { t: 20, r: 6, b: 24, l: 34 };
-    const pw = W - m.l - m.r, ph = H - m.t - m.b;
+    const step = (W - m.l - m.r) / items.length, bw = Math.min(44, step * 0.62);
+    const fitted = fitColumnLabels(items.map(it => it.label), step - 4);
+    m.b += (fitted.rows - 1) * fitted.rowHeight;
+    const ph = H - m.t - m.b;
     const { max, ticks } = niceTicks(Math.max(0, ...items.map(it => it.value)), 4);
-    const step = pw / items.length, bw = Math.min(44, step * 0.62);
     const Y = v => m.t + ph - (v / max) * ph;
     const svg = s('svg', { viewBox: `0 0 ${W} ${H}`, width: W, height: H, role: 'img', 'aria-label': label });
     for (const t of ticks) {
@@ -1105,7 +1118,8 @@ function ordinalColumns(container, { items, format, label, height = 220 }) {
       const x = m.l + i * step + (step - bw) / 2;
       if (it.value > 0) svg.append(s('path', { class: 'col solid', d: columnPath(x, Y(it.value), bw, Y(0) - Y(it.value), 4) }));
       svg.append(s('text', { class: 'col-value', x: r2(x + bw / 2), y: r2(Y(it.value) - 6), 'text-anchor': 'middle' }, it.value > 0 ? format(it.value) : ''));
-      svg.append(s('text', { class: 'col-label', x: r2(x + bw / 2), y: H - 7, 'text-anchor': 'middle' }, it.label));
+      svg.append(s('text', { class: 'col-label', 'text-anchor': 'middle', style: `font-size:${fitted.size}px` },
+        fitted.lines[i].map((part, row) => s('tspan', { x: r2(x + bw / 2), y: H - m.b + 17 + row * fitted.rowHeight }, part))));
       const hit = s('rect', { class: 'hit-area', x: r2(m.l + i * step), y: m.t, width: r2(step), height: ph, tabindex: '0' });
       attachTip(hit, () => [it.title || it.label, [{ value: format(it.value), label, color: 'var(--acc)' }].concat(it.rows || [])]);
       svg.append(hit);

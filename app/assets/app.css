@@ -20,18 +20,21 @@ code { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-siz
 .muted { color: var(--muted); }
 
 /* ---------- Shell: sidebar rail + main column ---------- */
-.shell { display: grid; grid-template-columns: 296px minmax(0, 1fr); min-height: 100vh; }
+.shell { display: grid; grid-template-columns: 296px minmax(0, 1fr); min-height: 100vh; min-height: 100dvh; }
+/* The rail is as tall as the space the browser really shows (100dvh leaves out its address bar), so the page never
+   has to scroll to reach either end of it. The brand and the foot stay put, and the sections scroll between them. */
 .rail {
-  position: sticky; top: 0; height: 100vh; overflow-y: auto; scrollbar-width: thin;
+  position: sticky; top: 0; height: 100vh; height: 100dvh; overflow: hidden;
   background: var(--rail); border-right: 1px solid var(--line);
   display: flex; flex-direction: column; gap: 6px; padding: 18px 14px;
 }
-.brand { display: flex; align-items: center; gap: 12px; padding: 2px 8px 16px; border-bottom: 1px solid var(--line); margin-bottom: 10px; }
+.brand { flex: none; display: flex; align-items: center; gap: 12px; padding: 2px 8px 16px; border-bottom: 1px solid var(--line); margin-bottom: 10px; }
 .brand-logo { width: 40px; height: 40px; border-radius: 12px; flex: none; box-shadow: var(--card-shadow, none); }
 .brand-text { min-width: 0; flex: 1; }
 .brand-name { font-weight: 700; font-size: 15.5px; letter-spacing: -0.015em; }
 .brand-sub { color: var(--muted); font-size: 12px; }
-.nav { display: grid; gap: 2px; }
+/* It reaches the rail's edges so that scrolling does not cut off the current section's marker or a focus outline */
+.nav { flex: 0 1 auto; min-height: 0; margin: -4px -14px; padding: 4px 14px; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; display: grid; gap: 2px; }
 .nav-item {
   display: flex; align-items: center; gap: 12px; width: 100%; padding: 9px 12px; border: 0; border-radius: 10px;
   background: transparent; color: var(--ink-soft); font-weight: 500; text-align: left; cursor: pointer; position: relative;
@@ -75,7 +78,7 @@ code { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-siz
 .tree-subs { grid-column: 2; display: grid; gap: 1px; margin: 2px 0 6px 11px; padding-left: 6px; border-left: 1px dashed var(--line-hot); }
 .tree-subs .tree-row { grid-template-columns: minmax(0, 1fr) auto; padding: 5px 7px; font-size: 12.5px; }
 .tree-all { grid-template-columns: 9px minmax(0, 1fr) auto; margin-left: 22px; width: calc(100% - 22px); }
-.rail-foot { margin-top: auto; padding: 14px 8px 4px; border-top: 1px solid var(--line); display: grid; gap: 10px; }
+.rail-foot { flex: none; margin-top: auto; padding: 14px 8px 4px; border-top: 1px solid var(--line); display: grid; gap: 10px; }
 .rail-link { color: var(--ink-soft); text-decoration: none; font-size: 13px; }
 .rail-link:hover { color: var(--acc-hi); }
 .rail-note { margin: 0; color: var(--muted); font-size: 11.5px; line-height: 1.45; }
@@ -475,7 +478,7 @@ a.primary-button { display: inline-block; text-decoration: none; }
 .mini-kpis .kpi { padding: 10px 12px; }
 .mini-kpis .kpi-value { font-size: 21px; margin-top: 4px; }
 .transcript-card { position: sticky; top: 84px; }
-.transcript { position: relative; height: calc(100vh - 262px); min-height: 360px; overflow-y: auto; border: 1px solid var(--line); border-radius: 8px; scroll-behavior: auto; overscroll-behavior: contain; }
+.transcript { position: relative; height: calc(100vh - 262px); height: calc(100svh - 262px); min-height: 360px; overflow-y: auto; border: 1px solid var(--line); border-radius: 8px; scroll-behavior: auto; overscroll-behavior: contain; }
 .cue { display: grid; grid-template-columns: 64px 1fr; gap: 10px; padding: 5px 12px; border-left: 3px solid transparent; }
 .cue:nth-child(even) { background: color-mix(in srgb, var(--surface-2) 55%, transparent); }
 .cue.current { background: var(--acc-wash); border-left-color: var(--acc); }
@@ -582,6 +585,11 @@ a.primary-button { display: inline-block; text-decoration: none; }
   .word-row { grid-template-columns: minmax(0, 1fr); gap: 8px; }
   .chip-row { grid-template-columns: minmax(0, 1fr); gap: 8px; }
   .chip-row .chips-label { line-height: 1.4; }
+}
+/* Too short to keep the brand and the foot in view as well: the whole rail scrolls instead, still on its own */
+@media (max-height: 520px) {
+  .rail { overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+  .nav { flex: none; overflow: visible; }
 }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; scroll-behavior: auto !important; }
