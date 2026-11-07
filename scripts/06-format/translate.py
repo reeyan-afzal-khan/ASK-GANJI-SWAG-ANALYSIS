@@ -40,7 +40,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / '.shared'))
 from paths import AUDIO, ROMAN, ENGLISH, REPORTS
 from subtitles import Cue, parse, render, atomic_write, select_files, span
-from align import load_audio_copy, SAMPLE_RATE
+from align import load_audio_copy, need_audio, SAMPLE_RATE
 import pacing
 
 WINDOW = 28.0      # seconds of whole cues per window (Whisper hears 30 s at a time)
@@ -278,6 +278,7 @@ def translate(files, force=False, output=ENGLISH, repair=False):
         print(f'{len(todo)} episodes to translate; {len(files) - len(todo)} already in {output.name}/', flush=True)
     if not todo:
         return
+    need_audio(todo)
     folder = model_folder()
     print('Loading CrisperWhisper 2.0 on the GPU:', folder, flush=True)
     transformers.logging.set_verbosity_error()

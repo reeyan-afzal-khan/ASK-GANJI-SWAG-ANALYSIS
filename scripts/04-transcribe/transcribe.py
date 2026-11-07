@@ -9,7 +9,7 @@ from pathlib import Path
 # Allow this entry point to run directly as well as through run.sh.
 import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / '.shared'))
-from paths import ROOT, SOURCE as OUTPUT_DIR, ROMAN
+from paths import ROOT, AUDIO as AUDIO_DIR, SOURCE as OUTPUT_DIR, ROMAN
 os.chdir(ROOT)
 
 import ctranslate2
@@ -20,7 +20,6 @@ logging.basicConfig(level=logging.WARNING, format="%(asctime)s %(message)s", dat
 logging.getLogger("crisperwhisper.longform").setLevel(logging.INFO)
 
 MODEL_PATH = os.environ.get("CRISPER_MODEL", "CrisperWhisper2_Large" if Path("CrisperWhisper2_Large").is_dir() else "large")
-AUDIO_DIR = Path("all_episodes")
 # Transcribe again even when the episode already has subtitles (run.sh --force).
 FORCE = os.environ.get("TRANSCRIBE_FORCE") == "1"
 FIRST_EPISODE = int(os.environ.get("FIRST_EPISODE", "1"))
@@ -141,8 +140,6 @@ def finished(label):
 
 
 def main():
-    if not AUDIO_DIR.is_dir():
-        raise SystemExit(f"Audio directory not found: {AUDIO_DIR.resolve()}")
     smoke_test = os.environ.get("CT2_SMOKE_TEST") == "1"
     if not smoke_test and all(finished(f"episode_{episode:03d}") for episode in EPISODES):
         print("Nothing to transcribe: these episodes already have subtitles.", flush=True)

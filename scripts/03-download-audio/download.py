@@ -2,9 +2,10 @@
 
 With no arguments, every video in the playlist that the index does not list yet counts as new: normally
 just the last one. Its number comes from its title ("... | Ask Ganjiswag #243"), or else it is the next
-number after the highest in the index. The audio goes to all_episodes/ unless it is already there, and
-the video's chapters become the episode's questions in the index. A video without chapters yet keeps
-its audio; running this again picks it up once the chapters are there.
+number after the highest in the index. Its audio goes to the root folder as episode_NNN.mp3, where it
+waits until the episode has its subtitles. Audio already there is used as it is, and an episode that
+already has both subtitles is not downloaded again. The video's chapters become the episode's questions
+in the index; a video without chapters yet gets them when this runs again.
 
 NUMBER and URL download one chosen video instead.
 """
@@ -17,7 +18,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / '.shared'))
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'app' / 'tools'))
-from paths import AUDIO, INDEX, PLAYLIST
+from paths import AUDIO, DOWNLOADS, ENGLISH, INDEX, PLAYLIST, ROMAN
 from subtitles import atomic_write
 from build_data import read_index
 
@@ -99,19 +100,29 @@ def yt_dlp(*arguments):
     return subprocess.run(['yt-dlp', '--no-warnings', *arguments], check=True, stdout=subprocess.PIPE, encoding='utf-8').stdout
 
 
+def has_subtitles(name):
+    """Whether the episode has its Roman Urdu and English subtitles, which is all it needs its audio for."""
+    return all((folder / f'{name}.srt').is_file() and (folder / f'{name}.srt').stat().st_size > 0 for folder in (ROMAN, ENGLISH))
+
+
 def download(number, url):
-    """The episode's audio, unless it is here already, and always its metadata, which may have changed."""
+    """The episode's audio, unless it is in the root folder already or the episode has its subtitles, and
+    always its metadata, which may have changed. yt-dlp works in .cache/downloads/, so a download that stops
+    leaves nothing in the root folder; only the finished audio moves there."""
     name = f'episode_{number:03d}'
-    AUDIO.mkdir(exist_ok=True)
-    common = ['--no-playlist', '--write-info-json', '-P', str(AUDIO), '-o', f'{name}.%(ext)s', '--', url]
-    if (AUDIO / f'{name}.mp3').is_file():
-        print(f'[SKIP] {name}: audio already downloaded; reading its chapters', flush=True)
+    audio = AUDIO / f'{name}.mp3'
+    DOWNLOADS.mkdir(parents=True, exist_ok=True)
+    common = ['--no-playlist', '--write-info-json', '-P', str(DOWNLOADS), '-o', f'{name}.%(ext)s', '--', url]
+    if audio.is_file() or has_subtitles(name):
+        why = f'{audio.name} is in the root folder' if audio.is_file() else 'it already has both subtitles'
+        print(f'[SKIP] {name}: {why}; reading its chapters', flush=True)
         subprocess.run(['yt-dlp', '--no-warnings', '--skip-download', *common], check=True)
     else:
         print(f'[START] {name}: {url}', flush=True)
         subprocess.run(['yt-dlp', '--extract-audio', '--audio-format', 'mp3', '--audio-quality', '0',
                         '--sleep-interval', '5', '--max-sleep-interval', '15', *common], check=True)
-    return json.loads((AUDIO / f'{name}.info.json').read_text(encoding='utf-8'))
+        (DOWNLOADS / audio.name).replace(audio)
+    return json.loads((DOWNLOADS / f'{name}.info.json').read_text(encoding='utf-8'))
 
 
 def index_episode(number, info, index_path=INDEX):

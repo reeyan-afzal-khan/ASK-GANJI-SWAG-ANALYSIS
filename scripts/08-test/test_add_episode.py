@@ -1,5 +1,8 @@
 import importlib.util
 import json
+import os
+import shutil
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -98,6 +101,49 @@ class NewEpisodeTests(unittest.TestCase):
             self.assertIn('no chapters',download.index_episode(2,{'id':'new-video'},path))
             self.assertEqual(path.read_text(encoding='utf-8'),INDEX)
 
+class DownloadTests(unittest.TestCase):
+    """A new episode's audio waits in the root folder only until the episode has both subtitles."""
+    def fetch(self,root,audio=False,roman=False,english=False):
+        """download() of episode 244 into a made-up root folder, with yt-dlp stood in for; returns its calls."""
+        folders={'AUDIO':root,'DOWNLOADS':root/'.cache'/'downloads','ROMAN':root/'roman','ENGLISH':root/'english'}
+        for key,wanted in (('ROMAN',roman),('ENGLISH',english)):
+            folders[key].mkdir()
+            if wanted:(folders[key]/'episode_244.srt').write_text(ROMAN,encoding='utf-8')
+        if audio:(root/'episode_244.mp3').write_bytes(b'put here by hand')
+        calls=[]
+        def yt_dlp(arguments,check):
+            calls.append(arguments)
+            work=Path(arguments[arguments.index('-P')+1])
+            (work/'episode_244.info.json').write_text(json.dumps({'id':'v244','chapters':CHAPTERS}),encoding='utf-8')
+            if '--skip-download' not in arguments:(work/'episode_244.mp3').write_bytes(b'downloaded')
+        with patch.multiple(download,**folders),patch.object(download.subprocess,'run',yt_dlp):
+            self.assertEqual(download.download(244,'https://youtu.be/v244')['id'],'v244')
+        return calls
+
+    def test_new_audio_alone_reaches_the_root_folder(self):
+        with tempfile.TemporaryDirectory(dir=TEST_TEMP) as d:
+            root=Path(d)
+            self.assertNotIn('--skip-download',self.fetch(root)[0])
+            self.assertEqual([p.name for p in root.iterdir() if p.is_file()],['episode_244.mp3'])
+            self.assertEqual((root/'episode_244.mp3').read_bytes(),b'downloaded')
+            self.assertEqual([p.name for p in (root/'.cache'/'downloads').iterdir()],['episode_244.info.json'])
+
+    def test_audio_put_in_the_root_folder_is_used(self):
+        with tempfile.TemporaryDirectory(dir=TEST_TEMP) as d:
+            root=Path(d)
+            self.assertIn('--skip-download',self.fetch(root,audio=True)[0])
+            self.assertEqual((root/'episode_244.mp3').read_bytes(),b'put here by hand')
+
+    def test_an_episode_with_both_subtitles_is_not_downloaded_again(self):
+        with tempfile.TemporaryDirectory(dir=TEST_TEMP) as d:
+            root=Path(d)
+            self.assertIn('--skip-download',self.fetch(root,roman=True,english=True)[0])
+            self.assertFalse((root/'episode_244.mp3').exists())
+
+    def test_roman_urdu_alone_still_needs_the_audio(self):
+        with tempfile.TemporaryDirectory(dir=TEST_TEMP) as d:
+            self.assertNotIn('--skip-download',self.fetch(Path(d),roman=True)[0])
+
 
 ROMAN='1\n00:00:00,000 --> 00:00:02,000\nCanada visa aur masters\n\n'
 SOURCE=ROMAN.replace('aur','اور')
@@ -158,5 +204,85 @@ class RomanizeTests(unittest.TestCase):
             with self.assertRaises(ValueError):romanize.pending(source,output,'1',True)
             with self.assertRaises(ValueError):romanize.pending(source,output,'3',False)
             self.assertEqual(romanize.pending(Path(d)/'gone',output,None,False),([],0))
+
+# Stands in for each step of scripts/add-episode.sh: notes how it was called and makes the subtitles the real step would.
+STUB='''#!/usr/bin/env bash
+set -euo pipefail
+step="$(basename "$(dirname "$0")")";args="$*";episodes=''
+echo "$step $args" >> "$LOG"
+while (($#));do [[ "$1" == --episodes ]] && episodes="$2";shift;done
+make(){ local n;for n in ${episodes//,/ };do echo made > "$1/episode_$(printf '%03d' "$n").srt";done; }
+case "$step" in
+    05-romanize) [[ "$args" == *--alignment* ]] || make transcripts-urdu-roman ;;
+    06-format) [[ "$args" != *--translate* ]] || make transcripts-english ;;
+    07-validate) exit "${VALIDATE:-0}" ;;
+esac
+'''
+
+@unittest.skipUnless(os.name=='posix' and shutil.which('bash'),'needs Bash')
+class AddEpisodeTests(unittest.TestCase):
+    """scripts/add-episode.sh in a made-up repository whose episode 243 is finished, each step stood in for by STUB."""
+    def setUp(self):
+        temp=tempfile.TemporaryDirectory(dir=TEST_TEMP);self.addCleanup(temp.cleanup)
+        self.root=root=Path(temp.name)
+        for path in ('scripts/add-episode.sh','scripts/.shared/common.sh'):
+            (root/path).parent.mkdir(parents=True,exist_ok=True);shutil.copy(HERE.parents[2]/path,root/path)
+        for step in ('scripts/03-download-audio','scripts/04-transcribe','scripts/05-romanize','scripts/06-format','scripts/07-validate','ganji-model','app'):
+            (root/step).mkdir(parents=True,exist_ok=True);(root/step/'run.sh').write_text(STUB,encoding='utf-8')
+        for folder in ('transcripts-urdu-roman','transcripts-english'):
+            (root/folder).mkdir();(root/folder/'episode_243.srt').write_text('made',encoding='utf-8')
+
+    def add_episode(self,*arguments,validate='0'):
+        """Runs it; returns how it went and the steps it ran."""
+        log=self.root/'steps.log';log.unlink(missing_ok=True)
+        done=subprocess.run(['bash','scripts/add-episode.sh',*arguments],cwd=self.root,capture_output=True,text=True,
+                            env=dict(os.environ,LOG=str(log),VALIDATE=validate))
+        return done,[line.strip() for line in log.read_text(encoding='utf-8').splitlines()] if log.exists() else []
+
+    def test_new_audio_becomes_subtitles_then_goes(self):
+        (self.root/'episode_244.mp3').write_bytes(b'audio')
+        done,steps=self.add_episode()
+        self.assertEqual(done.returncode,0,done.stderr)
+        self.assertEqual(steps,['03-download-audio','04-transcribe --episodes 244','05-romanize --episodes 244',
+            '06-format --episodes 244 --fill --loops --no-pace','05-romanize --alignment --episodes 244',
+            '06-format --episodes 244 --skip-align','06-format --translate --episodes 244','07-validate --episodes 244',
+            'ganji-model label','app'])
+        self.assertFalse((self.root/'episode_244.mp3').exists())
+        self.assertTrue((self.root/'transcripts-english'/'episode_244.srt').is_file())
+
+    def test_audio_stays_until_the_subtitles_pass_the_check(self):
+        (self.root/'episode_244.mp3').write_bytes(b'audio')
+        done,_=self.add_episode(validate='1')
+        self.assertNotEqual(done.returncode,0)
+        self.assertTrue((self.root/'episode_244.mp3').exists())
+        # Run again: the subtitles are made, so they are only checked before the audio goes.
+        done,steps=self.add_episode()
+        self.assertEqual(done.returncode,0,done.stderr)
+        self.assertEqual(steps,['03-download-audio','07-validate --episodes 244','ganji-model label','app'])
+        self.assertFalse((self.root/'episode_244.mp3').exists())
+
+    def test_an_episode_with_both_subtitles_is_never_made_again(self):
+        (self.root/'episode_243.mp3').write_bytes(b'audio put back by hand')
+        done,steps=self.add_episode()
+        self.assertEqual(done.returncode,0,done.stderr)
+        self.assertEqual(steps,['03-download-audio','07-validate --episodes 243','ganji-model label','app'])
+        self.assertFalse((self.root/'episode_243.mp3').exists())
+
+    def test_nothing_new(self):
+        done,steps=self.add_episode()
+        self.assertEqual(done.returncode,0,done.stderr)
+        self.assertEqual(steps,['03-download-audio','ganji-model label','app'])
+        self.assertIn('No new episode',done.stdout)
+
+    def test_chosen_episodes_need_their_audio_in_the_root_folder(self):
+        done,steps=self.add_episode('--episodes','244')
+        self.assertEqual(done.returncode,1)
+        self.assertIn('episode_244.mp3',done.stderr)
+        self.assertEqual(steps,[])
+        (self.root/'episode_244.mp3').write_bytes(b'audio')
+        done,steps=self.add_episode('--episodes','244')
+        self.assertEqual(done.returncode,0,done.stderr)
+        self.assertEqual(steps[0],'04-transcribe --episodes 244')
+        self.assertFalse((self.root/'episode_244.mp3').exists())
 
 if __name__=='__main__':unittest.main()

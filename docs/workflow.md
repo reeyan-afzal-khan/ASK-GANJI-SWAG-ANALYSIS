@@ -6,27 +6,28 @@
 
 | Part | Command | Writes |
 | --- | --- | --- |
-| Download | `bash scripts/03-download-audio/run.sh` | `all_episodes/`, `docs/episode-index.md` |
+| Download | `bash scripts/03-download-audio/run.sh` | `episode_NNN.mp3` in the root folder, `docs/episode-index.md` |
 | Transcribe | `bash scripts/04-transcribe/run.sh` | `.cache/transcripts-urdu/` |
 | Roman Urdu | `bash scripts/05-romanize/run.sh` | `transcripts-urdu-roman/` |
 | Word timing, missed speech and decoding loops | `bash scripts/06-format/run.sh --fill --loops --no-pace`, then `bash scripts/05-romanize/run.sh --alignment` | `.cache/alignment/` |
 | Even timing | `bash scripts/06-format/run.sh --skip-align` | `transcripts-urdu-roman/` |
 | English | `bash scripts/06-format/run.sh --translate` | `transcripts-english/` |
 | Check | `bash scripts/07-validate/run.sh` | `.cache/reports/validation.json` |
+| Delete the audio | `scripts/add-episode.sh` itself | Removes `episode_NNN.mp3` once both subtitles pass the check |
 | Categories | `bash ganji-model/run.sh label` | `app/tools/question_labels.json`, `ganji-model/unreviewed.json` |
 | App | `bash app/run.sh` | `app/data/` |
 
-The subtitle parts work on every downloaded episode that has no English subtitles yet, since English is made last. Each part skips what is already done, so a run that stopped carries on where it was when run again. A finished repository does nothing and needs no GPU. `--episodes` picks episodes whose audio is already in `all_episodes/` and leaves the playlist alone.
+A new episode's audio waits in the root folder as `episode_NNN.mp3`, NNN being its episode number. The subtitle parts work on each episode there that has no English subtitles yet, since English is made last. Each part skips what is already done, so a run that stopped carries on where it was when run again. Once an episode has its Roman Urdu and English subtitles and they pass the check, its audio is deleted: the later steps work from the subtitles and `.cache/alignment/`, so a finished episode is never downloaded or made again. A finished repository does nothing and needs no GPU. Audio saved in the root folder by hand under that name is used instead of a download, and `--episodes` works on such audio without looking at the playlist.
 
 ## Data flow
 
-`scripts/03-download-audio/run.sh` → `all_episodes/` → `scripts/04-transcribe/run.sh` → `.cache/transcripts-urdu/` → `scripts/05-romanize/run.sh` → `transcripts-urdu-roman/` → `scripts/07-validate/run.sh`
+`scripts/03-download-audio/run.sh` → `episode_NNN.mp3` → `scripts/04-transcribe/run.sh` → `.cache/transcripts-urdu/` → `scripts/05-romanize/run.sh` → `transcripts-urdu-roman/` → `scripts/07-validate/run.sh`
 
 `transcripts-urdu-roman/` + `docs/episode-index.md` → `app/run.sh` → `app/data/` → `app/index.html`
 
-`all_episodes/` + `transcripts-urdu-roman/` → `scripts/06-format/run.sh --translate` → `transcripts-english/`, which the app's transcript can switch to.
+`episode_NNN.mp3` + `transcripts-urdu-roman/` → `scripts/06-format/run.sh --translate` → `transcripts-english/`, which the app's transcript can switch to.
 
-`all_episodes/` + `.cache/transcripts-urdu/` + `transcripts-urdu-roman/` → `scripts/06-format/run.sh` → `.cache/alignment/` → evenly paced `transcripts-urdu-roman/`
+`episode_NNN.mp3` + `.cache/transcripts-urdu/` + `transcripts-urdu-roman/` → `scripts/06-format/run.sh` → `.cache/alignment/` → evenly paced `transcripts-urdu-roman/`
 
 `transcripts-urdu-roman/` + `transcripts-english/` + `docs/episode-index.md` + the labels checked by hand → `ganji-model/run.sh pretrain`, `train` → `ganji-model/weights/` → `ganji-model/run.sh label` → the labels of new episodes
 
@@ -61,7 +62,7 @@ bash scripts/03-download-audio/run.sh
 bash scripts/03-download-audio/run.sh 243 "https://www.youtube.com/watch?v=VIDEO_ID"
 ```
 
-A video in the playlist is new when the index does not list it. Its episode number comes from its title (`... | Ask Ganjiswag #243`), or else it is the next number after the highest in the index; a place in the playlist is not used, since a removed video would shift every place after it. Audio already in `all_episodes/` is kept, and the video's metadata is stored next to it as `episode_NNN.info.json`.
+A video in the playlist is new when the index does not list it. Its episode number comes from its title (`... | Ask Ganjiswag #243`), or else it is the next number after the highest in the index; a place in the playlist is not used, since a removed video would shift every place after it. yt-dlp works in `.cache/downloads/`, where the video's metadata stays as `episode_NNN.info.json`, so a download that stops leaves nothing in the root folder; only the finished audio moves there. Audio already in the root folder is used as it is, and an episode that has both subtitles is not downloaded again: only its chapters are read.
 
 The video's chapters become the episode's block in `docs/episode-index.md`, or the timestamps in its description if it has no chapters. Intro and outro chapters are left out, and the comments chapter is named Youtube Comments, as everywhere in the index. For episodes 236–242 this gives the questions the index holds, with the same titles, in the same order and within two seconds. What the index already holds is never changed, so hand edits are safe. A video with no chapters yet is reported and gets no block; the next run tries again.
 
@@ -79,7 +80,7 @@ set -o pipefail
 bash scripts/04-transcribe/run.sh 2>&1 | tee .cache/logs/transcribe.log
 ```
 
-Normal transcription starts at episode 1, stops at the highest MP3 number and skips episodes that already have an original SRT or Roman subtitles. `--force` transcribes the chosen episodes again.
+Normal transcription starts at episode 1, stops at the highest MP3 number in the root folder and skips episodes that already have an original SRT or Roman subtitles. `--force` transcribes the chosen episodes again.
 
 ### Roman Urdu
 
@@ -113,7 +114,7 @@ bash scripts/05-romanize/run.sh --alignment
 bash scripts/06-format/run.sh --skip-align
 ```
 
-Word alignment runs at about 75× real time on a laptop RTX 4060, around five hours for all 371 hours of audio, and later runs only align new or changed episodes. Paced cues are single lines of at most 42 characters, about seven words, that never span a pause of 1.5 s; changed files are backed up to `.cache/backups/` first. Hand corrections in `transcripts-urdu-roman/` are kept: a corrected word takes the timing of the word it replaced. The audio check, `.cache/reports/audio_check.json` (Roman Urdu), lists possible missed passages, unlikely cues, repeated words and every decoding loop's status; it changes nothing by itself, and only `--fill` and `--loops` act on it. Pacing, `--fill` and `--loops` read the alignment cache, so they work without the original SRT. Only aligning again needs it: for an old episode, restore `urdu_transcript_crisper/episode_NNN.srt` from commit `91c2afd` into `.cache/transcripts-urdu/`.
+Word alignment runs at about 75× real time on a laptop RTX 4060, around five hours for all 371 hours of audio, and later runs only align new or changed episodes. Paced cues are single lines of at most 42 characters, about seven words, that never span a pause of 1.5 s; changed files are backed up to `.cache/backups/` first. Hand corrections in `transcripts-urdu-roman/` are kept: a corrected word takes the timing of the word it replaced. The audio check, `.cache/reports/audio_check.json` (Roman Urdu), lists possible missed passages, unlikely cues, repeated words and every decoding loop's status; it changes nothing by itself, and only `--fill` and `--loops` act on it. Pacing, `--fill` and `--loops` read the alignment cache, so they work without the original SRT. Only aligning again needs it: for an old episode, restore `urdu_transcript_crisper/episode_NNN.srt` from commit `91c2afd` into `.cache/transcripts-urdu/`. Aligning, `--fill`, `--loops` and `--translate` also listen to the audio, so for an episode whose audio was deleted, save it in the root folder as `episode_NNN.mp3` again first.
 
 ### English
 
@@ -140,7 +141,7 @@ Romanization preserves the source transcript rather than correcting it against t
 | `CRISPER_PYTHON` | Transcription-specific override, kept for the previous workflow |
 | `CRISPER_MODEL` | `large`, or the legacy local `CrisperWhisper2_Large/` folder when present |
 | `EPISODES` | Comma-separated transcription episode numbers |
-| `FIRST_EPISODE` / `LAST_EPISODE` | Transcription range; defaults to 1 / highest MP3 |
+| `FIRST_EPISODE` / `LAST_EPISODE` | Transcription range; defaults to 1 / highest MP3 in the root folder |
 | `scripts/05-romanize/roman_glossary.json` | Reviewed Urdu → Roman spelling overrides |
 | `scripts/02-download-model/roman_model.json` | Pinned model and tokenizer revisions |
 | `app/tools/question_labels.json` | The subcategory of every indexed question, one line per episode |
@@ -163,7 +164,7 @@ Setup installs `ffmpeg` and `python3-venv` with apt if they are missing (with `s
 
 ## Transcription
 
-The original CrisperWhisper 2.0 Large/CT2 workflow is now in `scripts/04-transcribe/transcribe.py`. CUDA float16, verbatim mode, word timestamps, continuation, retry profiles and the decoder guard are retained. The default episode range now begins at 1 and ends at the highest available MP3 number. Existing nonempty SRTs skip; they are not proof of transcription accuracy.
+The original CrisperWhisper 2.0 Large/CT2 workflow is now in `scripts/04-transcribe/transcribe.py`. CUDA float16, verbatim mode, word timestamps, continuation, retry profiles and the decoder guard are retained. The default episode range now begins at 1 and ends at the highest MP3 number in the root folder. Existing nonempty SRTs skip; they are not proof of transcription accuracy.
 
 The decoder guard reserves space inside Whisper's 448-position decoder. Normal decoding uses four context words and 256 generated tokens, with smaller profiles for recognized decoder-limit failures. An interrupted episode is restarted on the next run; already completed episodes remain intact. SRT files are published atomically after an episode completes. Audio is staged in Linux temporary storage for decoding.
 
@@ -181,7 +182,7 @@ New vocabulary requires the local CUDA model. `--cached-only` uses existing mode
 
 ## Word timing and even pacing
 
-`scripts/06-format/align.py` runs in the transcription environment (`~/.venvs/ask-ganji-ct2`) and only reads `all_episodes/`, `.cache/transcripts-urdu/` and the Roman SRTs. It groups whole cues of the original SRT into windows of at most 29 seconds and 400 text tokens, without reaching into neighbouring cues, and replays each window's text through CrisperWhisper's decoder with the transcription prompt (verbatim mode, Urdu). The cross-attention of that single teacher-forced pass goes through CrisperWhisper's own Viterbi word timing (`extract_word_timings`), the same method it uses while transcribing. Each word is then kept inside its original cue, and the rare word the Viterbi cannot place shares the time of its neighbours. On sampled episodes the aligned cue edges agree with the original timings to a median of 0.01 s. The decoder's logits also give every word a log-probability, used as a confidence score. Stretches of six seconds or more that no cue covers are transcribed on their own (greedy, verbatim) so that possible missed speech can be listened to. MP3s are decoded a minute at a time through soxr's HQ resampler, bit-identical to CrisperWhisper's loader, so even the 5.6-hour episode needs about 1.3 GB of memory. The encoder dominates the cost (about 0.22 s per 30-second window on a laptop RTX 4060, already saturated at batch size one), so the mel spectrograms, Viterbi and decoding of the next episode run on worker threads.
+`scripts/06-format/align.py` runs in the transcription environment (`~/.venvs/ask-ganji-ct2`) and only reads the episode's audio, `.cache/transcripts-urdu/` and the Roman SRTs. It groups whole cues of the original SRT into windows of at most 29 seconds and 400 text tokens, without reaching into neighbouring cues, and replays each window's text through CrisperWhisper's decoder with the transcription prompt (verbatim mode, Urdu). The cross-attention of that single teacher-forced pass goes through CrisperWhisper's own Viterbi word timing (`extract_word_timings`), the same method it uses while transcribing. Each word is then kept inside its original cue, and the rare word the Viterbi cannot place shares the time of its neighbours. On sampled episodes the aligned cue edges agree with the original timings to a median of 0.01 s. The decoder's logits also give every word a log-probability, used as a confidence score. Stretches of six seconds or more that no cue covers are transcribed on their own (greedy, verbatim) so that possible missed speech can be listened to. MP3s are decoded a minute at a time through soxr's HQ resampler, bit-identical to CrisperWhisper's loader, so even the 5.6-hour episode needs about 1.3 GB of memory. The encoder dominates the cost (about 0.22 s per 30-second window on a laptop RTX 4060, already saturated at batch size one), so the mel spectrograms, Viterbi and decoding of the next episode run on worker threads.
 
 The cache, `.cache/alignment/episode_NNN.json`, records the SHA-256 of the source SRT it was made from, and every original cue with its Urdu text, its Roman text and `[start, end, log-probability]` per word, plus the uncovered stretches with what the model heard in them. A cache whose source hash no longer matches is ignored, and that episode is aligned again; once the source SRT is gone, the cache is the record of it. Alignment needs the Roman file to still match the source cue for cue (as step 05 writes it); after pacing, the cache is the record of that pairing.
 
@@ -287,10 +288,11 @@ The Windows helper directory is loaded only on Windows. Linux installs its own d
 | `urdu_transcript_crisper/`, `transcripts-urdu/` | `.cache/transcripts-urdu/` |
 | `urdu_transcript_crisper_roman/` | `transcripts-urdu-roman/` |
 | `english_transcript/` | `transcripts-english/` |
+| `all_episodes/` | None: a new episode's audio waits in the root folder as `episode_NNN.mp3` until its subtitles are made |
 
 The former `assets/`, `config/`, `requirements/`, `src/`, `tests/`, `models/` and `reports/` root folders have been consolidated.
 
-The audio folder keeps its original name and location, and the transcript folders keep their locations under the names above. User-deleted folders, including Whisper transcripts and old backups, have not been restored.
+The transcript folders keep their locations under the names above. User-deleted folders, including Whisper transcripts and old backups, have not been restored.
 
 ## Troubleshooting
 
@@ -298,12 +300,12 @@ The audio folder keeps its original name and location, and the transcript folder
 | --- | --- |
 | Missing environment | Run `bash scripts/01-setup/run.sh transcription` or `bash scripts/01-setup/run.sh roman` in the same Linux user account. |
 | yt-dlp or ffmpeg is missing, or yt-dlp fails | Run `bash scripts/01-setup/run.sh download`, which also updates yt-dlp, in the same Linux user account. |
-| Episode has no chapters on YouTube yet | Run `bash scripts/03-download-audio/run.sh` again later; the audio is kept. Until then the episode has no questions in the app. |
+| Episode has no chapters on YouTube yet | Run `bash scripts/add-episode.sh` again later; it only reads the chapters, since the episode has its subtitles. Until then the episode has no questions in the app. |
 | A question is in the wrong category | `bash ganji-model/run.sh label --review --episodes NUMBER`, then `bash app/run.sh`. |
 | No CUDA GPU | Check `nvidia-smi` in Windows and WSL. The installed Windows NVIDIA driver supplies WSL GPU support. |
 | Missing local Roman model | Run `bash scripts/02-download-model/run.sh`. |
 | Missing cached word | Omit `--cached-only` to generate candidates, or add a reviewed spelling to the glossary. |
 | Existing output skipped | Use `--overwrite` only when you want to regenerate it; it is backed up first. |
-| Validation warns about `�` | Check the corresponding source audio; the missing character cannot be recovered by formatting. |
+| Validation warns about `�` | Listen to that moment in the episode's video; the missing character cannot be recovered by formatting. |
 | `flock` unavailable | Use Ubuntu/WSL2 for mutating shell workflows. |
 | Interrupted candidate cache line | Preserve the cache and repair its final incomplete JSON line before retrying. Completed entries remain reusable. |

@@ -11,6 +11,7 @@ Generated files live under `.cache/` and are excluded from Git. They are preserv
 | `.cache/reports/roman_word_review.json` | Latest vocabulary decisions |
 | `.cache/reports/archive/` | Historical analysis and experiment snapshots |
 | `.cache/backups/` | Backups made before replacing or formatting outputs |
+| `.cache/downloads/` | yt-dlp's working folder: unfinished downloads and each new video's metadata (`episode_NNN.info.json`) |
 | `.cache/logs/` | Optional run logs |
 | `.cache/alignment/` | Per-episode word timings and confidence from step 06 (about 0.5 MB per hour of audio, some 170 MB in all) |
 | `.cache/reports/pacing.json` | Cue statistics before and after the latest pacing, plus the stitching duplicates left out, missed speech added and decoding loops replaced |
@@ -21,6 +22,6 @@ Generated files live under `.cache/` and are excluded from Git. They are preserv
 
 Run `bash scripts/07-validate/run.sh` for current results. Historical reports are reference snapshots: their old paths and hashes may predate formatting or reorganizations.
 
-`.gitignore` covers the entire `.cache/` and `all_episodes/` trees, along with model-weight, media, archive and temporary-file extensions. Git does not offer a file-size threshold in `.gitignore`. Already tracked files are not untracked by adding ignore rules; the large-file audit found no currently tracked files at or above 5 MiB.
+`.gitignore` covers the entire `.cache/` tree, along with model-weight, media (so also a new episode's audio while it waits in the root folder), archive and temporary-file extensions. Git does not offer a file-size threshold in `.gitignore`. Already tracked files are not untracked by adding ignore rules; the large-file audit found no currently tracked files at or above 5 MiB.
 
-The existing audio and model data have not been deleted. Model/framework packages retain their internal directories inside `.cache/`; the user-facing `scripts/` and `docs/` folders are flat.
+The model data has not been deleted. The audio is not kept: an episode's audio is deleted once it has its Roman Urdu and English subtitles, and so was the `all_episodes/` folder that held every earlier episode's. Model/framework packages retain their internal directories inside `.cache/`; the user-facing `scripts/` and `docs/` folders are flat.

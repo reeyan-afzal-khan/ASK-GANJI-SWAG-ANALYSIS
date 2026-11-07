@@ -24,7 +24,7 @@
 | `ganji-model/` | The model that sorts questions into categories |
 | `scripts/` | `add-episode.sh` and the pipeline, steps 01–08 |
 | `docs/` | Guides, the episode index and the logo |
-| `all_episodes/`, `.cache/` | Audio, models, caches and reports (not in Git) |
+| `.cache/` | Models, caches and reports (not in Git) |
 
 ## Quick start
 
@@ -54,13 +54,15 @@ This takes the newest episode in the playlist all the way into the app. It needs
 
 | Part | What happens |
 | --- | --- |
-| Download | Audio, and the questions from the video's chapters into `docs/episode-index.md` |
+| Download | The audio into the root folder, and the questions from the video's chapters (or the timestamps in its description) into `docs/episode-index.md` |
 | Subtitles | Urdu, then Roman Urdu with even timing, then English |
-| Check | Validates the subtitles |
+| Check | Validates the subtitles, then deletes the audio |
 | Categories | The [Ganji model](ganji-model/README.md) sorts each question into a subcategory |
 | App | Rebuilds `app/data/` |
 
-Already have the audio in `all_episodes/`? Use `bash scripts/add-episode.sh --episodes "new-episode-number"`.
+A new episode's audio waits in the root folder as `episode_NNN.mp3`, where NNN is its episode number: one more than the newest file in `transcripts-urdu-roman/`. Once the episode has its Roman Urdu and English subtitles, the audio is deleted, and that episode is never made again.
+
+Already have the audio? Save it in the root folder under that name and run the same command: it is used instead of a download. `bash scripts/add-episode.sh --episodes "new-episode-number"` does the same without looking at the playlist.
 
 The categories are the model's best guesses. To check them one by one, then teach it your corrections:
 

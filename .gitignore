@@ -1,8 +1,8 @@
 # All large local runtime artifacts: models, caches, reports, backups and logs
 /.cache/
-/all_episodes/
 
 # Legacy runtime locations (keep ignored if recreated)
+/all_episodes/
 /models/
 /reports/
 /backups/
@@ -25,7 +25,7 @@
 # The Ganji model's own weights are small and belong to this project
 !/ganji-model/weights/*.npz
 
-# Source media (transcript .srt files remain versioned)
+# Source media, such as a new episode's audio while it waits in the root folder (transcript .srt files remain versioned)
 *.mp3
 *.wav
 *.flac

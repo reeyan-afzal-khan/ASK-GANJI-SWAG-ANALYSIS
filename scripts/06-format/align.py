@@ -84,6 +84,13 @@ def episode_paths(episodes):
     return [SOURCE / f'{name}.srt' for name in sorted(names)]
 
 
+def need_audio(todo):
+    """Stop unless the audio of every episode in todo is in the root folder, where a new episode's waits."""
+    missing = [f'{p.stem}.mp3' for p in todo if not (AUDIO / f'{p.stem}.mp3').is_file()]
+    if missing:
+        raise SystemExit(f'Error: the audio is missing; put {", ".join(missing)} in the root folder')
+
+
 def load_audio_copy(name):
     """Decode an episode to 16 kHz mono from a Linux-side copy (reading /mnt/c directly is slow).
 
@@ -395,6 +402,7 @@ def on_gpu(todo, work):
 
     Decoding is the slow part here, so the next three episodes are decoded while the GPU works.
     """
+    need_audio(todo)
     from crisperwhisper import CrisperWhisperModel
     print('Loading CrisperWhisper on the GPU:', MODEL_PATH, flush=True)
     model = CrisperWhisperModel(MODEL_PATH, backend='ct2', device='cuda', compute_type='float16')
@@ -558,9 +566,7 @@ def main():
     missing = [p.stem for p in todo if not p.is_file()]
     if missing:
         parser.exit(1, f'Error: no original transcription of {", ".join(missing)}; run bash scripts/04-transcribe/run.sh first\n')
-    missing = [p.stem for p in todo if not (AUDIO / f'{p.stem}.mp3').is_file()]
-    if missing:
-        parser.exit(1, f'Error: missing audio for {", ".join(missing)}\n')
+    need_audio(todo)
 
     import ctranslate2
     if ctranslate2.get_cuda_device_count() < 1:
